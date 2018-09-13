@@ -1,0 +1,14 @@
+{
+    "name": "vendi-advertising/vendi-starter-theme",
+    "authors": [
+        {
+            "name": "Chris Haas",
+            "email": "chris@vendiadvertising.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^4.1",
+        "symfony/debug": "^4.1",
+        "symfony/polyfill-php73": "^1.9"
+    }
+}

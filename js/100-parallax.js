@@ -19,31 +19,24 @@
         SCROLL_SPEED_IF_NOT_SET_IN_HTML     = 0.35,
 
         debounce = function(func) {
+
             var
                 wait = arguments.length <= 1 || arguments[1] === undefined ? 100 : arguments[1],
                 timeout = void 0
             ;
 
-            return function () {
-                var
-                    _this = this,
-                    _len,
-                    args,
-                    _key
-                ;
+            return  function () {
+                        var _this = this;
 
-                for(_len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                    args[_key] = arguments[_key];
-                }
+                        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                            args[_key] = arguments[_key];
+                        }
 
-                clearTimeout(timeout);
-                timeout = setTimeout(
-                            function () {
-                                func.apply(_this, args);
-                            },
-                            wait
-                        );
-            };
+                        window.clearTimeout(timeout);
+                        timeout = window.setTimeout(function () {
+                                                func.apply(_this, args);
+                                            }, wait);
+                    };
         },
 
         do_parallax = function(){
@@ -51,6 +44,8 @@
                 js_parallax_windows = get_js_parallax_windows(),
                 i
             ;
+
+            // debugger;
 
             for(i = 0; i < js_parallax_windows.length; i++){
 
@@ -65,20 +60,23 @@
 
                 var
                     plxWindowTopToPageTop = plxWindow.offsetTop,
-                    windowTopToPageTop = window.scrollTop,
+                    windowTopToPageTop = window.scrollY,
                     plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop,
 
-                    plxSpeed = plxWindow.hasAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED) ? parseFloat(plxWindow.getAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED)) : SCROLL_SPEED_IF_NOT_SET_IN_HTML
+                    plxSpeed = plxWindow.hasAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED) ? parseFloat(plxWindow.getAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED)) : SCROLL_SPEED_IF_NOT_SET_IN_HTML,
+
+                    px = Math.abs(plxWindowTopToWindowTop * plxSpeed) + 'px'
 
                 ;
 
-                plxBackground.style.top = '-' + (plxWindowTopToWindowTop * plxSpeed) + 'px';
+                plxBackground.style.top = px;
 
             }
         },
 
         parallax = function(){
-            debounce(do_parallax);
+            do_parallax();
+            // debounce(do_parallax, 100);
         },
 
         has_parallax_window = function(){
@@ -119,6 +117,7 @@
             if(has_parallax_window()){
                 document.addEventListener('DOMContentLoaded', parallax);
                 document.addEventListener('scroll', parallax);
+                parallax();
             }
         }
 

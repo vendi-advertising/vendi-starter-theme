@@ -1,0 +1,105 @@
+.quick-links {
+    display: table;
+    font-size: 0;
+    width: 100%;
+}
+
+.quick-links-left {
+    background-color: rgb(242,242,242);
+    box-sizing: border-box;
+    display: table-cell;
+    font-size: 1rem;
+    padding: 5rem 3rem 5rem 5vw;
+    position: relative;
+    text-align: right;
+    vertical-align: top;
+    width: 50%;
+}
+
+.quick-links-left::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 15px solid rgb(242,242,242);
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.quick-links-left-wrapper {
+    border-bottom: solid 2px #c3c1c1;
+    border-top: solid 2px #c3c1c1;box-sizing: border-box;
+    padding: 2rem;
+    width: 425px;
+    vertical-align: middle;
+    display: inline-block;
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.quick-links-right {
+    background-color: rgb(36,15,110);
+    box-sizing: border-box;
+    display: table-cell;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 5rem 5vw 5rem 3rem;
+    vertical-align: top;
+    width: 50%;
+}
+
+.quick-links-right .link {
+    border-bottom: solid 2px #4d3b89;
+    box-sizing: border-box;
+    max-width: 425px;
+    padding: 4rem 2rem;
+}
+
+.quick-links-right .link:last-child {
+    border-bottom: none;
+}
+
+.quick-links-right .link a {
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.5s ease-out 0s;
+}
+
+.quick-links-right .link a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.quick-links-right .link span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.quick-links-right .link span.quick-link-text {
+    text-align: right;
+    width: 45%;
+}
+
+.quick-links-right .link img {
+    height: auto;
+    margin-left: 1rem;
+    max-width: 40px;
+    width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	
+	
+}
+
+@media (max-width: 767px) {
+	
+    
+	
+}

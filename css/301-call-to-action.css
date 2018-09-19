@@ -1,0 +1,28 @@
+.call-to-action {
+    color: rgb(36,15,110);
+    padding: 5rem 5vw;
+}
+
+.call-to-action-description {
+    margin-bottom: 2rem;
+}
+
+.call-to-action-form input[type="text"],
+.call-to-action-form textarea.textarea {
+    background-color: #fff;
+    border: solid 2px #c3c1c1;
+}
+.call-to-action-form .gform_footer {
+    text-align: right;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	
+	
+}
+
+@media (max-width: 767px) {
+	
+    
+	
+}

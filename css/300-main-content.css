@@ -1,0 +1,173 @@
+.promoted-spotlight {
+	margin: 3rem 0;
+}
+
+/*** begin generic post styles ***/
+.post-item {
+	border-top: solid 1px var(--main-gray-color);
+	font-size: 0;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+.post-list .post-item:first-child {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.post-item.promoted {
+	border: none;
+	margin: 2rem 0 0 0;
+	padding: 0;
+}
+
+.post-item.promoted .volunteer-date {
+	display: block;
+}
+
+.post-item.promoted .volunteer-name {
+	color: var(--main-red-color);
+}
+
+.post-item.volunteer {
+	border-top: solid 1px var(--main-gray-color);
+	font-size: 0;
+	margin-top: 1rem;
+	padding-top: 1rem;
+}
+
+.post-thumbnail {
+	box-sizing: border-box;
+	display: inline-block;
+	padding-right: 1rem;
+	width: 35%;
+	vertical-align: top;
+}
+
+.post-thumbnail img {
+	height: auto;
+	width: 100%;
+}
+
+.post-excerpt-info {
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 1rem;
+	width: 65%;
+	vertical-align: top;
+}
+
+.post-title a {
+	color: #000;
+}
+
+.post-link {
+	background-color: var(--main-red-color);
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 1rem 0 0 0;
+	padding: 1rem;
+}
+
+.post-link a {
+	border-left: solid 1px #fff;
+	border-right: solid 1px #fff;
+	color: #fff;
+	display: block;
+	padding: 0 1rem;
+}
+
+/* begin generic post detail styles */
+
+.post-header {
+	font-size: 0;
+	margin-bottom: 2rem;
+}
+
+.post-column-left {
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 1rem;
+	padding-right: 2rem;
+	vertical-align: top;
+	width: 35%;
+}
+
+.post-image img {
+	height: auto;
+	width: 100%;
+}
+
+.post-details {
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 1rem;
+	vertical-align: top;
+	width: 65%;
+}
+
+.post-details .page-title {
+	font-size: 2rem;
+	padding-bottom: 1rem;
+}
+
+.page-title.mobile {
+	display: none;
+}
+
+.post-tags {
+	font-size: 0.75rem;
+	margin-top: 1rem;
+	text-transform: capitalize;
+}
+
+.patient-story-disclaimer {
+	border-top: solid 1px var(--main-gray-color);
+	font-size: 0.8rem;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+/* end generic post detail styles */
+
+/*** end generic post styles ***/
+
+
+/* Tablets - General */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	
+	
+}
+
+/* Smartphones - General */
+
+@media (max-width: 767px) {
+	
+	.post-column-left {
+		display: block;
+		margin-bottom: 1rem;
+		padding-right: 0;
+		width: 100%;
+	}
+	
+	.post-details {
+		display: block;
+		width: 100%;
+	}
+	
+	.post-details .page-title.desktop {
+		display: none;
+	}
+	
+	.page-title.mobile {
+		display: block;
+	}
+	
+	.post-details .page-title {
+		font-size: 1.5rem;
+		padding-bottom: 1rem;
+	}
+	
+}

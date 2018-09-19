@@ -9,6 +9,7 @@
     "require": {
         "symfony/var-dumper": "^4.1",
         "symfony/debug": "^4.1",
-        "symfony/polyfill-php73": "^1.9"
+        "symfony/polyfill-php73": "^1.9",
+        "webmozart/path-util": "^2.3"
     }
 }

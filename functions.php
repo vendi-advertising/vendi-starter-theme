@@ -11,6 +11,9 @@ require_once VENDI_CUSTOM_THEME_PATH . '/includes/autoload.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/vendi-base.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/vendi-auto-asset-loader.php';
 
+//Global functions
+require_once VENDI_CUSTOM_THEME_PATH . '/includes/global-functions.php';
+
 //General hooks
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks.php';
 

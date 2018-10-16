@@ -1,7 +1,7 @@
 <?php
 
-if(is_file(CLIENT_THEME_PATH . '/vendor/autoload.php')){
-    require_once CLIENT_THEME_PATH . '/vendor/autoload.php';
+if(is_file(%VENDI_CUSTOM_THEME%_PATH . '/vendor/autoload.php')){
+    require_once %VENDI_CUSTOM_THEME%_PATH . '/vendor/autoload.php';
 }
 
 spl_autoload_register(
@@ -10,7 +10,7 @@ spl_autoload_register(
                             //PSR-4 compliant autoloader
                             //See http://www.php-fig.org/psr/psr-4/
                             $prefixes = array(
-                                                'Vendi\\CLIENT\\Theme' => CLIENT_THEME_PATH . '/src/',
+                                                'Vendi\\%CLIENT%\\Theme' => %VENDI_CUSTOM_THEME%_PATH . '/src/',
                                             );
                             foreach( $prefixes as $prefix => $base_dir )
                             {

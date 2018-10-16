@@ -1,4 +1,8 @@
 <?php
+   if(!\function_exists('get_field')){
+       echo '<!-- ACF not installed -->';
+       return;
+   }
 
     if(get_field('hero_image')){
         ?>

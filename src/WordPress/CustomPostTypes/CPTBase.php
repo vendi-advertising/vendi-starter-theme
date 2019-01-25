@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Vendi\CLIENT\Theme\WordPress\CustomPostTypes;
+namespace Vendi\%CLIENT%\Theme\WordPress\CustomPostTypes;
 
-use Vendi\CLIENT\Theme\AbstractClassWithoutMagicGetSet;
+use Vendi\%CLIENT%\Theme\AbstractClassWithoutMagicGetSet;
 
 abstract class CPTBase extends AbstractClassWithoutMagicGetSet
 {

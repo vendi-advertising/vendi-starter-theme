@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vendi\CLIENT\Theme;
+namespace Vendi\%CLIENT%\Theme;
 
 abstract class AbstractClassWithoutMagicGetSet
 {

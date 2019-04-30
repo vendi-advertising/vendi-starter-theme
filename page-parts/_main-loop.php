@@ -11,9 +11,9 @@ if ( have_posts() )
                 <?php
                     the_post();
 
-                    //the_title( '<h1 class="page-title">', '</h1>' );
+                    the_title( '<h1 class="page-title">', '</h1>' );
 
-                    //the_content();
+                    the_content();
                 ?>
             </div>
         </div>

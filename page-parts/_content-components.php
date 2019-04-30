@@ -11,7 +11,7 @@ if(have_rows('page_components')){
         while ( have_rows('page_components') ) {
             the_row();
 
-            $file_name = Path::join( get_template_directory(),  . 'page-parts', Path::getFilename(get_row_layout() . '.php' ));
+            $file_name = Path::join( get_template_directory(), 'page-parts', Path::getFilename(get_row_layout() . '.php' ));
 
             if(file_exists($file_name)){
                 include $file_name;

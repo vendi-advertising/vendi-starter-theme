@@ -1,4 +1,5 @@
 <?php
+use Webmozart\PathUtil\Path;
 get_header();
 ?>
 
@@ -7,17 +8,17 @@ get_header();
 
 		<?php
 
-            $path = Path::join(get_template_directory(),  . 'page-parts', '_breadcrumbs.php');
+            $path = Path::join(get_template_directory(), 'page-parts', '_breadcrumbs.php');
             if(is_readable($path)){
                 include $path;
             }
 
-            $path = Path::join(get_template_directory(),  . 'page-parts', '_content-components.php');
+            /*$path = Path::join(get_template_directory(), 'page-parts', '_content-components.php');
             if(is_readable($path)){
                 include $path;
-            }
+            }*/
 
-            $path = Path::join(get_template_directory(),  . 'page-parts', '_main-loop.php');
+            $path = Path::join(get_template_directory(), 'page-parts', '_main-loop.php');
             if(is_readable($path)){
                 include $path;
             }

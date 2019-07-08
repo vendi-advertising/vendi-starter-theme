@@ -2,8 +2,11 @@
 This theme is the general starter theme for Vendi sites.
 
 ## Installation
-The installation script `./bin/install.sh` requires two variables to be set when
-run.
+THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
+ * Run `git clone git@github.com:vendi-advertising/vendi-starter-theme.git` from the theme's folder.
+ * `mv vendi-starter-theme THEMENAMEHERE`
+ * `cd THEMENEAMEHERE`
+ * The installation script `./bin/install.sh` requires two variables to be set when run.
 
 ### `THEME_NAME_FOR_CONST`
 Set to a short descriptive name for your theme to be used when prefixing certain

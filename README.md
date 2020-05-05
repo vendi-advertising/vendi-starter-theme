@@ -31,3 +31,4 @@ THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
  * Run `git clone git@github.com:vendi-advertising/vendi-starter-theme.git` from the theme's folder.
  * `mv vendi-starter-theme THEMENAMEHERE`
  * `cd THEMENEAMEHERE`
+ * `composer install`

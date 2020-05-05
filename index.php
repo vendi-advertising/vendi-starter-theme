@@ -1,29 +1,27 @@
 <?php
-use Webmozart\PathUtil\Path;
 get_header();
 ?>
 
-	<main>
-		<a id="main-content" tabindex="-1"></a>
+    <main>
+        <a id="main-content" tabindex="-1"></a>
 
-		<?php
+        <?php
 
-            $path = Path::join(get_template_directory(), 'page-parts', '_breadcrumbs.php');
-            if(is_readable($path)){
-                include $path;
-            }
+        vendi_load_site_component('hero');
+        vendi_load_site_component('breadcrumbs');
 
-            /*$path = Path::join(get_template_directory(), 'page-parts', '_content-components.php');
-            if(is_readable($path)){
-                include $path;
-            }*/
+        if (is_404()) {
+            vendi_load_page_component('404');
+        } elseif (is_search()) {
+            vendi_load_page_component('search');
+        }
 
-            $path = Path::join(get_template_directory(), 'page-parts', '_main-loop.php');
-            if(is_readable($path)){
-                include $path;
-            }
+        if (!is_search() && !is_404()) {
+            vendi_load_site_component('components');
+        }
+
         ?>
 
-	</main>
+    </main>
 <?php
 get_footer();

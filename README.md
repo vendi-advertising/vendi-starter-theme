@@ -1,50 +1,33 @@
 # Vendi Starter Theme
 This theme is the general starter theme for Vendi sites.
 
+## Version 2020 changes
+The theme has been upgraded to Chris's 2020 brain and installation should be greatly simplified.
+
+### Overview of changes
+  * The install.sh script has been completely removed
+  * The theme's namespace for code in `/src/` will now always be `Vendi\\Theme` unless someone manually changes
+    this.
+  * Symfony has been upgraded to version 5
+  * The `WebMozart` path loader has been abstracted away, see the _Vendi Component Loader_ below.
+  * Custom Post Types should all be declared in `/.config/cpts.yaml`. , see the _Vendi Custom Post Type Loader_ below.
+  * Asset (CSS and JS) loading logic has been moved into a shared library, see the _Vendi Asset Loader_ below.
+  * The WordPress VIP code standards are installed, and you are encouraged to run the theme against that code
+    sniffer for that ruleset.
+
+### New components
+All themes should now use the open source components created and maintained by Vendi including the following. See
+each component's documentation page for further details.
+  * [Vendi Component Loader](https://github.com/vendi-advertising/vendi-component-loader) - Allows loading
+    components such as ACF Flexible Layouts as well as general abstract objects such as headers, footers, heroes
+    and any other asset that can be componentized.
+  * [Vendi Custom Post Type Loader](https://github.com/vendi-advertising/vendi-cpt-from-yaml) - Created CPTs directly
+    from a YAML file instead of having to deal with PHP arrays.
+  * [Vendi Asset Loader](https://github.com/vendi-advertising/vendi-asset-loader) - Dynamically loads all CSS and JS
+    files from a common directory in alphabetical order.
+
 ## Installation
 THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
  * Run `git clone git@github.com:vendi-advertising/vendi-starter-theme.git` from the theme's folder.
  * `mv vendi-starter-theme THEMENAMEHERE`
  * `cd THEMENEAMEHERE`
- * The installation script `./bin/install.sh` requires two variables to be set when run.
-
-### `THEME_NAME_FOR_CONST`
-Set to a short descriptive name for your theme to be used when prefixing certain
-theme-specific PHP constants.
-
-#### Requirements
- * Only letters and underscores
- * Always uppercase
- * Ideal lengths are less than 20 characters total
- * Acronyms should be avoided but can be used
-
-#### Examples
-Example values are `TORO` or `DRAGON_BOAT`.
-
-#### Notes
-This value is used as the prefix for certain PHP constants specific to the
-theme, specifically the theme's root folder. These are used instead of
-constantly requesting them from WordPress.
-
-### `CLIENT_NAMESPACE`
-Set to a short descriptive name for your theme to be used as the child PHP
-namespace under Vendi's root namespace of `Vendi`.
-
-#### Requirements
- * Only letters
- * Always title case
- * Ideal lengths are less than 20 characters total
- * Avoid acronyms unless really needed
-
-#### Examples
-Example values are `Toro` or `DragonBoat`.
-
-#### Notes
-This value is used by PHP's autoloader as the starting namespace to search for
-code in the `src` folder. See `includes/autoload.php` for more details.
-
-Even if you don't use this feature you should still set this to something
-to be ready for future changes.
-
-For advanced users you may set this to include a slashes for sub-namespaces but
-you might need to tweak the `sed` command.

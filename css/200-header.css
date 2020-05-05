@@ -1,121 +1,121 @@
 #header {
-	background-color: var(--color-primary-blue);
-	position: relative;
+    background-color: var(--color-primary-blue);
+    position: relative;
     width: 100%;
-	z-index: 9999;
+    z-index: 9999;
 }
 
 .header-branding {
-	font-size: 0;
+    font-size: 0;
     padding: 1.75rem 5vw;
 }
 
 .header-logo {
-	box-sizing: border-box;
-	display: inline-block;
-	vertical-align: middle;
-	width: 20%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
 }
 
 .header-branding img {
-	height: auto;
-	max-width: 350px;
-	width: 100%;
+    height: auto;
+    max-width: 350px;
+    width: 100%;
 }
 
 .header-navigation {
     box-sizing: border-box;
-	display: inline-block;
+    display: inline-block;
     font-size: 0.85rem;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-	vertical-align: middle;
-	width: 60%;
+    vertical-align: middle;
+    width: 60%;
 }
 
 nav ul {
-	display: inline-block;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-	box-sizing: border-box;
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-	position: relative;
-	vertical-align: middle;
-	width: auto;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: middle;
+    width: auto;
 }
 
 nav ul li a {
     box-sizing: border-box;
     display: block;
-	padding: 0.75rem;
+    padding: 0.75rem;
 }
 
 nav ul li.border a {
-    border: solid 1px var(--color-primary-site-branding);
+    border: solid 1px var(--color-primary-green);
 }
 
 
 #menu-main li:hover .sub-menu {
-	left: 0;
+    left: 0;
 }
 
 #menu-main .sub-menu li {
-	border: none;
-	display: block;
-	margin: 0;
-	padding: 0;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 #menu-main .sub-menu li a {
-	background-image: none;
-	background-position: left top;
-	box-sizing: border-box;
-	color: #000;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 5px 15px;
-	text-transform: none;
-	transition: all 0.5s ease-out 0s;
-	width: 100%;
+    background-image: none;
+    background-position: left top;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px 15px;
+    text-transform: none;
+    transition: all 0.5s ease-out 0s;
+    width: 100%;
 }
 
 #menu-main .sub-menu li a:hover {
-	color: #fff;
-	text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 #menu-main .sub-menu li:last-child a {
-	border-bottom: none;
+    border-bottom: none;
 }
 
 .header-leaderboard .responsive-menu-pro-label.responsive-menu-pro-label-bottom {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item .responsive-menu-pro-item-link {
-	font-weight: 400;
+    font-weight: 400;
 }
 
 #responsive-menu-pro-container #responsive-menu-pro .responsive-menu-pro-desktop-menu-col-auto > a {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .header-features {
-	box-sizing: border-box;
-	display: inline-block;
+    box-sizing: border-box;
+    display: inline-block;
     position: relative;
-	text-align: right;
-	vertical-align: middle;
-	width: 20%;
+    text-align: right;
+    vertical-align: middle;
+    width: 20%;
 }
 
 /*** begin search styles ***/
@@ -132,23 +132,23 @@ nav ul li.border a {
 }
 
 #responsive-menu-container .responsive-menu-search-box {
-	font-size: 14px;
+    font-size: 14px;
 }
 
 #header .search-field {
-	background-color: transparent;
- 	background-image: url(../images/search-icon.svg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 24px 24px;
-	border: none;
-	cursor: pointer;
-	height: 44px;
-	margin: 0;
-	padding: 0 0 0 34px;
-	position: relative;
-	transition: width 400ms ease, background 400ms ease;
-	width: 0;
+    background-color: transparent;
+    background-image: url(../images/search-icon.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    border: none;
+    cursor: pointer;
+    height: 44px;
+    margin: 0;
+    padding: 0 0 0 34px;
+    position: relative;
+    transition: width 400ms ease, background 400ms ease;
+    width: 0;
 }
 
 #header .search-field:focus {
@@ -166,21 +166,6 @@ nav ul li.border a {
     width: 300px;
 }
 
-.search-form
-.search-submit {
-	display:none;
-}
-
-/*** end search styles ***/
-
-/* Tablets - General */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-}
-
-/* Smartphones - General */
-
-@media (max-width: 767px) {
-
+.search-form .search-submit {
+    display: none;
 }

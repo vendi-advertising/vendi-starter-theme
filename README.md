@@ -32,3 +32,9 @@ THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
  * `mv vendi-starter-theme THEMENAMEHERE`
  * `cd THEMENEAMEHERE`
  * `composer install`
+
+## Required Plugins
+This theme assumes that you have certain plugins installed
+ * [Fly Dynamic Image Resizer](https://wordpress.org/plugins/fly-dynamic-image-resizer/) : `wp plugin install fly-dynamic-image-resizer --activate`
+ * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/)
+ * [Responsive Menu Pro](https://responsive.menu/)

@@ -17,7 +17,7 @@
         "symfony/yaml": "^5.0.8",
         "vendi-advertising/vendi-asset-loader": "^2.0.2",
         "vendi-advertising/vendi-component-loader": "^1.4.5",
-        "vendi-advertising/vendi-cpt-from-yaml": "^1.0.2",
+        "vendi-advertising/vendi-cpt-from-yaml": "^1.0.3",
         "vendi-advertising/vendi-shared-utils": "^5.0.4"
     },
     "require-dev": {

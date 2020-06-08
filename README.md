@@ -33,6 +33,9 @@ THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
  * `cd THEMENEAMEHERE`
  * `composer install`
  * `composer up`
+ * run `rm -rf ./.git/` from the theme directory
+ * make a new GIT repository `https://github.com/organizations/vendi-advertising/repositories/new`
+
 
 ## Required Plugins
 This theme assumes that you have certain plugins installed

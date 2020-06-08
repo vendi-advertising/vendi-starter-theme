@@ -32,6 +32,7 @@ THEMENAMEHERE should be renamed to your theme's folder name. eg. stoptheclot
  * `mv vendi-starter-theme THEMENAMEHERE`
  * `cd THEMENEAMEHERE`
  * `composer install`
+ * `composer up`
 
 ## Required Plugins
 This theme assumes that you have certain plugins installed

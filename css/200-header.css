@@ -2,7 +2,7 @@
     background-color: var(--color-primary-blue);
     position: relative;
     width: 100%;
-    z-index: 9999;
+    z-index: 2;
 }
 
 .header-branding {
@@ -19,7 +19,7 @@
 
 .header-branding img {
     height: auto;
-    max-width: 350px;
+    max-width: 35rem;
     width: 100%;
 }
 
@@ -80,9 +80,9 @@ nav ul li.border a {
     color: #000;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
-    padding: 5px 15px;
+    padding: 0.5rem 1.5rem;
     text-transform: none;
     transition: all 0.5s ease-out 0s;
     width: 100%;
@@ -98,7 +98,7 @@ nav ul li.border a {
 }
 
 .header-leaderboard .responsive-menu-pro-label.responsive-menu-pro-label-bottom {
-    margin-top: 5px;
+    margin-top: 0.5rem;
 }
 
 #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item .responsive-menu-pro-item-link {

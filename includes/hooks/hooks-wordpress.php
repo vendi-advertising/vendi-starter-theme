@@ -34,3 +34,10 @@ function alx_embed_html($html)
 
 add_filter('embed_oembed_html', 'alx_embed_html', 10, 3);
 add_filter('video_embed_html', 'alx_embed_html');
+
+add_action(
+    'wp_enqueue_scripts',
+    static function(){
+        wp_dequeue_style( 'wp-block-library' );
+    }
+);

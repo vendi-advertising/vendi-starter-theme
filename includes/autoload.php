@@ -6,6 +6,10 @@ if (!is_readable(VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php')) {
 
 require_once VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php';
 
+// Boot env support
+// In order to use putenv/getnev with Symfony 5 we have to pass true here
+(new \Symfony\Component\Dotenv\Dotenv(true))->loadEnv(VENDI_CUSTOM_THEME_PATH . '/.env');
+
 spl_autoload_register(
     static function ($class) {
         //PSR-4 compliant autoloader

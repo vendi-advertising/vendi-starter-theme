@@ -21,7 +21,7 @@ do_action('vendi/just-after-opening-body-tag/tracking-pixel');
 
 <!-- begin header -->
 <header>
-    <div id="header">
+    <div class="site-header">
         <div class="header-branding">
             <div class="header-logo" id="logo">
                 <a href="<?php esc_attr_e(home_url()); ?>">

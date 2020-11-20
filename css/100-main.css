@@ -59,20 +59,35 @@ h6 {
 
 }
 
+ul + h1,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+    margin-top: var(--margin-normal);
+}
+
 p {
     line-height: 1.6;
-    margin: 0 0 1rem 0;
+    margin: 0 0 var(--margin-medium) 0;
 }
 
 ul {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--margin-normal);
     list-style-type: disc;
     margin-left: 1.25rem;
 }
 
 ul li  {
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
 }
 
 ul ul {
@@ -112,12 +127,18 @@ main {
 
 .region {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: var(--content-width-normal);
 }
 
 /** end generic layout styles **/
 
 /** begin WYSIWG editor styles **/
+
+.wp-caption-text {
+    font-style: italic;
+    margin: 1rem 0;
+    text-align: center;
+}
 
 .alignleft {
     float: left;
@@ -134,7 +155,55 @@ main {
     max-width: 100%;
 }
 
+.alignleft {
+    float: left;
+    margin: 0 2rem 3rem 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 3rem 2rem;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 3rem auto 3rem auto;
+}
+
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /** end WYSIWG editor styles **/
+
+/**** responsive embeded videos ****/
+
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+.video-container iframe, .video-container object, .video-container embed, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/**** end responsive embeded videos ****/
 
 @media (min-width: 2200px) {
 
@@ -149,5 +218,17 @@ main {
 }
 
 @media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 900px) {
+
+    img.alignnone,
+    img.alignleft,
+    img.alignright,
+    img.aligncenter {
+        height: auto;
+        width: 100%;
+    }
 
 }

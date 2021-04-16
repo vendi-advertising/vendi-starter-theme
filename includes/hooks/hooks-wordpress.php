@@ -1,5 +1,7 @@
 <?php
 
+use Vendi\ThumbnailSizesFromYaml\ThumbnailLoader;
+
 //This code is called at theme boot up
 add_action(
     'after_setup_theme',
@@ -16,11 +18,9 @@ add_action(
                 'main_nav' => 'Primary navigation',
                 'footer_nav' => 'Footer navigation',
             ]
-        );
+	);
 
-        if (function_exists('fly_add_image_size')) {
-            //fly_add_image_size('NAME', 430, 560, true);
-        }
+	ThumbnailLoader::register_all();
 
     }
 );

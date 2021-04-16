@@ -1,6 +1,14 @@
 # Vendi Starter Theme
 This theme is the general starter theme for Vendi sites.
 
+## Version 2021 changes
+  * Added theme support for HTML5 [style and script](https://github.com/vendi-advertising/vendi-starter-theme/commit/12122a0a1b43b997c0c78d85208947129334ade3)
+  * Added [thumbnail style YAML](https://github.com/vendi-advertising/vendi-thumbnail-from-yaml) support
+  * Added [Fly Dynamic Image Resizer](https://wordpress.org/plugins/fly-dynamic-image-resizer/) along with
+    [`picture` tag](https://github.com/vendi-advertising/fly-picture-tag-generator) support
+  * [Fixed search for URL](https://github.com/vendi-advertising/vendi-starter-theme/commit/e41f8aa2cb5bdabb3e65047d88055ddd2c2c352c) for non-standard installs
+  * Added standard [long-term UTM tracking](https://github.com/vendi-advertising/vendi-starter-theme/commit/c5cdfc7663705db967bdb9ffb297b33536276b72)
+
 ## Version 2020 changes
 The theme has been upgraded to Chris's 2020 brain and installation should be greatly simplified.
 

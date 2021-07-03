@@ -20,6 +20,17 @@ add_action(
             array_shift($folders);
             $shortPath = esc_html(implode('/', $folders));
 
+            $fileName = array_pop($folders);
+
+            $localPath = Path::join(VENDI_CUSTOM_THEME_PATH, ...$folders);
+            if (!is_dir($localPath)) {
+
+                // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
+                if (!mkdir($localPath, 0777, true) && !is_dir($localPath)) {
+                    throw new RuntimeException(sprintf('Directory "%s" was not created', $localPath));
+                }
+            }
+
             $html = "
              <div style=\"border: 2px solid red; padding: 40px;\">
                 <h1 style=\"font-size: 48px;\">

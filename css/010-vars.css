@@ -6,14 +6,14 @@
     --color-primary-green: #0f0;
     --color-primary-blue: #00f;
 
-    --font-body: 1.7rem;
-    --font-body-medium-small: 1.5rem;
-    --font-body-small: 1.3rem;
-    --font-body-medium: 2rem;
-    --font-body-large: 3rem;
-    --font-body-extra-large: 3.5rem;
+    --font-size-body: 1.7rem;
+    --font-size-body-medium-small: 1.5rem;
+    --font-size-body-small: 1.3rem;
+    --font-size-body-medium: 2rem;
+    --font-size-body-large: 3rem;
+    --font-size-body-extra-large: 3.5rem;
 
-    --font-main: 'Open Sans', sans-serif;
+    --font-family-main: 'Open Sans', sans-serif;
 
     --bu: 1rem;
     --margin-small: var(--bu);
@@ -21,7 +21,8 @@
     --margin-normal: calc(var(--margin-medium) * 2);
     --margin-large: calc(var(--margin-normal) * 2);
     --margin-extra-large: calc(var(--margin-large) * 2);
-    --content-width-normal: 1140px;
-    --content-width-narrow: 780px;
+    
+    --content-width-normal: 114erm;
+    --content-width-narrow: 78rem;
 
 }

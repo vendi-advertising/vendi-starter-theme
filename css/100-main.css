@@ -216,3 +216,9 @@ a img.aligncenter {
     }
 
 }
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

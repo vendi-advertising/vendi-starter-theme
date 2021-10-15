@@ -96,6 +96,11 @@
         },
 
         load = () => {
+            //Disable if the user doesn't like motion
+            if(window.matchMedia && window.matchMedia('(prefers-reduced-motion)').matches){
+                return;
+            }
+
             //Parallax no matter what, just to kick things off
             parallax();
 

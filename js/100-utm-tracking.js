@@ -7,12 +7,30 @@
         document = window.document,
         storage = window.localStorage,
 
-        run = function () {
+        // These are the potential UTM parameters
+        sessionKeys = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_expid', 'utm_term', 'utm_content', 'utm_time'],
+
+        maybeSetFormFields = () => {
+            // Finally, look for hidden form fields that have an attribute of data-field-label
+            // and a value that matches one of the UTM keywords.
+            for (let j = 0; j < sessionKeys.length; j++) {
+                const
+                    key = sessionKeys[j],
+                    param = storage.getItem(key),
+                    hiddenFields = document.querySelectorAll('input[type=hidden][data-field-label~=' + key + ']')
+                ;
+
+                if (param) {
+                    for (let k = 0; k < hiddenFields.length; k++) {
+                        hiddenFields[k].value = param;
+                    }
+                }
+            }
+        },
+
+        huntForUTMs = () => {
             const
                 url = window.location.toString(),
-
-                // These are the potential UTM parameters
-                sessionKeys = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_expid', 'utm_term', 'utm_content', 'utm_time'],
 
                 // Same as above but as a regex for the URL. Make sure to keep these two in sync.
                 // Basically, each query string key/value should start with either a question mark or
@@ -54,31 +72,18 @@
                 // We could use named parameters here, but to be safe use indexes
                 storage.setItem(match[1], decodeURIComponent(match[2]));
             }
-
-            // Finally, look for hidden form fields that have an attribute of data-field-label
-            // and a value that matches one of the UTM keywords.
-            for (let j = 0; j < sessionKeys.length; j++) {
-                const
-                    key = sessionKeys[j],
-                    param = storage.getItem(key),
-                    hiddenFields = document.querySelectorAll('input[type=hidden][data-field-label~=' + key + ']')
-                ;
-
-                if (param) {
-                    for (let k = 0; k < hiddenFields.length; k++) {
-                        hiddenFields[k].value = param;
-                    }
-                }
-            }
         },
 
-        load = function () {
+        run = () => {
+            huntForUTMs();
+            maybeSetFormFields();
+        },
+
+        load = () => {
             run();
         },
 
-        // Wait for load.
-        // TODO: Add Drupal load/ready event.
-        init = function () {
+        init = () => {
             if (['complete', 'loaded', 'interactive'].indexOf(document.readyState) >= 0) {
                 // If the DOM is already set, then just load
                 load();

@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "symfony/dotenv": "^6",
         "symfony/polyfill-php73": "^1.15",
         "symfony/yaml": "^6",
         "vendi-advertising/vendi-asset-loader": "^3",

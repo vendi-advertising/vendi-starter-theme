@@ -6,9 +6,6 @@ if (!is_readable(VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php')) {
 
 require_once VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php';
 
-// Boot env support
-(new \Symfony\Component\Dotenv\Dotenv())->usePutenv()->loadEnv(VENDI_CUSTOM_THEME_PATH . '/.env');
-
 spl_autoload_register(
     static function ($class) {
         //PSR-4 compliant autoloader

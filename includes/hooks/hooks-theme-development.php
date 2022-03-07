@@ -4,7 +4,7 @@ use Vendi\Shared\utils;
 use Webmozart\PathUtil\Path;
 
 add_action(
-    'vendi/component-loaded/missing-template',
+    'vendi/component-loader/missing-template',
     static function ($name, $folders, $path) {
 
         $automaticallyCreateFilesIfTheyDontExist = true;
@@ -66,7 +66,7 @@ add_action(
 );
 
 add_action(
-    'vendi/component-loaded/loading-template',
+    'vendi/component-loader/loading-template',
     static function ($name, $folders, $path) {
 
         $logToDisk = false;

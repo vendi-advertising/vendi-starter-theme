@@ -6,7 +6,21 @@ use WebPConvert\Convert\Converters\Stack;
 add_action(
     'fly_image_created',
     static function ($attachment_id, $fly_file_path) {
-        $webp_file_path = $fly_file_path . '.webp';
+
+        if (!is_readable($fly_file_path)) {
+            return;
+        }
+
+        $mime = @mime_content_type($fly_file_path);
+        if (!$mime) {
+            return;
+        }
+
+        if (!in_array($mime, ['image/png', 'image/jpeg', 'image/jpg'])) {
+            return;
+        }
+
+        $webp_file_path = $fly_file_path.'.webp';
         Stack::convert(
             $fly_file_path,
             $webp_file_path,
@@ -21,7 +35,7 @@ add_action(
                     'imagemagick',
                     'graphicsmagick',
                     'wpc',
-                    'gd'
+                    'gd',
                 ],
 
                 // Any available options can be set here, they dribble down to all converters.
@@ -37,7 +51,7 @@ add_action(
                     'quality' => 'auto',      /* Set to same as jpeg (requires imagick or gmagick extension, not necessarily compiled with webp) */
                     'max-quality' => 85,      /* Only relevant if quality is set to "auto" */
                     'default-quality' => 85,  /* Fallback quality if quality detection isn't working */
-                ]
+                ],
             ]
         );
     },
@@ -73,7 +87,6 @@ add_filter(
             // See if it exists on disk
             if (!is_readable($absPath)) {
                 unset($images[$key]);
-                continue;
             }
         }
 

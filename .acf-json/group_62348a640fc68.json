@@ -1,0 +1,143 @@
+{
+    "key": "group_62348a640fc68",
+    "title": "Theme settings tab - Global JavaScript",
+    "fields": [
+        {
+            "key": "field_62348a80f56e2",
+            "label": "JavaScript",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "acfe_field_group_condition": 0
+        },
+        {
+            "key": "field_62348a8ef56e3",
+            "label": "Message",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "When adding JavaScript here, you must include the opening and closing &lt;script&gt; tags.",
+            "new_lines": "wpautop",
+            "esc_html": 0,
+            "acfe_field_group_condition": 0
+        },
+        {
+            "key": "field_62348a9ef56e4",
+            "label": "JavaScript",
+            "name": "global_javascript",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "acfe_field_group_condition": 0,
+            "sub_fields": [
+                {
+                    "key": "field_62348aaff56e5",
+                    "label": "JavaScript",
+                    "name": "javascript",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "80",
+                        "class": "",
+                        "id": ""
+                    },
+                    "required_message": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "acfe_textarea_code": 0,
+                    "acfe_field_group_condition": 0
+                },
+                {
+                    "key": "field_62348ab9f56e6",
+                    "label": "Context",
+                    "name": "context",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "required_message": "",
+                    "choices": {
+                        "header": "Header",
+                        "footer": "Footer"
+                    },
+                    "default_value": "footer",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "max": "",
+                    "ui": 0,
+                    "return_format": "value",
+                    "prepend": "",
+                    "append": "",
+                    "acfe_field_group_condition": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1647610613
+}

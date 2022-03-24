@@ -31,15 +31,21 @@ add_action(
                 }
             }
 
-            $html = "
-             <div style=\"border: 2px solid red; padding: 40px;\">
-                <h1 style=\"font-size: 48px;\">
-                    This is an auto-generated file for the template.
-                </h1>
-                <code style=\"background-color: black; color: white; padding: 10px; margin: 10px 0; display: block;\">${shortPath}</code>.
-                <!-- Template call first found at ${sourceUrl} -->
-             </div>
-             ";
+            $html = <<<EOF
+<?php
+
+vendi_load_component_component_with_state('theme_building', ['short_path' => '{$shortPath}', 'source_url' => '{$sourceUrl}'] ,'debug');
+EOF;
+
+//            $html = "
+//             <div style=\"border: 2px solid red; padding: 40px;\">
+//                <h1 style=\"font-size: 48px;\">
+//                    This is an auto-generated file for the template.
+//                </h1>
+//                <code style=\"background-color: black; color: white; padding: 10px; margin: 10px 0; display: block;\">${shortPath}</code>.
+//                <!-- Template call first found at ${sourceUrl} -->
+//             </div>
+//             ";
 
             // NOTE: This code exists for debugging locally, only
             // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_touch
@@ -48,15 +54,17 @@ add_action(
             // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
             file_put_contents($path, $html);
 
+            include $path;
+
             // We need to echo it here, too, because on first-pass the include just fails
-            echo wp_kses(
-                $html,
-                [
-                    'div' => ['style' => []],
-                    'h1' => ['style' => []],
-                    'code' => ['style' => []],
-                ]
-            );
+//            echo wp_kses(
+//                $html,
+//                [
+//                    'div' => ['style' => []],
+//                    'h1' => ['style' => []],
+//                    'code' => ['style' => []],
+//                ]
+//            );
         } else {
             dump($path);
         }

@@ -82,7 +82,7 @@
 
                         const
                             background_image = get_js_parallax_background_for_window(parallax_window),
-                            distance_to_top = parallax_window.offsetTop - window.pageYOffset,
+                            distance_to_top = parallax_window.offsetTop - window.scrollY,
                             speed = parallax_window.hasAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED) ? parseFloat(parallax_window.getAttribute(MAGIC_ATTRIBUTE_FOR_SCROLL_SPEED)) : SCROLL_SPEED_IF_NOT_SET_IN_HTML,
                             px = - ( distance_to_top * speed),
                             px_as_string = px + 'px'

@@ -8,12 +8,8 @@
     wp_head();
 
     ?>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body <?php body_class(); ?>>
-<?php
-do_action('vendi/just-after-opening-body-tag/tracking-pixel');
-?>
 
 <a href="#main-content" class="visually-hidden focusable skip-link">
     Skip to main content

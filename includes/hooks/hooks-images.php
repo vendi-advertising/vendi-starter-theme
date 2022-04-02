@@ -24,7 +24,7 @@ add_action(
         Stack::convert(
             $fly_file_path,
             $webp_file_path,
-            $options = [
+            [
 
                 // PS: only set converters if you have strong reasons to do so
                 'converters' => [

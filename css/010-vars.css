@@ -22,7 +22,7 @@
     --margin-large: calc(var(--margin-normal) * 2);
     --margin-extra-large: calc(var(--margin-large) * 2);
     
-    --content-width-normal: 114erm;
+    --content-width-normal: 114rem;
     --content-width-narrow: 78rem;
 
 }

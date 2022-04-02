@@ -1,6 +1,13 @@
 # Vendi Starter Theme
 This theme is the general starter theme for Vendi sites.
 
+## Version 2022 changes
+  * Symfony has been upgraded to 6
+  * The tracking pixel hook after the opening body has been removed since GTM is usually used
+  * Upgraded theme development default template for missing components
+  * Added ACF Theme Options with a tab for global JavaScript
+  * Content Components are now standard
+
 ## Version 2021 changes
   * Added theme support for HTML5 [style and script](https://github.com/vendi-advertising/vendi-starter-theme/commit/12122a0a1b43b997c0c78d85208947129334ade3)
   * Added [thumbnail style YAML](https://github.com/vendi-advertising/vendi-thumbnail-from-yaml) support

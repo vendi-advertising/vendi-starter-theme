@@ -153,26 +153,13 @@ main {
 .alignnone {
     height: auto;
     max-width: 100%;
-}
-
-.alignleft {
-    float: left;
-    margin: 0 2rem 3rem 0;
-}
-
-.alignright {
-    float: right;
-    margin: 0 0 3rem 2rem;
+    margin: 5px 20px 20px 0;
 }
 
 .aligncenter,
 div.aligncenter {
     display: block;
     margin: 3rem auto 3rem auto;
-}
-
-.alignnone {
-    margin: 5px 20px 20px 0;
 }
 
 a img.alignright {

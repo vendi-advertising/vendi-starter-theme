@@ -9,6 +9,7 @@ This theme is the general starter theme for Vendi sites.
   * Upgraded theme development default template for missing components
   * Added ACF Theme Options with a tab for global JavaScript
   * Content Components are now standard
+  * Upgraded reset to [more modern](https://piccalil.li/blog/a-modern-css-reset/)
 
 ## Version 2021 changes
   * Added theme support for HTML5 [style and script](https://github.com/vendi-advertising/vendi-starter-theme/commit/12122a0a1b43b997c0c78d85208947129334ade3)

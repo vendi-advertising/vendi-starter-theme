@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        experimental: [false]
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+    steps:
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v2

@@ -2,7 +2,7 @@
 (function() {
     'use strict'; //Force strict mode
 
-    var
+    const
         /*
         NOTE: This code assumes that your HTML looks something like:
         <div data-hover-and-click>

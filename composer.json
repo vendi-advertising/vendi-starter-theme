@@ -1,5 +1,7 @@
 {
     "name": "vendi-advertising/vendi-starter-theme",
+    "description": "The Vendi starter theme",
+    "license": "MIT",
     "authors": [
         {
             "name": "Chris Haas",

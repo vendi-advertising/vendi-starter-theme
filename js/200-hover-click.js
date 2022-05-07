@@ -1,6 +1,10 @@
 /*jslint maxparams: 4, maxdepth: 4, maxstatements: 20, maxcomplexity: 8 */
 (function() {
     'use strict'; //Force strict mode
+    
+    let
+        useLegacyClasslist = null
+    ;
 
     const
         /*
@@ -23,8 +27,6 @@
         MAGIC_SELECTOR = '[' + MAGIC_ATTRIBUTE_NAME + ']',
 
         DEFAULT_CLASS_NAME = 'hover',
-
-        useLegacyClasslist = null,
 
         /**
          * Detects whether the HTML node has the supplied CSS class.

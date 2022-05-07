@@ -2,6 +2,7 @@
 This theme is the general starter theme for Vendi sites.
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vendi-advertising_vendi-starter-theme&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vendi-advertising_vendi-starter-theme)
+[![PHP Composer](https://github.com/vendi-advertising/vendi-starter-theme/actions/workflows/php.yml/badge.svg)](https://github.com/vendi-advertising/vendi-starter-theme/actions/workflows/php.yml)
 
 ## Version 2022 changes
   * Symfony has been upgraded to 6

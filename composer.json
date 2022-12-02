@@ -13,11 +13,10 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "symfony/polyfill-php73": "^1.15",
+        "php": "^8.0|^8.1",
         "symfony/yaml": "^6",
         "vendi-advertising/vendi-asset-loader": "^3",
-        "vendi-advertising/vendi-component-loader": "^1.4.5",
+        "vendi-advertising/vendi-component-loader": "^1.6.0",
         "vendi-advertising/vendi-cpt-from-yaml": "^2",
         "vendi-advertising/vendi-shared-utils": "^5.0.4",
         "rosell-dk/webp-convert": "^2.4",
@@ -25,11 +24,7 @@
         "vendi-advertising/vendi-thumbnail-from-yaml": "^1.0.2"
     },
     "require-dev": {
-        "automattic/vipwpcs": "^2",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^3.5.5",
         "symfony/var-dumper": "^5|^6",
-        "wp-coding-standards/wpcs": "^2"
     }
 }

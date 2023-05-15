@@ -1,7 +1,7 @@
 <?php
 
 use Vendi\Shared\utils;
-use Webmozart\PathUtil\Path;
+use Symfony\Component\Filesystem\Path;
 
 add_action(
     'vendi/component-loader/missing-template',
@@ -35,7 +35,7 @@ add_action(
             $html = <<<EOF
 <?php
 
-vendi_load_component_component_with_state('theme_building', ['short_path' => '{$shortPath}', 'source_url' => '{$sourceUrl}'] ,'debug');
+vendi_load_component_component_with_state('theme_building', ['short_path' => '$shortPath', 'source_url' => '$sourceUrl'] ,'debug');
 EOF;
 
             // NOTE: This code exists for debugging locally, only
@@ -66,7 +66,7 @@ add_action(
             $uri = utils::get_server_value('REQUEST_URI');
 
             // https://stackoverflow.com/a/6768831/231316
-            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://${host}${$uri}";
+            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://$host$uri";
 
             array_shift($folders);
             $fileName = array_pop($folders);

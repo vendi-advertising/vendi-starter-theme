@@ -15,7 +15,7 @@ add_action(
             $uri = utils::get_server_value('REQUEST_URI');
 
             // https://stackoverflow.com/a/6768831/231316
-            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://${host}${uri}";
+            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://$host$uri";
 
             array_shift($folders);
             $shortPath = esc_html(implode('/', $folders));

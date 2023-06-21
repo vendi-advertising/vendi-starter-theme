@@ -10,7 +10,7 @@ if (!$short_path || !$source_url) {
 }
 
 
-$all_fields = get_field('content_components');
+$all_fields = get_field(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME);
 $this_field = null;
 if (is_array($all_fields)) {
     foreach ($all_fields as $field) {

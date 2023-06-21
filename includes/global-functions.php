@@ -1,5 +1,9 @@
 <?php
 
+//Please avoid using global functions if possible!
+
+require_once VENDI_CUSTOM_THEME_PATH.'/includes/functions/utility.php';
+
 /**
  * Enqueue a style and automatically call filemtime on the file to get the version number.
  *

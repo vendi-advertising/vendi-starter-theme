@@ -1,10 +1,11 @@
 name: PHP Composer
 
 on:
+  workflow_dispatch: ~
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: '*'
 
 permissions:
   contents: read
@@ -13,9 +14,21 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['8.0', '8.1', '8.2']
+
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -33,4 +46,4 @@ jobs:
       run: composer install --prefer-dist --no-progress
       
     - name: The PHP Security Checker
-      uses: symfonycorp/security-checker-action@v2
+      uses: symfonycorp/security-checker-action@v4

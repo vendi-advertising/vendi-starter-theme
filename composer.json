@@ -21,7 +21,8 @@
         "vendi-advertising/vendi-shared-utils": "^5.0.4",
         "rosell-dk/webp-convert": "^2.4",
         "vendi-advertising/fly-picture-tag-generator": "^1.0.3",
-        "vendi-advertising/vendi-thumbnail-from-yaml": "^1.0.2"
+        "vendi-advertising/vendi-thumbnail-from-yaml": "^1.0.2",
+        "wp-media/wp-rocket-cli": "^1.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

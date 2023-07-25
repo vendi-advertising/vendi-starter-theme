@@ -5,5 +5,5 @@ if (is_404() || is_front_page()) {
 }
 
 if (function_exists('yoast_breadcrumb')) {
-    yoast_breadcrumb('<div id="breadcrumbs"><div class="breadcrumbs-wrapper region"><div class="breadcrumbs">', '</div></div></div>');
+    yoast_breadcrumb('<nav aria-label="Breadcrumb"><div class="breadcrumbs-wrapper region"><div class="breadcrumbs">', '</div></div></nav>');
 }

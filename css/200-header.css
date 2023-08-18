@@ -1,4 +1,4 @@
-#header {
+body > header {
     background-color: var(--color-primary-blue);
     position: relative;
     width: 100%;

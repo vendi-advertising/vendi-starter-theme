@@ -1,8 +1,8 @@
 <?php
 
 /**
- * These two hooks synchronize ACF fields to JSON file on disk in order to
- * support storing them in Git.
+ * These two hooks synchronize ACF fields to JSON files on disk in order to
+ * support storing them in source control.
  */
 
 add_filter(

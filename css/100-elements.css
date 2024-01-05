@@ -1,0 +1,54 @@
+/*
+This file should not contain _any_ CSS classes, only elements.
+ */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: var(--color-primary-black);
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a img {
+    border: none;
+}
+
+p {
+    line-height: 1.6;
+    margin: 0 0 var(--margin-medium) 0;
+}
+
+ul {
+    margin-bottom: var(--margin-normal);
+    list-style-type: disc;
+    margin-left: 1.25rem;
+}
+
+ul li {
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+ul ul {
+    list-style-type: circle;
+}
+
+hr {
+    margin: 2rem 0;
+}

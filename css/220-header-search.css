@@ -1,0 +1,24 @@
+.site-header .search-activation-button {
+    line-height: 1;
+    position: relative;
+    padding: 1em;
+    color: var(--color-starter-theme-primary);
+    background: transparent;
+    border: none;
+    transition: color .3s;
+}
+
+.site-header .search-activation-button:hover,
+.site-header .search-activation-button:focus-visible {
+    color: var(--color-starter-theme-secondary);
+}
+
+.site-header .search-activation-button svg {
+    position: relative;
+    top: .125em;
+    flex-shrink: 0;
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+    transition: fill .3s;
+}

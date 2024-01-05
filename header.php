@@ -15,40 +15,66 @@
     Skip to main content
 </a>
 
-<!-- begin header -->
-<header>
-    <div class="site-header">
-        <div class="header-branding">
-            <div class="header-logo" id="logo">
-                <a href="<?php esc_attr_e(home_url()); ?>">
-                    <img alt="" src="<?php esc_attr_e(get_template_directory_uri()); ?>/images/logo.svg"/>
-                </a>
-            </div>
-            <div class="header-navigation">
-                <nav>
-                    <div id="navigation">
-                        <?php
-                        wp_nav_menu(
-                            [
-                                'theme_location' => 'main_nav',
-                                'container' => false,
-                                'container_class' => false,
-                                'menu_class' => 'main-nav',
-                                'fallback_cb' => 'false',
-                                'depth' => 3,
-                            ]
-                        );
-                        ?>
-                    </div>
-                </nav>
-            </div>
-            <div class="header-features">
-                <?php echo do_shortcode('[responsive_menu_pro]'); ?>
-                <div class="search">
-                    <?php get_search_form(); ?>
-                </div>
-            </div>
-        </div>
+<header class="site-header">
+    <div class="logo">
+        <a href="<?php esc_attr_e(home_url()); ?>">
+            <img alt="" src="<?php esc_attr_e(get_template_directory_uri()); ?>/images/starter-content/bird-logo.svg"/>
+        </a>
     </div>
+    <div class="header-navigation">
+        <nav>
+            <?php
+            wp_nav_menu(
+                [
+                    'theme_location' => 'primary_navigation',
+                    'container' => false,
+                    'container_class' => false,
+                    'menu_class' => 'main-nav',
+                    'fallback_cb' => 'false',
+                    'depth' => 3,
+                ]
+            );
+            ?>
+        </nav>
+    </div>
+    <div class="header-features">
+        <button type="button" class="search-activation-button" data-role="search-activation-button" data-target-id="site-search-modal">
+            <?php vendi_get_svg('images/search-icon.svg'); ?>
+            <span class="visually-hidden">
+                Menu
+            </span>
+        </button>
+        <dialog id="site-search-modal">
+            <div class="search">
+                <?php get_search_form(); ?>
+            </div>
+        </dialog>
+        <?php // echo do_shortcode('[responsive_menu_pro]'); ?>
+    </div>
+
 </header>
-<!-- end header -->
+
+<script>
+    document
+        .querySelectorAll('[data-role="search-activation-button"][data-target-id]')
+        .forEach(
+            (button) => {
+                button
+                    .addEventListener(
+                        'click',
+                        () => {
+                            const
+                                targetId = button.getAttribute('data-target-id'),
+                                target = document.getElementById(targetId)
+                            ;
+                            if (!target) {
+                                return;
+                            }
+                            target.showModal();
+                        }
+                    )
+                ;
+            }
+        )
+    ;
+</script>

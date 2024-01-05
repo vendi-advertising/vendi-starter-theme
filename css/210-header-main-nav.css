@@ -1,0 +1,33 @@
+.site-header .main-nav,
+.site-header .main-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+.site-header .main-nav {
+    display: grid;
+    grid-auto-flow: column;
+    list-style-type: none;
+    max-width: 80rem;
+    margin-inline: auto;
+}
+
+.site-header .main-nav > li {
+    text-align: center;
+}
+
+.site-header .main-nav ul {
+    display: none;
+}
+
+.site-header .main-nav a {
+    display: block;
+    padding-block: 1rem;
+    transition: color .3s;
+    color: var(--color-starter-theme-primary);
+}
+
+.site-header .main-nav a:hover {
+    text-decoration: none;
+    color: var(--color-starter-theme-secondary);
+}

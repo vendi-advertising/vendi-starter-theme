@@ -7,16 +7,16 @@ $msg = 'A theme error occurred, please contact the site administrator';
 $devMsg = null;
 
 $errorCode = defined('VENDI_EARLY_EXIT_ERROR_CODE') ? VENDI_EARLY_EXIT_ERROR_CODE : 0;
+
+$missingPluginTemplateMessage = <<<'EOF'
+The theme appears to be missing the <em>%s</em> plugin, please install and activate it.
+EOF;
+
+
 switch ($errorCode) {
     case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_AUTOLOAD:
         $devMsg = <<<'EOF'
 The theme is missing the composer autoload file, please ensure that <code>composer install</code> has been run.
-EOF;
-        break;
-
-    case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_ACF:
-        $devMsg = <<<'EOF'
-The theme appears to be missing the <em>Advanced Custom Fields Pro</em> plugin, please install and activate it.
 EOF;
         break;
 
@@ -32,10 +32,17 @@ EOF;
         $devMsg = str_replace('${VENDI_MINIMUM_PHP_VERSION}', sprintf("%d.%d.%d", $major, $minor, $patch), $devMsg);
         break;
 
+    case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_ACF_PRO:
+        $devMsg = sprintf($missingPluginTemplateMessage, 'Advanced Custom Fields Pro');
+        break;
+
     case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_FLY:
-        $devMsg = <<<'EOF'
-The theme appears to be missing the <em>Fly Dynamic Image Resizer</em> plugin, please install and activate it.
-EOF;
+        $devMsg = sprintf($missingPluginTemplateMessage, 'Fly Dynamic Image Resizer');
+        break;
+
+    case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_CLASSIC_EDITOR:
+        $devMsg = sprintf($missingPluginTemplateMessage, 'Classic Editor');
+        break;
 
 }
 

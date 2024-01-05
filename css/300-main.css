@@ -1,0 +1,7 @@
+main {
+    background-color: var(--color-primary-white);
+}
+
+.vendi-starter-theme main {
+    min-height: 50vh;
+}

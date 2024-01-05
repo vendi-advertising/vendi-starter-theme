@@ -1,5 +1,6 @@
 <?php
 
+require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-starter-theme.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-acf.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-acfe.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-gravity.php';

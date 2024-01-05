@@ -16,7 +16,7 @@
                     <?php
                     wp_nav_menu(
                         [
-                            'theme_location' => 'footer_nav',
+                            'theme_location' => 'primary_navigation',
                             'container' => false,
                             'container_class' => false,
                             'menu_class' => 'footer-menu',
@@ -30,7 +30,7 @@
             <div class="footer-bottom">
                 <div class="footer-logo">
                     <a href="<?php esc_attr_e(home_url()); ?>">
-                        <img alt="" src="<?php esc_attr_e(get_template_directory_uri()); ?>/images/logo.svg"/>
+                        <img alt="" src="<?php esc_attr_e(get_template_directory_uri()); ?>/images/starter-content/bird-logo.svg"/>
                     </a>
                 </div>
                 <div class="footer-bottom-right">
@@ -51,12 +51,18 @@
                         </ul>
                     </div>
                     <div class="footer-copyright">
-                        Copyright &copy; <?php esc_html_e(date('Y ')); bloginfo('name'); ?>
+                        Copyright &copy; <?php esc_html_e(date('Y '));
+                        bloginfo('name'); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <section class="credits" style="font-size: 1rem;">
+        <p><a href="https://www.freepik.com/free-vector/bird-colorful-logo-gradient-vector_28267842.htm">Header FPO logo by logturnal</a> on Freepik</p>
+    </section>
+
 </footer>
 <!-- end footer -->
 

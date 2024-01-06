@@ -17,7 +17,6 @@
         "symfony/yaml": "^6",
         "vendi-advertising/vendi-asset-loader": "^3|^4",
         "vendi-advertising/vendi-component-loader": "^1.6.0|^2",
-        "vendi-advertising/vendi-cpt-from-yaml": "^2",
         "vendi-advertising/vendi-shared-utils": "^5.0.4",
         "rosell-dk/webp-convert": "^2.4",
         "vendi-advertising/fly-picture-tag-generator": "^1.0.3",

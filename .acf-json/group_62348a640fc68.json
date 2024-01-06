@@ -6,6 +6,7 @@
             "key": "field_62348a80f56e2",
             "label": "JavaScript",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -17,13 +18,13 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "no_preference": 0,
-            "acfe_field_group_condition": 0
+            "no_preference": 0
         },
         {
             "key": "field_62348a8ef56e3",
             "label": "Message",
             "name": "",
+            "aria-label": "",
             "type": "message",
             "instructions": "",
             "required": 0,
@@ -33,15 +34,15 @@
                 "class": "",
                 "id": ""
             },
-            "message": "When adding JavaScript here, you must include the opening and closing &lt;script&gt; tags.",
+            "message": "When adding JavaScript here, you must include the opening and closing &lt;script&gt; tags.\r\n\r\nIf WP Rocket or another optimizer has been installed, you might need to add an exception if your script isn't working properly.\r\n\r\nInstead of adding JavaScript here, please consider GTM or similar.",
             "new_lines": "wpautop",
-            "esc_html": 0,
-            "acfe_field_group_condition": 0
+            "esc_html": 0
         },
         {
             "key": "field_62348a9ef56e4",
             "label": "JavaScript",
             "name": "global_javascript",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -52,17 +53,19 @@
                 "id": ""
             },
             "acfe_repeater_stylised_button": 0,
-            "collapsed": "",
+            "layout": "table",
+            "pagination": 0,
             "min": 0,
             "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "acfe_field_group_condition": 0,
+            "collapsed": "",
+            "button_label": "Add JavaScript",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_62348aaff56e5",
                     "label": "JavaScript",
-                    "name": "javascript",
+                    "name": "global_javascript_code_block",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
@@ -72,19 +75,20 @@
                         "class": "",
                         "id": ""
                     },
-                    "required_message": "",
                     "default_value": "",
-                    "placeholder": "",
+                    "acfe_textarea_code": 0,
+                    "required_message": "",
                     "maxlength": "",
                     "rows": "",
+                    "placeholder": "",
                     "new_lines": "",
-                    "acfe_textarea_code": 0,
-                    "acfe_field_group_condition": 0
+                    "parent_repeater": "field_62348a9ef56e4"
                 },
                 {
                     "key": "field_62348ab9f56e6",
-                    "label": "Context",
-                    "name": "context",
+                    "label": "Location",
+                    "name": "global_javascript_location",
+                    "aria-label": "",
                     "type": "select",
                     "instructions": "",
                     "required": 1,
@@ -94,22 +98,25 @@
                         "class": "",
                         "id": ""
                     },
-                    "required_message": "",
                     "choices": {
                         "header": "Header",
                         "footer": "Footer"
                     },
                     "default_value": "footer",
-                    "allow_null": 0,
+                    "return_format": "value",
                     "multiple": 0,
                     "max": "",
-                    "ui": 0,
-                    "return_format": "value",
                     "prepend": "",
                     "append": "",
-                    "acfe_field_group_condition": 0,
+                    "required_message": "",
+                    "allow_null": 0,
+                    "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "min": "",
+                    "parent_repeater": "field_62348a9ef56e4"
                 }
             ]
         }
@@ -139,5 +146,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1647610613
+    "modified": 1704566120
 }

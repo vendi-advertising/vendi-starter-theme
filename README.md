@@ -24,6 +24,10 @@ This theme is the general starter theme for Vendi sites.
 * Deprecating Fly images
 * Testing ACF options UI
 * Remove ACF-E features not used
+* Added common CPTs:
+    * Testimonials
+* Added common components
+    * Testimonials
 
 ## Version 2022 changes
 

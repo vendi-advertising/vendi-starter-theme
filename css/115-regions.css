@@ -1,0 +1,4 @@
+.region {
+    margin-inline: auto;
+    max-width: var(--content-width-normal);
+}

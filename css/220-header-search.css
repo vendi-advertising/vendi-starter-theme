@@ -4,13 +4,21 @@
     padding: 1em;
     color: var(--color-starter-theme-primary);
     background: transparent;
-    border: none;
-    transition: color .3s;
+    transition: all .3s;
+    border: 0 solid transparent;
+    border-radius: 100px;
+    aspect-ratio: 3 / 1;
 }
 
 .site-header .search-activation-button:hover,
 .site-header .search-activation-button:focus-visible {
     color: var(--color-starter-theme-secondary);
+    text-decoration: none;
+    border-bottom-color: var(--color-starter-theme-secondary);
+    scale: 1.1;
+    box-shadow: 2rem 2rem 2rem 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    outline: none;
 }
 
 .site-header .search-activation-button svg {

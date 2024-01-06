@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: 20rem auto 10rem;
+    grid-template-columns: 10rem auto 10rem;
     padding-inline: 5rem;
     padding-block: 2rem;
     align-items: center;

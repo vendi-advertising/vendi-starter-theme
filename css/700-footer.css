@@ -1,159 +1,57 @@
-footer {
+.site-footer {
     background-color: var(--color-primary-black);
     color: var(--color-primary-white);
     padding: 5rem 0;
 }
 
-/*.footer-region {*/
-/*    max-width: 650px;*/
-/*}*/
+.footer-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 2rem;
+}
 
-/*footer ul {*/
-/*    font-size: 0;*/
-/*    list-style-type: none;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
+.site-footer .logo-and-address-and-social {
+    display: grid;
+    grid-template-columns: 15rem auto;
+    column-gap: 5rem;
+}
 
-/*footer a {*/
-/*    color: var(--color-primary-white);*/
-/*    text-decoration: none;*/
-/*}*/
+.site-footer .logo-and-address-and-social .footer-social {
+    grid-column: 2;
+}
 
-/*footer a:hover {*/
-/*    text-decoration: underline;*/
-/*}*/
+.footer-wrap :is(.footer-copyright, .starter-theme-credits) {
+    grid-column: 1 / -1;
+    text-align: center;
+}
 
-/*.footer-top {*/
-/*    margin-bottom: 2rem;*/
-/*}*/
+.footer-wrap .starter-theme-credits {
+    font-size: 1.2rem;
+}
 
-/*.footer-nav ul {*/
-/*    text-align: center;*/
-/*}*/
+.site-footer .logo img {
+    height: 15rem;
+}
 
-/*.footer-nav ul li {*/
-/*    box-sizing: border-box;*/
-/*    display: inline-block;*/
-/*    font-size: 0.8rem;*/
-/*    line-height: 1;*/
-/*    margin: 0 1.25rem 0 0;*/
-/*    padding: 0;*/
-/*    text-transform: uppercase;*/
-/*}*/
+.footer-nav > ul {
+    border-inline-start: 1px solid white;
+    padding-inline-start: 2rem;
+}
 
-/*.footer-nav ul li:last-child {*/
-/*    border-right: none;*/
-/*    margin-right: 0;*/
-/*    padding-right: 0;*/
-/*}*/
+.footer-nav ul ul {
+    display: none;
+}
 
-/*.footer-nav ul li a {*/
-/*    display: block;*/
-/*}*/
+.footer-nav a {
+    color: var(--color-primary-white);
+}
 
-/*.footer-bottom {*/
-/*    font-size: 0;*/
-/*}*/
+.footer-social li {
+    display: inline-block;
+}
 
-/*.footer-bottom-right {*/
-/*    box-sizing: border-box;*/
-/*    color: var(--color-primary-white);*/
-/*    display: inline-block;*/
-/*    font-size: 1rem;*/
-/*    vertical-align: middle;*/
-/*    width: 70%;*/
-/*}*/
-
-/*.footer-social {*/
-/*    margin-bottom: 1rem;*/
-/*}*/
-
-/*.footer-social ul {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-
-/*.footer-social ul li {*/
-/*    box-sizing: border-box;*/
-/*    cursor: pointer;*/
-/*    display: inline-block;*/
-/*    font-size: 1.5rem;*/
-/*    list-style-type: none;*/
-/*    margin: 0 1rem 0 0;*/
-/*    text-align: center;*/
-/*    width: auto;*/
-/*}*/
-
-/*.footer-social ul li:last-child {*/
-/*    margin-right: 0;*/
-/*}*/
-
-/*.footer-social ul li a {*/
-/*    background-color: var(--color-primary-green);*/
-/*    border-radius: 50%;*/
-/*    display: table-cell;*/
-/*    height: 58px;*/
-/*    vertical-align: middle;*/
-/*    width: 58px;*/
-/*}*/
-
-/*!* Tablets - General *!*/
-/*@media (min-width: 768px) and (max-width: 1024px) {*/
-/*    .footer-contact {*/
-/*        width: 70%;*/
-/*    }*/
-
-/*    .footer-social {*/
-/*        width: 30%;*/
-/*    }*/
-
-/*    .footer-disclaimer {*/
-/*        display: block;*/
-/*        margin-top: 2rem;*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
-
-/*!* Smartphones - General *!*/
-/*@media (max-width: 767px) {*/
-/*    .footer-top {*/
-/*        margin-bottom: 0;*/
-/*    }*/
-
-/*    .footer-logo {*/
-/*        display: block;*/
-/*        padding-bottom: 1rem;*/
-/*        padding-right: 0;*/
-/*        width: 100%;*/
-/*    }*/
-
-/*    .footer-nav {*/
-/*        border-bottom: solid 1px var(--color-primary-black);*/
-/*        border-left: none;*/
-/*        display: block;*/
-/*        padding: 1rem 0;*/
-/*        width: 100%;*/
-/*    }*/
-
-/*    .footer-nav ul li {*/
-/*        border-right: none;*/
-/*        display: block;*/
-/*        margin: 0 0 1rem 0;*/
-/*        padding-right: 0;*/
-/*    }*/
-
-/*    .footer-contact,*/
-/*    .footer-social {*/
-/*        border-bottom: solid 1px var(--color-primary-black);*/
-/*        display: block;*/
-/*        padding: 1rem 0;*/
-/*        width: 100%;*/
-/*    }*/
-
-/*    .footer-disclaimer {*/
-/*        display: block;*/
-/*        padding: 1rem 0 0 0;*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
+.footer-social svg {
+    height: 2rem;
+    aspect-ratio: 1;
+    fill: var(--color-primary-white);
+}

@@ -29,7 +29,8 @@
     height: 100%;
 }
 
-.region {
-    margin-inline: auto;
-    max-width: var(--content-width-normal);
+:is(.list-as-nav, .list-as-nav ul, .list-as-nav li) {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

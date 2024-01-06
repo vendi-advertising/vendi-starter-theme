@@ -1,6 +1,6 @@
 <?php
 
-use Webmozart\PathUtil\Path;
+use Symfony\Component\Filesystem\Path;
 use WebPConvert\Convert\Converters\Stack;
 
 add_action(

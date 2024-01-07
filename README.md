@@ -21,7 +21,7 @@ This theme is the general starter theme for Vendi sites.
         * Classic Editor
 * Removed `vendi-advertising/vendi-cpt-from-yaml` in favor of ACF withing JSON syncing
 * Added WP Rocket CLI
-* Deprecating Fly images
+* Deprecating Fly images, use https://wordpress.org/plugins/webp-express/
 * Testing ACF options UI
 * Remove ACF-E features not used
 * Added common CPTs:

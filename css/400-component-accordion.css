@@ -1,0 +1,19 @@
+.component-accordion {
+}
+
+.component-accordion .accordion-controls {
+    display: none;
+    gap: 1rem;
+}
+
+.component-accordion[data-expand-collapse-available] .accordion-controls {
+    display: flex
+}
+
+.component-accordion .accordion-controls button {
+    background: none;
+    border: 1px solid var(--color-starter-theme-light-black);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 1rem 2rem;
+}

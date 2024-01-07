@@ -7,7 +7,10 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
     return;
 }
 ?>
-<section class="component-testimonial">
+<section
+    class="component-testimonial"
+    <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
+>
     <div class="region">
         <blockquote>
             <div class="copy">

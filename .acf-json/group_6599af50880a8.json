@@ -26,7 +26,7 @@
             "name": "component_row_id",
             "aria-label": "",
             "type": "text",
-            "instructions": "If set, an HTML <a href=\"https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/HTML\/Global_attributes\/id\"><code>id<\/code><\/a> attribute will be added to the outermost element for this component which content authors can use to link directly to.",
+            "instructions": "If set, an HTML <a href=\"https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/HTML\/Global_attributes\/id\"><code>id<\/code><\/a> attribute will be added to the outermost element for this component or item which content authors can link directly to.\r\n<br \/><br \/>\r\nIf you do not explicitly set a value here, it is possible that the system might automatically generate one for technical, accessibility or other reasons. These IDs will always be prefixed with <code>id__<\/code> but their full value might change and they should not be relied on for linking-purposes.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -66,5 +66,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1704571469
+    "modified": 1704644488
 }

@@ -47,6 +47,54 @@
                 "acfe_flexible_grid_wrap": false
             },
             "layouts": {
+                "layout_6599ed7d3beaa": {
+                    "key": "layout_6599ed7d3beaa",
+                    "name": "accordion",
+                    "label": "Accordion",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6599edf40675f",
+                            "label": "Accordion",
+                            "name": "accordion",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6599ece5e2264"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": "",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
                 "layout_6599ae7499b6f": {
                     "key": "layout_6599ae7499b6f",
                     "name": "testimonial",
@@ -96,47 +144,6 @@
                     "acfe_flexible_modal_edit_size": false,
                     "acfe_layout_col": "auto",
                     "acfe_layout_allowed_col": false
-                },
-                "layout_6599b3040024d": {
-                    "key": "layout_6599b3040024d",
-                    "name": "fpo",
-                    "label": "FPO",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_6599b30900250",
-                            "label": "FPO",
-                            "name": "fpo",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "",
-                    "acfe_flexible_category": "",
-                    "acfe_flexible_thumbnail": "",
-                    "acfe_flexible_render_template": false,
-                    "acfe_flexible_render_style": false,
-                    "acfe_flexible_render_script": false,
-                    "acfe_flexible_settings": false,
-                    "acfe_flexible_settings_size": "medium",
-                    "acfe_layout_locations": [],
-                    "acfe_flexible_modal_edit_size": false,
-                    "acfe_layout_col": "auto",
-                    "acfe_layout_allowed_col": false
                 }
             },
             "min": "",
@@ -173,5 +180,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1704571771
+    "modified": 1704586756
 }

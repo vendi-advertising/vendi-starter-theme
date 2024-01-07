@@ -4,6 +4,49 @@
 
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/functions/utility.php';
 
+function vendi_maybe_get_row_id_attribute(mixed $row_id, bool $echo = true, bool $id_only_no_attribute = false): ?string
+{
+    if (!is_string($row_id) || empty($row_id)) {
+        return null;
+    }
+
+    if ($id_only_no_attribute) {
+        $ret = esc_attr($row_id);
+    } else {
+        $ret = sprintf(' id="%s"', esc_attr($row_id));
+    }
+
+    if ($echo) {
+        echo $ret;
+    }
+
+    return $ret;
+}
+
+function vendi_maybe_get_row_id_attribute_from_subfield(string $sub_field_key = 'component_row_id', bool $echo = true, bool $id_only_no_attribute = false): ?string
+{
+    return vendi_maybe_get_row_id_attribute(get_sub_field($sub_field_key), $echo, $id_only_no_attribute);
+}
+
+function vendi_generate_unique_id(string $component_or_item_id = 'id__'): string
+{
+    return str_replace('.', '-', uniqid('id__'.$component_or_item_id.'__', true));
+}
+
+function vendi_constraint_item_to_list(int|bool|null|string $item, array $options, $default = null): null|int|string
+{
+    if (in_array($item, $options, true)) {
+        return $item;
+    }
+
+    return $default;
+}
+
+function vendi_constraint_h1_through_h6(null|bool|string $tag, $default = 'h2'): string
+{
+    return vendi_constraint_item_to_list($tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], $default);
+}
+
 function vendi_get_global_javascript(?string $location): array
 {
     static $global_javascript = null;

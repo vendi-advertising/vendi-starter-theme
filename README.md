@@ -28,6 +28,7 @@ This theme is the general starter theme for Vendi sites.
     * Testimonials
 * Added common components
     * Testimonials
+    * Accordion
 
 ## Version 2022 changes
 

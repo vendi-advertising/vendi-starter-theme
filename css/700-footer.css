@@ -20,7 +20,7 @@
     grid-column: 2;
 }
 
-.footer-wrap :is(.footer-copyright, .starter-theme-credits) {
+.footer-wrap :where(.footer-copyright, .starter-theme-credits) {
     grid-column: 1 / -1;
     text-align: center;
 }

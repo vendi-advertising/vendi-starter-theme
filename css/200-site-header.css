@@ -1,0 +1,15 @@
+.site-header {
+    background-color: var(--color-primary-white);
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10rem auto 10rem;
+    padding-inline: 5rem;
+    padding-block: 2rem;
+    align-items: center;
+    border-bottom: solid 1px var(--color-starter-theme-light-black);
+}
+
+.site-header .logo img {
+    max-height: 10rem;
+}

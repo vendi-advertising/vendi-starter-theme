@@ -24,7 +24,7 @@
     border-radius: 100px;
 }
 
-.site-header .main-nav :is(a:hover, a:focus-visible) {
+.site-header .main-nav :where(a:hover, a:focus-visible) {
     text-decoration: none;
     color: var(--color-starter-theme-secondary);
     border-bottom-color: var(--color-starter-theme-secondary);

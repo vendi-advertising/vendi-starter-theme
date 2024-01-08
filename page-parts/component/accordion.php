@@ -15,7 +15,6 @@ unset($accordion_item);
 // The expand all/collapse all button needs to know the IDs of all the accordions
 // for accessibility reasons.
 $allAccordionIds = array_column($accordion_items, 'component_row_id');
-
 ?>
 <section
     class="component-accordion"
@@ -72,7 +71,3 @@ $allAccordionIds = array_column($accordion_items, 'component_row_id');
         <?php endforeach; ?>
     </div>
 </section>
-
-<script>
-
-</script>

@@ -6,8 +6,11 @@ if ((!$testimonial = get_sub_field('testimonial')[0] ?? null) || !$testimonial i
 if (!$copy = get_field('copy', $testimonial->ID)) {
     return;
 }
+
+// NOTE: This component is intentionally a div, not a section, because its place in the document outline
+// is not clear.
 ?>
-<section
+<div
     class="component-testimonial"
     <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
 >
@@ -28,4 +31,4 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
             </div>
         <?php endif; ?>
     </div>
-</section>
+</div>

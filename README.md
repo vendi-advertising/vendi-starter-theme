@@ -27,8 +27,10 @@ This theme is the general starter theme for Vendi sites.
 * Added common CPTs:
     * Testimonials
 * Added common components
-    * Testimonials
     * Accordion
+    * Basic Copy
+    * Callout
+    * Testimonials
 
 ## Version 2022 changes
 

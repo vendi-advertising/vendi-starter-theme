@@ -29,3 +29,35 @@ if (function_exists('acf_add_options_page')) {
         ]
     );
 }
+
+add_filter(
+    'acf/json/save_file_name',
+    static function ($filename, $post, $load_path) {
+        static $mapping = [
+            'group_6599ece5e2264.json' => 'component-accordion.json',
+            'group_6599eed2bffc0.json' => 'accordion-item-simple.json',
+            'group_659c0a262f75a.json' => 'component-basic-copy.json',
+            'group_659c272fb8f1f.json' => 'component-callout.json',
+            'group_659c445704039.json' => 'component-reusable-content.json',
+            'group_6599ae10d9002.json' => 'component-testimonial.json',
+
+            'group_6599af50880a8.json' => 'components-shared-component-settings-tab.json',
+            'group_61dc8e97982a7.json' => 'content-components.json',
+
+            'group_6599abaa59f84.json' => 'entity-testimonial.json',
+
+            'group_61d8a393c5415.json' => 'theme-settings-fields.json',
+            'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
+
+            'post_type_6599ab6f6b61a.json' => 'cpt-testimonial.json',
+            'post_type_659c2c3567923.json' => 'cpt-reusable-content.json',
+        ];
+
+        if (array_key_exists($filename, $mapping)) {
+            return $mapping[$filename];
+        }
+
+        return $filename;
+    },
+    accepted_args: 3,
+);

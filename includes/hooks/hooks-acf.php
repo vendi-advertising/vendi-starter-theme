@@ -37,7 +37,9 @@ add_filter(
             'group_6599ece5e2264.json' => 'component-accordion.json',
             'group_6599eed2bffc0.json' => 'accordion-item-simple.json',
             'group_659c0a262f75a.json' => 'component-basic-copy.json',
+            'group_659c754d6a1d2.json' => 'component-blockquote.json',
             'group_659c272fb8f1f.json' => 'component-callout.json',
+            'group_659c6e7fc386c.json' => 'component-figure.json',
             'group_659c445704039.json' => 'component-reusable-content.json',
             'group_6599ae10d9002.json' => 'component-testimonial.json',
 

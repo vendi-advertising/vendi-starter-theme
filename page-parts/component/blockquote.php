@@ -1,9 +1,5 @@
 <?php
-if ((!$testimonial = get_sub_field('testimonial')[0] ?? null) || !$testimonial instanceof WP_Post) {
-    return;
-}
-
-if (!$copy = get_field('copy', $testimonial->ID)) {
+if (!$copy = get_sub_field('copy')) {
     return;
 }
 
@@ -14,7 +10,7 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
 // that the latter is a CPT that also supports an optional image.
 ?>
 <div
-    class="component-testimonial"
+    class="component-blockquote"
     <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
 >
     <div class="region">
@@ -22,16 +18,11 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
             <div class="copy">
                 <?php echo $copy; ?>
             </div>
-            <?php if ($attribution = get_field('attribution', $testimonial->ID)): ?>
-                <footer class="attribution h2">
+            <?php if ($attribution = get_sub_field('attribution')): ?>
+                <footer class="attribution">
                     <?php echo $attribution; ?>
                 </footer>
             <?php endif; ?>
         </blockquote>
-        <?php if ($thumbnail = get_the_post_thumbnail($testimonial->ID, 'medium')): ?>
-            <div class="thumbnail">
-                <?php echo $thumbnail; ?>
-            </div>
-        <?php endif; ?>
     </div>
 </div>

@@ -1,5 +1,5 @@
 /*
-This file should not contain _any_ CSS classes, only HTML elements.
+This file should contain _as few CSS classes as possible_.
  */
 html {
     font-size: 62.5%;
@@ -34,7 +34,7 @@ p {
     margin: 0 0 var(--margin-medium) 0;
 }
 
-ul {
+ul:not(.list-as-nav) {
     margin-bottom: var(--margin-normal);
     list-style-type: disc;
     margin-left: 1.25rem;

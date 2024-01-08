@@ -1,7 +1,6 @@
 .site-header .main-nav {
     display: grid;
     grid-auto-flow: column;
-    list-style-type: none;
     max-width: 80rem;
     margin-inline: auto;
 }

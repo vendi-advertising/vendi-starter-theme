@@ -6,6 +6,8 @@
  * `current_post` is passed in as a state variable to be used in components.
  * However, this is a little bit of a hack, and it would be better to solve this
  * by properly setting of "the post".
+ *
+ * The problem might only be related to relavanssi and/or CLI-related tasks, however.
  */
 
 $shared_content_post = get_sub_field('reusable_content')[0] ?? null;

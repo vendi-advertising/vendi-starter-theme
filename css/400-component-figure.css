@@ -1,0 +1,7 @@
+.component-figure {
+}
+
+.component-figure figure :is(img, picture) {
+    width: 100%;
+    height: auto;
+}

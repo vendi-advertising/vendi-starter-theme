@@ -29,7 +29,10 @@ This theme is the general starter theme for Vendi sites.
 * Added common components
     * Accordion
     * Basic Copy
+    * Blockquote
     * Callout
+    * Figure
+    * Reusable Content
     * Testimonials
 
 ## Version 2022 changes

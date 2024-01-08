@@ -1,0 +1,10 @@
+.component-blockquote {
+}
+
+.component-blockquote .copy > :first-child::before {
+    content: open-quote;
+}
+
+.component-blockquote .copy > :last-child::after {
+    content: close-quote;
+}

@@ -8,41 +8,52 @@ a heading for styling purposes, use a div with a class of .h1, .h2, etc.
 */
 :where(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) {
     display: block;
+    margin-block: 1rem;
 }
 
 :where(h1, .h1, h2, .h2, h3, .h3, h4, .h4) {
     text-wrap: balance;
-    margin-block-end: 1rem;
-    line-height: 1.2;
 }
 
 :where(h1,.h1) {
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-h1);
+    line-height: var(--line-height-h1);
 }
 
 :where(h2, .h2) {
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-h2);
+    line-height: var(--line-height-h2);
 }
 
 :where(h3, .h3) {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-h3);
+    line-height: var(--line-height-h3);
 }
 
 :where(h4, .h4) {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-h4);
+    line-height: var(--line-height-h4);
 }
 
 :where(h5,.h5) {
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-h5);
+    line-height: var(--line-height-h5);
 }
 
 :where(h6,.h6) {
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-h6);
+    line-height: var(--line-height-h6);
 }
 
 ul + :where( h1,  h2,  h3,  h4,  h5,  h6),
-p  + :where( h1,  h2,  h3,  h4,  h5,  h6),
+p + :where( h1,  h2,  h3,  h4,  h5,  h6),
 ul + :where(.h1, .h2, .h3, .h4, .h5, .h6),
-p  + :where(.h1, .h2, .h3, .h4, .h5, .h6) {
+p + :where(.h1, .h2, .h3, .h4, .h5, .h6) {
     margin-block-start: 0;
 }

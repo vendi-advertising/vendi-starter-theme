@@ -10,7 +10,7 @@ body {
     font-family: var(--font-family-main);
     font-size: var(--font-size-body);
     font-weight: 400;
-    line-height: 1.6;
+    line-height: var(--line-height-body);
     margin: 0;
     padding: 0;
     text-rendering: optimizeLegibility;

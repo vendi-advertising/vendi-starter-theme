@@ -13,13 +13,8 @@ html {
 }
 
 /* Remove default margin */
+/* See 105-headers for resets related to h1 through h6 */
 body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 figure {
     margin-block-end: 0;

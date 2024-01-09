@@ -21,52 +21,16 @@
             "no_preference": 0
         },
         {
-            "key": "field_6599f19104814",
-            "label": "Intro Headline Level",
-            "name": "intro_headline_level",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "h1": "h1",
-                "h2": "h2",
-                "h3": "h3",
-                "h4": "h4",
-                "h5": "h5",
-                "h6": "h6"
-            },
-            "default_value": "h2",
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "min": ""
-        },
-        {
             "key": "field_6599ee47c4d0a",
-            "label": "Intro Headline",
-            "name": "intro_headline",
+            "label": "Intro Heading",
+            "name": "intro_heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "75",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -133,7 +97,7 @@
             "aria-label": "",
             "type": "flexible_content",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -191,9 +155,10 @@
                     "acfe_layout_allowed_col": false
                 }
             },
+            "required_message": "",
             "min": "",
             "max": "",
-            "button_label": "Add Row",
+            "button_label": "Add Accordion Item",
             "acfe_flexible_stylised_button": false,
             "acfe_flexible_hide_empty_message": false,
             "acfe_flexible_empty_message": "",
@@ -225,6 +190,94 @@
                 "acfe_flexible_grid_wrap": false
             },
             "acfe_flexible_grid_container": false
+        },
+        {
+            "key": "field_659d967ad9d66",
+            "label": "Intro Heading Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_6599f19104814",
+            "label": "Heading Level",
+            "name": "heading_level",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "h1": "h1",
+                "h2": "h2",
+                "h3": "h3",
+                "h4": "h4",
+                "h5": "h5",
+                "h6": "h6"
+            },
+            "default_value": "h2",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "required_message": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_659d960368729",
+            "label": "Include in Document Outline",
+            "name": "include_in_document_outline",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes",
+                "no": "No"
+            },
+            "default_value": "yes",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "required_message": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
         },
         {
             "key": "field_6599ed5901a22",
@@ -285,7 +338,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Clicking the \"collapse all\" button will have no effect on accordion items marked as \"always open\".",
+            "message": "Clicking the \"collapse all\" button will have no effect on accordion items marked as \"always open\".\r\n\r\nIf \"Include in Document Outline\" is set to \"No\", an HTML <code>&lt;div&gt;<\/code> tag will be used with the specified heading level class, instead of an <code>&lt;h1&gt;<\/code> through <code>&lt;h6&gt;<\/code> tag. Visually these should still be identical.",
             "new_lines": "wpautop",
             "esc_html": 0
         }
@@ -315,5 +368,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1704739452
+    "modified": 1704827400
 }

@@ -33,7 +33,7 @@ function vendi_generate_unique_id(string $component_or_item_id = 'id__'): string
     return str_replace('.', '-', uniqid('id__'.$component_or_item_id.'__', true));
 }
 
-function vendi_constraint_item_to_list(int|bool|null|string $item, array $options, $default = null): null|int|string
+function vendi_constrain_item_to_list(int|bool|null|string $item, array $options, $default = null): null|int|string
 {
     if (in_array($item, $options, true)) {
         return $item;
@@ -42,9 +42,9 @@ function vendi_constraint_item_to_list(int|bool|null|string $item, array $option
     return $default;
 }
 
-function vendi_constraint_h1_through_h6(null|bool|string $tag, $default = 'h2'): string
+function vendi_constrain_h1_through_h6(null|bool|string $tag, $default = 'h2'): string
 {
-    return vendi_constraint_item_to_list($tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], $default);
+    return vendi_constrain_item_to_list($tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], $default);
 }
 
 function vendi_get_global_javascript(?string $location): array

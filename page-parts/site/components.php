@@ -1,10 +1,5 @@
 <?php
 
-// PhpStorm
-assert(function_exists('have_rows'));
-assert(function_exists('the_row'));
-assert(function_exists('get_row_layout'));
-
 // begin content components flexible content
 // check if the flexible content field has rows of data
 if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {

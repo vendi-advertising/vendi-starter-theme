@@ -20,7 +20,7 @@ if (!$copy = get_sub_field('copy')) {
             </div>
             <?php if ($attribution = get_sub_field('attribution')): ?>
                 <footer class="attribution">
-                    <?php echo $attribution; ?>
+                    <cite><?php echo $attribution; ?></cite>
                 </footer>
             <?php endif; ?>
         </blockquote>

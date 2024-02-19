@@ -24,7 +24,7 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
             </div>
             <?php if ($attribution = get_field('attribution', $testimonial->ID)): ?>
                 <footer class="attribution h2">
-                    <?php echo $attribution; ?>
+                    <cite><?php echo $attribution; ?></cite>
                 </footer>
             <?php endif; ?>
         </blockquote>

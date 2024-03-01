@@ -46,9 +46,9 @@ add_action(
                 .vendi-login-background {
                     grid-column: 1;
                     grid-row: 1;
-                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL; ?>/images/starter-content/kayak.png');
+                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL; ?>/images/starter-content/bodie.webp');
                     background-size: cover;
-                    background-position: right;
+                    background-position: center;
                 }
 
                 h1 a {

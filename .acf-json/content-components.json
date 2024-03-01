@@ -20,8 +20,8 @@
             "acfe_flexible_stylised_button": 0,
             "acfe_flexible_hide_empty_message": 0,
             "acfe_flexible_empty_message": "",
-            "acfe_flexible_layouts_templates": 0,
-            "acfe_flexible_layouts_placeholder": 0,
+            "acfe_flexible_layouts_templates": 1,
+            "acfe_flexible_layouts_previews": 1,
             "acfe_flexible_layouts_thumbnails": 1,
             "acfe_flexible_layouts_settings": 0,
             "acfe_flexible_layouts_locations": 0,
@@ -392,7 +392,7 @@
             "min": "",
             "max": "",
             "button_label": "Add Component",
-            "acfe_flexible_layouts_previews": false,
+            "acfe_flexible_layouts_placeholder": false,
             "acfe_flexible_grid_container": false
         }
     ],
@@ -430,5 +430,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1704753385
+    "modified": 1709307056
 }

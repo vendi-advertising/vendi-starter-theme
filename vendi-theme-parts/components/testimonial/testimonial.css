@@ -12,7 +12,8 @@
     display: inline;
 }
 
-.component-testimonial .copy {
+.component-testimonial .copy,
+.component-testimonial .copy * {
     font-size: 2rem;
 }
 

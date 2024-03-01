@@ -3,9 +3,42 @@
 use Vendi\Shared\utils;
 use Symfony\Component\Filesystem\Path;
 
+global $VENDI_KNOWN_UPGRADED_COMPONENTS;
+
 add_action(
     'vendi/component-loader/missing-template',
     static function ($name, $folders, $path) {
+        global $VENDI_KNOWN_UPGRADED_COMPONENTS;
+
+        if (!is_array($VENDI_KNOWN_UPGRADED_COMPONENTS)) {
+            $VENDI_KNOWN_UPGRADED_COMPONENTS = [];
+        }
+
+        $fileToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $name, $name.'.php');
+
+        if (array_key_exists($name, $VENDI_KNOWN_UPGRADED_COMPONENTS)) {
+            require $fileToTest;
+        }
+
+        $fileToIgnore = array_pop($folders);
+        if (('component' === array_pop($folders)) && is_readable($fileToTest)) {
+            $VENDI_KNOWN_UPGRADED_COMPONENTS[$name] = $fileToTest;
+            require $fileToTest;
+        }
+    },
+    5,
+    3
+);
+
+add_action(
+    'vendi/component-loader/missing-template',
+    static function ($name, $folders, $path) {
+
+        global $VENDI_KNOWN_UPGRADED_COMPONENTS;
+
+        if (array_key_exists($name, $VENDI_KNOWN_UPGRADED_COMPONENTS)) {
+            return;
+        }
 
         $automaticallyCreateFilesIfTheyDontExist = true;
 
@@ -15,7 +48,7 @@ add_action(
             $uri = utils::get_server_value('REQUEST_URI');
 
             // https://stackoverflow.com/a/6768831/231316
-            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://$host$uri";
+            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http')."://$host$uri";
 
             array_shift($folders);
             $shortPath = esc_html(implode('/', $folders));
@@ -66,7 +99,7 @@ add_action(
             $uri = utils::get_server_value('REQUEST_URI');
 
             // https://stackoverflow.com/a/6768831/231316
-            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http') . "://$host$uri";
+            $sourceUrl = (utils::get_server_value('HTTPS') === 'on' ? 'https' : 'http')."://$host$uri";
 
             array_shift($folders);
             $fileName = array_pop($folders);

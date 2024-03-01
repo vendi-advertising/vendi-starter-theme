@@ -43,3 +43,101 @@ add_filter(
     10,
     3
 );
+
+
+add_filter(
+    'acfe/flexible/render/template',
+    static function ($file, $field, $layout, $is_preview) {
+        if (!$layout = $layout['name'] ?? null) {
+            return $file;
+        }
+
+        $filePathToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $layout, $layout.'.php');
+        if (is_readable($filePathToTest)) {
+            return $filePathToTest;
+        }
+
+        return $file;
+    },
+    accepted_args: 4
+);
+
+
+add_filter(
+    'acfe/flexible/render/style',
+    static function ($file, $field, $layout, $is_preview) {
+        if (!$layout = $layout['name'] ?? null) {
+            return $file;
+        }
+
+        if ($is_preview) {
+            $filePathToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $layout, $layout.'.preview.css');
+            if (is_readable($filePathToTest)) {
+                return $filePathToTest;
+            }
+        }
+
+        $filePathToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $layout, $layout.'.css');
+        if (is_readable($filePathToTest)) {
+            return $filePathToTest;
+        }
+
+
+        return $file;
+    },
+    accepted_args: 4
+);
+
+add_action(
+    'init',
+    static function () {
+        add_rewrite_rule('^vendi-theme-preview/css/(.+)?$', 'index.php?vendi-theme-preview=css&vendi-theme-preview-file=$matches[1]', 'top');
+        add_rewrite_rule('^vendi-theme-preview/shared-css/(.+)?$', 'index.php?vendi-theme-preview=shared-css&vendi-theme-preview-file=$matches[1]', 'top');
+    }
+);
+
+add_filter(
+    'query_vars',
+    static function ($query_vars) {
+        $query_vars[] = 'vendi-theme-preview';
+        $query_vars[] = 'vendi-theme-preview-file';
+
+        return $query_vars;
+    }
+);
+
+add_filter(
+    'template_include',
+    static function ($template) {
+        if (('shared-css' === get_query_var('vendi-theme-preview')) && $file = get_query_var('vendi-theme-preview-file')) {
+            $fileToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'css', $file.'.css');
+            if (is_readable($fileToTest)) {
+                header('Content-Type: text/css');
+                $css = file_get_contents($fileToTest);
+
+                echo <<<EOT
+.acfe-flexible-placeholder.-preview {
+    $css
+}
+EOT;
+                exit;
+            }
+        }
+
+        if (('css' === get_query_var('vendi-theme-preview')) && $file = get_query_var('vendi-theme-preview-file')) {
+            $fileToTest = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $file, $file.'.css');
+            if (is_readable($fileToTest)) {
+                $css = file_get_contents($fileToTest);
+                header('Content-Type: text/css');
+                echo <<<EOT
+.acfe-flexible-placeholder.-preview {
+    $css
+}
+EOT;
+                exit;
+            }
+        }
+
+        return $template;
+    }
+);

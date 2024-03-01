@@ -1,0 +1,59 @@
+& {
+    --color-primary-black: #000;
+    --color-primary-white: #fff;
+}
+
+& {
+    --color-starter-theme-body-copy: #333;
+    --color-starter-theme-primary: #1e2e82;
+    --color-starter-theme-secondary: #9418a8;
+    --color-starter-theme-light-black: #999;
+}
+
+& {
+    --font-size-body: 1.7rem;
+    --font-size-h1: 2.4rem;
+    --font-size-h2: 2.2rem;
+    --font-size-h3: 2rem;
+    --font-size-h4: 1.8rem;
+    --font-size-h5: 1.6rem;
+    --font-size-h6: 1.6rem;
+}
+
+& {
+    --font-weight-body: 400;
+    --font-weight-h1: 600;
+    --font-weight-h2: 600;
+    --font-weight-h3: 600;
+    --font-weight-h4: 600;
+    --font-weight-h5: 600;
+    --font-weight-h6: 600;
+}
+
+& {
+    --line-height-body: 1.5;
+    --line-height-h1: 1.2;
+    --line-height-h2: 1.2;
+    --line-height-h3: 1.2;
+    --line-height-h4: 1.2;
+    --line-height-h5: 1.2;
+    --line-height-h6: 1.2;
+}
+
+& {
+    --font-family-main: "Open Sans", sans-serif;
+}
+
+& {
+    --bu: 1rem;
+    --margin-small: var(--bu);
+    --margin-medium: calc(var(--margin-small) * 2);
+    --margin-normal: calc(var(--margin-medium) * 2);
+    --margin-large: calc(var(--margin-normal) * 2);
+    --margin-extra-large: calc(var(--margin-large) * 2);
+}
+
+& {
+    --content-width-normal: 114rem;
+    --content-width-narrow: 78rem;
+}

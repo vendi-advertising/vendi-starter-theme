@@ -1,21 +1,5 @@
-<?php
-
-// begin content components flexible content
-// check if the flexible content field has rows of data
-if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {
-
-    ?>
+<?php if (has_flexible(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME)): ?>
     <section class="content-components">
-        <?php
-
-        // loop through the content components rows of data
-        while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {
-            the_row();
-
-            vendi_load_component_component(get_row_layout());
-        }
-
-        ?>
+        <?php the_flexible(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME); ?>
     </section>
-    <?php
-}
+<?php endif;

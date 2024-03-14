@@ -116,7 +116,7 @@ add_filter(
                 $css = file_get_contents($fileToTest);
 
                 echo <<<EOT
-.acfe-flexible-placeholder.-preview {
+:is(.acfe-flexible-placeholder.-preview, .mce-content-body) {
     $css
 }
 EOT;
@@ -130,7 +130,7 @@ EOT;
                 $css = file_get_contents($fileToTest);
                 header('Content-Type: text/css');
                 echo <<<EOT
-.acfe-flexible-placeholder.-preview {
+:is(.acfe-flexible-placeholder.-preview, .mce-content-body) {
     $css
 }
 EOT;
@@ -139,5 +139,33 @@ EOT;
         }
 
         return $template;
+    }
+);
+
+add_action(
+    'acf/input/admin_footer',
+    static function () {
+        ?>
+        <script type="text/javascript">
+            acf.add_filter(
+                'wysiwyg_tinymce_settings',
+                function (mceInit, id, $field) {
+                    if ($field.closest('[data-layout~=basic_copy]')) {
+                        mceInit.body_class += ' component-basic-copy';
+                    }
+                    return mceInit;
+                }
+            );
+        </script>
+        <?php
+    }
+);
+
+add_filter(
+    'mce_css',
+    static function ($mce_css) {
+        $mce_css .= ','.Path::join(VENDI_CUSTOM_THEME_URL, 'vendi-theme-parts', 'components', 'basic_copy', 'basic_copy.preview.css');
+
+        return $mce_css;
     }
 );

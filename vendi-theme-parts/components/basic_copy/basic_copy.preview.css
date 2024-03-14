@@ -4,9 +4,9 @@
 @import "/vendi-theme-preview/shared-css/preview-headers/";
 @import "/vendi-theme-preview/shared-css/110-simple-utility-classes/";
 @import "/vendi-theme-preview/css/basic_copy/";
-
-.acfe-flexible-placeholder.-preview {
-    .component-basic-copy {
-
-    }
+/*.acfe-flexible-placeholder.-preview {*/
+.component-basic-copy {
+    padding-inline: 2rem;
 }
+
+/*}*/

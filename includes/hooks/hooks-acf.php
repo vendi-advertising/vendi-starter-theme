@@ -47,12 +47,14 @@ add_filter(
             'group_61dc8e97982a7.json' => 'content-components.json',
 
             'group_6599abaa59f84.json' => 'entity-testimonial.json',
+            'group_65f357e01af5b.json' => 'entity-alert.json',
 
             'group_61d8a393c5415.json' => 'theme-settings-fields.json',
             'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
 
             'post_type_6599ab6f6b61a.json' => 'cpt-testimonial.json',
             'post_type_659c2c3567923.json' => 'cpt-reusable-content.json',
+            'post_type_65f3571fbc97e.json' => 'cpt-alert.json',
         ];
 
         if (array_key_exists($filename, $mapping)) {

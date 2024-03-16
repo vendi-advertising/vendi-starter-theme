@@ -42,8 +42,8 @@
         },
         {
             "key": "field_65f358d680a0a",
-            "label": "Copy",
-            "name": "copy",
+            "label": "Primary Message",
+            "name": "primary_message",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -74,6 +74,12 @@
                     },
                     "2": {
                         "acfe_wysiwyg_toolbar_row": "italic"
+                    },
+                    "3": {
+                        "acfe_wysiwyg_toolbar_row": "bullist"
+                    },
+                    "4": {
+                        "acfe_wysiwyg_toolbar_row": "numlist"
                     },
                     "9": {
                         "acfe_wysiwyg_toolbar_row": "link"
@@ -144,7 +150,7 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y g:i a",
+            "display_format": "F j, Y g:i a",
             "return_format": "Y-m-d H:i:s",
             "first_day": 0,
             "placeholder": "",
@@ -158,7 +164,8 @@
             "min_min": "",
             "max_min": "",
             "min_sec": "",
-            "max_sec": ""
+            "max_sec": "",
+            "required_message": ""
         },
         {
             "key": "field_65f3606380a0d",
@@ -174,7 +181,7 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y g:i a",
+            "display_format": "F j, Y g:i a",
             "return_format": "Y-m-d H:i:s",
             "first_day": 0,
             "placeholder": "",
@@ -188,7 +195,31 @@
             "min_min": "",
             "max_min": "",
             "min_sec": "",
-            "max_sec": ""
+            "max_sec": "",
+            "required_message": ""
+        },
+        {
+            "key": "field_65f5b13a813e0",
+            "label": "Priority",
+            "name": "alert_priority",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "If more than one alert is displayed, the alert with a higher priority will be shown first.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "required_message": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_65f36329d0e8f",
@@ -209,6 +240,39 @@
             "no_preference": 0
         },
         {
+            "key": "field_65f5a11703361",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#e7f6f8",
+            "enable_opacity": 0,
+            "return_format": "color_label",
+            "display": "palette",
+            "color_picker": 0,
+            "allow_null": 0,
+            "theme_colors": 1,
+            "colors": {
+                "#e7f6f8": "Info",
+                "#faf3d1": "Warning",
+                "#ecf3ec": "Success",
+                "#f4e3db": "Error",
+                "#9c3d10": "Emergency"
+            },
+            "required_message": "",
+            "button_label": "Select Color",
+            "absolute": false,
+            "input": true
+        },
+        {
             "key": "field_65f36347d0e90",
             "label": "Alert Type",
             "name": "alert_type",
@@ -225,6 +289,8 @@
             "choices": {
                 "info": "Info",
                 "warning": "Warning",
+                "success": "Success",
+                "error": "Error",
                 "emergency": "Emergency"
             },
             "default_value": false,
@@ -248,7 +314,7 @@
             "aria-label": "",
             "type": "select",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -259,18 +325,84 @@
                 "dismissible": "Dismissible",
                 "always-visible": "Always Visible"
             },
-            "default_value": false,
+            "default_value": "dismissible",
             "return_format": "value",
             "multiple": 0,
             "max": "",
             "prepend": "",
             "append": "",
+            "required_message": "",
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_65f59e00016e9",
+            "label": "Alert Style",
+            "name": "alert_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Standard",
+                "slim": "Slim"
+            },
+            "default_value": "standard",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "required_message": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_65f5a2f6fef1d",
+            "label": "Icon",
+            "name": "icon",
+            "aria-label": "",
+            "type": "acfe_image_selector",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "error": "\/wp-content\/themes\/vendi-starter-theme\/images\/alert-icons\/error.svg",
+                "info": "\/wp-content\/themes\/vendi-starter-theme\/images\/alert-icons\/info.svg",
+                "warning": "\/wp-content\/themes\/vendi-starter-theme\/images\/alert-icons\/warning.svg",
+                "success": "\/wp-content\/themes\/vendi-starter-theme\/images\/alert-icons\/success.svg"
+            },
+            "default_value": false,
+            "image_size": "admin-icon",
+            "width": "",
+            "height": "",
+            "border": 4,
+            "return_format": "value",
+            "allow_null": 1,
+            "multiple": 0,
+            "max": "",
+            "layout": "horizontal",
             "min": ""
         }
     ],
@@ -299,5 +431,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1710449581
+    "modified": 1710600780
 }

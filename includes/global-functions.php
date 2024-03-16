@@ -117,3 +117,36 @@ function vendi_theme_enqueue_script(string $handle, string $srcRelativeToThemeRo
         $in_footer
     );
 }
+
+function vendi_render_class_attribute(array|string $classes): void
+{
+    if (is_string($classes)) {
+        $classes = explode(' ', $classes);
+    }
+
+    echo 'class="'.esc_attr(implode(' ', $classes)).'"';
+}
+
+function vendi_convert_alerts_to_objects($alerts): array
+{
+    $ret = [];
+    foreach ($alerts as $alert) {
+        $obj = new stdClass();
+        $obj->id = $alert->ID;
+        $obj->headline = get_field('headline', $alert->ID);
+        $obj->alert_version = get_field('alert_version', $alert->ID);
+        $obj->start_date = get_field('start_date', $alert->ID);
+        $obj->end_date = get_field('end_date', $alert->ID);
+        $obj->alert_type = get_field('alert_type', $alert->ID);
+        $obj->display_mode = get_field('display_mode', $alert->ID);
+        $obj->primary_message = get_field('primary_message', $alert->ID);
+        $obj->alert_style = get_field('alert_style', $alert->ID);
+        $obj->background_color = get_field('background_color', $alert->ID);
+        $obj->icon = get_field('icon', $alert->ID);
+        $obj->priority = get_field('alert_priority', $alert->ID);
+
+        $ret[] = $obj;
+    }
+
+    return $ret;
+}

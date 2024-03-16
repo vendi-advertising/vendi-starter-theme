@@ -43,3 +43,12 @@ add_filter(
     10,
     3
 );
+
+if (is_admin()) {
+    add_action(
+        'after_setup_theme',
+        static function () {
+            add_image_size('admin-icon', 40, 40);
+        }
+    );
+}

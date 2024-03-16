@@ -1,0 +1,11 @@
+.alert {
+    color: #000;
+}
+
+.alert p {
+    margin: 0;
+}
+
+.alert[data-alert-background-color~=Emergency] {
+    color: #fff;
+}

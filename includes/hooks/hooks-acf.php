@@ -19,16 +19,16 @@ add_filter(
     }
 );
 
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page(
-        [
-            'page_title' => 'Theme Settings',
-            'menu_title' => 'Theme Settings',
-            'menu_slug' => 'theme_settings',
-            'capability' => 'manage_options',
-        ]
-    );
-}
+//if (function_exists('acf_add_options_page')) {
+//    acf_add_options_page(
+//        [
+//            'page_title' => 'Theme Settings',
+//            'menu_title' => 'Theme Settings',
+//            'menu_slug' => 'theme_settings',
+//            'capability' => 'manage_options',
+//        ]
+//    );
+//}
 
 add_filter(
     'acf/json/save_file_name',
@@ -55,6 +55,8 @@ add_filter(
             'post_type_6599ab6f6b61a.json' => 'cpt-testimonial.json',
             'post_type_659c2c3567923.json' => 'cpt-reusable-content.json',
             'post_type_65f3571fbc97e.json' => 'cpt-alert.json',
+
+            'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
         ];
 
         if (array_key_exists($filename, $mapping)) {

@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_661435b551158",
+    "title": "Single Sign-On",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Single Sign-On",
+    "menu_slug": "single-sign-on",
+    "parent_slug": "theme_settings",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "manage_options",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "_parent": 177,
+    "modified": 1712600522
+}

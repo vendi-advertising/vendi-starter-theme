@@ -1,0 +1,8 @@
+form.sso-login-selector {
+    padding: 26px 24px;
+    text-align: center;
+
+    img {
+        cursor: pointer;
+    }
+}

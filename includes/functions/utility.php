@@ -23,8 +23,8 @@ function vendi_get_svg(string $pathRelativeToThemeFolder, bool $echo = true, boo
 {
     if ($echo) {
         $includeSourcePath = is_null($includeSourcePath) ? defined('WP_DEBUG') && WP_DEBUG : $includeSourcePath;
-        if($includeSourcePath){
-            echo sprintf('<!-- SVG: %s -->',  esc_html($pathRelativeToThemeFolder));
+        if ($includeSourcePath) {
+            echo sprintf('<!-- SVG: %s -->', esc_html($pathRelativeToThemeFolder));
         }
     }
 
@@ -55,4 +55,9 @@ function vendi_get_svg(string $pathRelativeToThemeFolder, bool $echo = true, boo
     }
 
     return $thisSvg;
+}
+
+function vendi_get_env(string $key, ?string $default = null): ?string
+{
+    return getenv($key) ?: $default;
 }

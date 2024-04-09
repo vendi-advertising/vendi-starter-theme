@@ -4,34 +4,120 @@
 
         'use strict'; //Force strict mode
 
+        async function lookupEmail(input, form) {
+            const data = new URLSearchParams();
+            // for (const pair of new FormData(form)) {
+            data.append('email', input.value);
+            // }
+
+            const response = await fetch(
+                form.getAttribute('action'),
+                {
+                    method: 'POST',
+                    body: data,
+                }
+            );
+
+            if (response.ok) {
+                return await response.json();
+            }
+
+            return JSON.parse(await response.text());
+        }
+
         const
 
             document = w.document,
 
-            popupWindow = (url, title, width, height) => {
+            createEmailForm = () => {
                 const
-                    left = (w.screen.width / 2) - (width / 2),
-                    top = (w.screen.height / 2) - (height / 2),
-                    s = `toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=ues,copyhistory=no,width=${width},height=${height},top=${top},left=${left}`
+                    form = document.createElement('form'),
+                    row = document.createElement('div'),
+                    label = document.createElement('label'),
+                    span = document.createElement('span'),
+                    input = document.createElement('input'),
+                    row2 = document.createElement('div'),
+                    submitDiv = document.createElement('div'),
+                    submit = document.createElement('input'),
+                    row3 = document.createElement('div'),
+                    errorArea = document.createElement('div')
                 ;
-                return window.open(url, title, s);
-            },
 
-            createAzureButton = () => {
+                submit.classList.add('button', 'button-primary', 'button-large');
+                submit.value = 'Log In';
+                submit.setAttribute('type', 'submit');
 
-                const img = document.createElement('img');
-                img.src = w.VENDI_SSO.images.azure;
+                row.classList.add('row');
+                span.append(w.VENDI_SSO.strings.email);
+                input.setAttribute('type', 'email');
+                input.setAttribute('required', 'true');
+                label.append(span, input);
+                row.append(label);
 
-                img
+                row2.classList.add('row');
+                submitDiv.append(submit);
+                row2.append(submitDiv);
+
+                errorArea.classList.add('error-area');
+                row3.classList.add('row');
+                row3.append(errorArea);
+
+                form.append(row, row2, row3);
+
+                form
                     .addEventListener(
-                        'click',
-                        () => {
-                            const nw = popupWindow(w.VENDI_SSO.lookupUrl, 'Sign in with Microsoft', 480, 600);
+                        'submit',
+                        (evt) => {
+                            evt.preventDefault();
+
+                            lookupEmail(input, form)
+                                .then(
+                                    (data) => {
+                                        if (data.error) {
+                                            errorArea.innerHTML = '';
+                                            errorArea.append(data.error);
+                                        } else {
+                                            window.location.href = data.authorizationUrl;
+                                        }
+                                    }
+                                )
+                            ;
                         }
                     )
                 ;
 
-                return img;
+                return form;
+            },
+
+            createAzureButton = () => {
+
+                const
+                    div = document.createElement('div'),
+                    h2 = document.createElement('h2'),
+                    img = document.createElement('img')
+                ;
+                h2.append('Sign in with Microsoft');
+                img.src = w.VENDI_SSO.images.azure;
+                h2.classList.add('sso-header');
+                img.classList.add('sso-button');
+                div.classList.add('sso-header-and-button')
+
+                div.append(h2, img);
+
+                return div;
+            },
+
+            createBackToPasswordLink = () => {
+                const
+                    p = document.createElement('p'),
+                    span = document.createElement('span')
+                ;
+
+                span.append('← Back to password login');
+                p.append(span);
+                p.classList.add('back-to-password-button');
+
+                return p;
             },
 
             validate = () => {
@@ -46,14 +132,41 @@
 
                 validate();
 
-                const existingForm = document.getElementById('loginform');
-                const newForm = document.createElement('form');
-                newForm.classList.add('sso-login-selector');
+                const
+                    entireLoginArea = document.getElementById('login'),
+                    existingUsernameAndPasswordArea = document.getElementById('loginform'),
+                    ssoContainer = document.createElement('div'),
+                    azureButton = createAzureButton(),
+                    backToPassWordLink = createBackToPasswordLink(),
+                    emailLookupForm = createEmailForm()
+                ;
 
-                const azureButton = createAzureButton();
+                ssoContainer.classList.add('sso-login-selector');
 
-                newForm.append(azureButton);
-                existingForm.after(newForm);
+                azureButton
+                    .querySelector('img')
+                    .addEventListener(
+                        'click',
+                        () => {
+                            entireLoginArea.classList.add('show-sso');
+                            emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
+                        }
+                    )
+                ;
+
+                backToPassWordLink
+                    .querySelector('span')
+                    .addEventListener(
+                        'click',
+                        () => {
+                            entireLoginArea.classList.remove('show-sso');
+                        }
+                    )
+                ;
+
+                ssoContainer.append(azureButton, emailLookupForm);
+                existingUsernameAndPasswordArea.after(ssoContainer);
+                ssoContainer.after(backToPassWordLink);
             },
 
             init = () => {
@@ -63,7 +176,6 @@
                     document.addEventListener('DOMContentLoaded', run);
                 }
             }
-
         ;
 
         //Kick everything off

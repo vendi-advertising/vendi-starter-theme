@@ -71,6 +71,9 @@ add_action(
             [
                 'images' => $providerImages,
                 'lookupUrl' => SsoRouter::VENDI_PATH_SSO_LOOKUP,
+                'strings' => [
+                    'email' => __('Email Address'),
+                ],
             ]
         );
 

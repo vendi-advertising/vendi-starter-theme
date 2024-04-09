@@ -1,8 +1,135 @@
-form.sso-login-selector {
-    padding: 26px 24px;
-    text-align: center;
+:root {
+    --transition-duration: 0.25s;
+}
 
-    img {
-        cursor: pointer;
+:is(form#loginform, #nav, #backtoblog) {
+    max-height: 100%;
+    opacity: 1;
+    transition: all var(--transition-duration) ease;
+
+    #login.show-sso & {
+        max-height: 0;
+        padding-block: 0;
+        border-width: 0;
+        box-shadow: none;
+        opacity: 0;
+    }
+}
+
+.sso-login-selector {
+    padding: 26px 0;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 0;
+    font-weight: 400;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+
+    .sso-header-and-button {
+        display: grid;
+        grid-template-areas: "same";
+        place-content: center;
+
+        & > * {
+            grid-area: same;
+        }
+
+        .sso-button {
+            cursor: pointer;
+            z-index: 2;
+            transition: all var(--transition-duration) ease;
+
+            #login.show-sso & {
+                opacity: 0;
+            }
+        }
+
+        .sso-header {
+            opacity: 0;
+            transition: all var(--transition-duration) ease;
+
+            #login.show-sso & {
+                opacity: 1;
+            }
+        }
+    }
+
+    form {
+        max-height: 0;
+        background: #fff;
+        max-width: 100%;
+        border: none;
+        box-shadow: none;
+        text-align: left;
+        overflow: hidden;
+        padding-inline: 24px;
+        padding-block: 0;
+        margin-block-start: 0;
+        transition: all var(--transition-duration) ease;
+        box-sizing: border-box;
+        display: grid;
+        gap: 10px;
+
+        .error-area:not(:empty) {
+            border: 1px dashed red;
+            padding: 10px;
+        }
+
+        #login.show-sso & {
+            max-height: 100%;
+            padding-block: 24px 34px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+
+            label {
+                display: contents;
+            }
+
+            input[type=email] {
+                font-size: 24px;
+                line-height: 1.33333333;
+                width: 100%;
+                border-width: 0.0625rem;
+                padding: 0.1875rem 0.3125rem;
+                margin: 0 6px 16px 0;
+                min-height: 40px;
+                max-height: none;
+                background: #fff;
+            }
+        }
+    }
+}
+
+.back-to-password-button {
+    margin: 16px 0 0;
+    font-size: 13px;
+    padding: 0 24px;
+    max-height: 0;
+    padding-block: 0;
+    border-width: 0;
+    box-shadow: none;
+    opacity: 0;
+    transition: all var(--transition-duration) ease;
+
+    #login.show-sso & {
+        max-height: 100%;
+        opacity: 1;
+        transition-delay: 0.4s;
+    }
+
+    span {
+        text-decoration: none;
+        color: #50575e;
+
+        &:hover {
+            color: #135e96;
+            cursor: pointer;
+        }
     }
 }

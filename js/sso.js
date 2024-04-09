@@ -26,8 +26,7 @@
                     .addEventListener(
                         'click',
                         () => {
-                            const nw = popupWindow('', 'Sign in with Microsoft', 480, 600);
-                            nw.document.body.innerHTML = w.VENDI_SSO.lookupHtml;
+                            const nw = popupWindow(w.VENDI_SSO.lookupUrl, 'Sign in with Microsoft', 480, 600);
                         }
                     )
                 ;

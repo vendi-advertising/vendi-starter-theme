@@ -33,6 +33,8 @@ add_filter(
                 define('VENDI_PERFORMING_ACTION_SSO', true);
             }
 
+            session_start();
+
             // The path must be absolute
             return VENDI_CUSTOM_THEME_PATH.'/router/router.php';
         }
@@ -62,17 +64,13 @@ add_action(
             return;
         }
 
-        $lookupHtml = file_get_contents(Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'sso', 'enter-email.html'));
-        $lookupHtml = str_replace('{{lookupUrl}}', SsoRouter::VENDI_PATH_SSO_ROOT.SsoRouter::VENDI_PATH_SSO_RELATIVE_LOOKUP, $lookupHtml);
-
         vendi_theme_enqueue_script('vendi-sso', '/js/sso.js');
         wp_localize_script(
             'vendi-sso',
             'VENDI_SSO',
             [
                 'images' => $providerImages,
-                'lookupHtml' => $lookupHtml,
-                'lookupUrl' => SsoRouter::VENDI_PATH_SSO_ROOT.SsoRouter::VENDI_PATH_SSO_RELATIVE_LOOKUP,
+                'lookupUrl' => SsoRouter::VENDI_PATH_SSO_LOOKUP,
             ]
         );
 

@@ -6,9 +6,10 @@ use Laminas\Diactoros\Response;
 
 class SsoRouter
 {
-    public const VENDI_PATH_SSO_ROOT = '/vendi-auth';
+    public const VENDI_PATH_SSO_ROOT = '/vendi-auth/';
 
-    public const VENDI_PATH_SSO_RELATIVE_LOOKUP = '/lookup';
+    public const VENDI_PATH_SSO_LOOKUP = self::VENDI_PATH_SSO_ROOT.'lookup/';
+    public const VENDI_PATH_SSO_CALLBACK = self::VENDI_PATH_SSO_ROOT.'callback/';
 
     public function getResponse(): Response
     {

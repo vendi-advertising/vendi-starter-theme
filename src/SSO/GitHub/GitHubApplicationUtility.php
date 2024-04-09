@@ -1,46 +1,32 @@
 <?php
 
-namespace Vendi\Theme\SSO\Azure;
+namespace Vendi\Theme\SSO\GitHub;
 
 use DateTimeImmutable;
-use Exception;
 use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Github;
 use League\Uri\UriString;
 use Psr\Http\Message\ServerRequestInterface;
-use TheNetworg\OAuth2\Client\Provider\Azure;
 use Vendi\Theme\SSO\SsoApplicationUtilityBase;
 use Vendi\Theme\SsoRouter;
 
-class AzureApplicationUtility extends SsoApplicationUtilityBase
+class GitHubApplicationUtility extends SsoApplicationUtilityBase
 {
     public function getProviderForEmailAddress(string $emailAddress, ServerRequestInterface $request): ?AbstractProvider
     {
-        /**
-         * This code is currently only built for Azure, however it should be
-         * easily extendable to add other providers.
-         *
-         * See https://oauth2-client.thephpleague.com/
-         */
-        if (!$azureApplication = $this->getApplicationForEmailAddress($emailAddress)) {
+        if (!$application = $this->getApplicationForEmailAddress($emailAddress)) {
             return null;
         }
 
         $maybeClientSecrets = [];
-        foreach ($azureApplication->getClientSecrets() as $client_secret) {
-            if ($client_secret->getExpirationDate() > new DateTimeImmutable()) {
-                $maybeClientSecrets[$client_secret->getStartDate()->format('Y-m-d')] = $client_secret;
-            }
+        foreach ($application->getClientSecrets() as $client_secret) {
+            $maybeClientSecrets[] = $client_secret;
+            break;
         }
 
         if (!count($maybeClientSecrets)) {
             return null;
         }
-
-        // "Youngest" at the end
-        if (count($maybeClientSecrets) > 1) {
-            ksort($maybeClientSecrets);
-        }
-
         $thisClientSecret = end($maybeClientSecrets);
 
         $redirectUrl = UriString::build(
@@ -51,23 +37,17 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
             ]
         );
 
-        return new Azure(
+        return new Github(
             [
-                'clientId' => $azureApplication->getClientId(),
+                'clientId' => $application->getClientId(),
                 'clientSecret' => $thisClientSecret->getSecret(),
                 'redirectUri' => $redirectUrl,
-                'tenant' => $azureApplication->getTenantId(),
-                'scopes' => ['openid'],
-                'defaultEndPointVersion' => '2.0',
+                'scopes' => ['user:email'],
             ],
         );
     }
 
-    /**
-     * @return AzureApplicationInterface[]
-     * @throws Exception
-     */
-    private function getAllAzureApplications(): array
+    protected function getAllApplications(): array
     {
         if (!$ssoProviders = get_field('sso_providers', 'option')) {
             return [];
@@ -77,14 +57,13 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
 
         foreach ($ssoProviders as $provider) {
 
-            if ('azure_provider' !== $provider['acf_fc_layout']) {
+            if ('github_provider' !== $provider['acf_fc_layout']) {
                 continue;
             }
 
-            $app = new AzureApplication(
+            $app = new GitHubApplication(
                 $provider['application_name'],
                 $provider['client_id'],
-                $provider['tenant_id'],
                 explode("\n", mb_strtolower($provider['domains']))
             );
 
@@ -94,11 +73,8 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
 
             foreach ($provider['secrets'] as $secret) {
                 $app->addClientSecret(
-                    new AzureClientSecret(
-                        new \DateTimeImmutable($secret['start_date']),
-                        new \DateTimeImmutable($secret['expiration_date']),
+                    new GitHubClientSecret(
                         $secret['client_secret'],
-                        $secret['secret_id'],
                     )
                 );
             }
@@ -107,13 +83,5 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
         }
 
         return $applications;
-    }
-
-    /**
-     * @throws Exception
-     */
-    protected function getAllApplications(): array
-    {
-        return $this->getAllAzureApplications();
     }
 }

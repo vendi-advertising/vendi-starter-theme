@@ -6,9 +6,8 @@
 
         async function lookupEmail(input, form) {
             const data = new URLSearchParams();
-            // for (const pair of new FormData(form)) {
             data.append('email', input.value);
-            // }
+            data.append('sso-target', form.getAttribute('data-sso-target'));
 
             const response = await fetch(
                 form.getAttribute('action'),
@@ -89,6 +88,23 @@
                 return form;
             },
 
+            createGitHubButton = () => {
+                const
+                    div = document.createElement('div'),
+                    h2 = document.createElement('h2'),
+                    img = document.createElement('img')
+                ;
+                h2.append('Sign in with GitHub');
+                img.src = w.VENDI_SSO.images.github;
+                h2.classList.add('sso-header');
+                img.classList.add('sso-button');
+                div.classList.add('sso-header-and-button', 'github');
+
+                div.append(h2, img);
+
+                return div;
+            },
+
             createAzureButton = () => {
 
                 const
@@ -100,7 +116,7 @@
                 img.src = w.VENDI_SSO.images.azure;
                 h2.classList.add('sso-header');
                 img.classList.add('sso-button');
-                div.classList.add('sso-header-and-button')
+                div.classList.add('sso-header-and-button', 'azure');
 
                 div.append(h2, img);
 
@@ -136,35 +152,64 @@
                     entireLoginArea = document.getElementById('login'),
                     existingUsernameAndPasswordArea = document.getElementById('loginform'),
                     ssoContainer = document.createElement('div'),
-                    azureButton = createAzureButton(),
                     backToPassWordLink = createBackToPasswordLink(),
                     emailLookupForm = createEmailForm()
                 ;
 
+                let foundOneSystem = false;
+
                 ssoContainer.classList.add('sso-login-selector');
 
-                azureButton
-                    .querySelector('img')
-                    .addEventListener(
-                        'click',
-                        () => {
-                            entireLoginArea.classList.add('show-sso');
-                            emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
-                        }
-                    )
-                ;
+                if (w.VENDI_SSO.images.azure) {
+                    foundOneSystem = true;
+                    const azureButton = createAzureButton();
+                    azureButton
+                        .querySelector('img')
+                        .addEventListener(
+                            'click',
+                            () => {
+                                entireLoginArea.classList.add('show-sso', 'azure');
+                                emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
+                                emailLookupForm.setAttribute('data-sso-target', 'azure');
+                            }
+                        )
+                    ;
+                    ssoContainer.append(azureButton);
+                }
+
+                if (w.VENDI_SSO.images.github) {
+                    foundOneSystem = true;
+                    const gitHubButton = createGitHubButton();
+                    gitHubButton
+                        .querySelector('img')
+                        .addEventListener(
+                            'click',
+                            () => {
+                                entireLoginArea.classList.add('show-sso', 'github');
+                                emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
+                                emailLookupForm.setAttribute('data-sso-target', 'github');
+                            }
+                        )
+                    ;
+                    ssoContainer.append(gitHubButton);
+
+                }
+
+                if (!foundOneSystem) {
+                    return;
+                }
 
                 backToPassWordLink
                     .querySelector('span')
                     .addEventListener(
                         'click',
                         () => {
-                            entireLoginArea.classList.remove('show-sso');
+                            entireLoginArea.classList.remove('show-sso', 'azure', 'github');
                         }
                     )
                 ;
 
-                ssoContainer.append(azureButton, emailLookupForm);
+                ssoContainer.append(emailLookupForm);
                 existingUsernameAndPasswordArea.after(ssoContainer);
                 ssoContainer.after(backToPassWordLink);
             },

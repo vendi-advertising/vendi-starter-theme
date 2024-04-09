@@ -54,7 +54,11 @@
             opacity: 0;
             transition: all var(--transition-duration) ease;
 
-            #login.show-sso & {
+            #login.show-sso.azure .sso-header-and-button.azure & {
+                opacity: 1;
+            }
+
+            #login.show-sso.github .sso-header-and-button.github & {
                 opacity: 1;
             }
         }

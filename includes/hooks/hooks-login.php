@@ -18,6 +18,13 @@ add_action(
                             const d = document.createElement('div');
                             d.classList.add('vendi-login-background');
                             document.body.append(d);
+
+                            const a = document.querySelector('#login h1 a');
+                            if (!a) {
+                                return;
+                            }
+
+                            a.removeAttribute('href');
                         },
 
                         init = () => {

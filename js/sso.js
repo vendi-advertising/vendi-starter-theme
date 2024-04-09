@@ -14,15 +14,10 @@
                     top = (w.screen.height / 2) - (height / 2),
                     s = `toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=ues,copyhistory=no,width=${width},height=${height},top=${top},left=${left}`
                 ;
-                const nw = window.open(url, title, s);
-                nw.moveTo(left, top);
-                return nw;
+                return window.open(url, title, s);
             },
 
             createAzureButton = () => {
-                if (!w.hasOwnProperty('VENDI_SSO')) {
-                    throw 'Cannot load SSO buttons, missing global SSO variables';
-                }
 
                 const img = document.createElement('img');
                 img.src = w.VENDI_SSO.images.azure;
@@ -32,7 +27,7 @@
                         'click',
                         () => {
                             const nw = popupWindow('', 'Sign in with Microsoft', 480, 600);
-                            nw.document.body.innerHTML = 'test';
+                            nw.document.body.innerHTML = w.VENDI_SSO.lookupHtml;
                         }
                     )
                 ;
@@ -40,8 +35,17 @@
                 return img;
             },
 
+            validate = () => {
+                if (!w.hasOwnProperty('VENDI_SSO')) {
+                    throw 'Cannot load SSO buttons, missing global SSO variables';
+                }
+
+                Object.freeze(w.VENDI_SSO);
+            },
+
             run = () => {
 
+                validate();
 
                 const existingForm = document.getElementById('loginform');
                 const newForm = document.createElement('form');
@@ -54,7 +58,6 @@
             },
 
             init = () => {
-
                 if (['complete', 'interactive'].includes(document.readyState)) {
                     run();
                 } else {

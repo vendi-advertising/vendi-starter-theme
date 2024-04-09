@@ -2,6 +2,10 @@
     --transition-duration: 0.25s;
 }
 
+#login {
+    overflow: hidden;
+}
+
 :is(form#loginform, #nav, #backtoblog) {
     max-height: 100%;
     opacity: 1;

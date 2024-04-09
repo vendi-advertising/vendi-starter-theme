@@ -4,7 +4,6 @@ use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\ServerRequestFactory;
 use League\OAuth2\Client\Token\AccessToken;
 use League\Route\Router;
-use League\Uri\Uri;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TheNetworg\OAuth2\Client\Provider\Azure;
@@ -39,7 +38,7 @@ $router
 
             $authorizationUrl = $provider->getAuthorizationUrl(['scope' => $provider->scope, 'login_hint' => $email]);
 
-            $_SESSION['aana.email'] = $email;
+            $_SESSION['vendi.sso.email'] = $email;
             $_SESSION['OAuth2.state'] = $provider->getState();
 
             return new JsonResponse(
@@ -47,8 +46,6 @@ $router
                     'authorizationUrl' => $authorizationUrl,
                 ]
             );
-
-//            return new Laminas\Diactoros\Response\RedirectResponse($authorizationUrl);
         }
     );
 
@@ -56,7 +53,7 @@ $router
     ->get(
         SsoRouter::VENDI_PATH_SSO_CALLBACK,
         static function (ServerRequestInterface $request): ResponseInterface {
-            if (!$email = $_SESSION['aana.email'] ?? null) {
+            if (!$email = $_SESSION['vendi.sso.email'] ?? null) {
                 throw new RuntimeException('No email address found in session');
             }
 
@@ -92,13 +89,3 @@ $response = $router->dispatch($request);
 // send the response to the browser
 (new Laminas\HttpHandlerRunner\Emitter\SapiEmitter)->emit($response);
 exit;
-
-//dd($_SERVER['REQUEST_URI']);
-
-$uri = Uri::new($_SERVER['REQUEST_URI']);
-if (str_starts_with($uri->getPath(), SsoRouter::VENDI_PATH_SSO_ROOT)) {
-    $ret = (new SsoRouter)->getResponse();
-}
-
-
-dd($uri);

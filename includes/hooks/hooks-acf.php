@@ -72,3 +72,40 @@ add_filter(
     },
     accepted_args: 3,
 );
+
+
+add_action(
+    'admin_enqueue_scripts',
+    static function () {
+        ?>
+        <style>
+            [data-layout~=grid] > .acf-fields {
+                background-color: #cbe5ff;
+
+                .acf-input .button[data-name~=add-layout] {
+                    background-color: #64b3fb;
+                    color: white;
+                }
+
+                [data-layout~=row] > .acf-fields {
+                    background-color: #e8efa9;
+
+                    .acf-input .button[data-name~=add-layout] {
+                        background-color: #9ea359;
+                        color: white;
+                    }
+
+                    [data-layout~=components] > .acf-fields {
+                        background-color: #e2bef1;
+
+                        .acf-input .button[data-name~=add-layout] {
+                            background-color: #cc56fd;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        </style>
+        <?php
+    }
+);

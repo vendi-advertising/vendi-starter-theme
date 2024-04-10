@@ -23,6 +23,8 @@ get_header();
                 vendi_load_site_component('components');
             }
         }
+
+//        vendi_load_site_component('container-test');
         ?>
 
     </main>

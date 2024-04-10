@@ -1,0 +1,136 @@
+{
+    "key": "group_6616f4a3c869c",
+    "title": "Settings Modal - Grid Settings",
+    "fields": [
+        {
+            "key": "field_6616f4a4cf02a",
+            "label": "Columns",
+            "name": "columns",
+            "aria-label": "",
+            "type": "acfe_image_selector",
+            "instructions": "The grid component will always use a 12-column grid system... something about 1\/3 and 2\/3 being 4\/12 and 8\/12",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "two-columns": "\/wp-content\/themes\/vendi-starter-theme\/images\/acf\/grid-sizes\/two-columns.svg",
+                "three-columns": "\/wp-content\/themes\/vendi-starter-theme\/images\/acf\/grid-sizes\/three-columns.svg",
+                "four-columns": "\/wp-content\/themes\/vendi-starter-theme\/images\/acf\/grid-sizes\/four-columns.svg",
+                "twelve-columns": "\/wp-content\/themes\/vendi-starter-theme\/images\/acf\/grid-sizes\/wildcard-columns.svg"
+            },
+            "default_value": "two-columns",
+            "image_size": "thumbnail",
+            "width": "",
+            "height": "",
+            "border": 4,
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "max": "",
+            "layout": "horizontal",
+            "min": ""
+        },
+        {
+            "key": "field_661710410422b",
+            "label": "Column Gap",
+            "name": "column_gap",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "None",
+                "x-small": "Extra Small",
+                "small": "Small",
+                "medium": "Medium",
+                "large": "Large",
+                "x-large": "Extra Large",
+                "xx-large": "Extra Extra Large"
+            },
+            "default_value": "medium",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_6617112b5b2ca",
+            "label": "Justify Items",
+            "name": "justify_items",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "center": "Center",
+                "start": "Start",
+                "end": "End",
+                "stretch": "Stretch"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1712787807
+}

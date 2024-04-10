@@ -169,6 +169,105 @@
             "acfe_flexible_empty_message": "",
             "acfe_flexible_layouts_previews": false,
             "acfe_flexible_grid_container": false
+        },
+        {
+            "key": "field_6616b58fda257",
+            "label": "SSO Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_6616b59dda258",
+            "label": "Disable Passwords",
+            "name": "disable_passwords",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Force all users to sign in with a registered SSO provider",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_6616b66604d21",
+            "label": "Automatically Create User",
+            "name": "automatically_create_user",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "If the authenticated user does not exist, a new user will automatically be created",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_6616b6cf28d32",
+            "label": "New User Default Role",
+            "name": "new_user_default_role",
+            "aria-label": "",
+            "type": "acfe_user_roles",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6616b66604d21",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "user_role": "",
+            "field_type": "radio",
+            "max": "",
+            "default_value": "subscriber",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "vertical",
+            "multiple": 0,
+            "choices": [],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "search_placeholder": "",
+            "toggle": 0,
+            "allow_custom": 0,
+            "min": ""
         }
     ],
     "location": [
@@ -196,5 +295,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712700789
+    "modified": 1712764790
 }

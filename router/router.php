@@ -16,6 +16,10 @@ $request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, 
 
 $router = new Router;
 
+const VENDI_SESSION_KEY_EMAIL = 'vendi.sso.email';
+const VENDI_SESSION_KEY_TARGET = 'vendi.sso.target';
+const VENDI_SESSION_KEY_OAUTH2_STATE = 'OAuth2.state';
+
 $router
     ->post(
         SsoRouter::VENDI_PATH_SSO_LOOKUP,
@@ -29,55 +33,50 @@ $router
                 return new JsonResponse(['error' => 'SSO target is required.'], 400);
             }
 
-            if ('azure' === $ssoTarget) {
-                if (!$provider = (new AzureApplicationUtility)->getProviderForEmailAddress($email, $request)) {
-                    return new JsonResponse(['error' => 'No provider found for email address'], 400);
-                }
+            $provider = match ($ssoTarget) {
+                'azure' => (new AzureApplicationUtility)->getProviderForEmailAddress($email, $request),
+                'github' => (new GitHubApplicationUtility)->getProviderForEmailAddress($email, $request),
+                default => null,
+            };
 
-                if (!$provider instanceof Azure) {
-                    return new JsonResponse(['error' => 'Invalid authentication provider for email address'], 400);
-                }
-
-                $provider->defaultEndPointVersion = Azure::ENDPOINT_VERSION_2_0;
-                $baseGraphUri = $provider->getRootMicrosoftGraphUri(null);
-                $provider->scope = 'openid profile email offline_access '.$baseGraphUri.'/User.Read';
-
-                $authorizationUrl = $provider->getAuthorizationUrl(['scope' => $provider->scope, 'login_hint' => $email]);
-
-                $_SESSION['vendi.sso.email'] = $email;
-                $_SESSION['vendi.sso.target'] = 'azure';
-                $_SESSION['OAuth2.state'] = $provider->getState();
-
-                return new JsonResponse(
-                    [
-                        'authorizationUrl' => $authorizationUrl,
-                    ]
-                );
+            if (!$provider) {
+                return new JsonResponse(['error' => 'Unknown SSO target.'], 400);
             }
 
-            if ('github' === $ssoTarget) {
-                if (!$provider = (new GitHubApplicationUtility())->getProviderForEmailAddress($email, $request)) {
-                    return new JsonResponse(['error' => 'No provider found for email address'], 400);
-                }
+            $isProviderValid = match ($ssoTarget) {
+                'azure' => $provider instanceof Azure,
+                'github' => $provider instanceof Github,
+                default => false,
+            };
 
-                if (!$provider instanceof Github) {
-                    return new JsonResponse(['error' => 'Invalid authentication provider for email address'], 400);
-                }
-
-                $provider->scope = 'user:email';
-
-                $authorizationUrl = $provider->getAuthorizationUrl(['scope' => $provider->scope, 'login_hint' => $email]);
-
-                $_SESSION['vendi.sso.email'] = $email;
-                $_SESSION['vendi.sso.target'] = 'github';
-                $_SESSION['OAuth2.state'] = $provider->getState();
-
-                return new JsonResponse(
-                    [
-                        'authorizationUrl' => $authorizationUrl,
-                    ]
-                );
+            if (!$isProviderValid) {
+                return new JsonResponse(['error' => 'Invalid authentication provider for email address'], 400);
             }
+
+            switch ($ssoTarget) {
+                case 'azure':
+                    $provider->defaultEndPointVersion = Azure::ENDPOINT_VERSION_2_0;
+                    $baseGraphUri = $provider->getRootMicrosoftGraphUri(null);
+                    $provider->scope = 'openid profile email offline_access '.$baseGraphUri.'/User.Read';
+                    break;
+
+                case 'github':
+                    $provider->scope = 'user:email';
+                    break;
+            }
+
+            $authorizationUrl = $provider->getAuthorizationUrl(['scope' => $provider->scope, 'login_hint' => $email]);
+
+            $_SESSION[VENDI_SESSION_KEY_EMAIL] = $email;
+            $_SESSION[VENDI_SESSION_KEY_TARGET] = $ssoTarget;
+            $_SESSION[VENDI_SESSION_KEY_OAUTH2_STATE] = $provider->getState();
+
+            return new JsonResponse(
+                [
+                    'authorizationUrl' => $authorizationUrl,
+                ]
+            );
+
         }
     );
 
@@ -85,25 +84,23 @@ $router
     ->get(
         SsoRouter::VENDI_PATH_SSO_CALLBACK,
         static function (ServerRequestInterface $request): ResponseInterface {
-            if (!$email = $_SESSION['vendi.sso.email'] ?? null) {
+            if (!$email = $_SESSION[VENDI_SESSION_KEY_EMAIL] ?? null) {
                 throw new RuntimeException('No email address found in session');
             }
 
-            switch ($_SESSION['vendi.sso.target']) {
-                case 'azure':
-                    if (!$provider = (new AzureApplicationUtility())->getProviderForEmailAddress($email, $request)) {
-                        throw new RuntimeException('Could not find authentication provider for email address');
-                    }
-                    break;
-                case 'github':
-                    if (!$provider = (new GitHubApplicationUtility())->getProviderForEmailAddress($email, $request)) {
-                        throw new RuntimeException('Could not find authentication provider for email address');
-                    }
-                    break;
-                default:
-                    throw new RuntimeException('Invalid authentication provider for email address');
+            $provider = match ($_SESSION[VENDI_SESSION_KEY_TARGET] ?? null) {
+                'azure' => (new AzureApplicationUtility())->getProviderForEmailAddress($email, $request),
+                'github' => (new GitHubApplicationUtility())->getProviderForEmailAddress($email, $request),
+                default => null,
+            };
+
+            if (!$provider) {
+                throw new RuntimeException('Invalid authentication provider for email address');
             }
 
+            if ($_SESSION[VENDI_SESSION_KEY_OAUTH2_STATE] !== $provider->getState()) {
+                throw new RuntimeException('Invalid state returned from authentication provider');
+            }
 
             $accessToken = $provider->getAccessToken('authorization_code', [
                 'code' => $request->getQueryParams()['code'],
@@ -122,6 +119,8 @@ $router
             }
 
             wp_set_auth_cookie($user->ID);
+
+            unset($_SESSION[VENDI_SESSION_KEY_EMAIL], $_SESSION[VENDI_SESSION_KEY_TARGET], $_SESSION[VENDI_SESSION_KEY_OAUTH2_STATE]);
 
             return new Laminas\Diactoros\Response\RedirectResponse(admin_url());
         }

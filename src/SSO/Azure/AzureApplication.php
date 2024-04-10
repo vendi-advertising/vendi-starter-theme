@@ -2,11 +2,12 @@
 
 namespace Vendi\Theme\SSO\Azure;
 
+use Vendi\Theme\SSO\SsoApplicationInterface;
 
-class AzureApplication implements AzureApplicationInterface
+class AzureApplication implements SsoApplicationInterface
 {
     /**
-     * @var AzureClientSecretInterface[]
+     * @var AzureClientSecret[]
      */
     private array $clientSecrets = [];
 
@@ -34,7 +35,7 @@ class AzureApplication implements AzureApplicationInterface
     }
 
     /**
-     * @return AzureClientSecretInterface[]
+     * @return AzureClientSecret[]
      */
     public function getClientSecrets(): array
     {
@@ -46,7 +47,7 @@ class AzureApplication implements AzureApplicationInterface
         return $this->emailDomains;
     }
 
-    public function addClientSecret(AzureClientSecretInterface $clientSecret): void
+    public function addClientSecret(AzureClientSecret $clientSecret): void
     {
         $this->clientSecrets[] = $clientSecret;
     }

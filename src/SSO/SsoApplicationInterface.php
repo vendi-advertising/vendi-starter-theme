@@ -2,8 +2,6 @@
 
 namespace Vendi\Theme\SSO;
 
-use Vendi\Theme\SSO\Azure\AzureClientSecretInterface;
-
 interface SsoApplicationInterface
 {
     public function getName(): string;

@@ -2,10 +2,12 @@
 
 namespace Vendi\Theme\SSO\GitHub;
 
-class GitHubApplication implements GitHubApplicationInterface
+use Vendi\Theme\SSO\SsoApplicationInterface;
+
+class GitHubApplication implements SsoApplicationInterface
 {
     /**
-     * @var GitHubClientSecretInterface[]
+     * @var GitHubClientSecret[]
      */
     private array $clientSecrets = [];
 
@@ -26,6 +28,9 @@ class GitHubApplication implements GitHubApplicationInterface
         return $this->clientId;
     }
 
+    /**
+     * @return GitHubClientSecret[]
+     */
     public function getClientSecrets(): array
     {
         return $this->clientSecrets;
@@ -36,7 +41,7 @@ class GitHubApplication implements GitHubApplicationInterface
         return $this->emailDomains;
     }
 
-    public function addClientSecret(GitHubClientSecretInterface $clientSecret): void
+    public function addClientSecret(GitHubClientSecret $clientSecret): void
     {
         $this->clientSecrets[] = $clientSecret;
     }

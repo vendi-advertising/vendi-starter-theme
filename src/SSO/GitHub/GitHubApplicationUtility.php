@@ -2,7 +2,6 @@
 
 namespace Vendi\Theme\SSO\GitHub;
 
-use DateTimeImmutable;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Github;
 use League\Uri\UriString;

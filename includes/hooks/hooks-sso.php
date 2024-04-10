@@ -56,9 +56,9 @@ add_action(
 
         foreach ($sso_providers as $provider) {
             if ('azure_provider' === $provider['acf_fc_layout']) {
-                $providerImages['azure'] = Path::join(VENDI_CUSTOM_THEME_URL, 'images', 'sso', 'small', 'azure.svg');
+                $providerImages['azure'] = vendi_get_svg('images/sso/small/azure.svg', echo: false);
             } elseif ('github_provider' === $provider['acf_fc_layout']) {
-                $providerImages['github'] = Path::join(VENDI_CUSTOM_THEME_URL, 'images', 'sso', 'small', 'github.svg');
+                $providerImages['github'] = vendi_get_svg('images/sso/small/github.svg', echo: false);
             }
         }
 

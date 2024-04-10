@@ -28,6 +28,19 @@
 
             document = w.document,
 
+            providers = [
+                {
+                    name: 'azure',
+                    image: w.VENDI_SSO.images.azure,
+                    text: 'Sign in with Microsoft',
+                },
+                {
+                    name: 'github',
+                    image: w.VENDI_SSO.images.github,
+                    text: 'Sign in with GitHub',
+                },
+            ],
+
             createEmailForm = () => {
                 const
                     form = document.createElement('form'),
@@ -88,29 +101,21 @@
                 return form;
             },
 
-            createSsoButton = (imgSrc, className, name) => {
+            createSsoButton = (svg, className, signInText) => {
                 const
                     div = document.createElement('div'),
-                    h2 = document.createElement('h2'),
-                    img = document.createElement('img')
+                    span = document.createElement('span'),
+                    imgDiv = document.createElement('div')
                 ;
-                h2.append(`Sign in with ${name}`);
-                img.src = imgSrc;
-                h2.classList.add('sso-header');
-                img.classList.add('sso-button');
+                span.append(signInText);
+                span.classList.add('sso-header');
+                imgDiv.classList.add('sso-button');
+                imgDiv.innerHTML = svg;
                 div.classList.add('sso-header-and-button', className);
 
-                div.append(h2, img);
+                div.append(imgDiv, span);
 
                 return div;
-            },
-
-            createGitHubButton = () => {
-                return createSsoButton(w.VENDI_SSO.images.github, 'github', 'GitHub');
-            },
-
-            createAzureButton = () => {
-                return createSsoButton(w.VENDI_SSO.images.azure, 'azure', 'Microsoft');
             },
 
             createBackToPasswordLink = () => {
@@ -143,58 +148,56 @@
                     existingUsernameAndPasswordArea = document.getElementById('loginform'),
                     ssoContainer = document.createElement('div'),
                     backToPassWordLink = createBackToPasswordLink(),
-                    emailLookupForm = createEmailForm()
+                    emailLookupForm = createEmailForm(),
+                    buttonWrapper = document.createElement('div')
                 ;
 
                 let foundOneSystem = false;
 
                 ssoContainer.classList.add('sso-login-selector');
+                buttonWrapper.classList.add('sso-provider-wrapper');
 
-                if (w.VENDI_SSO.images.azure) {
-                    foundOneSystem = true;
-                    const azureButton = createAzureButton();
-                    azureButton
-                        .querySelector('img')
-                        .addEventListener(
-                            'click',
-                            () => {
-                                entireLoginArea.classList.add('show-sso', 'azure');
-                                emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
-                                emailLookupForm.setAttribute('data-sso-target', 'azure');
+                providers
+                    .forEach(
+                        (provider) => {
+                            if (w.VENDI_SSO.images[provider.name]) {
+                                foundOneSystem = true;
+                                const button = createSsoButton(provider.image, provider.name, provider.text);
+                                button
+                                    .addEventListener(
+                                        'click',
+                                        () => {
+                                            entireLoginArea.classList.add('show-sso', provider.name);
+                                            emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
+                                            emailLookupForm.setAttribute('data-sso-target', provider.name);
+                                        }
+                                    )
+                                ;
+                                buttonWrapper.append(button);
                             }
-                        )
-                    ;
-                    ssoContainer.append(azureButton);
-                }
-
-                if (w.VENDI_SSO.images.github) {
-                    foundOneSystem = true;
-                    const gitHubButton = createGitHubButton();
-                    gitHubButton
-                        .querySelector('img')
-                        .addEventListener(
-                            'click',
-                            () => {
-                                entireLoginArea.classList.add('show-sso', 'github');
-                                emailLookupForm.setAttribute('action', w.VENDI_SSO.lookupUrl);
-                                emailLookupForm.setAttribute('data-sso-target', 'github');
-                            }
-                        )
-                    ;
-                    ssoContainer.append(gitHubButton);
-
-                }
+                        }
+                    )
+                ;
 
                 if (!foundOneSystem) {
                     return;
                 }
+
+                ssoContainer.append(buttonWrapper);
 
                 backToPassWordLink
                     .querySelector('span')
                     .addEventListener(
                         'click',
                         () => {
-                            entireLoginArea.classList.remove('show-sso', 'azure', 'github');
+                            entireLoginArea.classList.remove('show-sso');
+                            providers
+                                .forEach(
+                                    (provider) => {
+                                        entireLoginArea.classList.remove(provider.name);
+                                    }
+                                )
+                            ;
                         }
                     )
                 ;

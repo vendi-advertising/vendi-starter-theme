@@ -31,39 +31,57 @@
     border: 1px solid #c3c4c7;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
 
+    .sso-provider-wrapper {
+        display: grid;
+        gap: 1rem;
+        padding-inline: 24px;
+
+        #login.show-sso & {
+            gap: 0;
+        }
+    }
+
     .sso-header-and-button {
         display: grid;
-        grid-template-columns: 3rem 15rem;
+        grid-template-columns: auto auto;
         justify-content: center;
+        align-items: center;
         border: 1px solid #c3c4c7;
         border-radius: 5px;
-        align-items: center;
-        max-width: 20rem;
+        width: 100%;
         margin-inline: auto;
-        padding: 0.5rem;
+        padding-block: 0.25rem;
         cursor: pointer;
+        gap: 0.5rem;
+        box-sizing: border-box;
+
+        #login.show-sso:not(.azure) &.azure,
+        #login.show-sso:not(.github) &.github {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+        }
+
+        &:hover {
+            background: #f9f9f9;
+        }
 
         .sso-button {
+            font-size: 0;
+        }
+
+        .sso-button svg {
             z-index: 2;
             transition: all var(--transition-duration) ease;
-            max-width: 2rem;
-            max-height: 2rem;
-            width: 100%;
-            aspect-ratio: 1 / 1;
+            width: 1.8rem;
+            height: 1.8rem;
         }
 
         .sso-header {
-            order: 2;
             transition: all var(--transition-duration) ease;
             text-align: left;
-
-            #login.show-sso.azure .sso-header-and-button.azure & {
-                /*opacity: 1;*/
-            }
-
-            #login.show-sso.github .sso-header-and-button.github & {
-                /*opacity: 1;*/
-            }
+            font-weight: 500;
+            font-size: 0.9rem;
         }
     }
 

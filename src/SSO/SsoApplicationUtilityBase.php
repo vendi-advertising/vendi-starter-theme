@@ -22,4 +22,23 @@ abstract class SsoApplicationUtilityBase
 
         return null;
     }
+
+    final public function getAllRegisteredProviders(): array
+    {
+        if (!$ssoProviders = get_field('sso_providers', 'option')) {
+            return [];
+        }
+
+        return $ssoProviders;
+    }
+
+    final public function getAllRegisteredProvidersForType(string $type): array
+    {
+        return array_filter(
+            $this->getAllRegisteredProviders(),
+            static function ($provider) use ($type) {
+                return $type === $provider['acf_fc_layout'];
+            }
+        );
+    }
 }

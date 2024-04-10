@@ -88,39 +88,29 @@
                 return form;
             },
 
-            createGitHubButton = () => {
+            createSsoButton = (imgSrc, className, name) => {
                 const
                     div = document.createElement('div'),
                     h2 = document.createElement('h2'),
                     img = document.createElement('img')
                 ;
-                h2.append('Sign in with GitHub');
-                img.src = w.VENDI_SSO.images.github;
+                h2.append(`Sign in with ${name}`);
+                img.src = imgSrc;
                 h2.classList.add('sso-header');
                 img.classList.add('sso-button');
-                div.classList.add('sso-header-and-button', 'github');
+                div.classList.add('sso-header-and-button', className);
 
                 div.append(h2, img);
 
                 return div;
             },
 
+            createGitHubButton = () => {
+                return createSsoButton(w.VENDI_SSO.images.github, 'github', 'GitHub');
+            },
+
             createAzureButton = () => {
-
-                const
-                    div = document.createElement('div'),
-                    h2 = document.createElement('h2'),
-                    img = document.createElement('img')
-                ;
-                h2.append('Sign in with Microsoft');
-                img.src = w.VENDI_SSO.images.azure;
-                h2.classList.add('sso-header');
-                img.classList.add('sso-button');
-                div.classList.add('sso-header-and-button', 'azure');
-
-                div.append(h2, img);
-
-                return div;
+                return createSsoButton(w.VENDI_SSO.images.azure, 'azure', 'Microsoft');
             },
 
             createBackToPasswordLink = () => {

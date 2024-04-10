@@ -21,12 +21,12 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
          *
          * See https://oauth2-client.thephpleague.com/
          */
-        if (!$azureApplication = $this->getApplicationForEmailAddress($emailAddress)) {
+        if (!$application = $this->getApplicationForEmailAddress($emailAddress)) {
             return null;
         }
 
         $maybeClientSecrets = [];
-        foreach ($azureApplication->getClientSecrets() as $client_secret) {
+        foreach ($application->getClientSecrets() as $client_secret) {
             if ($client_secret->getExpirationDate() > new DateTimeImmutable()) {
                 $maybeClientSecrets[$client_secret->getStartDate()->format('Y-m-d')] = $client_secret;
             }
@@ -53,10 +53,10 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
 
         return new Azure(
             [
-                'clientId' => $azureApplication->getClientId(),
+                'clientId' => $application->getClientId(),
                 'clientSecret' => $thisClientSecret->getSecret(),
                 'redirectUri' => $redirectUrl,
-                'tenant' => $azureApplication->getTenantId(),
+                'tenant' => $application->getTenantId(),
                 'scopes' => ['openid'],
                 'defaultEndPointVersion' => '2.0',
             ],
@@ -64,20 +64,17 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
     }
 
     /**
-     * @return AzureApplicationInterface[]
      * @throws Exception
      */
-    private function getAllAzureApplications(): array
+    protected function getAllApplications(): array
     {
-        if (!$ssoProviders = get_field('sso_providers', 'option')) {
-            return [];
-        }
+        $applicationFromAcf = $this->getAllRegisteredProvidersForType('azure_provider');
 
         $applications = [];
 
-        foreach ($ssoProviders as $provider) {
+        foreach ($applicationFromAcf as $provider) {
 
-            if ('azure_provider' !== $provider['acf_fc_layout']) {
+            if (!array_key_exists('secrets', $provider) || !is_array($provider['secrets']) || !count($provider['secrets'])) {
                 continue;
             }
 
@@ -87,10 +84,6 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
                 $provider['tenant_id'],
                 explode("\n", mb_strtolower($provider['domains']))
             );
-
-            if (!array_key_exists('secrets', $provider) || !is_array($provider['secrets']) || !count($provider['secrets'])) {
-                continue;
-            }
 
             foreach ($provider['secrets'] as $secret) {
                 $app->addClientSecret(
@@ -107,13 +100,5 @@ class AzureApplicationUtility extends SsoApplicationUtilityBase
         }
 
         return $applications;
-    }
-
-    /**
-     * @throws Exception
-     */
-    protected function getAllApplications(): array
-    {
-        return $this->getAllAzureApplications();
     }
 }

@@ -18,16 +18,13 @@ class GitHubApplicationUtility extends SsoApplicationUtilityBase
             return null;
         }
 
-        $maybeClientSecrets = [];
-        foreach ($application->getClientSecrets() as $client_secret) {
-            $maybeClientSecrets[] = $client_secret;
-            break;
-        }
+        $allSecrets = $application->getClientSecrets();
 
-        if (!count($maybeClientSecrets)) {
+        $thisClientSecret = reset($allSecrets);
+
+        if (!$thisClientSecret) {
             return null;
         }
-        $thisClientSecret = end($maybeClientSecrets);
 
         $redirectUrl = UriString::build(
             [
@@ -49,15 +46,13 @@ class GitHubApplicationUtility extends SsoApplicationUtilityBase
 
     protected function getAllApplications(): array
     {
-        if (!$ssoProviders = get_field('sso_providers', 'option')) {
-            return [];
-        }
+        $applicationFromAcf = $this->getAllRegisteredProvidersForType('github_provider');
 
         $applications = [];
 
-        foreach ($ssoProviders as $provider) {
+        foreach ($applicationFromAcf as $provider) {
 
-            if ('github_provider' !== $provider['acf_fc_layout']) {
+            if (!array_key_exists('secrets', $provider) || !is_array($provider['secrets']) || !count($provider['secrets'])) {
                 continue;
             }
 
@@ -66,10 +61,6 @@ class GitHubApplicationUtility extends SsoApplicationUtilityBase
                 $provider['client_id'],
                 explode("\n", mb_strtolower($provider['domains']))
             );
-
-            if (!array_key_exists('secrets', $provider) || !is_array($provider['secrets']) || !count($provider['secrets'])) {
-                continue;
-            }
 
             foreach ($provider['secrets'] as $secret) {
                 $app->addClientSecret(

@@ -33,33 +33,36 @@
 
     .sso-header-and-button {
         display: grid;
-        grid-template-areas: "same";
-        place-content: center;
-
-        & > * {
-            grid-area: same;
-        }
+        grid-template-columns: 3rem 15rem;
+        justify-content: center;
+        border: 1px solid #c3c4c7;
+        border-radius: 5px;
+        align-items: center;
+        max-width: 20rem;
+        margin-inline: auto;
+        padding: 0.5rem;
+        cursor: pointer;
 
         .sso-button {
-            cursor: pointer;
             z-index: 2;
             transition: all var(--transition-duration) ease;
-
-            #login.show-sso & {
-                opacity: 0;
-            }
+            max-width: 2rem;
+            max-height: 2rem;
+            width: 100%;
+            aspect-ratio: 1 / 1;
         }
 
         .sso-header {
-            opacity: 0;
+            order: 2;
             transition: all var(--transition-duration) ease;
+            text-align: left;
 
             #login.show-sso.azure .sso-header-and-button.azure & {
-                opacity: 1;
+                /*opacity: 1;*/
             }
 
             #login.show-sso.github .sso-header-and-button.github & {
-                opacity: 1;
+                /*opacity: 1;*/
             }
         }
     }

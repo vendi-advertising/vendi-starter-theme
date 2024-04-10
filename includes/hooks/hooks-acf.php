@@ -61,7 +61,7 @@ add_filter(
             'post_type_65f3571fbc97e.json' => 'cpt-alert.json',
 
             'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
-            'ui_options_page_661435b551158.json' => 'option-page-theme-settings–sso.json',
+            'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
         ];
 
         if (array_key_exists($filename, $mapping)) {

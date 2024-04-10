@@ -19,16 +19,16 @@ add_filter(
     }
 );
 
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page(
-        [
-            'page_title' => 'Theme Settings',
-            'menu_title' => 'Theme Settings',
-            'menu_slug' => 'theme_settings',
-            'capability' => 'manage_options',
-        ]
-    );
-}
+//if (function_exists('acf_add_options_page')) {
+//    acf_add_options_page(
+//        [
+//            'page_title' => 'Theme Settings',
+//            'menu_title' => 'Theme Settings',
+//            'menu_slug' => 'theme_settings',
+//            'capability' => 'manage_options',
+//        ]
+//    );
+//}
 
 add_filter(
     'acf/json/save_file_name',
@@ -52,9 +52,16 @@ add_filter(
             'group_61d8a393c5415.json' => 'theme-settings-fields.json',
             'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
 
+            'group_661435d8a956b.json' => 'theme-settings–sso.json',
+            'group_6615bc1d65360.json' => 'theme-settings–sso–github-provider.json',
+            'group_66143631ddd8b.json' => 'theme-settings–sso–azure-provider.json',
+
             'post_type_6599ab6f6b61a.json' => 'cpt-testimonial.json',
             'post_type_659c2c3567923.json' => 'cpt-reusable-content.json',
             'post_type_65f3571fbc97e.json' => 'cpt-alert.json',
+
+            'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
+            'ui_options_page_661435b551158.json' => 'option-page-theme-settings–sso.json',
         ];
 
         if (array_key_exists($filename, $mapping)) {

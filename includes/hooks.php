@@ -10,3 +10,4 @@ require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-theme-development.ph
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-global-javascript.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-login.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-alerts.php';
+require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-sso.php';

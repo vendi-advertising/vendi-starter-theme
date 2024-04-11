@@ -124,6 +124,9 @@ function vendi_render_class_attribute(array|string $classes): void
         $classes = explode(' ', $classes);
     }
 
+    if (!$classes = array_filter($classes)) {
+        return;
+    }
     echo 'class="'.esc_attr(implode(' ', $classes)).'"';
 }
 

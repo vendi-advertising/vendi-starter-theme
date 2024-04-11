@@ -1,8 +1,40 @@
 <?php
 $classes = ['component-basic-copy'];
-if ($col = get_layout_col()) {
-    $classes[] = "col-".$col;
+
+$column_span = null;
+if (have_settings()) {
+    // The while loop is needed until we can figure out how to reset
+    // the ACF loop. Otherwise, we can't get to get_sub_field later.
+    while (have_settings()) {
+        the_setting();
+        $column_span = get_sub_field('column_span');
+    }
 }
+
+global $respectGridColumnWidth;
+
+if ($respectGridColumnWidth) {
+    $column_span = match ($column_span) {
+        '1' => 'grid-col-span-1',
+        '2' => 'grid-col-span-2',
+        '3' => 'grid-col-span-3',
+        '4' => 'grid-col-span-4',
+        '5' => 'grid-col-span-5',
+        '6' => 'grid-col-span-6',
+        '7' => 'grid-col-span-7',
+        '8' => 'grid-col-span-8',
+        '9' => 'grid-col-span-9',
+        '10' => 'grid-col-span-10',
+        '11' => 'grid-col-span-11',
+        '12' => 'grid-col-span-12',
+        default => null,
+    };
+} else {
+    $column_span = null;
+}
+
+$classes[] = $column_span;
+
 ?>
 <section
     <?php vendi_render_class_attribute($classes); ?>
@@ -12,105 +44,3 @@ if ($col = get_layout_col()) {
         <?php echo get_sub_field('copy') ?>
     </div>
 </section>
-
-<style>
-    .content-components {
-        display: flex;
-    }
-
-    .wrap {
-        flex-wrap: wrap;
-    }
-
-    .col-12 {
-        flex: 0 0 100%
-    }
-
-    .col-11 {
-        flex: 0 0 calc(100% / 12 * 11);
-    }
-
-    .col-10 {
-        flex: 0 0 calc(100% / 12 * 10);
-    }
-
-    .col-9 {
-        flex: 0 0 calc(100% / 12 * 9);
-    }
-
-    .col-8 {
-        flex: 0 0 calc(100% / 12 * 8);
-    }
-
-    .col-7 {
-        flex: 0 0 calc(100% / 12 * 7)
-    }
-
-    .col-6 {
-        flex: 0 0 calc(100% / 12 * 6)
-    }
-
-    .col-5 {
-        flex: 0 0 calc(100% / 12 * 5)
-    }
-
-    .col-4 {
-        flex: 0 0 calc(100% / 12 * 4)
-    }
-
-    .col-3 {
-        flex: 0 0 calc(100% / 12 * 3)
-    }
-
-    .col-2 {
-        flex: 0 0 calc(100% / 12 * 2)
-    }
-
-    .col-1 {
-        flex: 0 0 calc(100% / 12 * 1)
-    }
-
-    .col-auto {
-        flex: 1
-    }
-
-    .align-center {
-        justify-content: center
-    }
-
-    .align-left {
-        justify-content: flex-start
-    }
-
-    .align-right {
-        justify-content: flex-end
-    }
-
-    .align-space-evenly {
-        justify-content: space-evenly
-    }
-
-    .align-space-between {
-        justify-content: space-between
-    }
-
-    .align-space-around {
-        justify-content: space-around
-    }
-
-    .valign-stretch {
-        align-items: stretch
-    }
-
-    .valign-top {
-        align-items: flex-start
-    }
-
-    .valign-center {
-        align-items: center
-    }
-
-    .valign-bottom {
-        align-items: flex-end
-    }
-</style>

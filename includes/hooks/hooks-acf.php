@@ -42,6 +42,13 @@ add_filter(
             'group_659c6e7fc386c.json' => 'component-figure.json',
             'group_659c445704039.json' => 'component-reusable-content.json',
             'group_6599ae10d9002.json' => 'component-testimonial.json',
+            'group_6616dc2346a45.json' => 'component-grid.json',
+
+            'group_6616dde078cf0.json' => 'sub-component-grid-component-wrapper.json',
+
+            'group_6616f4a3c869c.json' => 'settings-modal-grid-settings.json',
+            'group_6616f3340ebca.json' => 'settings-modal-grid-component.json',
+            'group_6616f42278eda.json' => 'settings-modal-grid-row.json',
 
             'group_6599af50880a8.json' => 'components-shared-component-settings-tab.json',
             'group_61dc8e97982a7.json' => 'content-components.json',
@@ -71,4 +78,41 @@ add_filter(
         return $filename;
     },
     accepted_args: 3,
+);
+
+
+add_action(
+    'admin_enqueue_scripts',
+    static function () {
+        ?>
+        <style>
+            [data-layout~=grid] > .acf-fields {
+                background-color: #cbe5ff;
+
+                .acf-input .button[data-name~=add-layout] {
+                    background-color: #64b3fb;
+                    color: white;
+                }
+
+                [data-layout~=row] > .acf-fields {
+                    background-color: #e8efa9;
+
+                    .acf-input .button[data-name~=add-layout] {
+                        background-color: #9ea359;
+                        color: white;
+                    }
+
+                    [data-layout~=components] > .acf-fields {
+                        background-color: #e2bef1;
+
+                        .acf-input .button[data-name~=add-layout] {
+                            background-color: #cc56fd;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        </style>
+        <?php
+    }
 );

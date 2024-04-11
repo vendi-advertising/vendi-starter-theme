@@ -42,6 +42,13 @@ add_filter(
             'group_659c6e7fc386c.json' => 'component-figure.json',
             'group_659c445704039.json' => 'component-reusable-content.json',
             'group_6599ae10d9002.json' => 'component-testimonial.json',
+            'group_6616dc2346a45.json' => 'component-grid.json',
+
+            'group_6616dde078cf0.json' => 'sub-component-grid-component-wrapper.json',
+
+            'group_6616f4a3c869c.json' => 'settings-modal-grid-settings.json',
+            'group_6616f3340ebca.json' => 'settings-modal-grid-component.json',
+            'group_6616f42278eda.json' => 'settings-modal-grid-row.json',
 
             'group_6599af50880a8.json' => 'components-shared-component-settings-tab.json',
             'group_61dc8e97982a7.json' => 'content-components.json',

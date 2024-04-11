@@ -98,7 +98,7 @@ $router
                 throw new RuntimeException('Invalid authentication provider for email address');
             }
 
-            if ($_SESSION[VENDI_SESSION_KEY_OAUTH2_STATE] !== $provider->getState()) {
+            if ($_SESSION[VENDI_SESSION_KEY_OAUTH2_STATE] !== ($request->getQueryParams()['state'] ?? null)) {
                 throw new RuntimeException('Invalid state returned from authentication provider');
             }
 

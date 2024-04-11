@@ -5,9 +5,15 @@ if (!($image = get_sub_field('image')) || !is_array($image)) {
 
 $caption = get_sub_field('caption');
 $photo_credit = get_sub_field('photo_credit');
+
+$classes = ['component-figure'];
+$classes = array_merge($classes, vendi_get_css_classes_for_box_control());
+
+$styles = vendi_get_css_styles_for_box_control();
 ?>
 <div
-    class="component-figure"
+    <?php vendi_render_class_attribute($classes, include_grid_settings: true); ?>
+    <?php vendi_render_css_styles($styles); ?>
     <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
 >
     <div class="region">

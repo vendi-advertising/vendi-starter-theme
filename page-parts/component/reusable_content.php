@@ -20,11 +20,21 @@ if (!$shared_content_post instanceof WP_Post) {
 
 if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
 
-    // loop through the content components rows of data
-    while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
+    // This wrapper is a maybe, depending on if we use grid for the outer container.
+    // Right now we have a `display: contents` on it to offset it, just in case.
+    ?>
+    <div class="component-reusable-content">
+        <?php
 
-        the_row();
-        //Load component
-        vendi_load_component_component_with_state(get_row_layout(), ['current_post' => $shared_content_post]);
-    }
+        // loop through the content components rows of data
+        while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
+
+            the_row();
+            //Load component
+            vendi_load_component_component_with_state(get_row_layout(), ['current_post' => $shared_content_post]);
+        }
+
+        ?>
+    </div>
+    <?php
 }

@@ -85,7 +85,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -133,8 +135,10 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
-                    "acfe_flexible_settings_size": "medium",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
+                    "acfe_flexible_settings_size": "xlarge",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
                     "acfe_flexible_modal_edit_size": false,
@@ -181,7 +185,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -229,7 +235,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -277,7 +285,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -380,7 +390,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -430,7 +442,9 @@
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
-                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_layout_locations": [],
@@ -482,5 +496,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712780487
+    "modified": 1712871089
 }

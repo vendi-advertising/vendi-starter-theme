@@ -94,6 +94,56 @@
                                 "acfe_flexible_grid_wrap": false
                             },
                             "layouts": {
+                                "layout_6616f86601fc4": {
+                                    "key": "layout_6616f86601fc4",
+                                    "name": "accordion",
+                                    "label": "Accordion",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6616f86b01fc6",
+                                            "label": "Accordion",
+                                            "name": "accordion",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_6599ece5e2264"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0,
+                                            "acfe_seamless_style": 0,
+                                            "acfe_clone_modal": 0,
+                                            "acfe_clone_modal_close": 0,
+                                            "acfe_clone_modal_button": "",
+                                            "acfe_clone_modal_size": "large"
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": "",
+                                    "acfe_flexible_settings": [
+                                        "group_6616f3340ebca"
+                                    ],
+                                    "acfe_flexible_settings_size": "medium",
+                                    "acfe_flexible_render_template": false,
+                                    "acfe_flexible_render_style": false,
+                                    "acfe_flexible_render_script": false,
+                                    "acfe_flexible_thumbnail": false,
+                                    "acfe_layout_locations": [],
+                                    "acfe_flexible_modal_edit_size": false,
+                                    "acfe_flexible_category": false,
+                                    "acfe_layout_col": "auto",
+                                    "acfe_layout_allowed_col": false
+                                },
                                 "layout_6616f85001fc1": {
                                     "key": "layout_6616f85001fc1",
                                     "name": "basic_copy",
@@ -144,16 +194,16 @@
                                     "acfe_layout_col": "auto",
                                     "acfe_layout_allowed_col": false
                                 },
-                                "layout_6616f86601fc4": {
-                                    "key": "layout_6616f86601fc4",
-                                    "name": "accordion",
-                                    "label": "Accordion",
+                                "layout_661839c879852": {
+                                    "key": "layout_661839c879852",
+                                    "name": "empty_cell",
+                                    "label": "Empty Cell",
                                     "display": "block",
                                     "sub_fields": [
                                         {
-                                            "key": "field_6616f86b01fc6",
-                                            "label": "Accordion",
-                                            "name": "accordion",
+                                            "key": "field_661839d979855",
+                                            "label": "Empty Cell",
+                                            "name": "empty_cell",
                                             "aria-label": "",
                                             "type": "clone",
                                             "instructions": "",
@@ -165,7 +215,7 @@
                                                 "id": ""
                                             },
                                             "clone": [
-                                                "group_6599ece5e2264"
+                                                "group_6618398196a9f"
                                             ],
                                             "display": "seamless",
                                             "layout": "block",
@@ -180,9 +230,7 @@
                                     ],
                                     "min": "",
                                     "max": "",
-                                    "acfe_flexible_settings": [
-                                        "group_6616f3340ebca"
-                                    ],
+                                    "acfe_flexible_settings": "",
                                     "acfe_flexible_settings_size": "medium",
                                     "acfe_flexible_render_template": false,
                                     "acfe_flexible_render_style": false,
@@ -256,5 +304,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712781594
+    "modified": 1712863722
 }

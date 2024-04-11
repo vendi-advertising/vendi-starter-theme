@@ -2,9 +2,16 @@
 if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordion_items) || !count($accordion_items)) {
     return;
 }
+
+$classes = ['component-accordion'];
+$classes = array_merge($classes, vendi_get_css_classes_for_box_control());
+
+$styles = vendi_get_css_styles_for_box_control();
+
 ?>
 <section
-    class="component-accordion"
+    <?php vendi_render_class_attribute($classes, include_grid_settings: true); ?>
+    <?php vendi_render_css_styles($styles); ?>
     data-role="accordion"
     <?php if ('show' === get_sub_field('expand_collapse_all')): ?>
         data-expand-collapse-available

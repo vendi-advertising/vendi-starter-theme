@@ -3,6 +3,7 @@
 //Please avoid using global functions if possible!
 
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/functions/utility.php';
+require_once VENDI_CUSTOM_THEME_PATH.'/includes/functions/box-control.php';
 
 function vendi_maybe_get_row_id_attribute(mixed $row_id, bool $echo = true, bool $id_only_no_attribute = false): ?string
 {
@@ -118,10 +119,14 @@ function vendi_theme_enqueue_script(string $handle, string $srcRelativeToThemeRo
     );
 }
 
-function vendi_render_class_attribute(array|string $classes): void
+function vendi_render_class_attribute(array|string $classes, bool $include_grid_settings = true): void
 {
     if (is_string($classes)) {
         $classes = explode(' ', $classes);
+    }
+
+    if ($include_grid_settings) {
+        $classes = array_merge($classes, vendi_maybe_get_grid_classes());
     }
 
     if (!$classes = array_filter($classes)) {

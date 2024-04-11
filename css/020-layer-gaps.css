@@ -26,4 +26,32 @@
     .col-gap-xx-large {
         column-gap: 16rem;
     }
+
+    .row-gap-none {
+        row-gap: 0;
+    }
+
+    .row-gap-x-small {
+        row-gap: 0.5rem;
+    }
+
+    .row-gap-small {
+        row-gap: 1rem;
+    }
+
+    .row-gap-medium {
+        row-gap: 2rem;
+    }
+
+    .row-gap-large {
+        row-gap: 4rem;
+    }
+
+    .row-gap-x-large {
+        row-gap: 8rem;
+    }
+
+    .row-gap-xx-large {
+        row-gap: 16rem;
+    }
 }

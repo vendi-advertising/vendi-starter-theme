@@ -1,0 +1,57 @@
+@layer margins {
+    .margin-block-xx-small {
+        margin-block: var(--size-xx-small)
+    }
+
+    .margin-block-x-small {
+        margin-block: var(--size-x-small);
+    }
+
+    .margin-block-small {
+        margin-block: var(--size-small);
+    }
+
+    .margin-block-medium {
+        margin-block: var(--size-medium);
+    }
+
+    .margin-block-large {
+        margin-block: var(--size-large);
+    }
+
+    .margin-block-x-large {
+        margin-block: var(--size-x-large);
+    }
+
+    .margin-block-xx-large {
+        margin-block: var(--size-xx-large);
+    }
+
+    .margin-inline-xx-small {
+        margin-inline: var(--size-xx-small)
+    }
+
+    .margin-inline-x-small {
+        margin-inline: var(--size-x-small);
+    }
+
+    .margin-inline-small {
+        margin-inline: var(--size-small);
+    }
+
+    .margin-inline-medium {
+        margin-inline: var(--size-medium);
+    }
+
+    .margin-inline-large {
+        margin-inline: var(--size-large);
+    }
+
+    .margin-inline-x-large {
+        margin-inline: var(--size-x-large);
+    }
+
+    .margin-inline-xx-large {
+        margin-inline: var(--size-xx-large);
+    }
+}

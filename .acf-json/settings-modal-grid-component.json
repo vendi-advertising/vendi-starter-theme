@@ -44,43 +44,6 @@
             "allow_custom": 0,
             "search_placeholder": "",
             "min": ""
-        },
-        {
-            "key": "field_66170f300562a",
-            "label": "Column Gap",
-            "name": "column_gap",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "none": "None",
-                "x-small": "Extra Small",
-                "small": "Small",
-                "medium": "Medium",
-                "large": "Large",
-                "x-large": "Extra Large",
-                "xx-large": "Extra Extra Large"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "min": ""
         }
     ],
     "location": [
@@ -108,5 +71,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712787493
+    "modified": 1712864365
 }

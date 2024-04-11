@@ -1,0 +1,57 @@
+@layer paddings {
+    .padding-block-xx-small {
+        padding-block: var(--size-xx-small)
+    }
+
+    .padding-block-x-small {
+        padding-block: var(--size-x-small);
+    }
+
+    .padding-block-small {
+        padding-block: var(--size-small);
+    }
+
+    .padding-block-medium {
+        padding-block: var(--size-medium);
+    }
+
+    .padding-block-large {
+        padding-block: var(--size-large);
+    }
+
+    .padding-block-x-large {
+        padding-block: var(--size-x-large);
+    }
+
+    .padding-block-xx-large {
+        padding-block: var(--size-xx-large);
+    }
+
+    .padding-inline-xx-small {
+        padding-inline: var(--size-xx-small)
+    }
+
+    .padding-inline-x-small {
+        padding-inline: var(--size-x-small);
+    }
+
+    .padding-inline-small {
+        padding-inline: var(--size-small);
+    }
+
+    .padding-inline-medium {
+        padding-inline: var(--size-medium);
+    }
+
+    .padding-inline-large {
+        padding-inline: var(--size-large);
+    }
+
+    .padding-inline-x-large {
+        padding-inline: var(--size-x-large);
+    }
+
+    .padding-inline-xx-large {
+        padding-inline: var(--size-xx-large);
+    }
+}

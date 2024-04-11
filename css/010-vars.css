@@ -57,3 +57,13 @@
     --content-width-normal: 114rem;
     --content-width-narrow: 78rem;
 }
+
+:root {
+    --size-xx-small: 0.25rem;
+    --size-x-small: calc(var(--size-xx-small) * 2);
+    --size-small: calc(var(--size-xx-small) * 4);
+    --size-medium: calc(var(--size-xx-small) * 8);
+    --size-large: calc(var(--size-xx-small) * 16);
+    --size-x-large: calc(var(--size-xx-small) * 32);
+    --size-xx-large: calc(var(--size-xx-small) * 64);
+}

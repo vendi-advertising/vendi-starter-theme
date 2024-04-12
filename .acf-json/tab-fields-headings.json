@@ -1,0 +1,118 @@
+{
+    "key": "group_661983686d448",
+    "title": "Tab Fields - Heading Settings",
+    "fields": [
+        {
+            "key": "field_6619846d43888",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<code>H1<\/code> should generally be avoided.\r\n\r\nIf \"Include in Document Outline\" is set to \"No\", an HTML <code>&lt;div&gt;<\/code> tag will be used with the specified heading level class, instead of an <code>&lt;h1&gt;<\/code> through <code>&lt;h6&gt;<\/code> tag. Visually these should still be identical.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6619836883adc",
+            "label": "Heading Level",
+            "name": "heading_level",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "h1": "h1",
+                "h2": "h2",
+                "h3": "h3",
+                "h4": "h4",
+                "h5": "h5",
+                "h6": "h6"
+            },
+            "default_value": "h2",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_661983b083add",
+            "label": "Include in Document Outline",
+            "name": "include_in_document_outline",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes",
+                "no": "No"
+            },
+            "default_value": "yes",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1712948396
+}

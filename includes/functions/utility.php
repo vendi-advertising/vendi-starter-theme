@@ -151,6 +151,21 @@ function vendi_get_global_javascript(?string $location): array
     return $ret;
 }
 
+function vendi_render_attribute(string $name, null|bool|string $value): void
+{
+    if (true === $value) {
+        echo sprintf('%s', esc_attr($name));
+
+        return;
+    }
+
+    if (!$value) {
+        return;
+    }
+
+    echo sprintf('%s="%s"', esc_attr($name), esc_attr($value));
+}
+
 function vendi_render_class_attribute(array|string $classes, bool $include_grid_settings = true, bool $include_box_control_settings = false): void
 {
     if (is_string($classes)) {
@@ -193,4 +208,16 @@ function vendi_convert_alerts_to_objects($alerts): array
     }
 
     return $ret;
+}
+
+function vendi_render_headline(string $sub_field_headline, string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline'): void
+{
+    if (!$headline = get_sub_field($sub_field_headline)) {
+        return;
+    }
+
+    $headline_level = vendi_constrain_h1_through_h6(get_sub_field($sub_field_for_heading_level));
+    $headline_tag = 'no' === get_sub_field($sub_field_for_include_in_document_outline) ? 'div' : $headline_level;
+
+    echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, $headline_level, esc_html($headline));
 }

@@ -45,6 +45,8 @@ add_filter(
             'group_6599ae10d9002.json' => 'component-testimonial.json',
             'group_6616dc2346a45.json' => 'component-grid.json',
             'group_6618398196a9f.json' => 'component-grid-empty-cell.json',
+            'group_66196f1f7658c.json' => 'component-call-to-action.json',
+            'group_661970fa6651c.json' => 'sub-component-call-to-action-button.json',
 
             'group_6616dde078cf0.json' => 'sub-component-grid-component-wrapper.json',
 
@@ -72,6 +74,8 @@ add_filter(
 
             'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
             'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
+
+            'group_661983686d448.json' => 'tab-fields-headings.json',
         ];
 
         if (array_key_exists($filename, $mapping)) {

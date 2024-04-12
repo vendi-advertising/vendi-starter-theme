@@ -16,8 +16,7 @@ if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordi
     <div class="region">
 
         <?php
-
-        vendi_load_component_component('intro-headline', 'accordion');
+        vendi_render_headline('intro_heading');
         vendi_load_component_component_with_state('controls', ['accordion_items' => $accordion_items], 'accordion');
 
         while (have_rows('accordion_items')) {

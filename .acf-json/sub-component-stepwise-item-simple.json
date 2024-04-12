@@ -1,0 +1,129 @@
+{
+    "key": "group_66198b6ededc6",
+    "title": "Stepwise Item - Simple",
+    "fields": [
+        {
+            "key": "field_66198c3941b35",
+            "label": "Step Identifier",
+            "name": "step_identifier",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66198b6f41b33",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "required_message": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66198beb41b34",
+            "label": "Copy",
+            "name": "copy",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_wysiwyg_height": 300,
+            "acfe_wysiwyg_max_height": "",
+            "acfe_wysiwyg_valid_elements": "",
+            "acfe_wysiwyg_custom_style": "",
+            "acfe_wysiwyg_disable_wp_style": 0,
+            "acfe_wysiwyg_autoresize": 0,
+            "acfe_wysiwyg_disable_resize": 0,
+            "acfe_wysiwyg_remove_path": 0,
+            "acfe_wysiwyg_menubar": 0,
+            "acfe_wysiwyg_transparent": 0,
+            "acfe_wysiwyg_merge_toolbar": 0,
+            "acfe_wysiwyg_custom_toolbar": 1,
+            "acfe_wysiwyg_toolbar_buttons": {
+                "acfe_wysiwyg_toolbar_1": {
+                    "row-row-1": {
+                        "acfe_wysiwyg_toolbar_row": "bold"
+                    },
+                    "row-row-2": {
+                        "acfe_wysiwyg_toolbar_row": "italic"
+                    },
+                    "row-row-3": {
+                        "acfe_wysiwyg_toolbar_row": "bullist"
+                    },
+                    "row-row-4": {
+                        "acfe_wysiwyg_toolbar_row": "numlist"
+                    },
+                    "row-row-10": {
+                        "acfe_wysiwyg_toolbar_row": "link"
+                    }
+                },
+                "acfe_wysiwyg_toolbar_2": "",
+                "acfe_wysiwyg_toolbar_3": "",
+                "acfe_wysiwyg_toolbar_4": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0,
+            "acfe_wysiwyg_auto_init": 0,
+            "acfe_wysiwyg_min_height": 300
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1712950400
+}

@@ -66,9 +66,10 @@ add_filter(
             'group_61d8a393c5415.json' => 'theme-settings-fields.json',
             'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
 
-            'group_661435d8a956b.json' => 'theme-settings–sso.json',
-            'group_6615bc1d65360.json' => 'theme-settings–sso–github-provider.json',
-            'group_66143631ddd8b.json' => 'theme-settings–sso–azure-provider.json',
+            'group_661435d8a956b.json' => 'theme-settings-sso.json',
+            'group_6615bc1d65360.json' => 'theme-settings-sso-provider-github.json',
+            'group_66143631ddd8b.json' => 'theme-settings-sso-provider-azure.json',
+            'group_6619abc83577b.json' => 'theme-settings-sso-provider-google.json',
 
             'post_type_6599ab6f6b61a.json' => 'cpt-testimonial.json',
             'post_type_659c2c3567923.json' => 'cpt-reusable-content.json',

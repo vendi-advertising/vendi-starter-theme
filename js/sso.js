@@ -39,6 +39,11 @@
                     image: w.VENDI_SSO.images.github,
                     text: 'Sign in with GitHub',
                 },
+                {
+                    name: 'google',
+                    image: w.VENDI_SSO.images.google,
+                    text: 'Sign in with Google',
+                },
             ],
 
             createEmailForm = () => {

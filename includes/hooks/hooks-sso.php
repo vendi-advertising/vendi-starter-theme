@@ -59,6 +59,8 @@ add_action(
                 $providerImages['azure'] = vendi_get_svg('images/sso/small/azure.svg', echo: false);
             } elseif ('github_provider' === $provider['acf_fc_layout']) {
                 $providerImages['github'] = vendi_get_svg('images/sso/small/github.svg', echo: false);
+            } elseif ('google_provider' === $provider['acf_fc_layout']) {
+                $providerImages['google'] = vendi_get_svg('images/sso/small/google.svg', echo: false);
             }
         }
 

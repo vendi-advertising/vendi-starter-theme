@@ -2,9 +2,9 @@
 
 namespace Vendi\Theme\SSO\Azure;
 
-use Vendi\Theme\SSO\SsoApplicationInterface;
+use Vendi\Theme\SSO\SsoApplicationBase;
 
-class AzureApplication implements SsoApplicationInterface
+class AzureApplication extends SsoApplicationBase
 {
     /**
      * @var AzureClientSecret[]
@@ -12,21 +12,12 @@ class AzureApplication implements SsoApplicationInterface
     private array $clientSecrets = [];
 
     public function __construct(
-        private readonly string $name,
-        private readonly string $clientId,
+        string $name,
+        string $clientId,
         private readonly string $tenantId,
-        private readonly array $emailDomains
+        array $emailDomains
     ) {
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getClientId(): string
-    {
-        return $this->clientId;
+        parent::__construct($name, $clientId, $emailDomains);
     }
 
     public function getTenantId(): string
@@ -40,11 +31,6 @@ class AzureApplication implements SsoApplicationInterface
     public function getClientSecrets(): array
     {
         return $this->clientSecrets;
-    }
-
-    public function getEmailDomains(): array
-    {
-        return $this->emailDomains;
     }
 
     public function addClientSecret(AzureClientSecret $clientSecret): void

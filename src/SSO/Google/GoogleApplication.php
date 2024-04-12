@@ -1,25 +1,25 @@
 <?php
 
-namespace Vendi\Theme\SSO\GitHub;
+namespace Vendi\Theme\SSO\Google;
 
 use Vendi\Theme\SSO\SsoApplicationBase;
 
-class GitHubApplication extends SsoApplicationBase
+final class GoogleApplication extends SsoApplicationBase
 {
     /**
-     * @var GitHubClientSecret[]
+     * @var GoogleClientSecret[]
      */
     private array $clientSecrets = [];
 
     /**
-     * @return GitHubClientSecret[]
+     * @return GoogleClientSecret[]
      */
     public function getClientSecrets(): array
     {
         return $this->clientSecrets;
     }
 
-    public function addClientSecret(GitHubClientSecret $clientSecret): void
+    public function addClientSecret(GoogleClientSecret $clientSecret): void
     {
         $this->clientSecrets[] = $clientSecret;
     }

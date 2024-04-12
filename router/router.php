@@ -3,6 +3,7 @@
 use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\ServerRequestFactory;
 use League\OAuth2\Client\Provider\Github;
+use League\OAuth2\Client\Provider\Google;
 use League\OAuth2\Client\Token\AccessToken;
 use League\Route\Router;
 use Psr\Http\Message\ResponseInterface;
@@ -10,6 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use TheNetworg\OAuth2\Client\Provider\Azure;
 use Vendi\Theme\SSO\Azure\AzureApplicationUtility;
 use Vendi\Theme\SSO\GitHub\GitHubApplicationUtility;
+use Vendi\Theme\SSO\Google\GoogleApplicationUtility;
 use Vendi\Theme\SsoRouter;
 
 $request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
@@ -36,6 +38,7 @@ $router
             $provider = match ($ssoTarget) {
                 'azure' => (new AzureApplicationUtility)->getProviderForEmailAddress($email, $request),
                 'github' => (new GitHubApplicationUtility)->getProviderForEmailAddress($email, $request),
+                'google' => (new GoogleApplicationUtility)->getProviderForEmailAddress($email, $request),
                 default => null,
             };
 
@@ -46,6 +49,7 @@ $router
             $isProviderValid = match ($ssoTarget) {
                 'azure' => $provider instanceof Azure,
                 'github' => $provider instanceof Github,
+                'google' => $provider instanceof Google,
                 default => false,
             };
 
@@ -53,19 +57,26 @@ $router
                 return new JsonResponse(['error' => 'Invalid authentication provider for email address'], 400);
             }
 
+            $settings = ['login_hint' => $email];
             switch ($ssoTarget) {
                 case 'azure':
                     $provider->defaultEndPointVersion = Azure::ENDPOINT_VERSION_2_0;
                     $baseGraphUri = $provider->getRootMicrosoftGraphUri(null);
                     $provider->scope = 'openid profile email offline_access '.$baseGraphUri.'/User.Read';
+                    $settings['scope'] = $provider->scope;
                     break;
 
                 case 'github':
                     $provider->scope = 'user:email';
+                    $settings['scope'] = $provider->scope;
+                    break;
+
+                case 'google':
+                    // Nothing special here, as far as I know
                     break;
             }
 
-            $authorizationUrl = $provider->getAuthorizationUrl(['scope' => $provider->scope, 'login_hint' => $email]);
+            $authorizationUrl = $provider->getAuthorizationUrl($settings);
 
             $_SESSION[VENDI_SESSION_KEY_EMAIL] = $email;
             $_SESSION[VENDI_SESSION_KEY_TARGET] = $ssoTarget;

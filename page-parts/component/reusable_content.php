@@ -30,8 +30,8 @@ if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
         while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
 
             the_row();
-            //Load component
-            vendi_load_component_component_with_state(get_row_layout(), ['current_post' => $shared_content_post]);
+
+            vendi_load_component_component(get_row_layout());
         }
 
         ?>

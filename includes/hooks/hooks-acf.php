@@ -46,9 +46,11 @@ add_filter(
             'group_6616dc2346a45.json' => 'component-grid.json',
             'group_6618398196a9f.json' => 'component-grid-empty-cell.json',
             'group_66196f1f7658c.json' => 'component-call-to-action.json',
-            'group_661970fa6651c.json' => 'sub-component-call-to-action-button.json',
+            'group_661989c1d0e74.json' => 'component-stepwise.json',
 
+            'group_661970fa6651c.json' => 'sub-component-call-to-action-button.json',
             'group_6616dde078cf0.json' => 'sub-component-grid-component-wrapper.json',
+            'group_66198b6ededc6.json' => 'sub-component-stepwise-item-simple.json',
 
             'group_6616f4a3c869c.json' => 'settings-modal-grid-settings.json',
             'group_6616f3340ebca.json' => 'settings-modal-grid-component.json',

@@ -16,7 +16,7 @@
     </summary>
     <div class="copy">
         <?php
-        while (have_rows('component')) {
+        while (have_rows('content')) {
             the_row();
             vendi_load_component_component(get_row_layout());
         }

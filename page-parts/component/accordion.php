@@ -15,14 +15,27 @@ if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordi
 >
     <div class="region">
 
-        <?php vendi_load_component_component('intro-headline', 'accordion'); ?>
+        <?php
 
-        <?php vendi_load_component_component_with_state('controls', ['accordion_items' => $accordion_items], 'accordion'); ?>
+        vendi_load_component_component('intro-headline', 'accordion');
+        vendi_load_component_component_with_state('controls', ['accordion_items' => $accordion_items], 'accordion');
 
-        <?php while (have_rows('accordion_items')): ?>
-            <?php the_row(); ?>
-            <?php vendi_load_component_component(get_row_layout(), 'accordion'); ?>
-        <?php endwhile; ?>
+        while (have_rows('accordion_items')) {
+            the_row();
+
+            if ('accordion_item' !== get_row_layout()) {
+                $errorText = 'The accordion component no longer supports '.esc_html(get_row_layout());
+                if (defined('WP_DEBUG') && WP_DEBUG) {
+                    echo sprintf('<h1>%s</h1>', esc_html($errorText));
+                } else {
+                    echo sprintf('<!-- %s -->', esc_html($errorText));
+                }
+            } else {
+                vendi_load_component_component(get_row_layout(), 'accordion');
+            }
+        }
+
+        ?>
 
     </div>
 </section>

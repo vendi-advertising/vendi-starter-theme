@@ -1,0 +1,40 @@
+@layer buttons {
+    .call-to-action {
+        padding: 1.5rem 3rem;
+        text-decoration: none;
+        transition: all 0.25s ease-in;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .call-to-action-link {
+        display: inline-block;
+    }
+
+    .call-to-action-button {
+        color: var(--local-color, var(--color-primary-white)) !important;
+        background-color: var(--local-background-color, var(--color-primary-black));
+        border: 1px solid var(--local-border-color, var(--local-background-color));
+        border-radius: 1rem;
+    }
+
+    .call-to-action-button:hover {
+        text-decoration: none !important;
+    }
+
+    .call-to-action:hover,
+    .call-to-action:focus-visible {
+        text-decoration: none;
+    }
+
+    .call-to-action-primary {
+        --local-background-color: var(--color-starter-theme-primary);
+        --local-color: var(--color-primary-white);
+        --local-border-color: var(--color-starter-theme-secondary);
+    }
+
+    .call-to-action-primary:where(:hover, :focus-visible) {
+        --local-background-color: var(--color-starter-theme-secondary);
+    }
+}

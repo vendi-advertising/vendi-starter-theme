@@ -18,8 +18,8 @@
             },
             "acfe_flexible_advanced": 1,
             "acfe_flexible_stylised_button": 1,
-            "acfe_flexible_layouts_templates": 1,
-            "acfe_flexible_layouts_previews": 1,
+            "acfe_flexible_layouts_templates": 0,
+            "acfe_flexible_layouts_placeholder": 0,
             "acfe_flexible_layouts_thumbnails": 1,
             "acfe_flexible_layouts_settings": 1,
             "acfe_flexible_layouts_locations": 0,
@@ -217,6 +217,56 @@
                             },
                             "clone": [
                                 "group_659c272fb8f1f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": "",
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_settings": [
+                        "group_661809923e61a"
+                    ],
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
+                "layout_661972199594a": {
+                    "key": "layout_661972199594a",
+                    "name": "call_to_action",
+                    "label": "Call to Action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_661972219594d",
+                            "label": "Call to Action",
+                            "name": "call_to_action",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_66196f1f7658c"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -458,7 +508,7 @@
             "button_label": "Add Component",
             "acfe_flexible_hide_empty_message": false,
             "acfe_flexible_empty_message": "",
-            "acfe_flexible_layouts_placeholder": false,
+            "acfe_flexible_layouts_previews": false,
             "acfe_flexible_grid_container": false
         }
     ],
@@ -496,5 +546,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712871089
+    "modified": 1712946060
 }

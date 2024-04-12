@@ -1,20 +1,9 @@
 <?php
 
-$columns = null;
-$column_gap = null;
-$justify_items = null;
-$row_gap = null;
-if (have_settings()) {
-    // The while loop is needed until we can figure out how to reset
-    // the ACF loop. Otherwise, we can't get to get_sub_field later.
-    while (have_settings()) {
-        the_setting();
-        $columns = get_sub_field('columns');
-        $column_gap = get_sub_field('column_gap');
-        $row_gap = get_sub_field('row_gap');
-        $justify_items = get_sub_field('justify_items');
-    }
-}
+$columns = vendi_get_component_settings('columns');
+$column_gap = vendi_get_component_settings('column_gap');
+$justify_items = vendi_get_component_settings('justify_items');
+$row_gap = vendi_get_component_settings('row_gap');
 
 $columns = match ($columns) {
     'two-columns' => 'grid-col-2',
@@ -73,6 +62,7 @@ $styles = vendi_get_css_styles_for_box_control();
 <div
     <?php vendi_render_class_attribute($gridClasses, include_grid_settings: false); ?>
     <?php vendi_render_css_styles($styles); ?>
+    <?php vendi_render_row_id_attribute() ?>
 >
     <?php while (have_rows('rows')): ?>
         <?php the_row(); ?>

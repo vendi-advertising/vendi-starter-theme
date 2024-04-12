@@ -17,7 +17,7 @@ $styles = vendi_get_css_styles_for_box_control();
 <div
     <?php vendi_render_class_attribute($classes, include_grid_settings: true); ?>
     <?php vendi_render_css_styles($styles); ?>
-    <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
+    <?php vendi_render_row_id_attribute() ?>
 >
     <div class="region">
         <blockquote>

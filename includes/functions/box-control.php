@@ -42,17 +42,8 @@ function vendi_get_css_classes_for_box_control_single(array $settings, string $p
 
 function vendi_get_css_stuff_for_box_control(callable $func, string $marginKey = 'margin', string $paddingKey = 'padding'): array
 {
-    $margin = null;
-    $padding = null;
-    if (have_settings()) {
-        // The while loop is needed until we can figure out how to reset
-        // the ACF loop. Otherwise, we can't get to get_sub_field later.
-        while (have_settings()) {
-            the_setting();
-            $margin = get_sub_field('margin');
-            $padding = get_sub_field('padding');
-        }
-    }
+    $margin = vendi_get_component_settings($marginKey);
+    $padding = vendi_get_component_settings($paddingKey);
 
     $stuff = [];
     $stuff = array_merge($stuff, $func($margin['vendi-acf-box-control'] ?? [], 'margin'));

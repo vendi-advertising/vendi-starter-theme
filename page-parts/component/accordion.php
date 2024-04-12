@@ -16,7 +16,7 @@ $styles = vendi_get_css_styles_for_box_control();
     <?php if ('show' === get_sub_field('expand_collapse_all')): ?>
         data-expand-collapse-available
     <?php endif; ?>
-    <?php vendi_maybe_get_row_id_attribute_from_subfield() ?>
+    <?php vendi_render_row_id_attribute() ?>
 >
     <div class="region">
 

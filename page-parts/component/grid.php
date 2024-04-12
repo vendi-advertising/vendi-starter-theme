@@ -55,13 +55,11 @@ $gridClasses = [
     $row_gap,
 ];
 
-$gridClasses = array_merge($gridClasses, vendi_get_css_classes_for_box_control());
-$styles = vendi_get_css_styles_for_box_control();
 ?>
 
 <div
-    <?php vendi_render_class_attribute($gridClasses, include_grid_settings: false); ?>
-    <?php vendi_render_css_styles($styles); ?>
+    <?php vendi_render_class_attribute($gridClasses, include_grid_settings: false, include_box_control_settings: true); ?>
+    <?php vendi_render_css_styles_for_box_control(); ?>
     <?php vendi_render_row_id_attribute() ?>
 >
     <?php while (have_rows('rows')): ?>

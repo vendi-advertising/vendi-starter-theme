@@ -62,6 +62,11 @@ function vendi_get_css_classes_for_box_control(string $marginKey = 'margin', str
     return vendi_get_css_stuff_for_box_control('vendi_get_css_classes_for_box_control_single', $marginKey, $paddingKey);
 }
 
+function vendi_render_css_styles_for_box_control(string $marginKey = 'margin', string $paddingKey = 'padding'): void
+{
+    vendi_render_css_styles(vendi_get_css_styles_for_box_control($marginKey, $paddingKey));
+}
+
 function vendi_render_css_styles(string|array|null $styles): void
 {
     if (!$styles) {

@@ -151,7 +151,7 @@ function vendi_get_global_javascript(?string $location): array
     return $ret;
 }
 
-function vendi_render_class_attribute(array|string $classes, bool $include_grid_settings = true): void
+function vendi_render_class_attribute(array|string $classes, bool $include_grid_settings = true, bool $include_box_control_settings = false): void
 {
     if (is_string($classes)) {
         $classes = explode(' ', $classes);
@@ -159,6 +159,10 @@ function vendi_render_class_attribute(array|string $classes, bool $include_grid_
 
     if ($include_grid_settings) {
         $classes = array_merge($classes, vendi_maybe_get_grid_classes());
+    }
+
+    if ($include_box_control_settings) {
+        $classes = array_merge($classes, vendi_get_css_classes_for_box_control());
     }
 
     if (!$classes = array_filter($classes)) {

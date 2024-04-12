@@ -7,12 +7,6 @@ if (!$copy = get_field('copy', $testimonial->ID)) {
     return;
 }
 
-$classes = ['component-testimonial'];
-$classes = array_merge($classes, vendi_get_css_classes_for_box_control());
-
-$styles = vendi_get_css_styles_for_box_control();
-
-
 // NOTE: This component is intentionally a div, not a section, because its place in the document outline
 // is not clear.
 
@@ -20,8 +14,8 @@ $styles = vendi_get_css_styles_for_box_control();
 // that the latter is a CPT that also supports an optional image.
 ?>
 <div
-    <?php vendi_render_class_attribute($classes, include_grid_settings: true); ?>
-    <?php vendi_render_css_styles($styles); ?>
+    <?php vendi_render_class_attribute('component-testimonial', include_grid_settings: true, include_box_control_settings: true); ?>
+    <?php vendi_render_css_styles_for_box_control(); ?>
     <?php vendi_render_row_id_attribute() ?>
 >
     <div class="region">

@@ -19,7 +19,10 @@ if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordi
 
         <?php vendi_load_component_component_with_state('controls', ['accordion_items' => $accordion_items], 'accordion'); ?>
 
-        <?php vendi_load_component_component_with_state('items', ['accordion_items' => $accordion_items], 'accordion'); ?>
+        <?php while (have_rows('accordion_items')): ?>
+            <?php the_row(); ?>
+            <?php vendi_load_component_component(get_row_layout(), 'accordion'); ?>
+        <?php endwhile; ?>
 
     </div>
 </section>

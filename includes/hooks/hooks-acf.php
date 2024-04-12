@@ -35,8 +35,8 @@ add_filter(
     static function ($filename, $post, $load_path) {
         static $mapping = [
             'group_6599ece5e2264.json' => 'component-accordion.json',
-            'group_6599eed2bffc0.json' => 'accordion-item-simple.json',
-            'group_66194a2f0f976.json' => 'accordion-item-component.json',
+            'group_66195515aacef.json' => 'accordion-item-shared.json',
+
             'group_659c0a262f75a.json' => 'component-basic-copy.json',
             'group_659c754d6a1d2.json' => 'component-blockquote.json',
             'group_659c272fb8f1f.json' => 'component-callout.json',

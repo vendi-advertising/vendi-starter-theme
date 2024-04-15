@@ -382,7 +382,59 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": [
-                        "Entity"
+                        "Layout"
+                    ],
+                    "acfe_flexible_settings": [
+                        "group_6616f4a3c869c"
+                    ],
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
+                "layout_661d78b2e858d": {
+                    "key": "layout_661d78b2e858d",
+                    "name": "image_grid",
+                    "label": "Image Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_661d7925490a2",
+                            "label": "Image Grid",
+                            "name": "image_grid",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_661d782329c85"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Layout"
                     ],
                     "acfe_flexible_settings": [
                         "group_6616f4a3c869c"
@@ -486,10 +538,7 @@
                     ],
                     "min": "",
                     "max": "",
-                    "acfe_flexible_category": [
-                        "Entity",
-                        "Special"
-                    ],
+                    "acfe_flexible_category": "",
                     "acfe_flexible_settings": [
                         "group_661809923e61a"
                     ],
@@ -599,5 +648,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712950502
+    "modified": 1713209815
 }

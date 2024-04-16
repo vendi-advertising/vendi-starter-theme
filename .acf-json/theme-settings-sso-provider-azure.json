@@ -157,7 +157,7 @@
                         "id": ""
                     },
                     "display_format": "F j, Y",
-                    "return_format": "d\/m\/Y",
+                    "return_format": "Ymd",
                     "first_day": 1,
                     "placeholder": "",
                     "min_date": "",
@@ -181,7 +181,7 @@
                         "id": ""
                     },
                     "display_format": "F j, Y",
-                    "return_format": "d\/m\/Y",
+                    "return_format": "Ymd",
                     "first_day": 1,
                     "placeholder": "",
                     "min_date": "",
@@ -339,5 +339,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712608718
+    "modified": 1713280418
 }

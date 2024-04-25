@@ -20,3 +20,11 @@ require_once VENDI_CUSTOM_THEME_PATH.'/includes/global-functions.php';
 // General hooks
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks.php';
 
+add_action(
+    'init',
+    static function () {
+        register_block_type(VENDI_CUSTOM_THEME_PATH.'/vendi-blocks/test/test.block.json');
+        register_block_type(VENDI_CUSTOM_THEME_PATH.'/vendi-blocks/accordion/accordion.block.json');
+        register_block_type(VENDI_CUSTOM_THEME_PATH.'/vendi-blocks/accordion-item/accordion-item.block.json');
+    }
+);

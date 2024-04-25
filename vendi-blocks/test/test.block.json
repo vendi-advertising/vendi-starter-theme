@@ -1,0 +1,15 @@
+{
+  "apiVersion": 2,
+  "name": "test",
+  "title": "test",
+  "description": "test",
+  "category": "formatting",
+  "icon": "admin-comments",
+  "keywords": [
+    "test"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "test.render.php"
+  }
+}

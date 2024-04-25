@@ -4,3 +4,10 @@ Author: Vendi Advertising
 Description: A custom theme for CLIENT.
 Version: 1.0
 */
+
+@import "css/000-reset.css";
+@import "css/010-vars.css";
+@import "css/020-layer-buttons.css";
+@import "css/100-elements.css";
+@import "css/105-headers.css";
+@import "css/300-main.css";

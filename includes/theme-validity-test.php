@@ -33,11 +33,11 @@ if (!function_exists('fly_get_attachment_image_src')) {
 }
 
 require_once ABSPATH.'wp-admin/includes/plugin.php';
-if (function_exists('is_plugin_active') && !is_plugin_active('classic-editor/classic-editor.php')) {
-    vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_CLASSIC_EDITOR);
-
-    return;
-}
+//if (function_exists('is_plugin_active') && !is_plugin_active('classic-editor/classic-editor.php')) {
+//    vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_CLASSIC_EDITOR);
+//
+//    return;
+//}
 
 function vendi_do_early_exit(int $code): void
 {

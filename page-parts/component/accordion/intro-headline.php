@@ -1,3 +1,3 @@
 <?php
 
-vendi_render_headline(get_sub_field('intro_heading'));
+vendi_render_headline(get_field('intro_heading'));

@@ -1,0 +1,24 @@
+{
+  "apiVersion": 2,
+  "name": "vendi/accordion-item",
+  "title": "Accordion Item",
+  "description": "Accordion item",
+  "category": "formatting",
+  "icon": "admin-comments",
+  "keywords": [
+    "accordion"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "accordion-item.render.php"
+  },
+  "parent": [
+    "vendi/accordion"
+  ],
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Title"
+    }
+  }
+}

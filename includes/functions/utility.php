@@ -212,12 +212,12 @@ function vendi_convert_alerts_to_objects($alerts): array
 
 function vendi_render_headline(string $sub_field_headline, string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline'): void
 {
-    if (!$headline = get_sub_field($sub_field_headline)) {
+    if (!$headline = get_field($sub_field_headline)) {
         return;
     }
 
-    $headline_level = vendi_constrain_h1_through_h6(get_sub_field($sub_field_for_heading_level));
-    $headline_tag = 'no' === get_sub_field($sub_field_for_include_in_document_outline) ? 'div' : $headline_level;
+    $headline_level = vendi_constrain_h1_through_h6(get_field($sub_field_for_heading_level));
+    $headline_tag = 'no' === get_field($sub_field_for_include_in_document_outline) ? 'div' : $headline_level;
 
     echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, $headline_level, esc_html($headline));
 }

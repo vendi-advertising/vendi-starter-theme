@@ -1,14 +1,14 @@
 <?php
 
-global $vendi_component_object_state;
-
-if (!($accordion_items = $vendi_component_object_state['accordion_items'] ?? null)) {
-    return;
-}
+//global $vendi_component_object_state;
+//
+//if (!($accordion_items = $vendi_component_object_state['accordion_items'] ?? null)) {
+//    return;
+//}
 
 // The expand all/collapse all button needs to know the IDs of all the accordions
 // for accessibility reasons.
-$allAccordionIds = array_column($accordion_items, 'component_row_id');
+//$allAccordionIds = array_column($accordion_items, 'component_row_id');
 ?>
 <ul class="accordion-controls list-as-nav" aria-label="section controls" data-role="accordion-controls">
     <li>

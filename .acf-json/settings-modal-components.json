@@ -22,8 +22,8 @@
         },
         {
             "key": "field_66182afac2d84",
-            "label": "Padding",
-            "name": "padding",
+            "label": "Box Control",
+            "name": "box_control",
             "aria-label": "",
             "type": "vendi-acf-box-control",
             "instructions": "",
@@ -33,26 +33,7 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "unit": "rem",
-            "units": "px\r\n%\r\nin\r\ncm\r\nmm\r\nem\r\nex\r\npt\r\npc\r\nrem"
-        },
-        {
-            "key": "field_66182b06c2d85",
-            "label": "Margin",
-            "name": "margin",
-            "aria-label": "",
-            "type": "vendi-acf-box-control",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "unit": "rem",
-            "units": "px\r\n%\r\nin\r\ncm\r\nmm\r\nem\r\nex\r\npt\r\npc\r\nrem"
+            }
         }
     ],
     "location": [
@@ -80,5 +61,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712869194
+    "modified": 1713385302
 }

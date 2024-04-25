@@ -40,31 +40,34 @@ function vendi_get_css_classes_for_box_control_single(array $settings, string $p
     return array_filter($classes);
 }
 
-function vendi_get_css_stuff_for_box_control(callable $func, string $marginKey = 'margin', string $paddingKey = 'padding'): array
+function vendi_get_css_stuff_for_box_control(callable $func, string $boxControlKey = 'box_control'): array
 {
-    $margin = vendi_get_component_settings($marginKey);
-    $padding = vendi_get_component_settings($paddingKey);
+    $boxControl = vendi_get_component_settings($boxControlKey);
 
+    dump($boxControl);
+
+
+//    $stuff = [];
+//    $stuff = array_merge($stuff, $func($margin['vendi-acf-box-control'] ?? [], 'margin'));
+//    $stuff = array_merge($stuff, $func($padding['vendi-acf-box-control'] ?? [], 'padding'));
     $stuff = [];
-    $stuff = array_merge($stuff, $func($margin['vendi-acf-box-control'] ?? [], 'margin'));
-    $stuff = array_merge($stuff, $func($padding['vendi-acf-box-control'] ?? [], 'padding'));
 
     return $stuff;
 }
 
-function vendi_get_css_styles_for_box_control(string $marginKey = 'margin', string $paddingKey = 'padding'): array
+function vendi_get_css_styles_for_box_control(string $boxControlKey = 'box_control'): array
 {
-    return vendi_get_css_stuff_for_box_control('vendi_get_css_styles_for_box_control_single', $marginKey, $paddingKey);
+    return vendi_get_css_stuff_for_box_control('vendi_get_css_styles_for_box_control_single', $boxControlKey);
 }
 
-function vendi_get_css_classes_for_box_control(string $marginKey = 'margin', string $paddingKey = 'padding'): array
+function vendi_get_css_classes_for_box_control(string $boxControlKey = 'box_control'): array
 {
-    return vendi_get_css_stuff_for_box_control('vendi_get_css_classes_for_box_control_single', $marginKey, $paddingKey);
+    return vendi_get_css_stuff_for_box_control('vendi_get_css_classes_for_box_control_single', $boxControlKey);
 }
 
-function vendi_render_css_styles_for_box_control(string $marginKey = 'margin', string $paddingKey = 'padding'): void
+function vendi_render_css_styles_for_box_control(string $boxControlKey = 'box_control'): void
 {
-    vendi_render_css_styles(vendi_get_css_styles_for_box_control($marginKey, $paddingKey));
+    vendi_render_css_styles(vendi_get_css_styles_for_box_control($boxControlKey));
 }
 
 function vendi_render_css_styles(string|array|null $styles): void

@@ -34,8 +34,27 @@
                     'depth' => 3,
                 ]
             );
+
             ?>
         </nav>
+    </div>
+    <div class="mobile-header-navigation" data-role="mobileNavContainer">
+        <div class="mobile-menu-button-container">
+            <button type="button" class="mobile-menu-button button" data-role="mobileNavButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="150" height="150"><path d="M5 8a2 2 0 1 0 0 4h40a2 2 0 1 0 0-4H5zm0 15a2 2 0 1 0 0 4h40a2 2 0 1 0 0-4H5zm0 15a2 2 0 1 0 0 4h40a2 2 0 1 0 0-4H5z"/></svg>
+            </button>
+        </div>
+
+        <?php
+            $mainNavItems = wp_get_nav_menu_items('main-nav') ? json_encode(wp_get_nav_menu_items('main-nav')) : file_get_contents(__DIR__ . '/starter-data/starter-main-nav.json');
+            $topNavItems = wp_get_nav_menu_items('top-nav') ? json_encode(wp_get_nav_menu_items('top-nav')) : file_get_contents(__DIR__ . '/starter-data/starter-top-nav.json');
+        ?>
+
+        <script>
+            window.mainNav = <?php echo $mainNavItems;?>;
+            window.topNav = <?php echo $topNavItems;?>;
+        </script>
+
     </div>
     <div class="header-features">
         <button type="button" class="search-activation-button" data-role="search-activation-button" data-target-id="site-search-modal">

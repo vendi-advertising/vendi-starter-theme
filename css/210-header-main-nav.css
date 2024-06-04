@@ -36,3 +36,9 @@
     scale: 0.9;
     opacity: 0.8;
 }
+
+@media screen and (max-width: 1024px) {
+    .site-header .header-navigation {
+        display: none;
+    }
+}

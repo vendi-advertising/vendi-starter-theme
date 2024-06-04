@@ -67,3 +67,7 @@
     --size-x-large: calc(var(--size-xx-small) * 32);
     --size-xx-large: calc(var(--size-xx-small) * 64);
 }
+
+:root {
+    --z-index-9999: 9999;
+}

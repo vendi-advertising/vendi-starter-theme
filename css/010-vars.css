@@ -8,6 +8,7 @@
     --color-starter-theme-primary: #1e2e82;
     --color-starter-theme-secondary: #9418a8;
     --color-starter-theme-light-black: #999;
+    --expand-arrow-hover-color: #f0f0f0;
 }
 
 :root {
@@ -66,4 +67,8 @@
     --size-large: calc(var(--size-xx-small) * 16);
     --size-x-large: calc(var(--size-xx-small) * 32);
     --size-xx-large: calc(var(--size-xx-small) * 64);
+}
+
+:root {
+    --z-index-9999: 9999;
 }

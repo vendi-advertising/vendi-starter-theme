@@ -66,12 +66,39 @@
         position: fixed;
         right: 2rem;
         top: 2rem;
+        animation: slideInFromRight 250ms ease-in-out;
+
+    }
+
+    .close-button,
+    .expand-arrow,
+    .back-button{
+        border: none;
+        background: none;
+    }
+
+    .expand-arrow{
+
+        svg {
+            width: 3.5rem;
+        }
+
+    }
+
+    .expand-arrow:hover,
+    .back-button:hover,
+    .close-button:hover {
+        background: var(--expand-arrow-hover-color);
     }
 
     .back-button {
         display: none;
         position: fixed;
         top: 2rem;
+
+        svg{
+            width: 3rem;
+        }
     }
 
     .mobile-menu-children {

@@ -89,7 +89,7 @@
                 //create close button
                 let closeBtn = document.createElement('button');
                 closeBtn.classList.add('close-button');
-                closeBtn.innerHTML = 'X';
+                closeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="17.828" height="17.828"><path d="m2.828 17.828 6.086-6.086L15 17.828 17.828 15l-6.086-6.086 6.086-6.086L15 0 8.914 6.086 2.828 0 0 2.828l6.085 6.086L0 15l2.828 2.828z"/></svg>`;
                 closeBtn.addEventListener('click', () => {
                     dialog.close();
                     removeActiveClasses(false);
@@ -101,7 +101,7 @@
                 //create back button
                 const backButton = document.createElement('button');
                 backButton.classList.add('back-button');
-                backButton.innerHTML = '<';
+                backButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z" data-name="4-Arrow Left"/></svg>`;
                 backButton.addEventListener('click', () => {
                     removeActiveClasses();
                 });
@@ -114,7 +114,7 @@
                     const expandButton = document.createElement('button');
                     expandButton.classList.add(className);
                     expandButton.setAttribute('data-role', 'expandButton');
-                    expandButton.innerHTML = '>';
+                    expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path style="fill:#232326" d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z" data-name="Right"/></svg>`;
                     expandButton.addEventListener('click', () => {
                         container.classList.add('active');
                     });

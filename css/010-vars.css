@@ -12,6 +12,22 @@
 }
 
 :root {
+    --color-link-normal: var(--color-starter-theme-primary);
+    --color-link-hover: var(--color-starter-theme-secondary);
+    --color-link-visited: var(--color-starter-theme-primary);
+}
+
+:root {
+    --color-alert-container-background: var(--color-primary-white);
+    --color-alert-background-info: #00f3;
+    --color-alert-background-warning: #ff03;
+    --color-alert-background-critical: #f003;
+    --color-alert-icon-info: #00f8;
+    --color-alert-icon-warning: #ff08;
+    --color-alert-icon-critical: #f008;
+}
+
+:root {
     --font-size-body: 1.7rem;
     --font-size-h1: 2.4rem;
     --font-size-h2: 2.2rem;

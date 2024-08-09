@@ -6,6 +6,8 @@ define('VENDI_CUSTOM_THEME_PATH', __DIR__);
 define('VENDI_CUSTOM_THEME_URL', get_bloginfo('template_directory'));
 define('VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME', 'content_components');
 
+const VENDI_CUSTOM_THEME_LAYOUT_FOLDER_NAME = 'vendi-theme-parts/components';
+
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/theme-validity-test.php';
 
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/autoload.php';

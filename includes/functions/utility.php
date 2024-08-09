@@ -166,18 +166,10 @@ function vendi_render_attribute(string $name, null|bool|string $value): void
     echo sprintf('%s="%s"', esc_attr($name), esc_attr($value));
 }
 
-function vendi_render_class_attribute(array|string $classes, bool $include_grid_settings = true, bool $include_box_control_settings = false): void
+function vendi_render_class_attribute(array|string $classes): void
 {
     if (is_string($classes)) {
         $classes = explode(' ', $classes);
-    }
-
-    if ($include_grid_settings) {
-        $classes = array_merge($classes, vendi_maybe_get_grid_classes());
-    }
-
-    if ($include_box_control_settings) {
-        $classes = array_merge($classes, vendi_get_css_classes_for_box_control());
     }
 
     if (!$classes = array_filter($classes)) {

@@ -2,6 +2,8 @@
 
 // begin content components flexible content
 // check if the flexible content field has rows of data
+use Vendi\Theme\VendiComponentLoader;
+
 if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {
 
     ?>
@@ -12,7 +14,7 @@ if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {
         while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object())) {
             the_row();
 
-            vendi_load_component_component(get_row_layout());
+            VendiComponentLoader::get_instance()->loadComponent(get_row_layout());
         }
 
         ?>

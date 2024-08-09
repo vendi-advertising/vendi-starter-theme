@@ -1,17 +1,12 @@
 <?php
 
-// PhpStorm
-assert(function_exists('get_field'));
-assert(function_exists('fly_get_attachment_image_src'));
-assert(function_exists('fly_get_attachment_image'));
-
 $bannerImage = get_field('banner_image');
 $bannerMainImage = get_field('banner_main_image');
 $bannerTitle = get_field('banner_title');
 $bannerNotation = get_field('banner_photo_notation');
 
 $heroParallaxBackgroundImageSrc = null;
-$heroParallaxBackgroundImage = fly_get_attachment_image_src($bannerImage, 'hero-parallax-background');
+$heroParallaxBackgroundImage = bis_get_attachment_image_src($bannerImage, [1920, 600]);
 if ($heroParallaxBackgroundImage && array_key_exists('src', $heroParallaxBackgroundImage)) {
     $heroParallaxBackgroundImageSrc = $heroParallaxBackgroundImage['src'];
 }
@@ -31,7 +26,7 @@ if ($heroParallaxBackgroundImage && array_key_exists('src', $heroParallaxBackgro
             <?php
             // NOTE: This function escapes properly
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo fly_get_attachment_image($bannerMainImage, 'hero-parallax-foreground');
+            echo bis_get_attachment_image($bannerMainImage, [1920, 600]);
             ?>
         </div>
     <?php endif; ?>

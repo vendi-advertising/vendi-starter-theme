@@ -1,7 +1,5 @@
 <?php
 
-use Vendi\ThumbnailSizesFromYaml\ThumbnailLoader;
-
 //This code is called at theme boot up
 add_action(
     'after_setup_theme',
@@ -19,8 +17,6 @@ add_action(
                 'footer_navigation' => 'Footer navigation',
             ]
         );
-
-        ThumbnailLoader::register_all();
 
     }
 );

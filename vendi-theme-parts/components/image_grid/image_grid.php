@@ -46,7 +46,13 @@ $justify_items = match ($justify_items) {
     default => null,
 };
 
+$image_max_height = null;
+if ($image_max_height = get_sub_field('image_max_height')) {
+    $image_max_height_unit = get_sub_field('image_max_height_unit');
+}
+
 $gridClasses = [
+    'component-image-grid',
     'grid',
     'region',
     $columns,
@@ -54,20 +60,31 @@ $gridClasses = [
     $justify_items,
     $row_gap,
 ];
-
 ?>
-
-<div
-    <?php vendi_render_class_attribute($gridClasses, include_grid_settings: false, include_box_control_settings: true); ?>
-    <?php vendi_render_css_styles_for_box_control(); ?>
+<ul
+    <?php vendi_render_class_attribute($gridClasses) ?>
     <?php vendi_render_row_id_attribute() ?>
 >
-    <?php while (have_rows('rows')): ?>
+    <?php while (have_rows('images')): ?>
         <?php the_row(); ?>
-        <?php while (have_rows('components')): ?>
-            <?php the_row(); ?>
-            <?php vendi_load_component_component(get_row_layout()); ?>
-        <?php endwhile; ?>
-    <?php endwhile; ?>
-</div>
+        <li class="grid-cell">
+            <?php if (!$image = get_sub_field('image')): ?>
+                <?php continue; ?>
+            <?php endif; ?>
+            <?php if ($link = get_sub_field('link')): ?>
+            <a href="<?php echo esc_url($link['url']); ?>" target="<?php esc_attr_e($link['target']); ?>">
+                <?php endif; ?>
+                <img
+                    src="<?php echo esc_url($image['url']); ?>"
+                    alt="<?php echo esc_attr($image['alt']); ?>"
 
+                    <?php if ($title = $image['title']): ?>
+                        title="<?php echo esc_attr($title); ?>"
+                    <?php endif; ?>
+                />
+                <?php if ($link): ?>
+            </a>
+        <?php endif; ?>
+        </li>
+    <?php endwhile; ?>
+</ul>

@@ -1,7 +1,6 @@
 <section
     <?php vendi_render_class_attribute(['component-stepwise']) ?>
     <?php vendi_render_row_id_attribute() ?>
-    <?php vendi_render_css_styles_for_box_control(); ?>
 >
     <div class="region">
         <?php if (have_rows('steps')): ?>

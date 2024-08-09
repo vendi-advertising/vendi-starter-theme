@@ -8,8 +8,7 @@ $photo_credit = get_sub_field('photo_credit');
 
 ?>
 <div
-    <?php vendi_render_class_attribute('component-figure', include_grid_settings: true, include_box_control_settings: true); ?>
-    <?php vendi_render_css_styles_for_box_control(); ?>
+    <?php vendi_render_class_attribute('component-figure'); ?>
     <?php vendi_render_row_id_attribute() ?>
 >
     <div class="region">

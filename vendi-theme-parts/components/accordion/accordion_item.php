@@ -1,4 +1,8 @@
-<?php $display_mode = get_sub_field('display_mode') ?>
+<?php
+
+use Vendi\Theme\VendiComponentLoader;
+
+$display_mode = get_sub_field('display_mode') ?>
 <details
     class="single-accordion-item"
     <?php echo in_array($display_mode, ['always-open', 'open'], true) ? 'open' : ''; ?>
@@ -18,7 +22,7 @@
         <?php
         while (have_rows('content')) {
             the_row();
-            vendi_load_component_component(get_row_layout());
+            VendiComponentLoader::get_instance()->loadComponent(get_row_layout());
         }
         ?>
     </div>

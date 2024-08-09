@@ -38,7 +38,7 @@
 
         <InnerBlocks
             allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>"
-            class="swiper-wrapper wp-block-wpe-slider__innerblocks"
+            class=""
             orientation="horizontal"
             template="<?php echo esc_attr(wp_json_encode($inner_blocks_template)); ?>"
         />

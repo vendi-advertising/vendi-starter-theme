@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Carousel Block Template.
+ *
+ * @var array $block The block settings and attributes.
+ * @var string $content The block inner HTML (empty).
+ * @var bool $is_preview True during backend preview render.
+ * @var int $post_id The post ID the block is rendering content against.
+ *          This is either the post ID currently being displayed inside a query loop,
+ *          or the post ID of the post hosting this block.
+ * @var array $context The context provided to the block by the post or it's parent block.
+ *
+ * @package wpdev
+ */
+
 $accordion_items = get_field('accordion_items');
 
 $p = new WP_HTML_Tag_Processor($content);
@@ -12,7 +26,8 @@ while ($p->next_tag('details')) {
 
 ?>
 <section
-    <?php vendi_render_class_attribute('component-accordion', include_grid_settings: false, include_box_control_settings: false); ?>
+    <?php
+    vendi_render_class_attribute(['component-accordion', vendi_get_css_class_for_preview_mode($is_preview)], include_grid_settings: false, include_box_control_settings: false); ?>
     <?php //vendi_render_css_styles_for_box_control(); ?>
     data-role="accordion"
     <?php if ('show' === get_field('expand_collapse_all')): ?>

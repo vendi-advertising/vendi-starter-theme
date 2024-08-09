@@ -13,8 +13,25 @@
     "renderTemplate": "accordion.render.php"
   },
   "style": [
-    "file:./accordion.css"
+    "file:./../../css/000-reset.css",
+    "file:./../../css/010-vars.css",
+    "file:./../../css/100-elements.css",
+    "file:./../../css/300-main.css",
+    "file:./css/accordion.css"
   ],
+  "script": [
+    "file:./js/accordion-expand-collapse.js"
+  ],
+  "viewScript": [
+    "file:./js/accordion-always-open.js",
+    "file:./js/accordion-hash-open.js"
+  ],
+  "editorScript": [
+    "file:./js/accordion-editor-only.js"
+  ],
+  "interactivity": {
+    "clientNavigation": true
+  },
   "example": {
     "innerBlocks": [
       {

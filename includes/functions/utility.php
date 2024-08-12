@@ -62,26 +62,6 @@ function vendi_get_env(string $key, ?string $default = null): ?string
     return getenv($key) ?: $default;
 }
 
-function vendi_get_component_settings(string $name, mixed $default_value = null): mixed
-{
-    // If there is a way to do this without loop, I haven't found it yet.
-    if (have_settings()) {
-        while (have_settings()) {
-            the_setting();
-            if ($value = get_sub_field($name)) {
-
-                // This needs more testing, but I believe this is the correct
-                // way to "finish" the loop early.
-                acf_remove_loop();
-
-                return $value;
-            }
-        }
-    }
-
-    return $default_value;
-}
-
 function vendi_maybe_get_row_id_attribute(mixed $row_id, bool $echo = true, bool $id_only_no_attribute = false): ?string
 {
     if (!is_string($row_id) || empty($row_id)) {
@@ -202,7 +182,7 @@ function vendi_convert_alerts_to_objects($alerts): array
     return $ret;
 }
 
-function vendi_render_headline(string $sub_field_headline, string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline'): void
+function vendi_render_headline(string $sub_field_headline, string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline', array|string $additional_css_classes = 'header'): void
 {
     if (!$headline = get_sub_field($sub_field_headline)) {
         return;
@@ -211,5 +191,29 @@ function vendi_render_headline(string $sub_field_headline, string $sub_field_for
     $headline_level = vendi_constrain_h1_through_h6(get_sub_field($sub_field_for_heading_level));
     $headline_tag = 'no' === get_sub_field($sub_field_for_include_in_document_outline) ? 'div' : $headline_level;
 
-    echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, $headline_level, esc_html($headline));
+    if (is_string($additional_css_classes)) {
+        $classes = explode(' ', $additional_css_classes);
+    } else {
+        $classes = $additional_css_classes;
+    }
+
+    $classes[] = $headline_level;
+
+    echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, implode(' ', $classes), esc_html($headline));
+}
+
+function vendi_render_component_data_name_and_index_attributes(string $componentName, int $componentIndex): void
+{
+    $attributes = [
+        'data-component-name' => $componentName,
+        'data-component-index' => $componentIndex,
+    ];
+
+    echo implode(
+        ' ',
+        array_map(
+            static fn($key) => sprintf("%s=\"%s\"", esc_attr($key), esc_attr($attributes[$key])),
+            array_keys($attributes)
+        )
+    );
 }

@@ -1,4 +1,7 @@
 <?php
+
+use Vendi\Theme\VendiComponentLoader;
+
 get_header();
 ?>
 
@@ -6,12 +9,12 @@ get_header();
         <a id="main-content" tabindex="-1"></a>
 
         <?php
-        if (post_password_required() ) {
+        if (post_password_required()) {
             echo get_the_password_form();
 
         } else {
-            vendi_load_site_component('hero');
-            vendi_load_site_component('breadcrumbs');
+            VendiComponentLoader::get_instance()->loadComponent('hero');
+            VendiComponentLoader::get_instance()->loadComponent('breadcrumbs');
 
             if (is_404()) {
                 vendi_load_page_component('404');

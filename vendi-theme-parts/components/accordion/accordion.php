@@ -1,14 +1,23 @@
 <?php
 
+use Vendi\Theme\ComponentUtility;
 use Vendi\Theme\VendiComponentLoader;
 
 if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordion_items) || !count($accordion_items)) {
     return;
 }
 
+$componentName = 'component-accordion';
+$componentIndex = ComponentUtility::get_instance()->get_next_id_for_component($componentName);
+
+$rootClasses = [
+    $componentName,
+];
+
 ?>
 <section
-    <?php vendi_render_class_attribute('component-accordion'); ?>
+    <?php vendi_render_class_attribute($rootClasses); ?>
+    <?php vendi_render_component_data_name_and_index_attributes($componentName, $componentIndex); ?>
     data-role="accordion"
     <?php if ('show' === get_sub_field('expand_collapse_all')): ?>
         data-expand-collapse-available
@@ -23,17 +32,7 @@ if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordi
 
         while (have_rows('accordion_items')) {
             the_row();
-
-            if ('accordion_item' !== get_row_layout()) {
-                $errorText = 'The accordion component no longer supports '.esc_html(get_row_layout());
-                if (defined('WP_DEBUG') && WP_DEBUG) {
-                    echo sprintf('<h1>%s</h1>', esc_html($errorText));
-                } else {
-                    echo sprintf('<!-- %s -->', esc_html($errorText));
-                }
-            } else {
-                VendiComponentLoader::get_instance()->loadComponent(['accordion', get_row_layout()]);
-            }
+            VendiComponentLoader::get_instance()->loadComponent(['accordion', get_row_layout()]);
         }
 
         ?>

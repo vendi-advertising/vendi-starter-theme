@@ -1,73 +1,130 @@
-.component-accordion {
+.component-accordion :where(.component-wrapper) {
     --accordion-icon-width: 1.8rem;
+    --local-primary-color: var(--local-text-color, var(--color-primary-black));
 }
 
-.component-accordion .single-accordion-item {
-    border-bottom: 1px solid var(--color-starter-theme-light-black);
+/* All accordion items should have a bottom border except he last one */
+.component-accordion :where(.single-accordion-item:not(:last-of-type)) {
+    border-bottom: 1px solid var(--local-primary-color);
 }
 
-.component-accordion summary {
+.component-accordion :where(summary, .copy, .header) {
+    color: var(--local-primary-color);
+}
+
+.component-accordion :where(summary) {
     list-style: none;
     font-weight: var(--font-weight-h1);
-    padding-block: 2rem;
     user-select: none;
     cursor: pointer;
 }
 
-.component-accordion summary::-webkit-details-marker {
+.component-accordion :where(summary::-webkit-details-marker) {
     display: none;
 }
 
+/* Accordion controls are not currently supported */
 .component-accordion .accordion-controls {
+    display: none !important;
+}
+
+.component-accordion :where(.accordion-controls) {
     display: none;
     gap: 1rem;
 }
 
-.component-accordion[data-expand-collapse-available] .accordion-controls {
+.component-accordion[data-expand-collapse-available] :where(.accordion-controls) {
     display: flex
 }
 
-.component-accordion .accordion-controls button {
+.component-accordion :where(.accordion-controls button) {
     background: none;
-    border: 1px solid var(--color-starter-theme-light-black);
+    border: 1px solid var(--color-primary-black);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 1rem 2rem;
 }
 
-.component-accordion .single-accordion-item > * {
+.component-accordion :where(.accordion-items) {
     display: grid;
-    grid-template-columns: var(--accordion-icon-width) 1fr;
+    column-gap: 10rem;
+    margin-top: var(--size-small);
+}
+
+/* More than 2 columns is not supported, but the door was left open */
+.component-accordion :where(.accordion-items[data-columns-count="1"]) {
+    grid-template-columns: 1fr;
+}
+
+.component-accordion :where(.accordion-items[data-columns-count="2"]) {
+    grid-template-columns: 1fr 1px 1fr;
+}
+
+.component-accordion :where(.accordion-items .line) {
+    background: var(--local-primary-color);
+    height: 100%;
+}
+
+.component-accordion :where(.single-accordion-item > summary) {
+    display: grid;
+    grid-template-columns: 1fr var(--accordion-icon-width);
     column-gap: 1rem;
 }
 
-/* This ensures that the copy of the accordion aligns with the headline in the summary */
-.component-accordion .single-accordion-item > :not(summary) > * {
-    grid-column: 2;
+.component-accordion :where(.single-accordion-item > .copy) {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
-.component-accordion .expand-collapse-single-item svg {
+.component-accordion :where(.single-accordion-item > :not(summary) > *) {
+    grid-column: 1;
+}
+
+.component-accordion :where(.expand-collapse-single-item svg) {
     width: var(--accordion-icon-width);
 }
 
-.component-accordion .expand-collapse-single-item svg path {
-    stroke: var(--color-starter-theme-primary);
+.component-accordion :where(.expand-collapse-single-item svg path) {
+    stroke: var(--color-brand-gold);
     transition: all 0.25s ease;
 }
 
-.component-accordion details[open] .expand-collapse-single-item svg {
+.component-accordion :where(details[open] .expand-collapse-single-item svg) {
     transition: all 0.25s ease;
+    rotate: 90deg;
+    transform-origin: center;
 }
 
-.component-accordion details[open] .expand-collapse-single-item svg path {
-    stroke: var(--color-starter-theme-secondary);
+.component-accordion :where(details[open] .expand-collapse-single-item svg path) {
+    stroke: var(--color-brand-gold);
 }
 
-.component-accordion details[open] .expand-collapse-single-item svg .h-line {
+.component-accordion :where(details[open] .expand-collapse-single-item svg .h-line) {
     opacity: 0;
 }
 
-.component-accordion details[open] .expand-collapse-single-item svg {
-    rotate: 90deg;
-    rotation-point: center;
+@media screen and (width <= 1200px) {
+    .component-accordion {
+        padding-inline: var(--size-medium);
+    }
+}
+
+@media screen and (width <= 1000px) {
+    .component-accordion :where(.accordion-items) {
+        column-gap: 5rem;
+    }
+}
+
+@media screen and (width <= 700px) {
+    .component-accordion :where(.accordion-items[data-columns-count="2"]) {
+        grid-template-columns: 1fr;
+    }
+
+    .component-accordion :where(.accordion-column:first-of-type .single-accordion-item:last-of-type) {
+        border-bottom: 1px solid var(--local-primary-color);
+    }
+
+    .component-accordion :where(.accordion-items .line) {
+        display: none;
+    }
 }

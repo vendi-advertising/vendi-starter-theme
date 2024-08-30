@@ -228,10 +228,3 @@ function vendi_maybe_render_background_video(): void
         </div>
     <?php endif;
 }
-
-function vendi_maybe_render_html_comment_error_message(string $errorText, bool $render = true): void
-{
-    if (defined('WP_DEBUG') && WP_DEBUG && $render) {
-        echo sprintf('<!-- %s -->', esc_html($errorText));
-    }
-}

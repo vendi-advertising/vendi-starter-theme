@@ -1,7 +1,4 @@
 <?php
-
-use Vendi\Theme\VendiComponentLoader;
-
 get_header();
 ?>
 
@@ -9,21 +6,26 @@ get_header();
         <a id="main-content" tabindex="-1"></a>
 
         <?php
-        if (post_password_required()) {
+        if ( post_password_required() ) {
             echo get_the_password_form();
 
         } else {
-            VendiComponentLoader::get_instance()->loadComponent('hero');
-            VendiComponentLoader::get_instance()->loadComponent('breadcrumbs');
+            vendi_load_modern_component( 'hero' );
 
-            if (is_404()) {
-                vendi_load_page_component('404');
-            } elseif (is_search()) {
-                vendi_load_page_component('search');
+            if ( ! is_404() && ! is_front_page() ) {
+                vendi_load_modern_component( 'breadcrumbs' );
             }
 
-            if (!is_search() && !is_404()) {
-                vendi_load_site_component('components');
+            if ( is_404() ) {
+                vendi_load_modern_template( '404' );
+            } elseif ( is_search() ) {
+                vendi_load_modern_template( 'search' );
+            } elseif ( is_singular( '_background' ) ) {
+                vendi_load_modern_template( [ 'preview-only', 'background' ] );
+            }
+
+            if ( ! is_search() && ! is_404() ) {
+                vendi_load_modern_component( 'components' );
             }
         }
         ?>

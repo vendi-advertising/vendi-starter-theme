@@ -1,41 +1,58 @@
 <?php
 
-use Vendi\Theme\ComponentUtility;
-use Vendi\Theme\VendiComponentLoader;
+use Vendi\Theme\Component\Accordion;
 
-if ((!$accordion_items = get_sub_field('accordion_items')) || !is_array($accordion_items) || !count($accordion_items)) {
+$component = new Accordion();
+if ( ! $component->renderComponentWrapperStart() ) {
     return;
 }
 
-$componentName = 'component-accordion';
-$componentIndex = ComponentUtility::get_instance()->get_next_id_for_component($componentName);
-
-$rootClasses = [
-    $componentName,
-];
-
 ?>
-<section
-    <?php vendi_render_class_attribute($rootClasses); ?>
-    <?php vendi_render_component_data_name_and_index_attributes($componentName, $componentIndex); ?>
-    data-role="accordion"
-    <?php if ('show' === get_sub_field('expand_collapse_all')): ?>
-        data-expand-collapse-available
-    <?php endif; ?>
-    <?php vendi_render_row_id_attribute() ?>
->
-    <div class="region">
 
+<?php vendi_render_headline( 'intro_heading', with_dots: true, additional_css_classes: [ 'header', 'padding-inline-small' ] ); ?>
+<?php if ( $additional_copy = $component->getSubFieldAndCache( 'additional_copy' ) ): ?>
+    <div class="copy padding-inline-small">
+        <?php esc_html_e( $additional_copy ); ?>
+    </div>
+<?php endif; ?>
+<?php vendi_load_modern_component( 'accordion/accordion-controls', object_state: [ 'accordion_items' => $component->getAccordionItems() ] ); ?>
+    <div
+        class="accordion-items"
+        data-columns-count="<?php echo esc_attr( $component->getNumberOfColumns() ); ?>"
+    >
         <?php
-        vendi_render_headline('intro_heading');
-        VendiComponentLoader::get_instance()->loadComponent('accordion/accordion-controls', object_state: ['accordion_items' => $accordion_items]);
 
-        while (have_rows('accordion_items')) {
+        $rows = [];
+        while ( have_rows( 'accordion_items' ) ) {
             the_row();
-            VendiComponentLoader::get_instance()->loadComponent(['accordion', get_row_layout()]);
+
+            ob_start();
+            vendi_load_modern_component( [ 'accordion', get_row_layout() ] );
+            $rows[] = ob_get_clean();
         }
+
+        // Just in case any are empty
+        $rows = array_filter( $rows );
+
+        if ( 1 === $component->getNumberOfColumns() ) {
+            $columns = [ $rows ];
+        } else {
+            $columns = array_chunk( $rows, ceil( count( $rows ) / $component->getNumberOfColumns() ) );
+        }
+
+        array_walk(
+            $columns,
+            static function ( &$column ) {
+                $column = '<div class="accordion-column">' . implode( '', $column ) . '</div>';
+            }
+        );
+
+        // If there's more than one column, add a line between each
+        echo implode( '<div class="line"></div>', $columns );
 
         ?>
 
     </div>
-</section>
+<?php
+
+$component->renderComponentWrapperEnd();

@@ -48,6 +48,22 @@
                     }
                 }
 
+                getTransitionDuration(openOrClose) {
+                    if ('open' === openOrClose && this.el.hasAttribute('data-transition-duration-open-in-ms')) {
+                        return parseInt(this.el.getAttribute('data-transition-duration-open-in-ms'), 10);
+                    }
+
+                    if ('close' === openOrClose && this.el.hasAttribute('data-transition-duration-close-in-ms')) {
+                        return parseInt(this.el.getAttribute('data-transition-duration-close-in-ms'), 10);
+                    }
+
+                    if (this.el.hasAttribute('data-transition-duration-in-ms')) {
+                        return parseInt(this.el.getAttribute('data-transition-duration-in-ms'), 10);
+                    }
+
+                    return 200;
+                }
+
                 shrink() {
 
                     // Set the element as "being closed"
@@ -65,12 +81,17 @@
                     }
 
                     // Start a WAAPI animation
-                    this.animation = this.el.animate({
-                        // Set the keyframes from the startHeight to endHeight
-                        height: [startHeight, endHeight],
-                    }, {
-                        duration: 200, easing: "linear",
-                    });
+                    this.animation = this.el.animate(
+                        {
+                            // Set the keyframes from the startHeight to endHeight
+                            height: [startHeight, endHeight],
+                        },
+                        {
+                            duration: this.getTransitionDuration('close'),
+                            easing: "linear",
+                        }
+                    )
+                    ;
 
                     // When the animation is complete, call onAnimationFinish()
                     this.animation.onfinish = () => this.onAnimationFinish(false);
@@ -131,7 +152,7 @@
                         // Set the keyframes from the startHeight to endHeight
                         height: [startHeight, endHeight],
                     }, {
-                        duration: 200, easing: "linear",
+                        duration: this.getTransitionDuration('open'), easing: "linear",
                     });
 
                     // When the animation is complete, call onAnimationFinish()

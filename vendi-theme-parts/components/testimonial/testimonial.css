@@ -1,25 +1,83 @@
-.component-testimonial.margin-block-component-default {
-    margin-block: 4rem;
+.component-testimonial :where(.component-wrapper) {
+    --local-primary-color: var(--local-text-color, var(--color-primary-black));
 }
 
-.component-testimonial .copy > :first-child::before {
-    content: open-quote;
-    display: inline;
+.component-testimonial :where(.blockquote) {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: var(--size-medium);
+    row-gap: 1rem;
+    margin-inline: auto;
 }
 
-.component-testimonial .copy > :last-child::after {
-    content: close-quote;
-    display: inline;
+.component-testimonial :where(.blockquote *) {
+    margin: 0;
 }
 
-.component-testimonial .copy {
-    font-size: 2rem;
+.component-testimonial :where(.blockquote > *) {
+    grid-column: 2;
 }
 
-.component-testimonial .attribution {
+.component-testimonial :where(.blockquote > svg) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    margin-top: 10px;
+}
+
+.component-testimonial :where(.blockquote:has(.header-with-dots) > svg) {
+    margin-top: 5px;
+    grid-row: 1 / 4;
+}
+
+.component-testimonial :where(.header-with-dots) {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: var(--local-primary-color);
+}
+
+.component-testimonial :where(.title) {
+    font-size: 4.5rem;
+    text-wrap: pretty;
+    color: var(--local-primary-color);
+    line-height: 1.1;
+}
+
+.component-testimonial :where(.copy) {
+    font-size: 1.6rem;
+    color: var(--local-primary-color);
+}
+
+.component-testimonial :where(.attribution) {
     font-style: italic;
 }
 
-.component-testimonial .attribution::before {
+.component-testimonial :where(.attribution::before) {
     content: "— ";
+}
+
+@media screen and (width <= 1200px) {
+    .component-testimonial {
+        padding-inline: var(--size-medium);
+    }
+}
+
+@media screen and (width <= 700px) {
+    .component-testimonial :where(.blockquote) {
+        grid-template-columns: 1fr;
+    }
+
+    .component-testimonial :where(.blockquote *) {
+        grid-column: 1;
+    }
+
+    .component-testimonial :where(.blockquote > svg) {
+        grid-row: 1;
+        max-height: 10rem;
+        margin-bottom: var(--size-small);
+    }
+
+    .component-testimonial :where(.title) {
+        font-size: 3rem;
+        line-height: 1.1;
+    }
 }

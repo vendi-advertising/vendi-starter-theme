@@ -1,6 +1,3 @@
-.component-blockquote {
-}
-
 .component-blockquote .copy > :first-child::before {
     content: open-quote;
 }

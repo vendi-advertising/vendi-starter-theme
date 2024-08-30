@@ -53,13 +53,13 @@ add_action(
                 .vendi-login-background {
                     grid-column: 1;
                     grid-row: 1;
-                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL; ?>/images/starter-content/bodie.webp');
+                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH; ?>/images/starter-content/bodie.webp');
                     background-size: cover;
                     background-position: center;
                 }
 
                 h1 a {
-                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL; ?>/images/starter-content/bird-logo.svg');
+                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH; ?>/images/starter-content/bird-logo.svg');
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;

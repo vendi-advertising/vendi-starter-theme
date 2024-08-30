@@ -10,8 +10,6 @@
  * The problem might only be related to relavanssi and/or CLI-related tasks, however.
  */
 
-use Vendi\Theme\VendiComponentLoader;
-
 $shared_content_post = get_sub_field('reusable_content')[0] ?? null;
 
 if (!$shared_content_post instanceof WP_Post) {
@@ -33,7 +31,7 @@ if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
 
             the_row();
 
-            VendiComponentLoader::get_instance()->loadComponent(get_row_layout());
+            vendi_load_component_component(get_row_layout());
         }
 
         ?>

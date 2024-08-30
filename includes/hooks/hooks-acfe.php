@@ -25,20 +25,23 @@ add_filter(
     'acfe/flexible/thumbnail',
     static function ($thumbnail, $field, $layout) {
 
-        $relativeSharedThumbnailPath = 'images/acf/component-thumbnails';
+        $relativeSharedThumbnailPaths = [
+            VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME.'/%1$s/%1$s.thumbnail.png',
+            'images/acf/component-thumbnails/%1$s.png',
+        ];
+        foreach ($relativeSharedThumbnailPaths as $relativeSharedThumbnailPath) {
 
-        // See if we have a special layout directory
-        $absoluteSharedThumbnailPath = Path::join(VENDI_CUSTOM_THEME_PATH, $relativeSharedThumbnailPath);
-        if (!is_dir($absoluteSharedThumbnailPath)) {
-            return $thumbnail;
+            $relativePath = sprintf($relativeSharedThumbnailPath, $layout['name']);
+
+            $filePathToTest = Path::join(VENDI_CUSTOM_THEME_PATH, $relativePath);
+            if (!is_readable($filePathToTest)) {
+                continue;
+            }
+
+            return Path::join(VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH, $relativePath);
         }
 
-        $componentThumbnailPath = Path::join($absoluteSharedThumbnailPath, $layout['name'].'.png');
-        if (!is_readable($componentThumbnailPath)) {
-            return $thumbnail;
-        }
-
-        return Path::join(VENDI_CUSTOM_THEME_URL, $relativeSharedThumbnailPath, $layout['name'].'.png');
+        return $thumbnail;
     },
     10,
     3

@@ -1,4 +1,28 @@
 @layer margins {
+    .margin-xx-small {
+        margin: var(--size-xx-small);
+    }
+
+    .margin-x-small {
+        margin: var(--size-x-small);
+    }
+
+    .margin-small {
+        margin: var(--size-small);
+    }
+
+    .margin-medium {
+        margin: var(--size-medium);
+    }
+
+    .margin-large {
+        margin: var(--size-large);
+    }
+
+    .margin-x-large {
+        margin: var(--size-x-large);
+    }
+
     .margin-block-xx-small {
         margin-block: var(--size-xx-small)
     }

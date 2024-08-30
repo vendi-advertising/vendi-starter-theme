@@ -1,4 +1,32 @@
 @layer paddings {
+    .padding-xx-small {
+        padding: var(--size-xx-small);
+    }
+
+    .padding-x-small {
+        padding: var(--size-x-small);
+    }
+
+    .padding-small {
+        padding: var(--size-small);
+    }
+
+    .padding-medium {
+        padding: var(--size-medium);
+    }
+
+    .padding-large {
+        padding: var(--size-large);
+    }
+
+    .padding-x-large {
+        padding: var(--size-x-large);
+    }
+
+    .padding-xx-large {
+        padding: var(--size-xx-large);
+    }
+
     .padding-block-xx-small {
         padding-block: var(--size-xx-small)
     }

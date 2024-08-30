@@ -3,11 +3,11 @@ This file should contain _as few CSS classes as possible_.
  */
 html {
     font-size: 62.5%;
+    font-family: var(--font-family-main);
 }
 
 body {
     color: var(--color-primary-black);
-    font-family: var(--font-family-main);
     font-size: var(--font-size-body);
     font-weight: 400;
     line-height: var(--line-height-body);

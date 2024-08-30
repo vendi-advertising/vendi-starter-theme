@@ -1,0 +1,3 @@
+:where(.content-placement-middle > .component-wrapper > .region .content-wrap) {
+    margin-inline: auto;
+}

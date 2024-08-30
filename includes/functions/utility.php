@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\Filesystem\Path;
+use Vendi\Theme\DTO\ComponentStyles;
 
 function vendi_unparse_url($parsed_url): string
 {
@@ -202,6 +203,13 @@ function vendi_render_headline(string $sub_field_headline, string $sub_field_for
     echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, implode(' ', $classes), esc_html($headline));
 }
 
+function vendi_maybe_render_html_comment_error_message(string $errorText, bool $render = true): void
+{
+    if (defined('WP_DEBUG') && WP_DEBUG && $render) {
+        echo sprintf('<!-- %s -->', esc_html($errorText));
+    }
+}
+
 function vendi_render_component_data_name_and_index_attributes(string $componentName, int $componentIndex): void
 {
     $attributes = [
@@ -216,4 +224,67 @@ function vendi_render_component_data_name_and_index_attributes(string $component
             array_keys($attributes)
         )
     );
+}
+
+
+function vendi_render_component_specific_css_block(string $componentName, int $componentIndex, ComponentStyles $styles): void
+{
+    ?>
+    <style media="screen">
+        [data-component-name="<?php esc_attr_e($componentName); ?>"][data-component-index="<?php esc_attr_e($componentIndex); ?>"] {
+        <?php echo $styles->__toString(); ?>
+        }
+    </style>
+    <?php
+}
+
+function vendi_get_common_component_content_settings_classes()
+{
+    ['classes' => $content_classes] = vendi_get_common_component_settings();
+
+    return $content_classes;
+}
+
+function vendi_get_common_component_settings(): array
+{
+    $ret = ['classes' => []];
+
+    $settingsGroup = get_sub_field('content_area_settings');
+
+    if (!$settingsGroup) {
+        return $ret;
+    }
+
+    // NOTE: XX-Large is not included in the UI currently but was left here for consistency
+    $settings = ['content_max_width', 'content_placement', 'content_vertical_padding', 'content_horizontal_padding'];
+
+    $classes = [];
+
+    foreach ($settings as $setting) {
+        if (!$value = $settingsGroup[$setting] ?? null) {
+            continue;
+        }
+        switch ($setting) {
+            case 'content_max_width':
+                $ret[$setting] = vendi_constrain_item_to_list($value, ['full', 'narrow', 'slim'], 'narrow');
+                $classes[] = 'content-max-width-'.$ret[$setting];
+                break;
+            case 'content_placement':
+                $ret[$setting] = vendi_constrain_item_to_list($value, ['left', 'middle'], 'left');
+                $classes[] = 'content-placement-'.$ret[$setting];
+                break;
+            case 'content_vertical_padding':
+                $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+                $classes[] = 'content-vertical-padding-'.$ret[$setting];
+                break;
+            case 'content_horizontal_padding':
+                $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+                $classes[] = 'content-horizontal-padding-'.$ret[$setting];
+                break;
+        }
+    }
+
+    $ret['classes'] = $classes;
+
+    return $ret;
 }

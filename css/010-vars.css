@@ -73,6 +73,19 @@
 :root {
     --content-width-normal: 114rem;
     --content-width-narrow: 78rem;
+    --content-width-slim: 58rem;
+}
+
+@media screen and (width <= 1200px) {
+    :root {
+        --content-width-normal: 100%;
+    }
+}
+
+@media screen and (width <= 800px) {
+    :root {
+        --content-width-narrow: 100%;
+    }
 }
 
 :root {

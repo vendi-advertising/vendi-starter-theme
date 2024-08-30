@@ -1,12 +1,26 @@
 <?php
-// NOTE: This component is intentionally a div, not a section, because its place in the document outline
-// is not clear.
+
+use Vendi\Theme\Component\Callout;
+use Vendi\Theme\DTO\SimpleLink;
+
+$component = new Callout();
+
+$component->renderComponentWrapperStart();
+
 ?>
-<div
-    <?php vendi_render_class_attribute('component-callout'); ?>
-    <?php vendi_render_row_id_attribute() ?>
->
-    <div class="region">
-        <?php echo get_sub_field('copy'); ?>
+
+<?php vendi_render_headline( 'header', with_dots: true ); ?>
+<?php echo $component->getSubFieldAndCache( 'copy' ); ?>
+<?php if ( have_rows( 'buttons' ) ): ?>
+    <div class="call-to-action-wrap">
+        <?php while ( have_rows( 'buttons' ) ) : the_row(); ?>
+            <?php if ( $link = SimpleLink::tryCreate( get_sub_field( 'call_to_action' ) ) ): ?>
+                <?php echo $link->toHtml( cssClasses: [ 'call-to-action', 'call-to-action-button', get_sub_field( 'icon' ), get_sub_field( 'call_to_action_display_mode' ) ] ); ?>
+            <?php endif; ?>
+        <?php endwhile; ?>
     </div>
-</div>
+<?php endif; ?>
+
+<?php
+
+$component->renderComponentWrapperEnd();

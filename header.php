@@ -1,3 +1,8 @@
+<?php
+
+use Vendi\Theme\Feature\Alert\Enum\AlertAppearanceEnum;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +19,8 @@
 <a href="#main-content" class="visually-hidden focusable skip-link">
     Skip to main content
 </a>
+
+<?php vendi_render_feature( 'alerts', [ 'appearance' => AlertAppearanceEnum::AboveGlobalSiteHeader ] ); ?>
 
 <header class="site-header">
     <div class="logo">

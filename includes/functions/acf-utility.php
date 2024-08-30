@@ -15,11 +15,6 @@ function vendi_get_sub_field_constrained_to_list(string $sub_field, array $optio
     return vendi_constrain_item_to_list(get_sub_field($sub_field), $options, $default);
 }
 
-function vendi_constrain_h1_through_h6(null|bool|string $tag, $default = 'h2'): string
-{
-    return vendi_constrain_item_to_list($tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], $default);
-}
-
 function vendi_get_component_settings(string $name, mixed $default_value = null): mixed
 {
     // If there is a way to do this without loop, I haven't found it yet.

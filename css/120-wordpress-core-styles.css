@@ -43,7 +43,7 @@ a img.aligncenter {
     margin-right: auto;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width <= 900px) {
     img.alignnone,
     img.alignleft,
     img.alignright,

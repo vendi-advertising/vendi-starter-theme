@@ -1,0 +1,89 @@
+{
+    "key": "group_66a3bc0f0f35d",
+    "title": "Theme Notes",
+    "fields": [
+        {
+            "key": "field_66a3bc0fe23ee",
+            "label": "Plugins",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_66a3bc582c2ba",
+            "label": "Required Plugins",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "required_message": "",
+            "message": "This theme requires the following plugins in order to function correctly:\r\n\r\n<p>\r\n<strong>Advanced Custom Fields PRO<\/strong><br \/>\r\nUsed to create components and individual fields within the components.\r\n<\/p>\r\n\r\n<p>\r\n<strong>Advanced Custom Fields: Extended PRO<\/strong><br \/>\r\nAdds additional field types and settings to <em>Advanced Custom Fields PRO<\/em>\r\n<\/p>\r\n\r\n<p>\r\n<strong>Better image sizes<\/strong><br \/>\r\nAllows for:\r\n<\/p>\r\n\r\n<ol >\r\n <li>Dynamic thumbnail generation (instead of generating every possible thumbnail for every image uploaded)<\/li>\r\n<li>Automatic regeneration of thumbnails if a change in size in required (instead of installing a third-part plugin to regenerate every thumbnail)<\/li>\r\n<li>Setting the focal point on images if a crop is required<\/li>\r\n<li>Storing of thumbnail images independent of uploads, simplifying backup and disaster recovery<\/li>\r\n<\/ol>\r\n\r\n<p>\r\n<strong>Classic Editor<\/strong><br \/>\r\nUsed to enable components without using the block editor.\r\n<\/p>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_66a3bf1a8a20f",
+            "label": "Recommended Plugins",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "required_message": "",
+            "message": "This theme recommends keeping the following plugins installed and activated, but they are not essential to the site.\r\n\r\n<p>\r\n<strong>Health Check & Troubleshooting<\/strong><br \/>\r\nThis plugin is built and maintained by the core WordPress team and adds extra information to the built-in Site Health feature. Disabling this plugin will not break anything, however Vendi recommends periodically checking the status of the site's health using this plugin to see if there are any new or updated recommendations.\r\n<\/p>\r\n\r\n<p>\r\n<strong>One Time Login<\/strong><br \/>\r\nThis plugin is built and maintained by a core WordPress team member and allows developers with SSH access to generate one-time login links. Disabling this plugin will not break anything, however Vendi uses this plugin to grant access to team members without the need to share or reset passwords. If this plugin is disabled and\/or removed, Vendi might install and reactivate it in order to access the site.\r\n<\/p>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-notes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1722007677
+}

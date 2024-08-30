@@ -1,40 +1,23 @@
 {
-    "key": "group_661809923e61a",
-    "title": "Settings Modal - Components",
+    "key": "group_66a80a6a0ee49",
+    "title": "Background - Video",
     "fields": [
         {
-            "key": "field_66180a2a56586",
-            "label": "Spacing",
-            "name": "",
+            "key": "field_66a80a6afddec",
+            "label": "Background Video",
+            "name": "background_video",
             "aria-label": "",
-            "type": "tab",
+            "type": "oembed",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66182afac2d84",
-            "label": "Box Control",
-            "name": "box_control",
-            "aria-label": "",
-            "type": "vendi-acf-box-control",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
+            "width": "",
+            "height": ""
         }
     ],
     "location": [
@@ -62,5 +45,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1722289111
 }

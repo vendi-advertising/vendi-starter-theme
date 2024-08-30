@@ -1,40 +1,34 @@
 {
-    "key": "group_661809923e61a",
-    "title": "Settings Modal - Components",
+    "key": "group_66901f65435d7",
+    "title": "Background - Image",
     "fields": [
         {
-            "key": "field_66180a2a56586",
-            "label": "Spacing",
-            "name": "",
+            "key": "field_66901f65e83cb",
+            "label": "Background Image",
+            "name": "background_image",
             "aria-label": "",
-            "type": "tab",
+            "type": "image",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66182afac2d84",
-            "label": "Box Control",
-            "name": "box_control",
-            "aria-label": "",
-            "type": "vendi-acf-box-control",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
+            "uploader": "",
+            "return_format": "array",
+            "library": "all",
+            "upload_folder": "",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -62,5 +56,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1720721280
 }

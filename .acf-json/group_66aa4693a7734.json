@@ -1,0 +1,70 @@
+{
+    "key": "group_66aa4693a7734",
+    "title": "Field - Content Vertical Padding",
+    "fields": [
+        {
+            "key": "field_66aa46936f1cd",
+            "label": "Content Vertical Padding",
+            "name": "content_vertical_padding",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "None",
+                "xx-small": "XX Small (0.5)",
+                "x-small": "X Small (1)",
+                "small": "Small (2)",
+                "medium": "Medium (4)",
+                "large": "Large (8)",
+                "x-large": "X Large (16)"
+            },
+            "default_value": "medium",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "required_message": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1724424604
+}

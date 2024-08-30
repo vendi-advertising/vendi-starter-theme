@@ -1,13 +1,13 @@
 {
-    "key": "group_659c445704039",
-    "title": "Component - Reusable Content",
+    "key": "group_66918627662b4",
+    "title": "Background - Reusable Background",
     "fields": [
         {
-            "key": "field_659c44579e254",
-            "label": "Primary Settings",
-            "name": "",
+            "key": "field_669186287c9f9",
+            "label": "Background",
+            "name": "background",
             "aria-label": "",
-            "type": "tab",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,45 +16,27 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_659c450a9e255",
-            "label": "Reusable Content",
-            "name": "reusable_content",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
             "post_type": [
-                "reusable-content"
+                "_background"
             ],
             "post_status": "",
             "taxonomy": "",
-            "filters": [
-                "search"
-            ],
             "return_format": "object",
+            "multiple": 0,
+            "max": "",
+            "save_custom": 0,
+            "save_post_status": "publish",
             "acfe_add_post": 0,
             "acfe_edit_post": 0,
             "acfe_bidirectional": {
                 "acfe_bidirectional_enabled": "0"
             },
-            "required_message": "",
-            "min": 1,
-            "max": 1,
-            "elements": "",
+            "allow_null": 0,
             "bidirectional": 0,
-            "bidirectional_target": []
+            "ui": 1,
+            "bidirectional_target": [],
+            "save_post_type": "",
+            "min": ""
         }
     ],
     "location": [
@@ -82,5 +64,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1720813181
 }

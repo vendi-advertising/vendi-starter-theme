@@ -1,0 +1,68 @@
+{
+    "key": "group_66a94415b1615",
+    "title": "Field - Color (Good)",
+    "fields": [
+        {
+            "key": "field_66a94415b71e2",
+            "label": "Color",
+            "name": "color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#000000",
+            "enable_opacity": 1,
+            "return_format": "string",
+            "display": "palette",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 0,
+            "theme_colors": 1,
+            "colors": {
+                "#000000": "Black",
+                "#ffffff": "White",
+                "#013183": "Dark Blue",
+                "#406bd9": "Blue",
+                "#fab000": "Gold",
+                "#efefef": "Grey 1",
+                "#c3c3c3": "Grey 2",
+                "#d8d8d8": "Grey 3"
+            },
+            "required_message": "",
+            "button_label": "Select Color"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1722369243
+}

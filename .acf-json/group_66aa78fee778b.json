@@ -1,9 +1,9 @@
 {
-    "key": "group_659c272fb8f1f",
-    "title": "Component - Callout",
+    "key": "group_66aa78fee778b",
+    "title": "Component - Hero - Single",
     "fields": [
         {
-            "key": "field_659c2756348bd",
+            "key": "field_66aa78feec718",
             "label": "Primary Settings",
             "name": "",
             "aria-label": "",
@@ -22,7 +22,7 @@
             "selected": 0
         },
         {
-            "key": "field_66a960f4c4f3e",
+            "key": "field_66aa7a47c72c0",
             "label": "(Column 3\/12)",
             "name": "",
             "aria-label": "",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "key": "field_66a9512925b8b",
+            "key": "field_66aa78feecba2",
             "label": "Text",
             "name": "text",
             "aria-label": "",
@@ -70,48 +70,7 @@
             "acfe_clone_modal_size": "large"
         },
         {
-            "key": "field_66a96108c4f40",
-            "label": "(Column 9\/12)",
-            "name": "",
-            "aria-label": "",
-            "type": "acfe_column",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "columns": "9\/12",
-            "endpoint": 0,
-            "border": "",
-            "border_endpoint": [
-                "endpoint"
-            ]
-        },
-        {
-            "key": "field_66a92dda2143a",
-            "label": "Header",
-            "name": "header",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66a9610fc4f41",
+            "key": "field_66aa7a77934bf",
             "label": "(Column Endpoint)",
             "name": "",
             "aria-label": "",
@@ -132,7 +91,27 @@
             "border": ""
         },
         {
-            "key": "field_659c2730348bc",
+            "key": "field_66aa78feecf61",
+            "label": "Header",
+            "name": "header",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66aa78feecfc7",
             "label": "Copy",
             "name": "copy",
             "aria-label": "",
@@ -160,9 +139,6 @@
             "acfe_wysiwyg_custom_toolbar": 1,
             "acfe_wysiwyg_toolbar_buttons": {
                 "acfe_wysiwyg_toolbar_1": {
-                    "66b27b0e065cc": {
-                        "acfe_wysiwyg_toolbar_row": "formatselect"
-                    },
                     "1": {
                         "acfe_wysiwyg_toolbar_row": "bold"
                     },
@@ -188,7 +164,7 @@
             "acfe_wysiwyg_min_height": 300
         },
         {
-            "key": "field_66a809366dcb5",
+            "key": "field_66aa78feed02a",
             "label": "Background",
             "name": "",
             "aria-label": "",
@@ -207,7 +183,7 @@
             "selected": 0
         },
         {
-            "key": "field_66a809406dcb6",
+            "key": "field_66aa78feed096",
             "label": "Background",
             "name": "background",
             "aria-label": "",
@@ -234,53 +210,7 @@
             "acfe_clone_modal_size": "large"
         },
         {
-            "key": "field_66a92ded2143b",
-            "label": "Header Settings",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66a92dfd2143c",
-            "label": "Header Settings",
-            "name": "header_settings",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_661983686d448"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
-        },
-        {
-            "key": "field_66a9649425d00",
+            "key": "field_66aa78feed155",
             "label": "Buttons",
             "name": "",
             "aria-label": "",
@@ -299,7 +229,7 @@
             "selected": 0
         },
         {
-            "key": "field_66a964a025d01",
+            "key": "field_66aa78feed360",
             "label": "Buttons",
             "name": "buttons",
             "aria-label": "",
@@ -348,7 +278,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_66a964ba25d02",
+                            "key": "field_66aa78ff08c69",
                             "label": "Button",
                             "name": "button",
                             "aria-label": "",
@@ -399,53 +329,7 @@
             "acfe_flexible_grid_container": false
         },
         {
-            "key": "field_66ba53176c68c",
-            "label": "Content Area Settings",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66ba53236c68d",
-            "label": "Content Area Settings",
-            "name": "content_area_settings",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_66ba1140c9524"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
-        },
-        {
-            "key": "field_659c279f348be",
+            "key": "field_66aa78feed5b8",
             "label": "Component Settings",
             "name": "component_settings",
             "aria-label": "",
@@ -494,8 +378,8 @@
         "json"
     ],
     "acfe_form": 0,
-    "acfe_display_title": "",
+    "acfe_display_title": "Hero Settings",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1723487113
+    "modified": 1722448814
 }

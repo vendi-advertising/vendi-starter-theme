@@ -1,40 +1,32 @@
 {
-    "key": "group_661809923e61a",
-    "title": "Settings Modal - Components",
+    "key": "group_66902182309cc",
+    "title": "Background - Color",
     "fields": [
         {
-            "key": "field_66180a2a56586",
-            "label": "Spacing",
-            "name": "",
+            "key": "field_6690218200540",
+            "label": "Background Color",
+            "name": "background_color",
             "aria-label": "",
-            "type": "tab",
+            "type": "color_picker",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66182afac2d84",
-            "label": "Box Control",
-            "name": "box_control",
-            "aria-label": "",
-            "type": "vendi-acf-box-control",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
+            "default_value": "",
+            "enable_opacity": 1,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 0,
+            "theme_colors": 0,
+            "colors": []
         }
     ],
     "location": [
@@ -62,5 +54,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1720721828
 }

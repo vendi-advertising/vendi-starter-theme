@@ -1,6 +1,6 @@
 {
     "key": "group_66195515aacef",
-    "title": "Accordion Item - Shared",
+    "title": "Subcomponent - Accordion - Accordion Item",
     "fields": [
         {
             "key": "field_66195515b25f9",
@@ -296,5 +296,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800432
+    "modified": 1727809891
 }

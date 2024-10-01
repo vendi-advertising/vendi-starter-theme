@@ -3,7 +3,7 @@
 use Vendi\Theme\GenericComponent;
 
 $component   = new GenericComponent( 'component-testimonial' );
-$testimonial = $component->getSubFieldAndCache( 'testimonial' )[0] ?? null;
+$testimonial = $component->getSubField( 'testimonial' )[0] ?? null;
 $copy        = get_field( 'copy', $testimonial?->ID );
 $component->setAbortRenderFunction(
     static function () use ( $testimonial, $copy ) {
@@ -11,7 +11,7 @@ $component->setAbortRenderFunction(
     }
 );
 
-$component->componentStyles->addStyle( '--local-text-color', $component->getSubFieldAndCache( 'text_color' ) );
+$component->componentStyles->addStyle( '--local-text-color', $component->getSubField( 'text_color' ) );
 
 if ( ! $component->renderComponentWrapperStart() ) {
     return;

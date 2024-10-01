@@ -10,11 +10,11 @@ class Accordion extends BaseComponent {
     }
 
     public function getNumberOfColumns(): int {
-        return $this->getSubFieldAndCache( 'number_of_columns' );
+        return $this->getSubField( 'number_of_columns' );
     }
 
     public function getAccordionItems(): array {
-        return $this->getSubFieldAndCache( 'accordion_items' );
+        return $this->getSubField( 'accordion_items' );
     }
 
     public function setComponentCssProperties(): void {
@@ -30,7 +30,7 @@ class Accordion extends BaseComponent {
             'data-role' => 'accordion',
         ];
 
-        if ( 'show' === $this->getSubFieldAndCache( 'expand_collapse_all' ) ) {
+        if ( 'show' === $this->getSubField( 'expand_collapse_all' ) ) {
             $ret['data-expand-collapse-available'] = null;
         }
 

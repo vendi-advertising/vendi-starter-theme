@@ -1,6 +1,6 @@
 {
     "key": "group_6599af50880a8",
-    "title": "Component Shared - Component Settings Tab",
+    "title": "Base Component - Tab - Component Settings",
     "fields": [
         {
             "key": "field_6599af504f27f",
@@ -67,5 +67,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1727810492
 }

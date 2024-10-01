@@ -15,7 +15,7 @@ class Stats extends BaseComponent {
     }
 
     public function getStats() {
-        return $this->getSubFieldAndCache( 'stats' );
+        return $this->getSubField( 'stats' );
     }
 
     protected function abortRender(): bool {

@@ -183,7 +183,7 @@ function vendi_convert_alerts_to_objects($alerts): array
     return $ret;
 }
 
-function vendi_render_headline(string $sub_field_headline, string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline', array|string $additional_css_classes = 'header'): void
+function vendi_render_headline(string $sub_field_headline = 'header', string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline', array|string $additional_css_classes = 'header'): void
 {
     if (!$headline = get_sub_field($sub_field_headline)) {
         return;

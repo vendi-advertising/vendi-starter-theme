@@ -20,7 +20,6 @@ function vendi_get_background_video_iframe(bool $renderErrorMessagesForMissingVa
 {
     $background_video = null;
     if (have_rows($key, $post_id)) {
-
         while (have_rows($key, $post_id)) {
             the_row();
 
@@ -45,7 +44,7 @@ function vendi_get_background_video_iframe(bool $renderErrorMessagesForMissingVa
     $src = $matches['video'];
 
     // Add option to hide controls, enable HD, and do autoplay -- depending on provider
-    $params = array(
+    $params = [
         'playsinline' => 1,
         'controls' => 0,
         'hd' => 1,
@@ -57,7 +56,7 @@ function vendi_get_background_video_iframe(bool $renderErrorMessagesForMissingVa
         'muted' => 1,
         'mute' => 1,
 
-    );
+    ];
 
     $new_src = add_query_arg($params, $src);
 
@@ -160,7 +159,7 @@ function _vendi_get_background_settings_handle_layouts(bool $renderErrorMessages
     }
 }
 
-function vendi_get_background_settings(bool $renderErrorMessagesForMissingValues = true, ComponentStyles $previousStyles = null, $key = 'backgrounds'): ComponentStyles
+function vendi_get_background_settings(ComponentStyles $previousStyles = null, bool $renderErrorMessagesForMissingValues = true, $key = 'backgrounds'): ComponentStyles
 {
     $style = $previousStyles ?? new ComponentStyles();
     if (have_rows($key)) {
@@ -224,7 +223,9 @@ function vendi_maybe_render_background_video(): void
 {
     if ($backgroundVideo = vendi_get_background_video_iframe()) : ?>
         <div class="background-video">
-            <?php echo $backgroundVideo; ?>
+            <?php
+            echo $backgroundVideo; ?>
         </div>
-    <?php endif;
+    <?php
+    endif;
 }

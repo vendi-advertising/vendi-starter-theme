@@ -3,7 +3,7 @@
 use Vendi\Theme\GenericComponent;
 
 $component = new GenericComponent( 'component-figure' );
-$image     = $component->getSubFieldAndCache( 'image' );
+$image     = $component->getSubField( 'image' );
 
 $component->setAbortRenderFunction(
     static function () use ( $image ) {
@@ -11,8 +11,8 @@ $component->setAbortRenderFunction(
     }
 );
 
-$caption      = $component->getSubFieldAndCache( 'caption' );
-$photo_credit = $component->getSubFieldAndCache( 'photo_credit' );
+$caption      = $component->getSubField( 'caption' );
+$photo_credit = $component->getSubField( 'photo_credit' );
 
 
 if ( ! $component->renderComponentWrapperStart() ) {

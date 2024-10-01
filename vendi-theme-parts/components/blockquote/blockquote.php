@@ -16,9 +16,9 @@ if ( ! $component->renderComponentWrapperStart() ) {
 ?>
     <blockquote>
         <div class="copy">
-            <?php echo $component->getSubFieldAndCache( 'copy' ); ?>
+            <?php echo $component->getSubField( 'copy' ); ?>
         </div>
-        <?php if ( $attribution = $component->getSubFieldAndCache( 'attribution' ) ): ?>
+        <?php if ( $attribution = $component->getSubField( 'attribution' ) ): ?>
             <footer class="attribution">
                 <cite><?php echo $attribution; ?></cite>
             </footer>

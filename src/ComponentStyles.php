@@ -12,6 +12,7 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
     private array $container;
     private array $keys;
     private int $position;
+    private array $errors = [];
 
     public function __construct()
     {
@@ -19,6 +20,16 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
 
         $this->container = [];
         $this->keys = array_keys($this->container);
+    }
+
+    public function addCssProperty(string $key, string $value): void
+    {
+        if (!$value) {
+            $this->errors[] = 'Value for '.$key.' is empty';
+
+            return;
+        }
+        $this->offsetSet($key, $value);
     }
 
     public function addStyle(string $key, string $value): void
@@ -124,6 +135,10 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
                 $value = implode(', ', $value);
             }
             $ret .= $key.': '.$value.'; ';
+        }
+
+        if (count($this->errors)) {
+            $ret .= '/* Errors: '.PHP_EOL.implode(PHP_EOL, $this->errors).PHP_EOL.' */';
         }
 
         return $ret;

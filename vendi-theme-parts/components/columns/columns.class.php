@@ -28,23 +28,23 @@ class Columns extends BaseComponent {
     }
 
     private function getJustifyContent(): string {
-        return $this->getSubFieldAndCache( 'justify_content' );
+        return $this->getSubField( 'justify_content' );
     }
 
     private function getJustifyItems(): string {
-        return $this->getSubFieldAndCache( 'justify_items' );
+        return $this->getSubField( 'justify_items' );
     }
 
     private function getAlignItems(): string {
-        return $this->getSubFieldAndCache( 'align_items' );
+        return $this->getSubField( 'align_items' );
     }
 
     private function getAlignContent(): string {
-        return $this->getSubFieldAndCache( 'align_content' );
+        return $this->getSubField( 'align_content' );
     }
 
     private function getColumnGap(): string {
-        return $this->getSubFieldAndCache( 'column_gap' ) . 'rem';
+        return $this->getSubField( 'column_gap' ) . 'rem';
     }
 
     public function getNumberOfColumns(): int {

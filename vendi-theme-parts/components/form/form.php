@@ -10,7 +10,7 @@ if ( ! $component->renderComponentWrapperStart() ) {
 
 ?>
 
-<?php vendi_render_headline( 'header', with_dots: true ); ?>
+<?php vendi_render_headline( 'header' ); ?>
 <?php echo get_sub_field( 'copy' ); ?>
 <?php
 if ( $form_id = get_sub_field( 'form' ) ) {

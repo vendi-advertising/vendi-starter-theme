@@ -9,8 +9,8 @@ $component->renderComponentWrapperStart();
 
 ?>
 
-<?php vendi_render_headline( 'header', with_dots: true ); ?>
-<?php echo $component->getSubFieldAndCache( 'copy' ); ?>
+<?php vendi_render_headline( 'header'); ?>
+<?php echo $component->getSubField( 'copy' ); ?>
 <?php if ( have_rows( 'buttons' ) ): ?>
     <div class="call-to-action-wrap">
         <?php while ( have_rows( 'buttons' ) ) : the_row(); ?>

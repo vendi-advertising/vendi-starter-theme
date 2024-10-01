@@ -14,13 +14,13 @@ class ImageGallery extends BaseComponent {
     }
 
     public function getImageFitting(): string {
-        $value = $this->getSubFieldAndCache( 'image_fitting' );
+        $value = $this->getSubField( 'image_fitting' );
 
         return vendi_constrain_item_to_list( $value, [ 'contain', 'cover', 'none', 'fill', 'scale-down' ], 'scale-down' );
     }
 
     public function getImageCaptions(): string {
-        $value = $this->getSubFieldAndCache( 'image_captions' );
+        $value = $this->getSubField( 'image_captions' );
 
         return vendi_constrain_item_to_list( $value, [ 'none', 'caption', 'title', 'title-and-caption' ], 'none' );
     }
@@ -38,7 +38,7 @@ class ImageGallery extends BaseComponent {
     public function setComponentCssProperties(): void {
         $this->componentStyles->addStyle( '--local-text-color', get_sub_field( 'text_color' ) );
 
-        if ( $gap = $this->getSubFieldAndCache( 'image_gap' ) ) {
+        if ( $gap = $this->getSubField( 'image_gap' ) ) {
             $this->componentStyles->addStyle( '--local-gap', $gap . 'rem' );
         }
     }

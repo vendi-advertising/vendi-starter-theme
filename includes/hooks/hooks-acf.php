@@ -12,16 +12,11 @@
  * use a slash. Instead, we use a magic string that we can later convert back, and
  * ACF will just concatenate it into a full path for us.
  */
+
+use Vendi\Theme\VendiComponentsAcfMagicFolderEnum;
+
 const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_PATH_IDENTIFIER = '|/|';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_COMPONENTS = 'components';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITIES = 'entities';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITY_FIELDS = 'entity-fields';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BACKGROUNDS = 'backgrounds';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDSETS = 'fieldsets';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_THEME_SETTINGS = 'theme-settings';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BASE_COMPONENT = 'base-component';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDS = 'fields';
-const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_OPTION_PAGES = 'option-pages';
+
 
 /**
  * These two hooks synchronize ACF fields to JSON files on disk in order to
@@ -39,15 +34,15 @@ add_filter(
     static function ($paths) {
         return [
             VENDI_CUSTOM_THEME_PATH.'/.acf-json',
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_COMPONENTS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITIES,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BACKGROUNDS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDSETS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_THEME_SETTINGS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BASE_COMPONENT,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITY_FIELDS,
-            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VENDI_COMPONENTS_ACF_MAGIC_FOLDER_OPTION_PAGES,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::COMPONENTS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::ENTITIES->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::BACKGROUNDS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::FIELDSETS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::THEME_SETTINGS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::BASE_COMPONENT->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::FIELDS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value,
+            VENDI_CUSTOM_THEME_PATH.'/.acf-json/'.VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value,
         ];
     },
 );
@@ -65,18 +60,18 @@ add_filter(
         }
 
         $knownGoodFolders = [
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_COMPONENTS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITIES,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BACKGROUNDS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDSETS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_THEME_SETTINGS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BASE_COMPONENT,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITY_FIELDS,
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_OPTION_PAGES,
+            VendiComponentsAcfMagicFolderEnum::COMPONENTS->value,
+            VendiComponentsAcfMagicFolderEnum::ENTITIES->value,
+            VendiComponentsAcfMagicFolderEnum::BACKGROUNDS->value,
+            VendiComponentsAcfMagicFolderEnum::FIELDSETS->value,
+            VendiComponentsAcfMagicFolderEnum::THEME_SETTINGS->value,
+            VendiComponentsAcfMagicFolderEnum::BASE_COMPONENT->value,
+            VendiComponentsAcfMagicFolderEnum::FIELDS->value,
+            VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value,
+            VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value,
         ];
 
-        if (!in_array($parts[0], $knownGoodFolders)) {
+        if (!in_array($parts[0], $knownGoodFolders, true)) {
             return $filename;
         }
 
@@ -89,7 +84,7 @@ add_filter(
     'acf/json/save_file_name',
     static function ($filename, $post, $load_path) {
         static $b = [
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_COMPONENTS => [
+            VendiComponentsAcfMagicFolderEnum::COMPONENTS->value => [
                 'group_6599ece5e2264.json' => 'accordion.json',
                 'group_659c0a262f75a.json' => 'basic-copy.json',
                 'group_659c754d6a1d2.json' => 'blockquote.json',
@@ -105,7 +100,7 @@ add_filter(
                 'group_66acef245de12.json' => 'image-gallery.json',
                 'group_66aa473bce3b3.json' => 'form.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITIES => [
+            VendiComponentsAcfMagicFolderEnum::ENTITIES->value => [
                 'post_type_66ba8537bd649' => 'training-hub.json',
 
                 'post_type_6599ab6f6b61a.json' => 'testimonial.json',
@@ -120,18 +115,18 @@ add_filter(
 
 
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BACKGROUNDS => [
+            VendiComponentsAcfMagicFolderEnum::BACKGROUNDS->value => [
                 'group_66902182309cc.json' => 'background-color.json',
                 'group_66901f65435d7.json' => 'background-image.json',
                 'group_669022c556e50.json' => 'background-linear-gradient.json',
                 'group_66918627662b4.json' => 'background-reusable-background.json',
                 'group_66a80a6a0ee49.json' => 'background-video.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDSETS => [
+            VendiComponentsAcfMagicFolderEnum::FIELDSETS->value => [
                 'group_66901f4b7739f.json' => 'backgrounds.json',
                 'group_66ba1140c9524.json' => 'content-area-settings.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_THEME_SETTINGS => [
+            VendiComponentsAcfMagicFolderEnum::THEME_SETTINGS->value => [
                 'group_61d8a393c5415.json' => 'theme-settings-fields.json',
 
                 'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
@@ -141,23 +136,23 @@ add_filter(
                 'group_66143631ddd8b.json' => 'theme-settings-sso-provider-azure.json',
                 'group_6619abc83577b.json' => 'theme-settings-sso-provider-google.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_BASE_COMPONENT => [
+            VendiComponentsAcfMagicFolderEnum::BASE_COMPONENT->value => [
                 'group_66aced8597513.json' => 'base-component.json',
                 'group_66fc4b4a790ac.json' => 'base-component-tab-header.json',
                 'group_66fc4b1253bca.json' => 'base-component-tab-background.json',
                 'group_66fc4a1a9dd82.json' => 'base-component-tab-content-settings.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_FIELDS => [
+            VendiComponentsAcfMagicFolderEnum::FIELDS->value => [
                 'group_66a94415b1615.json' => 'color.json',
                 'group_66aa465159585.json' => 'content-placement.json',
                 'group_66aa45d83feeb.json' => 'content-width.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_ENTITY_FIELDS => [
+            VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value => [
                 'group_6599abaa59f84.json' => 'testimonial-fields.json',
                 'group_65f357e01af5b.json' => 'alert-fields.json',
                 'group_6691856be84f6.json' => 'reusable-background-fields.json',
             ],
-            VENDI_COMPONENTS_ACF_MAGIC_FOLDER_OPTION_PAGES => [
+            VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value => [
                 'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
                 'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
             ],
@@ -186,7 +181,6 @@ add_filter(
 
             'group_6599af50880a8.json' => 'components-shared-component-settings-tab.json',
             'group_61dc8e97982a7.json' => 'content-components.json',
-
 
 
             'group_661983686d448.json' => 'tab-fields-headings.json',

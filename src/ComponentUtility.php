@@ -47,34 +47,88 @@ final class ComponentUtility
         return $nextId;
     }
 
+    public function get_next_id_for_component_with_component_name(string $componentName): string
+    {
+        $id = $this->get_next_id_for_component($componentName);
+
+        return sprintf('%1$s-%2$d', $componentName, $id);
+    }
+
+    public static function get_new_component_instance(string $className): BaseComponent
+    {
+        global $vendi_theme_test_mode;
+        global $vendi_theme_test_data;
+
+        if (!class_exists($className)) {
+            throw new UnknownComponentClassException($className);
+        }
+
+        if (true === $vendi_theme_test_mode) {
+            $reflect = new ReflectionClass($className);
+            $testClassName = $reflect->getNamespaceName().'\\Test'.$reflect->getShortName();
+
+            if (!class_exists($testClassName)) {
+                throw new UnknownComponentClassException($testClassName);
+            }
+
+            return new $testClassName($vendi_theme_test_data);
+        }
+
+        return new $className();
+    }
+
+    public function loadTemplate(array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    {
+        return $this->loadItem(VENDI_CUSTOM_THEME_TEMPLATE_FOLDER_NAME, $name, $objectState, $errorMessage);
+    }
+
+    public function loadComponent(array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    {
+        return $this->loadItem(VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME, $name, $objectState, $errorMessage);
+    }
+
     /**
      * @throws JsonException
      */
-    public function loadComponent(array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    private function loadItem(string $subPath, array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
     {
+        // We support ['header'/'thing'] and 'header/thing' for names
         $name = is_string($name) ? explode('/', $name) : $name;
 
+        // If two subcomponents use the same name, we need to differentiate them in the enqueue key
+        // otherwise the second one will overwrite the first.
+        $enqueueKey = implode('-', $name);
+
+        // Just in case we get nulls/empties
         $localPathParts = array_filter($name);
 
+        // Build the full path and URL
         $fullPathParts = [
             VENDI_CUSTOM_THEME_PATH,
-            VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME,
+            $subPath,
             ...$localPathParts,
         ];
         $fullPathParts = array_filter($fullPathParts);
 
         $fullUrlParts = [
             VENDI_CUSTOM_THEME_URL,
-            VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME,
+            $subPath,
             ...$localPathParts,
         ];
+        $fullUrlParts = array_filter($fullUrlParts);
 
-        $trueComponentName = end($name);
         $componentDirectory = Path::join(...$fullPathParts);
         $componentDirectoryUrl = Path::join(...$fullUrlParts);
 
+        // The terminal component name which is used for the folder/subfolder, as well as all
+        // magically named files
+        $trueComponentName = end($name);
+
+        // This can help when debugging subcomponents
         $this->componentStack[] = $trueComponentName;
 
+        // We no longer automatically generate component directories or files because this
+        // ended up with weird edge-case things created on PROD servers
         if (!is_dir($componentDirectory)) {
             $componentStackMessage = implode(' -> ', $this->componentStack);
             $errorMessage = 'Could not locate component directory: '.$componentStackMessage;
@@ -86,6 +140,8 @@ final class ComponentUtility
             return false;
         }
 
+        // For basic-copy, we're ultimately looking for something like:
+        // vendi-theme-parts/components/basic-copy/basic-copy.php
         $componentFile = Path::join($componentDirectory, $trueComponentName.'.php');
 
         if (!is_readable($componentFile)) {
@@ -100,6 +156,8 @@ final class ComponentUtility
         }
 
         $optionalFiles = [
+            'class-base' => $trueComponentName.'.base.php',
+
             // Helper class
             'class' => $trueComponentName.'.class.php',
 
@@ -112,23 +170,30 @@ final class ComponentUtility
 
         foreach ($optionalFiles as $key => $file) {
             $optionalFile = Path::join($componentDirectory, $file);
-            if (is_readable($optionalFile)) {
-                try {
-                    require_once $optionalFile;
-                } catch (\Exception $e) {
-                    trigger_error(
-                        sprintf(
-                            'Could not load optional file "%1$s" for component "%2$s". The error was: %3$s',
-                            $file,
-                            $trueComponentName,
-                            $e->getMessage(),
-                        ),
-                        E_USER_ERROR,
-                    );
-                }
+
+            if (!is_readable($optionalFile)) {
+                continue;
+            }
+
+            try {
+                require_once $optionalFile;
+            } catch (\Exception $e) {
+                // We are intentionally not swallowing this exception because something is very wrong
+                trigger_error(
+                    sprintf(
+                        'Could not load optional file "%1$s" for component "%2$s". The error was: %3$s',
+                        $file,
+                        $trueComponentName,
+                        $e->getMessage(),
+                    ),
+                    E_USER_ERROR,
+                );
             }
         }
 
+        // We still occasionally have a need to pass state to components. This is almost exclusively
+        // used for subcomponents. The below code backs up the global state, sets the new state, and
+        // invokes the component and then restores it.
         global $vendi_layout_component_object_state;
         $backup_state = $vendi_layout_component_object_state;
 
@@ -145,6 +210,11 @@ final class ComponentUtility
             $componentDirectoryUrl,
             $objectState,
         );
+
+        $this->maybeEnqueueComponentGlobalStyles($trueComponentName, $componentDirectoryUrl, $componentDirectory);
+        $this->maybeEnqueueComponentStyle($trueComponentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey);
+        $this->maybeEnqueueComponentScript($trueComponentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey);
+        $this->maybeEnqueueComponentScripts($trueComponentName, $componentDirectoryUrl, $componentDirectory);
 
         try {
             include $componentFile;
@@ -164,36 +234,31 @@ final class ComponentUtility
 
         $vendi_layout_component_object_state = $backup_state;
 
-        $this->maybeEnqueueComponentGlobalStyles($trueComponentName, $componentDirectoryUrl, $componentDirectory);
-        $this->maybeEnqueueComponentStyle($trueComponentName, $componentDirectoryUrl, $componentDirectory);
-        $this->maybeEnqueueComponentScript($trueComponentName, $componentDirectoryUrl, $componentDirectory);
-        $this->maybeEnqueueComponentScripts($trueComponentName, $componentDirectoryUrl, $componentDirectory);
-
         return true;
     }
 
-    private function maybeEnqueueComponentStyle($componentName, $componentDirectoryUrl, $componentDirectory): void
+    private function maybeEnqueueComponentStyle($componentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey): void
     {
         $this->maybeInvokeCallbackIfComponentFileExists(
             $componentName,
             'css',
             $componentDirectory,
             $componentDirectoryUrl,
-            static function ($componentName, $assetUrl, $assetPath) {
-                wp_enqueue_style('component-'.$componentName, $assetUrl, [], filemtime($assetPath));
+            static function ($componentName, $assetUrl, $assetPath) use ($enqueueKey) {
+                wp_enqueue_style('component-'.$enqueueKey, $assetUrl, [], filemtime($assetPath));
             },
         );
     }
 
-    private function maybeEnqueueComponentScript($componentName, $componentDirectoryUrl, $componentDirectory): void
+    private function maybeEnqueueComponentScript($componentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey): void
     {
         $this->maybeInvokeCallbackIfComponentFileExists(
             $componentName,
             'js',
             $componentDirectory,
             $componentDirectoryUrl,
-            static function ($componentName, $assetUrl, $assetPath) {
-                wp_enqueue_script('component-'.$componentName, $assetUrl, [], filemtime($assetPath), true);
+            static function ($componentName, $assetUrl, $assetPath) use ($enqueueKey) {
+                wp_enqueue_script('component-'.$enqueueKey, $assetUrl, [], filemtime($assetPath), true);
             },
         );
     }
@@ -224,22 +289,21 @@ final class ComponentUtility
      */
     private function maybeEnqueueComponentGlobalStyles($componentName, $componentDirectoryUrl, $componentDirectory): void
     {
-        $this
-            ->maybeEnqueueComponentAssetFilesItems(
-                $componentName,
-                $componentDirectoryUrl,
-                $componentDirectory,
-                'global-styles',
-                function ($componentName, $assetUrl, $assetPath, $items) {
-                    // TODO: This needs to be tested, and is probably wrong
-                    foreach ($items as $style) {
-                        $assetPath = Path::join(VENDI_CUSTOM_THEME_PATH, 'css', $style);
-                        $url = Path::join(VENDI_CUSTOM_THEME_URL, 'css', $style);
-                        $assetName = basename($style, '.css');
-                        wp_enqueue_style('component-'.$assetName, $url, [], filemtime($assetPath));
-                    }
-                },
-            );
+        $this->maybeEnqueueComponentAssetFilesItems(
+            $componentName,
+            $componentDirectoryUrl,
+            $componentDirectory,
+            'global-styles',
+            function ($componentName, $assetUrl, $assetPath, $items) {
+                // TODO: This needs to be tested, and is probably wrong
+                foreach ($items as $style) {
+                    $assetPath = Path::join(VENDI_CUSTOM_THEME_PATH, 'css', $style);
+                    $url = Path::join(VENDI_CUSTOM_THEME_URL, 'css', $style);
+                    $assetName = basename($style, '.css');
+                    wp_enqueue_style('component-'.$assetName, $url, [], filemtime($assetPath));
+                }
+            },
+        );
     }
 
     /**
@@ -264,7 +328,6 @@ final class ComponentUtility
         );
     }
 
-
     private function maybeInvokeCallbackIfComponentFileExists(string $componentName, string $extension, string $componentDirectory, string $componentDirectoryUrl, callable $callback): void
     {
         $assetPath = Path::join($componentDirectory, $componentName.'.'.ltrim($extension, '.'));
@@ -273,28 +336,5 @@ final class ComponentUtility
         if (is_readable($assetPath)) {
             $callback($componentName, $assetUrl, $assetPath);
         }
-    }
-
-    public static function get_new_component_instance(string $className): BaseComponent
-    {
-        global $vendi_theme_test_mode;
-        global $vendi_theme_test_data;
-
-        if (!class_exists($className)) {
-            throw new UnknownComponentClassException($className);
-        }
-
-        if (true === $vendi_theme_test_mode) {
-            $reflect = new ReflectionClass($className);
-            $testClassName = $reflect->getNamespaceName().'\\Test'.$reflect->getShortName();
-
-            if (!class_exists($testClassName)) {
-                throw new UnknownComponentClassException($testClassName);
-            }
-
-            return new $testClassName($vendi_theme_test_data);
-        }
-
-        return new $className();
     }
 }

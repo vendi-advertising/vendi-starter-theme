@@ -23,3 +23,7 @@ however it is recommended to use more specific components such as _Figure_ which
     * Horizontal Padding
 * Component Settings
     * Row ID
+
+## Examples
+
+{%examples%}

@@ -17,11 +17,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-a {
+:root :where(a) {
     text-decoration: none;
 }
 
-a:hover {
+:root :where(a:hover) {
     text-decoration: underline;
 }
 

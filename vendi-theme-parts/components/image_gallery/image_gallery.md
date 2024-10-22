@@ -1,0 +1,7 @@
+# Figure
+
+## Fields
+
+## Examples
+
+{%examples%}

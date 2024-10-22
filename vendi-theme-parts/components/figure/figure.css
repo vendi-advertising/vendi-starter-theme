@@ -1,4 +1,10 @@
+.component-figure :where(figure) {
+    margin: 0;
+    padding: 0;
+}
+
 .component-figure figure :is(img, picture) {
-    width: 100%;
-    height: auto;
+    max-height: var(--local-max-height, 100%);
+    max-width: var(--local-max-width, 100%);
+    object-fit: var(--local-object-fit);
 }

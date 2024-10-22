@@ -4,8 +4,8 @@ use Symfony\Component\Filesystem\Path;
 
 function vendi_perform_feature(string $featureName, string $actionName, array $args = []): void
 {
-    $fileName = Path::join(VENDI_CUSTOM_THEME_FEATURE_PATH, $featureName, "{$featureName}.{$actionName}.php");
-    if (!is_readable($fileName)) {
+    $fileName = Path::join(VENDI_CUSTOM_THEME_PATH . VENDI_CUSTOM_THEME_FEATURE_FOLDER_NAME . "/{$featureName}/{$featureName}.{$actionName}.php");
+    if ( ! is_readable($fileName)) {
         if (WP_DEBUG) {
             throw new InvalidArgumentException(sprintf('Feature %1$s with action %2$s does not exist', $featureName, $actionName));
         }
@@ -48,8 +48,7 @@ function vendi_feature_register_autoload(string $featureNamespace, string $path)
 {
     spl_autoload_register(
         static function ($class) use ($featureNamespace, $path) {
-
-            $absoluteFeatureNamespace = 'Vendi\\Theme\\Feature\\'.$featureNamespace;
+            $absoluteFeatureNamespace = 'Vendi\\Theme\\Feature\\' . $featureNamespace;
 
             // does the class use the namespace prefix?
             $len = strlen($absoluteFeatureNamespace);
@@ -63,13 +62,13 @@ function vendi_feature_register_autoload(string $featureNamespace, string $path)
             // replace the namespace prefix with the base directory, replace namespace
             // separators with directory separators in the relative class name, append
             // with .php
-            $file = $path.str_replace('\\', '/', $relative_class).'.php';
+            $file = $path . str_replace('\\', '/', $relative_class) . '.php';
 
             // if the file exists, require it
             if (file_exists($file)) {
                 require_once $file;
             }
-        }
+        },
 
     );
 }
@@ -103,18 +102,18 @@ function vendi_feature_register_acf(array $mapping, string $dir): void
         add_filter(
             "acf/settings/save_json/key={$key}",
             static function ($paths) use ($dir) {
-                return $dir.'/.acf-json';
-            }
+                return $dir . '/.acf-json';
+            },
         );
     }
 
     add_filter(
         'acf/settings/load_json',
         static function ($paths) use ($dir) {
-            $paths[] = $dir.'/.acf-json';
+            $paths[] = $dir . '/.acf-json';
 
             return $paths;
-        }
+        },
     );
 
     add_filter(
@@ -125,6 +124,6 @@ function vendi_feature_register_acf(array $mapping, string $dir): void
             }
 
             return $filename;
-        }
+        },
     );
 }

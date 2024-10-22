@@ -103,12 +103,6 @@
     opacity: 0;
 }
 
-@media screen and (width <= 1200px) {
-    .component-accordion {
-        padding-inline: var(--size-medium);
-    }
-}
-
 @media screen and (width <= 1000px) {
     .component-accordion :where(.accordion-items) {
         column-gap: 5rem;

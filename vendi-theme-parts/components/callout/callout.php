@@ -1,21 +1,23 @@
 <?php
 
 use Vendi\Theme\Component\Callout;
+use Vendi\Theme\ComponentUtility;
 use Vendi\Theme\DTO\SimpleLink;
 
-$component = new Callout();
+/** @var Callout $component */
+$component = ComponentUtility::get_new_component_instance( Callout::class );
 
 $component->renderComponentWrapperStart();
 
 ?>
 
 <?php vendi_render_headline( 'header'); ?>
-<?php echo $component->getSubField( 'copy' ); ?>
-<?php if ( have_rows( 'buttons' ) ): ?>
+<?php echo $component->getCopy(); ?>
+<?php if ( $component->haveRows( 'buttons' ) ): ?>
     <div class="call-to-action-wrap">
-        <?php while ( have_rows( 'buttons' ) ) : the_row(); ?>
-            <?php if ( $link = SimpleLink::tryCreate( get_sub_field( 'call_to_action' ) ) ): ?>
-                <?php echo $link->toHtml( cssClasses: [ 'call-to-action', 'call-to-action-button', get_sub_field( 'icon' ), get_sub_field( 'call_to_action_display_mode' ) ] ); ?>
+        <?php while ( $component->haveRows( 'buttons' ) ) : $component->theRow(); ?>
+            <?php if ( $link = SimpleLink::tryCreate( $component->getSubField( 'call_to_action' ) ) ): ?>
+                <?php echo $link->toHtml( cssClasses: [ 'call-to-action', 'call-to-action-button', $component->getSubField( 'icon' ), $component->getSubField( 'call_to_action_display_mode' ) ] ); ?>
             <?php endif; ?>
         <?php endwhile; ?>
     </div>

@@ -6,7 +6,6 @@ use JsonSerializable;
 
 abstract class BaseComponent implements JsonSerializable
 {
-
     public readonly ComponentStyles $componentStyles;
     private readonly int $componentIndex;
     protected array $fieldCache = [];

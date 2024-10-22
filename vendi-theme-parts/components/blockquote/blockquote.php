@@ -1,13 +1,9 @@
 <?php
 
-use Vendi\Theme\GenericComponent;
+use Vendi\Theme\Component\Blockquote;
+use Vendi\Theme\ComponentUtility;
 
-$component = new GenericComponent( 'component-blockquote' );
-$component->setAbortRenderFunction(
-    static function () {
-        return ! get_sub_field( 'copy' );
-    }
-);
+$component = ComponentUtility::get_new_component_instance( Blockquote::class );
 
 if ( ! $component->renderComponentWrapperStart() ) {
     return;

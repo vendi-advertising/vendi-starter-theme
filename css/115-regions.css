@@ -2,3 +2,9 @@
     margin-inline: auto;
     max-width: var(--content-width-normal);
 }
+
+@media screen and (width <= 1200px) {
+    :where(.component-wrapper > .region > .content-wrap) {
+        padding-inline: var(--size-small);
+    }
+}

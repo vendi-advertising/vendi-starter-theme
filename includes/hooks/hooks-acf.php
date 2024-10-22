@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\Filesystem\Path;
+use Vendi\Theme\VendiComponentsAcfMagicFolderEnum;
+
 /**
  * We have not yet identified a way to save _and_ load using subfolders
  * and an obvious and consistent pattern. Loading is easy, as long as we
@@ -12,9 +15,6 @@
  * use a slash. Instead, we use a magic string that we can later convert back, and
  * ACF will just concatenate it into a full path for us.
  */
-
-use Vendi\Theme\VendiComponentsAcfMagicFolderEnum;
-
 const VENDI_COMPONENTS_ACF_MAGIC_FOLDER_PATH_IDENTIFIER = '|/|';
 
 

@@ -10,13 +10,13 @@ if ( ! $component->renderComponentWrapperStart() ) {
 
 ?>
 
-<?php vendi_render_headline( 'header' ); ?>
-<?php echo get_sub_field( 'copy' ); ?>
+<?php vendi_render_headline( 'header', with_dots: true ); ?>
+<?php echo $component->getSubField( 'copy' ); ?>
 <?php
-if ( $form_id = get_sub_field( 'form' ) ) {
-    $display_form_title       = vendi_get_sub_field_boolean( 'display_form_title', false );
-    $display_form_description = vendi_get_sub_field_boolean( 'display_form_description', false );
-    $use_ajax                 = vendi_get_sub_field_boolean( 'use_ajax', false );
+if ( $form_id = $component->getSubField( 'form' ) ) {
+    $display_form_title       = $component->getSubFieldBoolean( 'display_form_title', false );
+    $display_form_description = $component->getSubFieldBoolean( 'display_form_description', false );
+    $use_ajax                 = $component->getSubFieldBoolean( 'use_ajax', false );
 
     $form_html = gravity_form(
         $form_id,

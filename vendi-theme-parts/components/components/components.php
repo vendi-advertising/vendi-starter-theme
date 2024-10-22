@@ -12,7 +12,7 @@ if ( have_rows( VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object() ) 
         while ( have_rows( VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, get_queried_object() ) ) {
             the_row();
 
-            vendi_load_modern_component( get_row_layout() );
+            vendi_load_component_v3( get_row_layout() );
         }
 
         ?>

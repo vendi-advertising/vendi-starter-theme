@@ -20,7 +20,7 @@
         <?php
         while ( have_rows( 'content' ) ) {
             the_row();
-            vendi_load_modern_component( get_row_layout() );
+            vendi_load_component_v3( get_row_layout() );
         }
         ?>
     </div>

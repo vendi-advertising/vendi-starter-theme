@@ -18,7 +18,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_661d79c7d465c",
@@ -65,7 +66,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_661d79ddd465e",
@@ -130,5 +132,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1713208766
+    "modified": 1718800433
 }

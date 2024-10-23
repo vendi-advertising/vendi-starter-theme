@@ -1,0 +1,115 @@
+/*
+This component was built by a madman.
+Codepen: https://codepen.io/cjhaas/pen/wvLjpzZ?editors=1100
+*/
+.component-stepwise {
+    --local-stepwise-column-gap: 2rem;
+    --local-stepwise-number-width: 1rem;
+    --local-stepwise-number-padding: 2rem;
+    --local-stepwise-number-font-size: 1.6rem;
+    --local-stepwise-number-border-width: 1rem;
+    --local-stepwise-number-border-color: green;
+    --local-stepwise-number-background-color: purple;
+    --local-stepwise-number-color: red;
+    --local-stepwise-line-width: 1rem;
+    --local-stepwise-line-color: yellow;
+    --local-stepwise-content-bottom-padding: 2rem;
+    --local-stepwise-content-top-padding: 2rem;
+}
+
+.component-stepwise :where(.steps, .step) {
+    margin: 0;
+    padding: 0;
+}
+
+.component-stepwise :where(.steps) {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: var(--local-stepwise-column-gap);
+    align-items: center;
+    isolation: isolate;
+    /* We need to change this for the math to work */
+    box-sizing: content-box;
+}
+
+.component-stepwise :where(.steps .step) {
+    /* We want the grid on the parent so that non-standard number widths are all the same size */
+    display: contents;
+}
+
+.component-stepwise :where(.steps .step .number) {
+    font-size: var(--local-stepwise-number-font-size);
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    width: var(--local-stepwise-number-width);
+    border: var(--local-stepwise-number-border-width) solid var(--local-stepwise-number-border-color);
+    display: grid;
+    place-content: center;
+    background-color: var(--local-stepwise-number-background-color);
+    color: var(--local-stepwise-number-color);
+    padding: var(--local-stepwise-number-padding);
+    z-index: 0;
+    box-sizing: content-box;
+}
+
+.component-stepwise :where(.steps .step .content) {
+    position: relative;
+    grid-column: 2;
+    min-height: 20px;
+    transform: translateY(calc(
+        -1 *
+        (var(--local-stepwise-number-width))
+    ));
+    margin-bottom: calc(
+        -1 *
+        (var(--local-stepwise-number-width))
+    );
+    padding-block-start: var(--local-stepwise-content-top-padding);
+    padding-block-end: var(--local-stepwise-content-bottom-padding);
+}
+
+.component-stepwise :where(.steps .step) .content:empty {
+    min-height: 70px;
+    line-height: 1;
+    z-index: -1;
+}
+
+.component-stepwise :where(.steps .step) .content::before {
+    content: "";
+    position: absolute;
+    border-left: var(--local-stepwise-line-width) solid var(--local-stepwise-line-color);
+    --local-stepwise-column-gap-negated: calc(-1 * var(--local-stepwise-column-gap));
+    --local-step-width-half: calc(var(--local-stepwise-number-width) / 2);
+    --local-step-line-width-half: calc(var(--local-stepwise-line-width) / 2);
+    height: calc(
+        (100% - (var(--local-stepwise-content-bottom-padding) - var(--local-stepwise-content-bottom-padding)) - calc(var(--local-stepwise-number-width) / 2))
+    );
+    transform: translateX(
+        calc(
+            var(--local-stepwise-column-gap-negated) -
+            var(--local-step-width-half) -
+            var(--local-step-line-width-half) -
+            var(--local-stepwise-number-border-width) -
+            var(--local-stepwise-number-padding)
+        )
+    ) translateY(
+        calc(
+            var(--local-stepwise-number-width) - var(--local-stepwise-content-top-padding)
+        )
+    );
+    z-index: -2;
+}
+
+.component-stepwise :where(.steps .step:last-child) .content::before {
+    content: none;
+}
+
+.component-stepwise :where(.steps .step:last-child .content) {
+    padding-block-end: 0;
+}
+
+.component-stepwise :where(.steps .step:last-child .content :last-child) {
+    margin-block-end: 0;
+    padding-block-end: 0;
+}

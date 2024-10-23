@@ -1,0 +1,99 @@
+.alerts-container {
+    width: 100%;
+    display: grid;
+    row-gap: 0.5rem;
+    background-color: var(--color-alert-container-background);
+}
+
+.alerts-container :where(.single-alert) {
+    display: grid;
+    grid-template-columns: 10rem 1fr 10rem;
+    background-color: var(--local-alert-background-color);
+    column-gap: 3rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+.alerts-container :where(.single-alert.info) {
+    --local-alert-background-color: var(--color-alert-background-info);
+    --local-alert-icon-color: var(--color-alert-icon-info);
+}
+
+.alerts-container :where(.single-alert.warning) {
+    --local-alert-background-color: var(--color-alert-background-warning);
+    --local-alert-icon-color: var(--color-alert-icon-warning);
+}
+
+.alerts-container :where(.single-alert.critical) {
+    --local-alert-background-color: var(--color-alert-background-critical);
+    --local-alert-icon-color: var(--color-alert-icon-critical);
+}
+
+.alerts-container :where(.single-alert .alert-copy) {
+    color: var(--color-link-normal);
+    line-height: 1.2;
+}
+
+.alerts-container :where(.single-alert .alert-copy a) {
+    color: var(--color-link-normal);
+    text-decoration: underline;
+}
+
+.alerts-container :where(.single-alert .alert-copy a:visited) {
+    color: var(--color-link-hover);
+}
+
+.alerts-container :where(.single-alert .alert-copy a:visited) {
+    color: var(--color-link-visited);
+}
+
+.alerts-container :where(.single-alert .alert-icon) {
+    justify-self: end;
+    display: flex;
+}
+
+.alerts-container :where(.single-alert .alert-icon svg) {
+    color: var(--local-alert-icon-color);
+}
+
+.alerts-container :where(.single-alert .alert-headline) {
+    font-size: 1.2em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.alerts-container :where(.single-alert .alert-copy, .single-alert .alert-cta) {
+    display: inline;
+}
+
+.alerts-container :where(.single-alert svg) {
+    max-height: 2rem;
+    max-width: 2rem;
+    width: 100%;
+}
+
+.alerts-container :where(.single-alert .dismiss-alert svg) {
+    max-width: 1.5rem;
+    cursor: pointer;
+}
+
+.alerts-container :where(.single-alert.hidden) {
+    display: none;
+}
+
+.alerts-container :where(.single-alert.hide) {
+    animation: alert-close 0.25s forwards;
+}
+
+@keyframes alert-close {
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 75em) {
+    .alerts-container :where(.single-alert) {
+        grid-template-columns: 5rem 1fr 5rem;
+    }
+}

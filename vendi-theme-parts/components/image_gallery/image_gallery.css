@@ -1,0 +1,107 @@
+.component-image-gallery :where(.component-wrapper) {
+    color: var(--local-text-color, var(--color-primary-black));
+}
+
+.component-image-gallery :where(ul, li) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:where(.component-image-gallery.grid-column-count-1 .content-wrap > ul) {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-2 .content-wrap > ul) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-3 .content-wrap > ul) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-4 .content-wrap > ul) {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-5 .content-wrap > ul) {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-6 .content-wrap > ul) {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-7 .content-wrap > ul) {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+:where(.component-image-gallery.grid-column-count-8 .content-wrap > ul) {
+    grid-template-columns: repeat(8, 1fr);
+}
+
+:where(.component-image-gallery.image-fitting-scale-down .content-wrap > ul img) {
+    object-fit: scale-down;
+}
+
+:where(.component-image-gallery.image-fitting-cover .content-wrap > ul img) {
+    object-fit: cover;
+}
+
+:where(.component-image-gallery.image-fitting-contain .content-wrap > ul img) {
+    object-fit: contain;
+}
+
+:where(.component-image-gallery.image-fitting-fill .content-wrap > ul img) {
+    object-fit: fill;
+}
+
+:where(.component-image-gallery.image-fitting-none .content-wrap > ul img) {
+    object-fit: none;
+}
+
+.component-image-gallery :where(.content-wrap > ul img) {
+    width: 100%;
+    height: auto;
+}
+
+.component-image-gallery :where(figure) {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    gap: var(--size-x-small);
+}
+
+.component-image-gallery :where(.content-wrap > ul:not(.flickity-enabled)) {
+    display: grid;
+    gap: var(--local-gap, 1rem);
+    justify-items: center;
+}
+
+.component-image-gallery :where(.content-wrap > ul > li) {
+    align-self: start;
+}
+
+.component-image-gallery :where(.content-wrap > ul > li > figure > figcaption) {
+    font-size: var(--font-size-figure-caption);
+    width: 100%;
+    max-width: 30rem; /* This number is tied to the image thumbnail */
+}
+
+.component-image-gallery :where(.content-wrap > hr) {
+    margin: var(--margin-medium) 0;
+    border: 0;
+    border-top: 1px solid #000;
+}
+
+@media screen and (width <= 70em) {
+    .component-image-gallery :where(.content-wrap > ul) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (width <= 45em) {
+    .component-image-gallery :where(.content-wrap > ul) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

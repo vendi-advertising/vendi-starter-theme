@@ -1,6 +1,6 @@
 {
     "key": "group_66195515aacef",
-    "title": "Accordion Item - Shared",
+    "title": "Subcomponent - Accordion - Accordion Item",
     "fields": [
         {
             "key": "field_66195515b25f9",
@@ -18,7 +18,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_66195515b2653",
@@ -206,7 +207,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_66195515b2923",
@@ -294,5 +296,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1712936361
+    "modified": 1727809891
 }

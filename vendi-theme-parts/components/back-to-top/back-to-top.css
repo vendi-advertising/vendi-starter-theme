@@ -1,0 +1,36 @@
+.back-to-top {
+    position: fixed;
+    isolation: isolate;
+    transition: all 250ms ease-in-out;
+    bottom: 3rem;
+    z-index: var(--z-index-back-to-top);
+    opacity: 0;
+    right: 6rem;
+    visibility: hidden;
+}
+
+.back-to-top.visible {
+    visibility: visible;
+    opacity: .7;
+}
+
+.back-to-top-button {
+    background: var(--color-brand-grey-2);
+    width: 5rem;
+    height: 5rem;
+    border: var(--color-primary-white) solid 0.15rem;
+    display: grid;
+    place-content: center;
+}
+
+.back-to-top svg {
+    width: 2rem;
+    transform: rotate(180deg);
+    stroke: var(--color-primary-white) !important;
+}
+
+@media screen and (max-width: 730px) {
+    .back-to-top {
+        display: none;
+    }
+}

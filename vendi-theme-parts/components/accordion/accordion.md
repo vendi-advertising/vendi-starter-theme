@@ -1,0 +1,7 @@
+# Accordion
+
+## Fields
+
+## Examples
+
+{%examples%}

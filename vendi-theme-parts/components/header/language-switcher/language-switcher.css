@@ -1,0 +1,9 @@
+.site-header :where(.language-switcher-wrap .gt_switcher-popup img) {
+    max-width: 2rem;
+}
+
+.site-header :where(.language-switcher-wrap .glink span) {
+    color: var(--color-brand-dark-blue);
+    font-size: 1.2rem !important;
+    font-weight: 700;
+}

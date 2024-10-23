@@ -1,0 +1,210 @@
+.site-header :where(.main-nav) {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: clamp(1rem, 3vw, 6rem);
+    max-width: max-content;
+    margin-inline: auto;
+}
+
+.site-header :where(.main-nav > li) {
+    text-align: center;
+    margin-block: 0.5rem 0;
+}
+
+.site-header :where(.main-nav ul) {
+    display: none;
+}
+
+/*
+ All sub-menus have blanks at the top and bottom. We're going to hide them
+ by default and only show them when actually needed.
+ */
+.site-header :where(.main-nav .sub-menu-blank-child) {
+    display: none;
+}
+
+.site-header :where(.main-nav a, .sub-menu-blank-child > .top, .sub-menu-blank-child > .bottom) {
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: block;
+    padding-block: 1rem;
+    transition: all .3s;
+    min-height: 1em;
+    color: var(--color-brand-dark-blue);
+}
+
+.site-header :where(.main-nav) :where(a:hover, a:focus-visible) {
+    text-decoration: none;
+}
+
+.site-header :where(.main-nav a[href="#"]):hover {
+    cursor: default;
+}
+
+.site-header :where(.main-nav a[href]:not([href="#"]):hover) {
+    text-decoration: underline;
+}
+
+.site-header :where(.main-nav > .menu-item:has(.sub-menu)):hover > .sub-menu-wrapper > .sub-menu {
+    clip-path: inset(0 0 0 0);
+    transition: all .3s;
+}
+
+.site-header :where(.main-nav > .menu-item)::after {
+    content: "";
+    position: relative;
+    height: 0;
+    display: block;
+    width: 100%;
+    left: 0;
+    padding-block-end: 1rem;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu ) {
+    display: grid;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    background-color: rgb(from var(--color-brand-blue) r g b / 0.9);
+    left: 0;
+    align-items: start;
+    transition: all .1s;
+    clip-path: inset(0 0 100% 0);
+    margin-top: 0.9rem;
+    --curtain-divider-width: 10px;
+    --curtain-side-width: 1fr;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item)) {
+    --curtain-column-width: 60rem;
+    grid-template-columns: var(--curtain-side-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-side-width);
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item ~ .menu-item)) {
+    --curtain-column-width: 40rem;
+    grid-template-columns: var(--curtain-side-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-side-width);
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item ~ .menu-item~ .menu-item)) {
+    --curtain-column-width: 30rem;
+    grid-template-columns: var(--curtain-side-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-divider-width) var(--curtain-column-width) var(--curtain-side-width);
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item) > .sub-menu-blank-child) {
+    display: grid;
+    grid-template-rows: min-content;
+    height: 100%;
+    overflow: hidden;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item) > .sub-menu-blank-child:not(:first-child):not(:last-child) > .bottom) {
+    background-color: var(--color-brand-light-blue);
+    max-height: 90%;
+    margin-block: auto;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content;
+    max-width: 1px;
+    margin-inline: auto;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu a ) {
+    color: var(--color-primary-white);
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > .menu-item) {
+    display: grid;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > :where(.sub-menu-blank-child:first-child, .sub-menu-blank-child:last-child)) {
+    display: block;
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-group > .sub-menu-wrapper > .sub-menu > .sub-menu-blank-child > .top ),
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-group > .sub-menu-wrapper > .sub-menu > .menu-item > .menu-item-text-wrapper) {
+    background-color: rgb(from var(--color-brand-dark-blue) r g b / 0.9);
+    display: block;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > .menu-item) a::before {
+    content: "";
+    position: absolute;
+}
+
+.site-header :where(.menu-item-text-wrapper > *) {
+    text-align: left;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > .menu-item > .sub-menu-wrapper > .sub-menu) {
+    display: contents;
+}
+
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > .menu-item > .menu-item-text-wrapper a),
+.site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu > .menu-item > .sub-menu-wrapper) {
+    margin-inline: 4rem 2rem;
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-link) {
+    position: relative;
+
+    & :where(& > .sub-menu-wrapper > .sub-menu ) {
+        display: block;
+        margin-top: 1rem;
+        min-width: 30rem;
+
+        & .sub-menu-blank-child {
+            display: none;
+        }
+    }
+
+    &:not(:last-child) :where(& > .sub-menu-wrapper > .sub-menu ) {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:last-child :where(& > .sub-menu-wrapper > .sub-menu ) {
+        right: 0;
+        left: auto;
+    }
+
+    .menu-item-text-wrapper a {
+        margin-inline: 0;
+        text-align: center;
+    }
+
+    & :where(& > .sub-menu-wrapper > .sub-menu .sub-menu) {
+        display: none;
+    }
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-column > .sub-menu-wrapper > .sub-menu ) {
+    padding-block: 2rem;
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-column > .sub-menu-wrapper > .sub-menu .sub-menu-blank-child) {
+    grid-template-rows: 0 1fr;
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-column > .sub-menu-wrapper > .sub-menu .sub-menu-blank-child .top),
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-column > .sub-menu-wrapper > .sub-menu > .menu-item > .menu-item-text-wrapper) {
+    visibility: hidden;
+    height: 1px;
+}
+
+.site-header :where(.main-nav > .menu-item.menu-item-display-mode-column > .sub-menu-wrapper > .sub-menu > .menu-item > .menu-item-text-wrapper > a) {
+    visibility: hidden;
+}
+
+@media screen and (width <= 1240px) {
+    .site-header :where(.main-nav > .menu-item > .sub-menu-wrapper > .sub-menu:has(> .menu-item ~ .menu-item)) {
+        --curtain-side-width: 0;
+        --curtain-column-width: 1fr;
+    }
+}
+
+@media screen and (width <= 55em) {
+    .site-header :where(.main-nav a, .sub-menu-blank-child > .top, .sub-menu-blank-child > .bottom),
+    .site-header :where(.main-nav a) {
+        font-size: 1.2rem;
+    }
+}

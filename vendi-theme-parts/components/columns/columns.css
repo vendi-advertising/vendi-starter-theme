@@ -1,0 +1,40 @@
+.component-columns :where( .component-wrapper > .region > .content-wrap) {
+    display: grid;
+    justify-items: var(--local-justify-items);
+    align-items: var(--local-align-items);
+    justify-content: var(--local-justify-content);
+    align-content: var(--local-align-content);
+    /* Gap is intentionally used because when we go responsive, the same gap for columns will be used for rows */
+    gap: var(--local-column-gap);
+}
+
+:root :where(.component-columns.columns-count-1 > .component-wrapper > .region > .content-wrap) {
+    grid-template-columns: 1fr;
+}
+
+:root :where(.component-columns.columns-count-2 > .component-wrapper > .region > .content-wrap) {
+    grid-template-columns: 1fr 1fr;
+}
+
+:root :where(.component-columns.columns-count-3 > .component-wrapper > .region > .content-wrap) {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+:root :where(.component-columns.columns-count-4 > .component-wrapper > .region > .content-wrap) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+:root :where(.component-columns.columns-width-full > .component-wrapper > .region > .content-wrap) {
+    max-width: 100%;
+}
+
+:root :where(.component-columns > .component-wrapper > .region > .content-wrap > .column) {
+    justify-self: var(--local-justify-self);
+    align-self: var(--local-align-self)
+}
+
+@media screen and (width <= 55em) {
+    :root :where(.component-columns > .component-wrapper > .region > .content-wrap) {
+        grid-template-columns: 1fr;
+    }
+}

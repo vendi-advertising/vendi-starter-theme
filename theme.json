@@ -1,0 +1,29 @@
+{
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "color": "#000000"
+        },
+        {
+          "name": "Dark Blue",
+          "slug": "dark-blue",
+          "color": "#1e2e82"
+        },
+        {
+          "name": "Purple",
+          "slug": "purple",
+          "color": "#9418a8"
+        }
+      ]
+    }
+  }
+}

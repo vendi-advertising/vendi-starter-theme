@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "__test_id": 1,
+      "__test_description": "?",
+      "__autoload": [
+        "intro_heading",
+        "additional_copy"
+      ],
+      "additional_copy": "@lorem(100, )",
+      "intro_heading": "@lorem(3, 1)"
+    }
+  ]
+}

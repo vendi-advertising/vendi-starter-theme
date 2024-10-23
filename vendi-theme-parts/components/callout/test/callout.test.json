@@ -1,0 +1,82 @@
+{
+  "tests": [
+    {
+      "__test_id": 1,
+      "__test_description": "Copy only",
+      "copy": "@lorem(500, 3)"
+    },
+    {
+      "__test_id": 2,
+      "__test_description": "Copy w/ heading",
+      "copy": "@lorem(500, 3)",
+      "header": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "__test_id": 3,
+      "__test_description": "Copy w/ heading and buttons",
+      "copy": "@lorem(500, 3)",
+      "header": "Lorem ipsum dolor sit amet",
+      "buttons": [
+        {
+          "call_to_action": {
+            "url": "https://example.com",
+            "title": "Example 1",
+            "target": "_blank"
+          },
+          "call_to_action_display_mode": "white-on-blue"
+        },
+        {
+          "call_to_action": {
+            "url": "https://example.com",
+            "title": "Example 2",
+            "target": "_blank"
+          },
+          "call_to_action_display_mode": "blue-on-white"
+        }
+      ]
+    },
+    {
+      "__test_id": 999,
+      "__test_description": "Copy @matrix(content_max_width), @matrix(content_alignment)",
+      "__test_template": {
+        "test_content": {
+          "copy": "@lorem(500, 3)",
+          "heading": "Lorem ipsum dolor sit amet",
+          "buttons": [
+            {
+              "call_to_action": {
+                "url": "https://example.com",
+                "title": "Example 1",
+                "target": "_blank"
+              },
+              "call_to_action_display_mode": "white-on-blue"
+            },
+            {
+              "call_to_action": {
+                "url": "https://example.com",
+                "title": "Example 2",
+                "target": "_blank"
+              },
+              "call_to_action_display_mode": "blue-on-white"
+            }
+          ],
+          "content_area_settings": {
+            "content_max_width": "@matrix",
+            "content_alignment": "@matrix"
+          }
+        },
+        "matrix": {
+          "content_max_width": [
+            "full",
+            "narrow",
+            "slim"
+          ],
+          "content_alignment": [
+            "left",
+            "middle"
+          ]
+        }
+      }
+    }
+  ]
+}

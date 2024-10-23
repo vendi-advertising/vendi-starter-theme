@@ -1,0 +1,13 @@
+@layer widths {
+    :where(.content-max-width-full > .component-wrapper > .region > .content-wrap) {
+        max-width: var(--content-width-normal);
+    }
+
+    :where(.content-max-width-narrow > .component-wrapper > .region > .content-wrap) {
+        max-width: var(--content-width-narrow);
+    }
+
+    :where(.content-max-width-slim > .component-wrapper > .region > .content-wrap) {
+        max-width: var(--content-width-slim);
+    }
+}

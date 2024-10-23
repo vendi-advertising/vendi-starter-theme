@@ -1,0 +1,81 @@
+.component-stats :where(.component-wrapper) {
+    color: var(--local-text-color, var(--color-primary-black));
+    --local-line-width: 1px;
+}
+
+.component-stats :where(.component-wrapper > .region .content-wrap) {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+:where(.component-stats.stat-count-2 .content-wrap) {
+    grid-template-columns: 1fr var(--local-line-width) 1fr;
+}
+
+:where(.component-stats.stat-count-3 .content-wrap) {
+    grid-template-columns: 1fr var(--local-line-width) 1fr var(--local-line-width) 1fr;
+}
+
+.component-stats :where(.content-wrap hr:last-of-type) {
+    display: none;
+}
+
+.component-stats :where(.single-stat) {
+    display: grid;
+    justify-items: center;
+    padding-inline: 5rem;
+    width: 100%;
+}
+
+.component-stats :where(.single-stat .stat) {
+    font-size: 10rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.component-stats :where(hr) {
+    width: var(--local-line-width);
+    height: 100%;
+    background-color: var(--local-line-color, var(--color-brand-grey-2));
+    border: none;
+    margin: 0;
+}
+
+@media screen and (width <= 80em) {
+    .component-stats :where(.component-wrapper > .region) {
+        padding-inline: 2rem;
+    }
+}
+
+@media screen and (width <= 70em) {
+    .component-stats :where(.single-stat .stat) {
+        font-size: 7rem;
+    }
+}
+
+@media screen and (width <= 60em) {
+    .component-stats :where(.single-stat .stat) {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (width <= 50em) {
+    :where(.component-stats .content-wrap) {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+
+    .component-stats :where(.single-stat .stat) {
+        font-size: 7rem;
+    }
+
+    .component-stats :where(hr) {
+        width: 100%;
+        height: var(--local-line-width);
+        background-color: var(--color-brand-grey-2);
+        max-width: 20rem;
+        border: none;
+        margin: 0;
+    }
+}

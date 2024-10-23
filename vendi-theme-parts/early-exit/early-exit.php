@@ -36,8 +36,8 @@ EOF;
         $devMsg = sprintf($missingPluginTemplateMessage, 'Advanced Custom Fields Pro');
         break;
 
-    case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_FLY:
-        $devMsg = sprintf($missingPluginTemplateMessage, 'Fly Dynamic Image Resizer');
+    case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_BETTER_IMAGE_SIZES:
+        $devMsg = sprintf($missingPluginTemplateMessage, 'Better image sizes');
         break;
 
     case VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_CLASSIC_EDITOR:

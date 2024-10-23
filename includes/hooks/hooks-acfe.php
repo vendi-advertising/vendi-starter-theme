@@ -7,48 +7,51 @@ add_action(
     static function () {
 
         // We are using ACF's, not ACFE's
-        acfe_update_setting('modules/post_types', false);
-        acfe_update_setting('modules/taxonomies', false);
+        acfe_update_setting( 'modules/post_types', false );
+        acfe_update_setting( 'modules/taxonomies', false );
 
         // Please register all options in PHP (for now)
-        acfe_update_setting('modules/options_pages', false);
+        acfe_update_setting( 'modules/options_pages', false );
 
         // We don't use these
-        acfe_update_setting('modules/block_types', false);
-        acfe_update_setting('modules/forms', false);
-        acfe_update_setting('modules/scripts', false);
+        acfe_update_setting( 'modules/block_types', false );
+        acfe_update_setting( 'modules/forms', false );
+        acfe_update_setting( 'modules/scripts', false );
 //        acf_update_setting('acfe/modules/scripts/demo', true);
     }
 );
 
 add_filter(
     'acfe/flexible/thumbnail',
-    static function ($thumbnail, $field, $layout) {
+    static function ( $thumbnail, $field, $layout ) {
 
-        $relativeSharedThumbnailPath = 'images/acf/component-thumbnails';
+        $relativeSharedThumbnailPaths = [
+            VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME . '/%1$s/%1$s.thumbnail.png',
+            'images/acf/component-thumbnails/%1$s.png',
+        ];
+        foreach ( $relativeSharedThumbnailPaths as $relativeSharedThumbnailPath ) {
 
-        // See if we have a special layout directory
-        $absoluteSharedThumbnailPath = Path::join(VENDI_CUSTOM_THEME_PATH, $relativeSharedThumbnailPath);
-        if (!is_dir($absoluteSharedThumbnailPath)) {
-            return $thumbnail;
+            $relativePath = sprintf( $relativeSharedThumbnailPath, $layout['name'] );
+
+            $filePathToTest = Path::join( VENDI_CUSTOM_THEME_PATH, $relativePath );
+            if ( ! is_readable( $filePathToTest ) ) {
+                continue;
+            }
+
+            return Path::join( VENDI_CUSTOM_THEME_URL, $relativePath );
         }
 
-        $componentThumbnailPath = Path::join($absoluteSharedThumbnailPath, $layout['name'].'.png');
-        if (!is_readable($componentThumbnailPath)) {
-            return $thumbnail;
-        }
-
-        return Path::join(VENDI_CUSTOM_THEME_URL, $relativeSharedThumbnailPath, $layout['name'].'.png');
+        return $thumbnail;
     },
     10,
     3
 );
 
-if (is_admin()) {
+if ( is_admin() ) {
     add_action(
         'after_setup_theme',
         static function () {
-            add_image_size('admin-icon', 40, 40);
+            add_image_size( 'admin-icon', 40, 40 );
         }
     );
 }

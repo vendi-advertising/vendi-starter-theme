@@ -1,0 +1,29 @@
+@layer vertical-padding {
+    :where(.content-vertical-padding-xx-large > .component-wrapper > .region) {
+        padding-block: var(--size-xx-large);
+    }
+
+    :where(.content-vertical-padding-x-large > .component-wrapper > .region) {
+        padding-block: var(--size-x-large);
+    }
+
+    :where(.content-vertical-padding-large > .component-wrapper > .region) {
+        padding-block: var(--size-large);
+    }
+
+    :where(.content-vertical-padding-medium > .component-wrapper > .region) {
+        padding-block: var(--size-medium);
+    }
+
+    :where(.content-vertical-padding-small > .component-wrapper > .region) {
+        padding-block: var(--size-small);
+    }
+
+    :where(.content-vertical-padding-x-small > .component-wrapper > .region) {
+        padding-block: var(--size-x-small);
+    }
+
+    :where(.content-vertical-padding-xx-small > .component-wrapper > .region) {
+        padding-block: var(--size-xx-small);
+    }
+}

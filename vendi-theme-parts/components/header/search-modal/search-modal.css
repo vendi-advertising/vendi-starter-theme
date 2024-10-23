@@ -1,0 +1,192 @@
+:root :where(.search-modal) {
+    pointer-events: none;
+    border: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    max-width: unset;
+    padding: 0;
+}
+
+:root :where(.admin-bar .search-modal) {
+    top: 32px;
+}
+
+:root :where(.search-modal[open]) {
+    background-color: #efefefbb;
+    pointer-events: inherit;
+    animation: show-search-modal 0.25s ease normal;
+    padding: 0;
+    padding-block: 2rem;
+}
+
+:root .search-modal[open]::backdrop {
+    background-color: transparent;
+}
+
+.search-modal :where(.region) {
+    max-width: 75rem;
+    border-bottom: 2px solid var(--color-brand-dark-blue);
+    display: grid;
+    grid-template-columns: 1fr 4rem;
+    grid-template-areas: "search-box button" "search-results search-results";
+}
+
+.search-modal :where( .search-form ) {
+    display: contents;
+}
+
+:where(.search-modal .search-form) input[type=search]::placeholder,
+.search-modal :where( .search-form input[type=search] ) {
+    color: var(--color-brand-dark-blue);
+    font-size: 2.8rem;
+}
+
+:where(.search-modal .search-form) input[type=search]::placeholder {
+    font-style: italic;
+}
+
+.search-modal :where( .search-form input[type=search] ) {
+    grid-area: search-box;
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    background-color: #efefef;
+    border: none;
+}
+
+.search-modal :where( .search-form input[type=search]:focus ) {
+    outline: none;
+}
+
+.search-modal :where(.region:has(input[type=search]:focus-visible )) {
+    outline: solid 2px var(--color-brand-dark-blue);
+    border-bottom: none;
+}
+
+.search-modal :where( .search-button ) {
+    grid-area: button;
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.search-modal :where( .search-results-live ) {
+    grid-area: search-results;
+}
+
+.search-modal :where( .search-button svg ) {
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+    color: var(--color-brand-dark-blue);
+}
+
+:root :where(.search-modal.hide) {
+    animation: hide-search-modal 0.25s ease normal;
+}
+
+:root :where(.search-modal.hide::backdrop) {
+    animation: hide-search-modal 0.25s ease normal;
+}
+
+.search-modal .relevanssi-live-search-results-showing {
+    position: static;
+    width: 100% !important;
+}
+
+.search-modal :where(.search-results-live, .relevanssi-live-search-result) {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-modal :where(.relevanssi-live-search-result) {
+    border-bottom: 1px solid var(--color-brand-grey-1);
+    min-height: 1.6em;
+    text-align: left;
+    font-size: 2rem;
+}
+
+.search-modal :where(.relevanssi-live-search-result:hover) {
+    background-color: var(--color-brand-grey-2);
+}
+
+.search-modal :where(.relevanssi-live-search-result .search-result-link) {
+    color: var(--color-brand-dark-blue);
+    display: block;
+    padding-inline: 2rem;
+}
+
+.search-modal :where(.relevanssi-live-search-result .search-result-link:hover) {
+    text-decoration: none;
+}
+
+.search-modal .single-search-result .search-result-title .search-result-link > .title-span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-modal :where(.relevanssi-live-search-result:last-child) {
+    border-bottom: none;
+}
+
+@keyframes show-search-modal {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+@keyframes hide-search-modal {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100%;
+    }
+}
+
+@keyframes show-search-modal-mobile {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 15rem;
+    }
+}
+
+@keyframes hide-search-modal-mobile {
+    from {
+        top: 15rem;
+    }
+    to {
+        top: -100%;
+    }
+}
+
+@media screen and (width <= 75em) {
+    .search-modal :where(.region) {
+        max-width: 90dvw;
+    }
+
+    :root :where(.search-modal) {
+        top: 15rem;
+    }
+
+    :root :where(.search-modal[open]) {
+        animation: show-search-modal-mobile 0.25s ease normal;
+    }
+
+    :root :where(.hide-search-modal-mobile.hide) {
+        animation: hide-search-modal 0.25s ease normal;
+    }
+
+    :root :where(.hide-search-modal-mobile.hide::backdrop) {
+        animation: hide-search-modal 0.25s ease normal;
+    }
+}

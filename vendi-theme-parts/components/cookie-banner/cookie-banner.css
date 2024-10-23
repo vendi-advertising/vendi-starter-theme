@@ -1,0 +1,51 @@
+:root :where(.cookie-banner-container.hidden) {
+    display: none;
+}
+
+:root :where(.cookie-banner-container):not(.hidden) {
+    width: 100dvw;
+    position: fixed;
+    background: var(--color-brand-dark-blue);
+    bottom: 0;
+    box-shadow: 0 -5px 20px 0 #0004;
+    z-index: var(--z-index-cookie-banner);
+}
+
+:root :where(.cookie-banner-container, .cookie-banner-container a) {
+    color: var(--color-primary-white);
+}
+
+.cookie-banner-container :where( .cookie-banner-wrapper ) {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    padding-block: var(--size-small);
+    padding-inline: var(--size-medium);
+    column-gap: 4rem;
+}
+
+.cookie-banner-container :where(.cookie-banner-wrapper .cookie-banner-text p:last-child) {
+    margin-bottom: 0;
+}
+
+.cookie-banner-container :where(.cookie-banner-wrapper .cookie-banner-text p a) {
+    text-decoration: underline;
+}
+
+.cookie-banner-container :where(.cookie-banner-wrapper .cookie-banner-text h2) {
+    font-size: 1.8rem;
+    margin-block: 0;
+}
+
+.cookie-banner-container :where(.cookie-banner-wrapper .cookie-banner-button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    .cookie-banner-container :where( .cookie-banner-wrapper) {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+}

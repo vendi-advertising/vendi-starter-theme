@@ -1,0 +1,46 @@
+.site-header {
+    background-color: var(--color-brand-grey-1);
+    position: relative;
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 15rem 1fr;
+    padding-inline: 5rem;
+    padding-block: 1rem 0;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.site-header :where(.nav-and-features) {
+    display: grid;
+    grid-template-areas: "utility-nav features" "main-nav main-nav";
+    grid-template-columns: 1fr max-content;
+    justify-items: end;
+    align-items: center;
+}
+
+.site-header :where(.nav-and-features > .utility-nav-wrap) {
+    grid-area: utility-nav;
+}
+
+.site-header :where(.nav-and-features > .features-wrap) {
+    grid-area: features;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.site-header :where(.nav-and-features > .main-nav-wrap) {
+    grid-area: main-nav;
+}
+
+@media screen and (width <= 60em) {
+    .site-header {
+        padding-inline: 2rem;
+    }
+}
+
+@media screen and (width <= 45em) {
+    .site-header :where(.main-nav-wrap, .utility-nav-wrap) {
+        display: none;
+    }
+}

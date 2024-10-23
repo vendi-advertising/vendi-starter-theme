@@ -1,0 +1,51 @@
+@layer horizontal-padding {
+    :where(.content-horizontal-padding-xx-large > .component-wrapper > .region) {
+        padding-inline: var(--size-xx-large);
+    }
+
+    :where(.content-horizontal-padding-x-large > .component-wrapper > .region) {
+        padding-inline: var(--size-x-large);
+    }
+
+    :where(.content-horizontal-padding-large > .component-wrapper > .region) {
+        padding-inline: var(--size-large);
+    }
+
+    :where(.content-horizontal-padding-medium > .component-wrapper > .region) {
+        padding-inline: var(--size-medium);
+    }
+
+    :where(.content-horizontal-padding-small > .component-wrapper > .region) {
+        padding-inline: var(--size-small);
+    }
+
+    :where(.content-horizontal-padding-x-small > .component-wrapper > .region) {
+        padding-inline: var(--size-x-small);
+    }
+
+    :where(.content-horizontal-padding-xx-small > .component-wrapper > .region) {
+        padding-inline: var(--size-xx-small);
+    }
+
+    /* At this resolution the giant horizontal paddings are just too much, make large the largest */
+    @media screen and (width <= 85em) {
+        :where( :where(.content-horizontal-padding-xx-large, .content-horizontal-padding-x-large) > .component-wrapper > .region) {
+            padding-inline: var(--size-large);
+        }
+    }
+
+    /* Large is to large, make medium the largest */
+    @media screen and (width <= 75em) {
+        :where( :where(.content-horizontal-padding-xx-large, .content-horizontal-padding-x-large, .content-horizontal-padding-large) > .component-wrapper > .region) {
+            padding-inline: var(--size-medium);
+        }
+    }
+
+    /* Medium is to marge, make small the largest. */
+    /* NOTE: Small is effectively 20px. We don't think that is ever to large at this point. */
+    @media screen and (width <= 65em) {
+        :where( :where(.content-horizontal-padding-xx-large, .content-horizontal-padding-x-large, .content-horizontal-padding-large,.content-horizontal-padding-medium) > .component-wrapper > .region) {
+            padding-inline: var(--size-small);
+        }
+    }
+}

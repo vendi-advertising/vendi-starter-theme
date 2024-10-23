@@ -10,7 +10,7 @@ require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-global-javascript.ph
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-login.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-alerts.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-theme.php';
-//require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-features.php';
+require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-features.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-acf-default-values.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-theme.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/hooks/hooks-documentation.php';

@@ -47,6 +47,8 @@ add_action(
         remove_action('wp_head', 'rest_output_link_wp_head');
         remove_action('wp_head', 'wp_resource_hints', 2);
 
+        remove_action( 'wp_footer', 'the_block_template_skip_link' );
+
     }
 );
 

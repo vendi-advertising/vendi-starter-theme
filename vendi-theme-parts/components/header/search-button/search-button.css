@@ -1,0 +1,11 @@
+.site-header :where(.search-button-wrap) {
+    margin-inline: 1rem;
+    border-right: 1px solid var(--color-brand-grey-3);
+    padding-inline: 2rem;
+    display: flex;
+}
+
+.site-header :where(.search-button-wrap svg) {
+    width: 1.7rem;
+    color: #0056a7;
+}

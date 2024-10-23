@@ -3,9 +3,9 @@
 // Setup some theme-level constants to make life easier elsewhere
 const VENDI_CUSTOM_THEME_FILE = __FILE__;
 const VENDI_CUSTOM_THEME_PATH = __DIR__;
-define( 'VENDI_CUSTOM_THEME_URL', get_bloginfo( 'template_directory' ) );
-define( 'VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME', 'content_components' );
-define( 'VENDI_CUSTOM_THEME_FEATURE_PATH', VENDI_CUSTOM_THEME_PATH . '/features' );
+define('VENDI_CUSTOM_THEME_URL', get_bloginfo('template_directory'));
+define('VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH', untrailingslashit(VENDI_CUSTOM_THEME_URL));
+define('VENDI_CUSTOM_THEME_FEATURE_PATH', VENDI_CUSTOM_THEME_PATH.'/features');
 
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/constants.php';
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/theme-validity-test.php';

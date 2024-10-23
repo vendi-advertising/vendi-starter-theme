@@ -1,0 +1,32 @@
+.site-header :where(.utility-nav) {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 4rem;
+    max-width: max-content;
+    margin-inline: auto;
+    padding-left: 5rem; /* Causes the bottom border to stick out to the left a bit */
+}
+
+.site-header :where(.utility-nav-wrap, .features-wrap) {
+    border-bottom: 1px solid var(--color-brand-grey-3);
+    height: 100%;
+}
+
+.site-header :where(.utility-nav a) {
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    padding-block: 0.5rem;
+    transition: all .3s;
+    color: var(--color-brand-dark-blue);
+}
+
+.site-header :where(.utility-nav li) {
+    margin-bottom: 0;
+}
+
+@media screen and (width <= 45em) {
+    .site-header :where(.utility-nav-wrap, .features-wrap) {
+        border-bottom: none;
+    }
+}

@@ -7,6 +7,11 @@ add_filter(
     },
 );
 
+/**
+ * Although this actually causes every component to be loaded twice, the performance is usually negligible,
+ * especially with caching, and it allows all CSS and JS to be queued properly so that minification can
+ * be done correctly.
+ */
 add_action(
     'wp_enqueue_scripts',
     static function () {

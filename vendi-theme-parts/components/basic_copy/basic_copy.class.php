@@ -2,8 +2,4 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
-
-class BasicCopy extends BaseComponent
-{
-}
+class BasicCopy extends BasicCopyBase {}

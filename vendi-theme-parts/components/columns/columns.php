@@ -24,7 +24,7 @@ if ( ! $component->renderComponentWrapperStart() ) {
         <?php $selector = $prefix . 'column_content'; ?>
         <?php if ( have_rows( $selector ) ): ?>
             <?php while ( have_rows( $selector ) ) : the_row(); ?>
-                <?php vendi_load_modern_component( get_row_layout() ); ?>
+                <?php vendi_load_component_v3( get_row_layout() ); ?>
             <?php endwhile; ?>
         <?php endif; ?>
     </div>

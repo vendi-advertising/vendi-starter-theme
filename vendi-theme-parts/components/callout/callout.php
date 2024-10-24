@@ -11,7 +11,7 @@ $component->renderComponentWrapperStart();
 
 ?>
 
-<?php vendi_render_headline( 'header'); ?>
+<?php vendi_render_headline(); ?>
 <?php echo $component->getCopy(); ?>
 <?php if ( $component->haveRows( 'buttons' ) ): ?>
     <div class="call-to-action-wrap">

@@ -80,58 +80,15 @@ abstract class BaseComponent implements JsonSerializable
         return $this->componentIndex;
     }
 
-    protected function getCommonContentAreaFields(): array
-    {
-        return [
-            'content_max_width',
-            'content_placement',
-            'content_vertical_padding',
-            'content_horizontal_padding',
-        ];
-    }
-
     private function getCommonContentAreaSettings(): array
     {
-        $ret = ['classes' => []];
-
-        $settingsGroup = $this->getSubField('content_area_settings');
-
-        if (!$settingsGroup) {
-            return $ret;
-        }
-
-        // NOTE: XX-Large is not included in the UI currently but was left here for consistency
-        $settings = $this->getCommonContentAreaFields();
-
         $classes = [];
+        $classes[] = 'content-max-width-'.vendi_constrain_item_to_list($this->getSubField('content_max_width'), ['full', 'narrow', 'slim'], 'narrow');
+        $classes[] = 'content-placement-'.vendi_constrain_item_to_list($this->getSubField('content_placement'), ['left', 'middle'], 'left');
+        $classes[] = 'content-vertical-padding-'.vendi_constrain_item_to_list($this->getSubField('content_vertical_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+        $classes[] = 'content-horizontal-padding-'.vendi_constrain_item_to_list($this->getSubField('content_horizontal_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
 
-        foreach ($settings as $setting) {
-            if (!$value = $settingsGroup[$setting] ?? null) {
-                continue;
-            }
-            switch ($setting) {
-                case 'content_max_width':
-                    $ret[$setting] = vendi_constrain_item_to_list($value, ['full', 'narrow', 'slim'], 'narrow');
-                    $classes[] = 'content-max-width-'.$ret[$setting];
-                    break;
-                case 'content_placement':
-                    $ret[$setting] = vendi_constrain_item_to_list($value, ['left', 'middle'], 'left');
-                    $classes[] = 'content-placement-'.$ret[$setting];
-                    break;
-                case 'content_vertical_padding':
-                    $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-                    $classes[] = 'content-vertical-padding-'.$ret[$setting];
-                    break;
-                case 'content_horizontal_padding':
-                    $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-                    $classes[] = 'content-horizontal-padding-'.$ret[$setting];
-                    break;
-            }
-        }
-
-        $ret['classes'] = $classes;
-
-        return $ret;
+        return ['classes' => $classes];
     }
 
     protected function getKeyForBackgrounds(): string

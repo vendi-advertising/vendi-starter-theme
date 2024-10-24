@@ -11,7 +11,7 @@ if ( ! $component->renderComponentWrapperStart() ) {
 }
 ?>
 
-<?php vendi_render_headline( 'header' ); ?>
+<?php vendi_render_headline( ); ?>
 <?php if ( ( $images = get_sub_field( 'images' ) ) && ( is_iterable( $images ) ) ): ?>
     <ul>
         <?php foreach ( $images as $image ): ?>

@@ -1,4 +1,4 @@
-:root :where (.site-footer) {
+:root :where(.site-footer) {
     background-color: var(--color-primary-black);
     color: var(--color-primary-white);
     padding: 5rem 0;
@@ -10,17 +10,17 @@
     row-gap: 2rem;
 }
 
-.site-footer :where(.logo-and-address-and-social ) {
+.site-footer :where( .logo-and-address-and-social) {
     display: grid;
     grid-template-columns: 15rem auto;
     column-gap: 5rem;
 }
 
-.site-footer :where(.logo-and-address-and-social .footer-social ) {
+.site-footer :where( .logo-and-address-and-social .footer-social) {
     grid-column: 2;
 }
 
-.site-footer :where(.footer-wrap :where(.footer-copyright, .starter-theme-credits)) {
+.site-footer :where(.footer-wrap .footer-copyright, .starter-theme-credits) {
     grid-column: 1 / -1;
     text-align: center;
 }
@@ -29,7 +29,7 @@
     font-size: 1.2rem;
 }
 
-.site-footer :where(.logo img ) {
+.site-footer .logo img {
     height: 15rem;
 }
 
@@ -46,11 +46,11 @@
     color: var(--color-primary-white);
 }
 
-.site-footer :where(.footer-social li) {
+.footer-social li {
     display: inline-block;
 }
 
-.site-footer :where(.footer-social svg) {
+.footer-social svg {
     height: 2rem;
     aspect-ratio: 1;
     fill: var(--color-primary-white);

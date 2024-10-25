@@ -16,7 +16,7 @@ abstract class BaseComponent implements JsonSerializable
         public readonly bool $supportsCommonContentAreaSettings = true,
     ) {
         $this->componentStyles = new ComponentStyles();
-        $this->componentIndex = ComponentUtility::get_instance()->get_next_id_for_component($this->componentName);
+        $this->componentIndex  = ComponentUtility::get_instance()->get_next_id_for_component($this->componentName);
 
         $this->initComponent();
     }
@@ -41,7 +41,7 @@ abstract class BaseComponent implements JsonSerializable
      */
     public function getSubField(string $fieldName): mixed
     {
-        if (!isset($this->fieldCache[$fieldName])) {
+        if ( ! isset($this->fieldCache[$fieldName])) {
             $this->fieldCache[$fieldName] = get_sub_field($fieldName);
         }
 
@@ -82,11 +82,11 @@ abstract class BaseComponent implements JsonSerializable
 
     private function getCommonContentAreaSettings(): array
     {
-        $classes = [];
-        $classes[] = 'content-max-width-'.vendi_constrain_item_to_list($this->getSubField('content_max_width'), ['full', 'narrow', 'slim'], 'narrow');
-        $classes[] = 'content-placement-'.vendi_constrain_item_to_list($this->getSubField('content_placement'), ['left', 'middle'], 'left');
-        $classes[] = 'content-vertical-padding-'.vendi_constrain_item_to_list($this->getSubField('content_vertical_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-        $classes[] = 'content-horizontal-padding-'.vendi_constrain_item_to_list($this->getSubField('content_horizontal_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+        $classes   = [];
+        $classes[] = 'content-max-width-' . vendi_constrain_item_to_list($this->getSubField('content_max_width'), ['full', 'narrow', 'slim'], 'narrow');
+        $classes[] = 'content-placement-' . vendi_constrain_item_to_list($this->getSubField('content_placement'), ['left', 'middle'], 'left');
+        $classes[] = 'content-vertical-padding-' . vendi_constrain_item_to_list($this->getSubField('content_vertical_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+        $classes[] = 'content-horizontal-padding-' . vendi_constrain_item_to_list($this->getSubField('content_horizontal_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
 
         return ['classes' => $classes];
     }
@@ -131,7 +131,7 @@ abstract class BaseComponent implements JsonSerializable
         }
 
         $this->renderComponentSpecificCssBlock();
-        echo '<'.$this->getRootTag().' ';
+        echo '<' . $this->getRootTag() . ' ';
 
         vendi_render_class_attribute($this->getRootClasses());
         foreach ($this->getAdditionalRootAttributes() as $key => $value) {
@@ -146,8 +146,7 @@ abstract class BaseComponent implements JsonSerializable
         >
         <div
         class="component-wrapper"
-        <?php
-        vendi_render_component_data_name_and_index_attributes($this->componentName, $this->getComponentIndex()); ?>
+        <?php vendi_render_component_data_name_and_index_attributes($this->componentName, $this->getComponentIndex()); ?>
         >
 
         <?php
@@ -171,13 +170,13 @@ abstract class BaseComponent implements JsonSerializable
         </div>
 
         <?php
-        echo '</'.$this->getRootTag().'>';
+        echo '</' . $this->getRootTag() . '>';
     }
 
     public function jsonSerialize(): array
     {
         return [
-            'componentName' => $this->componentName,
+            'componentName'  => $this->componentName,
             'componentIndex' => $this->componentIndex,
         ];
     }

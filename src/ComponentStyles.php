@@ -19,13 +19,13 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
         $position = 0;
 
         $this->container = [];
-        $this->keys = array_keys($this->container);
+        $this->keys      = array_keys($this->container);
     }
 
     public function addCssProperty(string $key, string $value): void
     {
-        if (!$value) {
-            $this->errors[] = 'Value for '.$key.' is empty';
+        if ( ! $value) {
+            $this->errors[] = 'Value for ' . $key . ' is empty';
 
             return;
         }
@@ -36,13 +36,13 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
     {
         $newValue = rtrim(trim($value), '; ');
 
-        if (!$oldValue = $this->offsetGet($key)) {
+        if ( ! $oldValue = $this->offsetGet($key)) {
             $this->offsetSet($key, $newValue);
 
             return;
         }
 
-        if (!is_array($oldValue)) {
+        if ( ! is_array($oldValue)) {
             $oldValue = [$oldValue];
         }
         $oldValue[] = $value;
@@ -101,10 +101,10 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
     {
         if (is_null($offset)) {
             $this->container[] = $value;
-            $this->keys[] = array_key_last($this->container);
+            $this->keys[]      = array_key_last($this->container);
         } else {
             $this->container[$offset] = $value;
-            if (!in_array($offset, $this->keys, true)) {
+            if ( ! in_array($offset, $this->keys, true)) {
                 $this->keys[] = $offset;
             }
         }
@@ -134,11 +134,11 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
             if (is_array($value)) {
                 $value = implode(', ', $value);
             }
-            $ret .= $key.': '.$value.'; ';
+            $ret .= $key . ': ' . $value . '; ';
         }
 
         if (count($this->errors)) {
-            $ret .= '/* Errors: '.PHP_EOL.implode(PHP_EOL, $this->errors).PHP_EOL.' */';
+            $ret .= '/* Errors: ' . PHP_EOL . implode(PHP_EOL, $this->errors) . PHP_EOL . ' */';
         }
 
         return $ret;

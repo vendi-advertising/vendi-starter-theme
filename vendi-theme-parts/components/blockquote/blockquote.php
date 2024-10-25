@@ -3,18 +3,18 @@
 use Vendi\Theme\Component\Blockquote;
 use Vendi\Theme\ComponentUtility;
 
-$component = ComponentUtility::get_new_component_instance( Blockquote::class );
+$component = ComponentUtility::get_new_component_instance(Blockquote::class);
 
-if ( ! $component->renderComponentWrapperStart() ) {
+if (!$component->renderComponentWrapperStart()) {
     return;
 }
 
 ?>
     <blockquote>
         <div class="copy">
-            <?php echo $component->getSubField( 'copy' ); ?>
+            <?php echo $component->getSubField('copy'); ?>
         </div>
-        <?php if ( $attribution = $component->getSubField( 'attribution' ) ): ?>
+        <?php if ($attribution = $component->getSubField('attribution')): ?>
             <footer class="attribution">
                 <cite><?php echo $attribution; ?></cite>
             </footer>

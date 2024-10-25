@@ -16,7 +16,7 @@ class GenericComponent extends BaseComponent
 
     protected function abortRender(): bool
     {
-        if (!$this->abortRenderFunction) {
+        if ( ! $this->abortRenderFunction) {
             return parent::abortRender();
         }
 

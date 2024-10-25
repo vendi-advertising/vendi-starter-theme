@@ -1,7 +1,7 @@
-main {
+:root :where(main) {
     background-color: var(--color-primary-white);
 }
 
-.vendi-starter-theme main {
+.vendi-starter-theme :where(main) {
     min-height: 50vh;
 }

@@ -92,8 +92,8 @@
         },
         {
             "key": "field_66aa78feecf61",
-            "label": "Header",
-            "name": "header",
+            "label": "Heading",
+            "name": "heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -381,5 +381,5 @@
     "acfe_display_title": "Hero Settings",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722448814
+    "modified": 1731682337
 }

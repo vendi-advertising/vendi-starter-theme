@@ -10,8 +10,6 @@ if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 
-//vendi_duratech_render_headline_for_component($component);
-
 if (have_rows('group_components_content_components')) {
     // loop through the content components rows of data
     while (have_rows('group_components_content_components')) {

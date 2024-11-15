@@ -92,8 +92,8 @@
         },
         {
             "key": "field_66a92dda2143a",
-            "label": "Header",
-            "name": "header",
+            "label": "Heading",
+            "name": "heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -235,7 +235,7 @@
         },
         {
             "key": "field_66a92ded2143b",
-            "label": "Header Settings",
+            "label": "Heading Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -254,8 +254,8 @@
         },
         {
             "key": "field_66a92dfd2143c",
-            "label": "Header Settings",
-            "name": "header_settings",
+            "label": "Heading Settings",
+            "name": "heading_settings",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -497,5 +497,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727813557
+    "modified": 1731682337
 }

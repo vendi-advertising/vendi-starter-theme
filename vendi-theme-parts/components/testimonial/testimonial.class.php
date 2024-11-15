@@ -55,9 +55,4 @@ class Testimonial extends BaseComponentWithPrimaryHeading
     {
         return null === $this->getCopy();
     }
-
-    public function getHeadingText(): ?string
-    {
-        return $this->getSubField('header');
-    }
 }

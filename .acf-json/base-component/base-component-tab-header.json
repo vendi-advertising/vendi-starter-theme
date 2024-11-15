@@ -1,10 +1,10 @@
 {
     "key": "group_66fc4b4a790ac",
-    "title": "Base Component - Tab - Header",
+    "title": "Base Component - Tab - Heading",
     "fields": [
         {
             "key": "field_66fc4b4a7fbfb",
-            "label": "Header",
+            "label": "Heading",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -23,8 +23,8 @@
         },
         {
             "key": "field_66fc4b4a7fc3a",
-            "label": "Header",
-            "name": "header",
+            "label": "Heading",
+            "name": "heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -43,8 +43,8 @@
         },
         {
             "key": "field_66fc4b4a7fcc2",
-            "label": "Header Settings",
-            "name": "header_settings",
+            "label": "Heading Settings",
+            "name": "heading_settings",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -94,5 +94,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727810413
+    "modified": 1731682337
 }

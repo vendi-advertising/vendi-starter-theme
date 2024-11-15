@@ -23,29 +23,29 @@ abstract class BaseComponentWithPrimaryHeading extends BaseComponent implements 
     {
         $ret = parent::jsonSerialize();
 
-        $ret['header']                   = [];
-        $ret['header']['text']           = $this->getHeadingText();
-        $ret['header']['heading_render'] = $this->getHeadingRender()->value;
+        $ret['heading']                   = [];
+        $ret['heading']['text']           = $this->getHeadingText();
+        $ret['heading']['heading_render'] = $this->getHeadingRender()->value;
         if ($this->getHeadingRender() === HeadingRenderEnum::render) {
-            $ret['header']['heading_level'] = $this->getSubField('heading_level');
+            $ret['heading']['heading_level'] = $this->getSubField('heading_level');
             if ('h2' === $this->getSubField('heading_level')) {
-                $ret['header']['heading_style'] = $this->getSubField('heading_style');
+                $ret['heading']['heading_style'] = $this->getSubField('heading_style');
             }
 
-            $ret['header']['text_wrap_style'] = $this->getSubField('text_wrap_style');
+            $ret['heading']['text_wrap_style'] = $this->getSubField('text_wrap_style');
         }
 
         return $ret;
     }
 
-    final public function shouldRenderHeaderTag(): bool
+    final public function shouldRenderHeadingTag(): bool
     {
         return $this->getHeadingRender() === HeadingRenderEnum::render;
     }
 
     public function getHeadingTag(): ?string
     {
-        if ($this->shouldRenderHeaderTag()) {
+        if ($this->shouldRenderHeadingTag()) {
             return $this->getSubField('heading_level');
         }
 
@@ -54,7 +54,7 @@ abstract class BaseComponentWithPrimaryHeading extends BaseComponent implements 
 
     public function getHeadingStyle(): ?string
     {
-        if ($this->shouldRenderHeaderTag() && 'h2' === $this->getSubField('heading_level')) {
+        if ($this->shouldRenderHeadingTag() && 'h2' === $this->getSubField('heading_level')) {
             return $this->getSubField('heading_style');
         }
 
@@ -63,10 +63,15 @@ abstract class BaseComponentWithPrimaryHeading extends BaseComponent implements 
 
     public function getHeadingTextWrapStyle(): ?string
     {
-        if ($this->shouldRenderHeaderTag()) {
+        if ($this->shouldRenderHeadingTag()) {
             return $this->getSubField('text_wrap_style');
         }
 
         return null;
+    }
+
+    public function getHeadingText(): ?string
+    {
+        return $this->getSubField('heading');
     }
 }

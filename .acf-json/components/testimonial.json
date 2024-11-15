@@ -50,8 +50,8 @@
         },
         {
             "key": "field_66903d9db848e",
-            "label": "Header",
-            "name": "header",
+            "label": "Heading",
+            "name": "heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -249,5 +249,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727813576
+    "modified": 1731682337
 }

@@ -3,11 +3,14 @@
 use Vendi\Theme\Component\Blockquote;
 use Vendi\Theme\ComponentUtility;
 
+/** @var Blockquote $component */
 $component = ComponentUtility::get_new_component_instance(Blockquote::class);
 
 if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
+
+$component->maybeRenderComponentHeader();
 
 ?>
     <blockquote>

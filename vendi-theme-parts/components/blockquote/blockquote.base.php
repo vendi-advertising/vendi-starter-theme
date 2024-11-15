@@ -2,9 +2,9 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 
-abstract class BlockquoteBase extends BaseComponent
+abstract class BlockquoteBase extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {

@@ -17,7 +17,7 @@ if ( ! $component->renderComponentWrapperStart()) {
         <?php esc_html_e($additional_copy); ?>
     </div>
 <?php endif; ?>
-<?php vendi_load_component_v3('accordion/accordion-controls', object_state: ['accordion_items' => $component->getAccordionItems()]); ?>
+<?php vendi_load_component_v3('accordion/accordion-controls', component: $component); ?>
     <div
         class="accordion-items"
         data-columns-count="<?php echo esc_attr($component->getNumberOfColumns()); ?>"

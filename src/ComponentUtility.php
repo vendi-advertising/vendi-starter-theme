@@ -77,20 +77,20 @@ final class ComponentUtility
         return new $className();
     }
 
-    public function loadTemplate(array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    public function loadTemplate(array|string $name, ?array $objectState = null, ?string &$errorMessage = null, ?ComponentInterface $component = null): bool
     {
-        return $this->loadItem(VENDI_CUSTOM_THEME_TEMPLATE_FOLDER_NAME, $name, $objectState, $errorMessage);
+        return $this->loadItem(VENDI_CUSTOM_THEME_TEMPLATE_FOLDER_NAME, $name, $objectState, $errorMessage, $component);
     }
 
-    public function loadComponent(array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    public function loadComponent(array|string $name, ?array $objectState = null, ?string &$errorMessage = null, ?ComponentInterface $component = null): bool
     {
-        return $this->loadItem(VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME, $name, $objectState, $errorMessage);
+        return $this->loadItem(VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME, $name, $objectState, $errorMessage, $component);
     }
 
     /**
      * @throws JsonException
      */
-    private function loadItem(string $subPath, array|string $name, ?array $objectState = null, ?string &$errorMessage = null): bool
+    private function loadItem(string $subPath, array|string $name, ?array $objectState = null, ?string &$errorMessage = null, ?ComponentInterface $component = null): bool
     {
         // We support ['header'/'thing'] and 'header/thing' for names
         $name = is_string($name) ? explode('/', $name) : $name;
@@ -191,16 +191,20 @@ final class ComponentUtility
             }
         }
 
+        if ($component) {
+            $objectState['component'] = $component;
+        }
+
         // We still occasionally have a need to pass state to components. This is almost exclusively
         // used for subcomponents. The below code backs up the global state, sets the new state, and
         // invokes the component and then restores it.
-        global $vendi_layout_component_object_state;
-        $backup_state = $vendi_layout_component_object_state;
+        global $vendi_component_object_state;
+        $backup_state = $vendi_component_object_state;
 
         if ($objectState && count($objectState)) {
-            $vendi_layout_component_object_state = $objectState;
+            $vendi_component_object_state = $objectState;
         } else {
-            $vendi_layout_component_object_state = null;
+            $vendi_component_object_state = null;
         }
 
         do_action(
@@ -232,7 +236,7 @@ final class ComponentUtility
             array_pop($this->componentStack);
         }
 
-        $vendi_layout_component_object_state = $backup_state;
+        $vendi_component_object_state = $backup_state;
 
         return true;
     }

@@ -2,11 +2,12 @@
 
 use JetBrains\PhpStorm\Deprecated;
 use Symfony\Component\Filesystem\Path;
+use Vendi\Theme\ComponentInterface;
 use Vendi\Theme\ComponentUtility;
 
-function vendi_load_component_v3(array|string $name, ?array $object_state = null): void
+function vendi_load_component_v3(array|string $name, ?array $object_state = null, ?ComponentInterface $component = null): void
 {
-    ComponentUtility::get_instance()->loadComponent($name, $object_state);
+    ComponentUtility::get_instance()->loadComponent($name, $object_state, component: $component);
 }
 
 #[Deprecated(reason: 'This component does not have a direct replacement')]

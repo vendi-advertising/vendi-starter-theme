@@ -2,9 +2,17 @@
 
 global $vendi_component_object_state;
 
-if (!($accordion_items = $vendi_component_object_state['accordion_items'] ?? null)) {
+use Vendi\Theme\Component\Accordion;
+
+if ( ! $component = $vendi_component_object_state['component'] ?? null) {
     return;
 }
+
+if ( ! $component instanceof Accordion) {
+    return;
+}
+
+$accordion_items = $component->getAccordionItems();
 
 // The expand all/collapse all button needs to know the IDs of all the accordions
 // for accessibility reasons.

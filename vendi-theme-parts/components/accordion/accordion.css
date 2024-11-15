@@ -23,13 +23,7 @@
     display: none;
 }
 
-/* Accordion controls are not currently supported */
-.component-accordion .accordion-controls {
-    display: none !important;
-}
-
 .component-accordion :where(.accordion-controls) {
-    display: none;
     gap: 1rem;
 }
 

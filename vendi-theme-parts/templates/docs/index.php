@@ -45,6 +45,14 @@ function getCombinations($arrays, $current = [])
 
 add_filter('show_admin_bar', '__return_false');
 
+add_action('wp_enqueue_scripts', function() {
+    // Enqueue ACF styles and scripts
+    acf_enqueue_scripts();
+
+    // Enqueue WordPress admin styles
+    wp_enqueue_style('wp-admin');
+});
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="margin-top: 0 !important;">
@@ -154,8 +162,6 @@ add_filter('show_admin_bar', '__return_false');
     </nav>
     <section class="content">
         <?php
-
-        acf_enqueue_scripts();
 
         acf_form([
             'post_id'      => 'new_post', // Or specific post ID to edit

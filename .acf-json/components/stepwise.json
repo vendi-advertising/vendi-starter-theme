@@ -523,28 +523,9 @@
             ]
         },
         {
-            "key": "field_66c8eaddef218",
-            "label": "Background",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66c8eae5ef219",
-            "label": "Backgrounds",
-            "name": "backgrounds",
+            "key": "field_6737b93e484c0",
+            "label": "Base Component - Common",
+            "name": "base_component_-_common",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -556,53 +537,7 @@
                 "id": ""
             },
             "clone": [
-                "group_66901f4b7739f"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
-        },
-        {
-            "key": "field_66c8eb02ef21a",
-            "label": "Content Area Settings",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_66c8eb0def21b",
-            "label": "Content Area Settings",
-            "name": "content_area_settings",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_66ba1140c9524"
+                "group_66aced8597513"
             ],
             "display": "seamless",
             "layout": "block",
@@ -640,5 +575,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727813575
+    "modified": 1731705173
 }

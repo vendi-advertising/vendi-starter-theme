@@ -1,0 +1,145 @@
+{
+  "key": "group_669020d3ad6b8",
+  "title": "Settings Modal - Background",
+  "fields": [
+    {
+      "key": "field_669020d4aca9b",
+      "label": "Blend Mode",
+      "name": "blend_mode",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "normal": "normal",
+        "multiply": "multiply",
+        "screen": "screen",
+        "overlay": "overlay",
+        "darken": "darken",
+        "lighten": "lighten",
+        "color": "color",
+        "hard": "hard",
+        "soft": "soft",
+        "difference": "difference",
+        "exclusion": "exclusion",
+        "hue": "hue",
+        "saturation": "saturation",
+        "luminosity": "luminosity"
+      },
+      "default_value": "normal",
+      "return_format": "value",
+      "multiple": 0,
+      "max": "",
+      "allow_custom": 0,
+      "placeholder": "",
+      "search_placeholder": "",
+      "prepend": "",
+      "append": "",
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "min": ""
+    },
+    {
+      "key": "field_66904287213b2",
+      "label": "Background Repeat",
+      "name": "background_repeat",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "repeat-x": "repeat-x",
+        "repeat-y": "repeat-y",
+        "repeat": "repeat",
+        "space": "space",
+        "round": "round",
+        "no-repeat": "no-repeat"
+      },
+      "default_value": "repeat",
+      "return_format": "value",
+      "multiple": 0,
+      "max": "",
+      "prepend": "",
+      "append": "",
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "min": ""
+    },
+    {
+      "key": "field_669042dbd444e",
+      "label": "Background Size",
+      "name": "background_size",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "auto": "auto",
+        "contain": "contain",
+        "cover": "cover"
+      },
+      "default_value": "auto",
+      "return_format": "value",
+      "multiple": 0,
+      "max": "",
+      "prepend": "",
+      "append": "",
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "min": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_autosync": [
+    "json"
+  ],
+  "acfe_form": 0,
+  "acfe_display_title": "",
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1720730405
+}

@@ -10,6 +10,8 @@ if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 
+$component->maybeRenderComponentHeader();
+
 if (have_rows('group_components_content_components')) {
     // loop through the content components rows of data
     while (have_rows('group_components_content_components')) {

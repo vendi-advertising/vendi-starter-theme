@@ -21,18 +21,20 @@
                 "narrow": "Narrow",
                 "slim": "Slim"
             },
-            "default_value": "narrow",
+            "default_value": "full",
             "return_format": "value",
             "multiple": 0,
             "max": "",
-            "allow_custom": 0,
-            "placeholder": "",
-            "search_placeholder": "",
             "prepend": "",
             "append": "",
+            "required_message": "",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
             "min": ""
         }
     ],
@@ -61,5 +63,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722435086
+    "modified": 1731688972
 }

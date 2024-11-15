@@ -17,10 +17,12 @@ add_action(
             'content_components' => [
                 'accordion',
                 'basic_copy',
+                'blockquote',
                 'callout',
                 'columns',
                 'figure',
                 'form',
+                'group',
                 'image_gallery',
                 'showcase',
                 'stats',
@@ -111,9 +113,21 @@ add_action(
         $html    = "<style>{$cssText}</style>{$html}";
 
         // This is used to guarantee that the iframe has a unique ID relative to the JavaScript
-        $randomIframeId = md5($html);
+        $randomIframeId = '_' . md5($html);
         ?>
-        <iframe id="<?php echo $randomIframeId; ?>" style="width: 100%; height: 100%; border: none;"></iframe>
+        <style>
+            .acfe-fc-placeholder.acfe-fc-preview <?php echo '#' . $randomIframeId; ?> {
+                width: 100%;
+                height: 150px;
+                border: none;
+                transition: height 250ms ease-in-out;
+            }
+
+            .acfe-fc-placeholder.acfe-fc-preview:hover <?php echo '#' . $randomIframeId; ?> {
+                height: 50dvh;
+            }
+        </style>
+        <iframe id="<?php echo $randomIframeId; ?>"></iframe>
         <script>
             (function () {
 

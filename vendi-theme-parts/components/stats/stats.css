@@ -9,6 +9,10 @@
     justify-items: center;
 }
 
+.component-stats :where(.component-wrapper > .region .content-wrap .header) {
+    grid-column: 1 / -1;
+}
+
 :where(.component-stats.stat-count-2 .content-wrap) {
     grid-template-columns: 1fr var(--local-line-width) 1fr;
 }

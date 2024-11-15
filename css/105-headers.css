@@ -11,10 +11,6 @@ a heading for styling purposes, use a div with a class of .h1, .h2, etc.
     margin-block: 1rem;
 }
 
-:where(h1, .h1, h2, .h2, h3, .h3, h4, .h4) {
-    text-wrap: balance;
-}
-
 :where(h1,.h1) {
     font-size: var(--font-size-h1);
     font-weight: var(--font-weight-h1);
@@ -56,4 +52,15 @@ p + :where( h1,  h2,  h3,  h4,  h5,  h6),
 ul + :where(.h1, .h2, .h3, .h4, .h5, .h6),
 p + :where(.h1, .h2, .h3, .h4, .h5, .h6) {
     margin-block-start: 0;
+}
+:where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6).text-wrap-auto {
+    text-wrap: auto;
+}
+
+:where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6).text-wrap-balance {
+    text-wrap: balance;
+}
+
+:where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6).text-wrap-pretty {
+    text-wrap: pretty;
 }

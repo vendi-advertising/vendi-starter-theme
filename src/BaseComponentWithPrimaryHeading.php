@@ -4,6 +4,11 @@ namespace Vendi\Theme;
 
 abstract class BaseComponentWithPrimaryHeading extends BaseComponent implements PrimaryHeadingInterface
 {
+    public function maybeRenderComponentHeader(): void
+    {
+        vendi_render_heading($this);
+    }
+
     public function getHeadingRender(): ?HeadingRenderEnum
     {
         return HeadingRenderEnum::tryFrom($this->getSubField('heading_render'));
@@ -46,7 +51,7 @@ abstract class BaseComponentWithPrimaryHeading extends BaseComponent implements 
     public function getHeadingTag(): ?string
     {
         if ($this->shouldRenderHeadingTag()) {
-            return $this->getSubField('heading_level');
+            return $this->getSubField('heading_tag');
         }
 
         return null;

@@ -13,4 +13,5 @@ enum VendiComponentsAcfMagicFolderEnum: string
     case BASE_COMPONENT = 'base-component';
     case FIELDS         = 'fields';
     case OPTION_PAGES   = 'option-pages';
+    case SETTINGS_MODAL = 'settings-modals';
 }

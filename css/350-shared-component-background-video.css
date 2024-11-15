@@ -1,10 +1,10 @@
-.component-background-video-wrapper {
+.component-background-video-wrapper > .component-wrapper {
     display: grid;
     grid-template-areas: "same";
     isolation: isolate;
 }
 
-.component-background-video-wrapper > * {
+.component-background-video-wrapper > .component-wrapper > * {
     grid-area: same;
 }
 
@@ -29,8 +29,9 @@
     height: auto;
 }
 
-.component-background-video-wrapper > :where( .component-wrapper) {
+.component-background-video-wrapper > .component-wrapper > .region {
     z-index: 2;
+    width: 100%;
 }
 
 /* This stops black bars from appearing because the video can't fill the area properly */

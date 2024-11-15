@@ -2,9 +2,9 @@
 
 namespace Vendi\ThemeParts\Component;
 
-use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 
-class Columns extends BaseComponent
+class Columns extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {

@@ -65,14 +65,14 @@
                     "4": {
                         "acfe_wysiwyg_toolbar_row": "numlist"
                     },
-                    "5": {
-                        "acfe_wysiwyg_toolbar_row": "blockquote"
-                    },
                     "9": {
                         "acfe_wysiwyg_toolbar_row": "link"
                     },
-                    "11": {
-                        "acfe_wysiwyg_toolbar_row": "spellchecker"
+                    "67379d36284b1": {
+                        "acfe_wysiwyg_toolbar_row": "hr"
+                    },
+                    "67379d31284b0": {
+                        "acfe_wysiwyg_toolbar_row": "strikethrough"
                     },
                     "12": {
                         "acfe_wysiwyg_toolbar_row": "fullscreen"
@@ -82,12 +82,6 @@
                     }
                 },
                 "acfe_wysiwyg_toolbar_2": {
-                    "0": {
-                        "acfe_wysiwyg_toolbar_row": "strikethrough"
-                    },
-                    "1": {
-                        "acfe_wysiwyg_toolbar_row": "hr"
-                    },
                     "3": {
                         "acfe_wysiwyg_toolbar_row": "pastetext"
                     },
@@ -110,9 +104,10 @@
                 "acfe_wysiwyg_toolbar_3": "",
                 "acfe_wysiwyg_toolbar_4": ""
             },
+            "allow_in_bindings": 1,
             "tabs": "all",
             "toolbar": "full",
-            "media_upload": 1,
+            "media_upload": 0,
             "delay": 0,
             "acfe_wysiwyg_auto_init": 0,
             "acfe_wysiwyg_min_height": 300
@@ -170,5 +165,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727813581
+    "modified": 1731698022
 }

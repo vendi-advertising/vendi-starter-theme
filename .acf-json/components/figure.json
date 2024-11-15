@@ -130,9 +130,9 @@
             "append": ""
         },
         {
-            "key": "field_659c6f1379577",
-            "label": "Component Settings",
-            "name": "component_settings",
+            "key": "field_6737b5a9d83ed",
+            "label": "Base Component - Common",
+            "name": "base_component_-_common",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -144,7 +144,7 @@
                 "id": ""
             },
             "clone": [
-                "group_6599af50880a8"
+                "group_66aced8597513"
             ],
             "display": "seamless",
             "layout": "block",
@@ -182,5 +182,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727813565
+    "modified": 1731704257
 }

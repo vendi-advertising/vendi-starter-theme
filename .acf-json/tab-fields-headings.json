@@ -3,11 +3,11 @@
     "title": "Tab Fields - Heading Settings",
     "fields": [
         {
-            "key": "field_6619846d43888",
-            "label": "",
+            "key": "field_673775e40e88c",
+            "label": "(Column 3\/12)",
             "name": "",
             "aria-label": "",
-            "type": "message",
+            "type": "acfe_column",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,21 +16,82 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<code>H1<\/code> should generally be avoided.\r\n\r\nIf \"Include in Document Outline\" is set to \"No\", an HTML <code>&lt;div&gt;<\/code> tag will be used with the specified heading level class, instead of an <code>&lt;h1&gt;<\/code> through <code>&lt;h6&gt;<\/code> tag. Visually these should still be identical.",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
         },
         {
-            "key": "field_6619836883adc",
-            "label": "Heading Level",
-            "name": "heading_level",
+            "key": "field_673775fc0e890",
+            "label": "Heading Render",
+            "name": "heading_render",
             "aria-label": "",
             "type": "select",
-            "instructions": "",
+            "instructions": "---Additional information---\r\nThe <em>Heading Render<\/em> setting controls whether to complete omit the heading, render it, or hide it accept for accessible users. Vendi recommends that every component have a heading, even if it is not visible to all users. Learn more about <a href=\"https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/Accessibility\/ARIA\/Attributes\/aria-label\" target=\"_blank\">ARIA labels here<\/a>",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "omit": "Omit heading",
+                "render": "Render heading",
+                "aria-label-only": "Using heading as an ARIA label only"
+            },
+            "default_value": "render",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "required_message": "",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_673775ef0e88f",
+            "label": "(Column 3\/12)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
+        },
+        {
+            "key": "field_6737761f0e891",
+            "label": "Heading Tag",
+            "name": "heading_tag",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "---Additional information---\r\n\r\n<code>H1<\/code> should generally be avoided as this is intended for the page's title, usually in the hero area. Similarly, <code>DIV<\/code> should be avoided as it does not convey any semantic meaning to accessible users.\r\n\r\nSelecting <code>H2<\/code> will allow you to also change the <em>Heading Style<\/em>.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -40,7 +101,8 @@
                 "h3": "h3",
                 "h4": "h4",
                 "h5": "h5",
-                "h6": "h6"
+                "h6": "h6",
+                "div": "div"
             },
             "default_value": "h2",
             "return_format": "value",
@@ -48,7 +110,9 @@
             "max": "",
             "prepend": "",
             "append": "",
+            "required_message": "",
             "allow_null": 0,
+            "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -57,36 +121,149 @@
             "min": ""
         },
         {
-            "key": "field_661983b083add",
-            "label": "Include in Document Outline",
-            "name": "include_in_document_outline",
+            "key": "field_673775ee0e88e",
+            "label": "(Column 3\/12)",
+            "name": "",
             "aria-label": "",
-            "type": "select",
+            "type": "acfe_column",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
+        },
+        {
+            "key": "field_673776800e894",
+            "label": "Text Wrap Style",
+            "name": "text_wrap_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "---Additional information---\r\n\r\nThe <em>Text Wrap Style<\/em> controls how text is wrapped if there is more than one line. Learn more about <a href=\"https:\/\/developer.mozilla.org\/en-US\/docs\/Web\/CSS\/text-wrap\" target=\"_blank\">Text Wrap Style here<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "choices": {
-                "yes": "Yes",
-                "no": "No"
+                "auto": "Auto",
+                "balance": "Balance",
+                "pretty": "Pretty"
             },
-            "default_value": "yes",
+            "default_value": "auto",
             "return_format": "value",
             "multiple": 0,
             "max": "",
             "prepend": "",
             "append": "",
             "allow_null": 0,
+            "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
             "min": ""
+        },
+        {
+            "key": "field_673776720e893",
+            "label": "(Column 3\/12)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
+        },
+        {
+            "key": "field_673776510e892",
+            "label": "Heading Style",
+            "name": "heading_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_673775fc0e890",
+                        "operator": "==",
+                        "value": "omit"
+                    },
+                    {
+                        "field": "field_673775fc0e890",
+                        "operator": "==",
+                        "value": "render"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_673775ed0e88d",
+            "label": "(Column Endpoint)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "endpoint": 1,
+            "border_endpoint": [
+                "endpoint"
+            ],
+            "allow_in_bindings": 0,
+            "columns": "6\/12",
+            "border": ""
         }
     ],
     "location": [
@@ -114,5 +291,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718800433
+    "modified": 1731688282
 }

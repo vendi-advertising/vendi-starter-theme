@@ -1,6 +1,5 @@
 <?php
 
-use Symfony\Component\Filesystem\Path;
 use Vendi\Theme\VendiComponentsAcfMagicFolderEnum;
 
 /**
@@ -43,6 +42,7 @@ add_filter(
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::FIELDS->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value,
+            VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::SETTINGS_MODAL->value,
         ];
     },
 );
@@ -69,6 +69,7 @@ add_filter(
             VendiComponentsAcfMagicFolderEnum::FIELDS->value,
             VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value,
             VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value,
+            VendiComponentsAcfMagicFolderEnum::SETTINGS_MODAL->value,
         ];
 
         if ( ! in_array($parts[0], $knownGoodFolders, true)) {
@@ -156,6 +157,10 @@ add_filter(
             VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value   => [
                 'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
                 'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
+            ],
+
+            VendiComponentsAcfMagicFolderEnum::SETTINGS_MODAL->value => [
+                'group_669020d3ad6b8.json' => 'background.json',
             ],
         ];
 

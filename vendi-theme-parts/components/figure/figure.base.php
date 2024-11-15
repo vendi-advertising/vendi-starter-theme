@@ -3,9 +3,10 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 use Vendi\Theme\Component\Figure\FigureImageConstraintEnum;
 
-abstract class FigureBase extends BaseComponent
+abstract class FigureBase extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {

@@ -7,7 +7,7 @@ use Vendi\Theme\Elements\HeadingElement;
 
 function vendi_render_heading(PrimaryHeadingInterface $component, array|string $additional_css_classes = 'header'): void
 {
-    if ( ! $component->shouldRenderHeaderTag() || ! $component->getHeadingText()) {
+    if ( ! $component->shouldRenderHeadingTag() || ! $component->getHeadingText()) {
         return;
     }
 

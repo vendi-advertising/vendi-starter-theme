@@ -8,6 +8,10 @@
     gap: var(--local-column-gap);
 }
 
+:root :where(.component-columns > .component-wrapper > .region > .content-wrap > .header) {
+    grid-column: 1 / -1;
+}
+
 :root :where(.component-columns.columns-count-2 > .component-wrapper > .region > .content-wrap) {
     grid-template-columns: var(--local-column-size);
 }

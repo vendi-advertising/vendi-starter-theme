@@ -52,17 +52,14 @@ abstract class FigureBase extends BaseComponent
         }
 
         $this->componentStyles->addCssProperty('--local-object-fit', $this->getSubField('object_fit'));
+        $this->componentStyles->addCssProperty('--local-text-color', $this->getSubField('text_color'));
     }
 
-    protected function getAdditionalRootClasses(): array
+    protected function initComponent(): void
     {
-        $ret = parent::getAdditionalRootClasses();
-
         if ($image_constraint = $this->getImageConstraintMode()) {
-            $ret[] = 'constrain-image-' . $image_constraint;
+            $this->addRootClass('constrain-image-' . $image_constraint);
         }
-
-        return $ret;
     }
 
     public function jsonSerialize(): array

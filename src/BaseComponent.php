@@ -4,26 +4,72 @@ namespace Vendi\Theme;
 
 use JsonSerializable;
 
-abstract class BaseComponent implements JsonSerializable
+abstract class BaseComponent implements ComponentInterface, JsonSerializable
 {
     public readonly ComponentStyles $componentStyles;
     private readonly int $componentIndex;
     protected array $fieldCache = [];
+    private array $rootClasses = [];
 
     public function __construct(
         public readonly string $componentName,
         public readonly bool $supportsBackgroundVideo = true,
         public readonly bool $supportsCommonContentAreaSettings = true,
+        public array $additionalRootClasses = [],
     ) {
         $this->componentStyles = new ComponentStyles();
         $this->componentIndex  = ComponentUtility::get_instance()->get_next_id_for_component($this->componentName);
 
         $this->initComponent();
+        $this->initDefaultRootClasses();
+
+        $this->addRootClasses($additionalRootClasses);
+    }
+
+    public function getComponentName(): string
+    {
+        return $this->componentName;
     }
 
     protected function initComponent(): void {}
 
     public function setComponentCssProperties(): void {}
+
+    protected function initDefaultRootClasses(): void
+    {
+        $this->addRootClass($this->componentName);
+        if ($this->supportsBackgroundVideo) {
+            $this->addRootClass('component-background-video-wrapper');
+        }
+        if ($this->isAcfPreview()) {
+            $this->addRootClass('acf-preview');
+        }
+        if ($this->supportsCommonContentAreaSettings) {
+            $this->addRootClasses($this->getCommonContentAreaSettings()['classes']);
+        }
+    }
+
+    public function getRootClasses(): array
+    {
+        return array_filter($this->rootClasses);
+    }
+
+    public function addRootClasses(array $classes): void
+    {
+        $this->rootClasses = array_merge($this->rootClasses, $classes);
+    }
+
+    public function addRootClass(string $class): void
+    {
+        $this->rootClasses[] = $class;
+    }
+
+    final public function isAcfPreview(): bool
+    {
+        global $is_preview;
+
+        return true === $is_preview;
+    }
 
     protected function abortRender(): bool
     {
@@ -53,26 +99,9 @@ abstract class BaseComponent implements JsonSerializable
         return have_rows($selector, $post_id);
     }
 
-    public function theRow($format = false): void
+    public function theRow($format = false): mixed
     {
-        the_row($format);
-    }
-
-    public function getRootClasses(): array
-    {
-        $ret = [
-            $this->componentName,
-        ];
-
-        if ($this->supportsBackgroundVideo) {
-            $ret[] = 'component-background-video-wrapper';
-        }
-
-        if ($this->supportsCommonContentAreaSettings) {
-            $ret = array_merge($ret, $this->getCommonContentAreaSettings()['classes']);
-        }
-
-        return array_filter(array_merge($ret, $this->getAdditionalRootClasses()));
+        return the_row($format);
     }
 
     public function getComponentIndex(): int
@@ -80,15 +109,58 @@ abstract class BaseComponent implements JsonSerializable
         return $this->componentIndex;
     }
 
+    protected function getCommonContentAreaFields(): array
+    {
+        return [
+            'content_max_width',
+            'content_placement',
+            'content_vertical_padding',
+            'content_horizontal_padding',
+        ];
+    }
+
     private function getCommonContentAreaSettings(): array
     {
-        $classes   = [];
-        $classes[] = 'content-max-width-' . vendi_constrain_item_to_list($this->getSubField('content_max_width'), ['full', 'narrow', 'slim'], 'narrow');
-        $classes[] = 'content-placement-' . vendi_constrain_item_to_list($this->getSubField('content_placement'), ['left', 'middle'], 'left');
-        $classes[] = 'content-vertical-padding-' . vendi_constrain_item_to_list($this->getSubField('content_vertical_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-        $classes[] = 'content-horizontal-padding-' . vendi_constrain_item_to_list($this->getSubField('content_horizontal_padding'), ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+        $ret = ['classes' => []];
 
-        return ['classes' => $classes];
+        $settingsGroup = $this->getSubField('content_area_settings');
+
+        if ( ! $settingsGroup) {
+            return $ret;
+        }
+
+        // NOTE: XX-Large is not included in the UI currently but was left here for consistency
+        $settings = $this->getCommonContentAreaFields();
+
+        $classes = [];
+
+        foreach ($settings as $setting) {
+            if ( ! $value = $settingsGroup[$setting] ?? null) {
+                continue;
+            }
+            switch ($setting) {
+                case 'content_max_width':
+                    $ret[$setting] = vendi_constrain_item_to_list($value, ['full', 'narrow', 'slim'], 'narrow');
+                    $classes[]     = 'content-max-width-' . $ret[$setting];
+                    break;
+                case 'content_placement':
+                    $ret[$setting] = vendi_constrain_item_to_list($value, ['left', 'middle'], 'left');
+                    $classes[]     = 'content-placement-' . $ret[$setting];
+                    break;
+                case 'content_vertical_padding':
+                    $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+                    $classes[]     = 'content-vertical-padding-' . $ret[$setting];
+                    break;
+                case 'content_horizontal_padding':
+                    $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
+                    $classes[]     = 'content-horizontal-padding-' . $ret[$setting];
+                    break;
+            }
+        }
+
+        $ret['classes'] = $classes;
+
+        return $ret;
     }
 
     protected function getKeyForBackgrounds(): string
@@ -100,6 +172,7 @@ abstract class BaseComponent implements JsonSerializable
     {
         $this->setComponentCssProperties();
         vendi_get_background_settings($this->componentStyles, key: $this->getKeyForBackgrounds());
+
         ?>
         <style media="screen">
             [data-component-name="<?php esc_attr_e($this->componentName); ?>"][data-component-index="<?php esc_attr_e($this->getComponentIndex()); ?>"] {
@@ -110,11 +183,6 @@ abstract class BaseComponent implements JsonSerializable
     }
 
     protected function getAdditionalRootAttributes(): array
-    {
-        return [];
-    }
-
-    protected function getAdditionalRootClasses(): array
     {
         return [];
     }
@@ -173,25 +241,32 @@ abstract class BaseComponent implements JsonSerializable
         echo '</' . $this->getRootTag() . '>';
     }
 
+    public function getImageHtml(int $imageId, string $size): string
+    {
+        return wp_get_attachment_image($imageId, $size);
+    }
+
     public function jsonSerialize(): array
     {
-        return [
+        $ret = [
             'componentName'  => $this->componentName,
             'componentIndex' => $this->componentIndex,
         ];
+
+        return $ret;
     }
 
-    public function getSubFieldBoolean(string $sub_field, ?bool $default = null, array $options = ['true', 'false']): bool
+    final public function getSubFieldBoolean(string $sub_field, ?bool $default = null): bool
     {
-        return 'true' === $this->getSubFieldConstrainedToList($sub_field, $options, $default);
+        return 'true' === $this->getSubFieldConstrainedToList($sub_field, ['true', 'false'], $default);
     }
 
-    public function getSubFieldRangeInt(string $sub_field, int $min, int $max, $default = null): null|int|string
+    final public function getSubFieldRangeInt(string $sub_field, int $min, int $max, $default = null): null|int|string
     {
         return $this->getSubFieldConstrainedToList($sub_field, array_map('strval', range($min, $max)), $default);
     }
 
-    public function getSubFieldConstrainedToList(string $sub_field, array $options, $default = null): null|int|string
+    final public function getSubFieldConstrainedToList(string $sub_field, array $options, $default = null): null|int|string
     {
         return vendi_constrain_item_to_list($this->getSubField($sub_field), $options, $default);
     }

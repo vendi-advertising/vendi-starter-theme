@@ -2,9 +2,9 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 
-abstract class CalloutBase extends BaseComponent
+abstract class CalloutBase extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {
@@ -40,5 +40,4 @@ abstract class CalloutBase extends BaseComponent
 
         return $ret;
     }
-
 }

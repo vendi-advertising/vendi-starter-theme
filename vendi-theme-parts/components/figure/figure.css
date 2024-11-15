@@ -1,6 +1,7 @@
 .component-figure :where(figure) {
     margin: 0;
     padding: 0;
+    color: var(--local-text-color, var(--color-primary-black));
 }
 
 .component-figure figure :is(img, picture) {

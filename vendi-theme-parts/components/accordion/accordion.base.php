@@ -2,9 +2,9 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 
-abstract class AccordionBase extends BaseComponent
+abstract class AccordionBase extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {

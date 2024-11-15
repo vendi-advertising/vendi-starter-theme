@@ -8,21 +8,14 @@ however it is recommended to use more specific components such as _Figure_ which
 
 ## Fields
 
-* Primary Settings
-    * Copy
-* Heading
-    * Heading
-    * Heading Level
-    * Include in Document Outline
-* Background
-    * Backgrounds
-* Content Area Settings
-    * Max Width
-    * Placement
-    * Vertical Padding
-    * Horizontal Padding
-* Component Settings
-    * Row ID
+| Field name | Field type | Required       | Default value | Description           |
+|------------|------------|----------------|---------------|-----------------------|
+| Copy       | WYSIWYG    | No<sup>1</sup> |               | The copy to display   |
+| Text Color | Color      | Yes            | Black         | The color of the text |
+
+## Component notes
+
+1. Although the copy field is not required, if it is not provided, the component will not be rendered.
 
 ## Examples
 

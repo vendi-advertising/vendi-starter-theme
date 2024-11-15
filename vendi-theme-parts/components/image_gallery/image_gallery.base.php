@@ -2,9 +2,9 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
+use Vendi\Theme\BaseComponentWithPrimaryHeading;
 
-abstract class ImageGalleryBase extends BaseComponent
+abstract class ImageGalleryBase extends BaseComponentWithPrimaryHeading
 {
     public function __construct()
     {

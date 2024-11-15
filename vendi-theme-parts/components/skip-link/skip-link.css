@@ -1,0 +1,8 @@
+.single-news .skip-link {
+    display: none;
+}
+
+:root :where(.single-news  .breadcrumbs-wrapper) {
+    display: none;
+}
+

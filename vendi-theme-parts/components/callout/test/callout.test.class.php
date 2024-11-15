@@ -32,17 +32,17 @@ class TestCallout extends Callout {
     }
 
 
-    public function theRow( $format = false ): void {
+    public function theRow( $format = false ): mixed {
 
         if ( $this->currentSelector === 'buttons' ) {
             $this->buttonIndex ++;
 
             $this->currentObject = $this->fieldCache['buttons'][ $this->buttonIndex ];
 
-            return;
+            return null;
         }
 
-        parent::theRow( $format );
+        return parent::theRow( $format );
     }
 
 

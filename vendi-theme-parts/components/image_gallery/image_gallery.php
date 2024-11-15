@@ -1,50 +1,52 @@
 <?php
 
 use Vendi\Theme\Component\ImageGallery;
+use Vendi\Theme\ComponentUtility;
 
-$component = new ImageGallery();
+/** @var ImageGallery $component */
+$component = ComponentUtility::get_new_component_instance(ImageGallery::class);
 
-$image_lightbox = 'enabled' === vendi_get_sub_field_constrained_to_list( 'image_lightbox', [ 'enabled', 'disabled' ], 'enabled' );
+$image_lightbox = 'enabled' === $component->getSubFieldConstrainedToList('image_lightbox', ['enabled', 'disabled'], 'enabled');
 
-if ( ! $component->renderComponentWrapperStart() ) {
+if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 ?>
 
-<?php vendi_render_headline( ); ?>
-<?php if ( ( $images = get_sub_field( 'images' ) ) && ( is_iterable( $images ) ) ): ?>
+<?php vendi_render_heading($component); ?>
+<?php if (($images = $component->getSubField('images')) && (is_iterable($images))): ?>
     <ul>
-        <?php foreach ( $images as $image ): ?>
-            <?php $full_image_array = bis_get_attachment_image_src( $image['ID'], 'full' ); ?>
+        <?php foreach ($images as $image): ?>
+            <?php $full_image_array = $component->getAttachmentImageSrc($image['ID'], 'full'); ?>
             <li>
                 <figure>
-                    <?php if ( $image_lightbox && ( $full_image_array['src'] ?? null ) ): ?>
-                        <a href="<?php echo esc_url( $full_image_array['src'] ); ?>">
-                            <?php echo bis_get_attachment_image( $image['ID'], [ 300, 300 ], 1 ); ?>
+                    <?php if ($image_lightbox && ($full_image_array['src'] ?? null)): ?>
+                        <a href="<?php echo esc_url($full_image_array['src']); ?>">
+                            <?php echo $component->getAttachmentImage($image['ID'], [300, 300], true); ?>
                         </a>
                     <?php else: ?>
-                        <?php echo bis_get_attachment_image( $image['ID'], [ 300, 300 ], 1 ); ?>
+                        <?php echo $component->getAttachmentImage($image['ID'], [300, 300], true); ?>
                     <?php endif; ?>
 
 
                     <?php
                     $title   = null;
                     $caption = null;
-                    if ( $component->getImageCaptions() === 'title' || $component->getImageCaptions() === 'title-and-caption' ) {
-                        $title = get_the_title( $image['ID'] );
+                    if ($component->getImageCaptions() === 'title' || $component->getImageCaptions() === 'title-and-caption') {
+                        $title = get_the_title($image['ID']);
                     }
-                    if ( $component->getImageCaptions() === 'caption' || $component->getImageCaptions() === 'title-and-caption' ) {
-                        $caption = wp_get_attachment_caption( $image['ID'] );
+                    if ($component->getImageCaptions() === 'caption' || $component->getImageCaptions() === 'title-and-caption') {
+                        $caption = wp_get_attachment_caption($image['ID']);
                     }
                     ?>
-                    <?php if ( $title || $caption ): ?>
+                    <?php if ($title || $caption): ?>
                         <figcaption>
                             <div class="fig-caption-wrap">
-                                <?php if ( $title ): ?>
-                                    <strong><?php esc_html_e( $title ); ?></strong>
+                                <?php if ($title): ?>
+                                    <strong><?php esc_html_e($title); ?></strong>
                                 <?php endif; ?>
-                                <?php if ( $caption ): ?>
-                                    <p><?php esc_html_e( $caption ); ?></p>
+                                <?php if ($caption): ?>
+                                    <p><?php esc_html_e($caption); ?></p>
                                 <?php endif; ?>
                             </div>
                         </figcaption>
@@ -54,18 +56,18 @@ if ( ! $component->renderComponentWrapperStart() ) {
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>
-<?php echo get_sub_field( 'copy' ); ?>
+<?php echo $component->getSubField('copy'); ?>
 <?php
 $component->renderComponentWrapperEnd();
 
-if ( ! $image_lightbox ) {
+if ( ! $image_lightbox) {
     return;
 }
 
 // Ensures that the in-page JS is loaded once, just in case this component is
 // used multiple times on the same page.
 static $lightbox_js_loaded = false;
-if ( $lightbox_js_loaded ) {
+if ($lightbox_js_loaded) {
     return;
 }
 

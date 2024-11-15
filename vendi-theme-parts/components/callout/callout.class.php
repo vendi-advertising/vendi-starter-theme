@@ -2,8 +2,10 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\PrimaryHeaderInterface;
-
 class Callout extends CalloutBase
 {
+    public function getHeadingText(): ?string
+    {
+        return $this->getSubField('header');
+    }
 }

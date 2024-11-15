@@ -9,11 +9,6 @@ function vendi_load_component_v3(array|string $name, ?array $object_state = null
     ComponentUtility::get_instance()->loadComponent($name, $object_state);
 }
 
-function vendi_load_modern_template(array|string $name, ?array $object_state = null): void
-{
-    ComponentUtility::get_instance()->loadTemplate($name, $object_state);
-}
-
 #[Deprecated(reason: 'This component does not have a direct replacement')]
 function vendi_maybe_get_template_name(array|string $name, bool $check_existence = true, ?string $filename = null): ?string
 {

@@ -1,7 +1,9 @@
 <main>
-    <a id="main-content" tabindex="-1"></a>
 
     <?php
+
+    vendi_load_component_v3('skip-link');
+
     if (post_password_required()) {
         echo get_the_password_form();
     } else {
@@ -12,11 +14,11 @@
         }
 
         if (is_404()) {
-            vendi_load_modern_template('404');
+            vendi_load_component_v3('main/404');
         } elseif (is_search()) {
-            vendi_load_modern_template('search');
+            vendi_load_component_v3('main/search');
         } elseif (is_singular('_background')) {
-            vendi_load_modern_template(['preview-only', 'background']);
+            vendi_load_component_v3('main/preview-only/background');
         }
 
         if ( ! is_search() && ! is_404()) {

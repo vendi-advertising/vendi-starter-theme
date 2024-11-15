@@ -156,13 +156,13 @@ final class ComponentUtility
         }
 
         $optionalFiles = [
-            'class-base' => $trueComponentName . '.base.php',
-
-            // Helper class
-            'class'      => $trueComponentName . '.class.php',
-
-            // Autoload file
+            // Autoload and hooks
             'autoload'   => $trueComponentName . '.autoload.php',
+            'hooks'      => $trueComponentName . '.hooks.php',
+
+            // Helper class and base class
+            'class-base' => $trueComponentName . '.base.php',
+            'class'      => $trueComponentName . '.class.php',
 
             // Test class
             'test'       => 'test/' . $trueComponentName . '.test.class.php',
@@ -211,7 +211,7 @@ final class ComponentUtility
             $objectState,
         );
 
-        $this->maybeEnqueueComponentGlobalStyles($trueComponentName, $componentDirectoryUrl, $componentDirectory);
+        $this->maybeEnqueueComponentAssetStyles($trueComponentName, $componentDirectoryUrl, $componentDirectory);
         $this->maybeEnqueueComponentStyle($trueComponentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey);
         $this->maybeEnqueueComponentScript($trueComponentName, $componentDirectoryUrl, $componentDirectory, $enqueueKey);
         $this->maybeEnqueueComponentScripts($trueComponentName, $componentDirectoryUrl, $componentDirectory);
@@ -287,7 +287,7 @@ final class ComponentUtility
     /**
      * @throws JsonException
      */
-    private function maybeEnqueueComponentGlobalStyles($componentName, $componentDirectoryUrl, $componentDirectory): void
+    private function maybeEnqueueComponentAssetStyles($componentName, $componentDirectoryUrl, $componentDirectory): void
     {
         $this->maybeEnqueueComponentAssetFilesItems(
             $componentName,
@@ -297,6 +297,17 @@ final class ComponentUtility
             function ($componentName, $assetUrl, $assetPath, $items) {
                 // TODO: This needs to be tested, and is probably wrong
                 foreach ($items as $style) {
+                    // Technically we only need to enqueue these once, either in CSS or JS, and not both,
+                    // but for now we're doing it this way.
+                    if ('@slick' === $style) {
+                        vendi_enqueue_slick();
+                        continue;
+                    }
+
+                    if ('@baguetteBox' === $style) {
+                        vendi_enqueue_baguetteBox();
+                        continue;
+                    }
                     $assetPath = Path::join(VENDI_CUSTOM_THEME_PATH, 'css', $style);
                     $url       = Path::join(VENDI_CUSTOM_THEME_URL, 'css', $style);
                     $assetName = basename($style, '.css');
@@ -319,6 +330,18 @@ final class ComponentUtility
             function ($componentName, $assetUrl, $assetPath, $items) {
                 $assetUrlBase = Path::getDirectory($assetUrl);
                 foreach ($items as $script) {
+                    // Technically we only need to enqueue these once, either in CSS or JS, and not both,
+                    // but for now we're doing it this way.
+                    if ('@slick' === $script) {
+                        vendi_enqueue_slick();
+                        continue;
+                    }
+
+                    if ('@baguetteBox' === $script) {
+                        vendi_enqueue_baguetteBox();
+                        continue;
+                    }
+
                     $url = Path::join($assetUrlBase, $script);
 
                     // The filemtime is wrong, it is calculating based on the JSON file, not the actual script files

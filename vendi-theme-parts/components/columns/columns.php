@@ -15,8 +15,8 @@ if ( ! $component->renderComponentWrapperStart() ) {
 
 <?php for ( $i = 1; $i <= $number_of_columns; $i ++ ): ?>
     <?php $prefix = sprintf( 'column_%1$d_', $i ); ?>
-    <?php $justify_self = get_sub_field( $prefix . 'settings_justify_self' ); ?>
-    <?php $align_self = get_sub_field( $prefix . 'settings_align_self' ); ?>
+    <?php $justify_self = $component->getSubField( $prefix . 'settings_justify_self' ); ?>
+    <?php $align_self = $component->getSubField( $prefix . 'settings_align_self' ); ?>
     <div
         class="column"
         style="--local-justify-self: <?php echo esc_attr( $justify_self ); ?>; --local-align-self: <?php echo esc_attr( $align_self ); ?>;"

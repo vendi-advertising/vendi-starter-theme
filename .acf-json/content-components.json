@@ -84,9 +84,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -134,9 +132,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "xlarge",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -184,9 +180,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -234,9 +228,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -284,9 +276,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -382,9 +372,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -434,6 +422,54 @@
                     "acfe_flexible_category": [
                         "Entity"
                     ],
+                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
+                "layout_67375f6b3f253": {
+                    "key": "layout_67375f6b3f253",
+                    "name": "group",
+                    "label": "Group",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67375f753f256",
+                            "label": "Group",
+                            "name": "group",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67327a78b71a5"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": "",
                     "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
@@ -583,9 +619,7 @@
                         "Entity",
                         "Special"
                     ],
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -635,9 +669,7 @@
                     "acfe_flexible_category": [
                         "Entity"
                     ],
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -733,9 +765,7 @@
                     "min": "",
                     "max": "",
                     "acfe_flexible_category": "",
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -785,9 +815,7 @@
                     "acfe_flexible_category": [
                         "Entity"
                     ],
-                    "acfe_flexible_settings": [
-                        "group_661809923e61a"
-                    ],
+                    "acfe_flexible_settings": "",
                     "acfe_flexible_settings_size": "medium",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_render_template": false,
@@ -827,7 +855,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "capability"
+                "value": "all"
             }
         ],
         [
@@ -863,5 +891,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1724190082
+    "modified": 1731682197
 }

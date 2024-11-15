@@ -2,9 +2,10 @@
 
 namespace Vendi\Theme\Component;
 
-use Vendi\Theme\BaseComponent;
-use Vendi\Theme\PrimaryHeaderInterface;
-
 class Accordion extends AccordionBase
 {
+    public function getHeadingText(): ?string
+    {
+        return $this->getSubField('intro_heading');
+    }
 }

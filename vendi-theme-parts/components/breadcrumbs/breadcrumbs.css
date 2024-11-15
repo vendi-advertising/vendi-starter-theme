@@ -1,4 +1,4 @@
-:root :where(.breadcrumbs-wrapper.region) {
+:root :where(.breadcrumbs-wrapper > .region) {
     max-width: 100%;
     padding-inline: 2rem;
     font-size: 1.4rem;

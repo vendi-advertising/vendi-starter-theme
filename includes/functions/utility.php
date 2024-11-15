@@ -61,25 +61,6 @@ function vendi_get_env(string $key, ?string $default = null): ?string
     return getenv($key) ?: $default;
 }
 
-function vendi_get_component_settings(string $name, mixed $default_value = null): mixed
-{
-    // If there is a way to do this without loop, I haven't found it yet.
-    if (vendi_have_settings()) {
-        while (vendi_have_settings()) {
-            the_setting();
-            if ($value = get_sub_field($name)) {
-                // This needs more testing, but I believe this is the correct
-                // way to "finish" the loop early.
-                acf_remove_loop();
-
-                return $value;
-            }
-        }
-    }
-
-    return $default_value;
-}
-
 function vendi_maybe_get_row_id_attribute(mixed $row_id, bool $echo = true, bool $id_only_no_attribute = false): ?string
 {
     if ( ! is_string($row_id) || empty($row_id)) {
@@ -104,11 +85,6 @@ function vendi_render_row_id_attribute(string $sub_field_key = 'component_row_id
     return vendi_maybe_get_row_id_attribute(get_sub_field($sub_field_key), $echo, $id_only_no_attribute);
 }
 
-function vendi_generate_unique_id(string $component_or_item_id = 'id__'): string
-{
-    return str_replace('.', '-', uniqid('id__' . $component_or_item_id . '__', true));
-}
-
 function vendi_constrain_item_to_enum_cases(int|bool|null|string $item, array $options, $default = null): null|int|string
 {
     $options = array_column($options, 'value');
@@ -123,21 +99,6 @@ function vendi_constrain_item_to_list(int|bool|null|string $item, array $options
     }
 
     return $default;
-}
-
-function vendi_get_sub_field_boolean(string $sub_field, ?bool $default = null): bool
-{
-    return 'true' === vendi_constrain_item_to_list(get_sub_field($sub_field), ['true', 'false'], $default);
-}
-
-function vendi_get_sub_field_range_int(string $sub_field, int $min, int $max, $default = null): null|int|string
-{
-    return vendi_get_sub_field_constrained_to_list($sub_field, array_map('strval', range($min, $max)), $default);
-}
-
-function vendi_get_sub_field_constrained_to_list(string $sub_field, array $options, $default = null): null|int|string
-{
-    return vendi_constrain_item_to_list(get_sub_field($sub_field), $options, $default);
 }
 
 function vendi_constrain_h1_through_h6(null|bool|string $tag, $default = 'h2'): string
@@ -171,21 +132,6 @@ function vendi_get_global_javascript(?string $location): array
     return $ret;
 }
 
-function vendi_render_attribute(string $name, null|bool|string $value): void
-{
-    if (true === $value) {
-        echo sprintf('%s', esc_attr($name));
-
-        return;
-    }
-
-    if ( ! $value) {
-        return;
-    }
-
-    echo sprintf('%s="%s"', esc_attr($name), esc_attr($value));
-}
-
 function vendi_render_class_attribute(array|string $classes): void
 {
     if (is_string($classes)) {
@@ -196,61 +142,6 @@ function vendi_render_class_attribute(array|string $classes): void
         return;
     }
     echo 'class="' . esc_attr(implode(' ', $classes)) . '"';
-}
-
-function vendi_convert_alerts_to_objects($alerts): array
-{
-    $ret = [];
-    foreach ($alerts as $alert) {
-        $obj                   = new stdClass();
-        $obj->id               = $alert->ID;
-        $obj->headline         = get_field('headline', $alert->ID);
-        $obj->alert_version    = get_field('alert_version', $alert->ID);
-        $obj->start_date       = get_field('start_date', $alert->ID);
-        $obj->end_date         = get_field('end_date', $alert->ID);
-        $obj->alert_type       = get_field('alert_type', $alert->ID);
-        $obj->display_mode     = get_field('display_mode', $alert->ID);
-        $obj->primary_message  = get_field('primary_message', $alert->ID);
-        $obj->alert_style      = get_field('alert_style', $alert->ID);
-        $obj->background_color = get_field('background_color', $alert->ID);
-        $obj->icon             = get_field('icon', $alert->ID);
-        $obj->priority         = get_field('alert_priority', $alert->ID);
-
-        $ret[] = $obj;
-    }
-
-    return $ret;
-}
-
-function _vendi_render_headline_impl(string $headline, string $heading_level, string $headline_tag, array|string $additional_css_classes = 'header'): void
-{
-    if ( ! $headline) {
-        return;
-    }
-
-    $headline_level = vendi_constrain_h1_through_h6($heading_level);
-
-    if (is_string($additional_css_classes)) {
-        $classes = explode(' ', $additional_css_classes);
-    } else {
-        $classes = $additional_css_classes;
-    }
-
-    $classes[] = $headline_level;
-
-    echo sprintf('<%1$s class="%2$s">%3$s</%1$s>', $headline_tag, implode(' ', $classes), esc_html($headline));
-}
-
-function vendi_render_headline(string $sub_field_headline = 'header', string $sub_field_for_heading_level = 'heading_level', string $sub_field_for_include_in_document_outline = 'include_in_document_outline', array|string $additional_css_classes = 'header'): void
-{
-    if ( ! $headline = get_sub_field($sub_field_headline)) {
-        return;
-    }
-
-    $headline_level = vendi_constrain_h1_through_h6(get_sub_field($sub_field_for_heading_level));
-    $headline_tag   = 'no' === get_sub_field($sub_field_for_include_in_document_outline) ? 'div' : $headline_level;
-
-    _vendi_render_headline_impl($headline, $headline_level, $headline_tag, $additional_css_classes);
 }
 
 function vendi_maybe_render_html_comment_error_message(string $errorText, bool $render = true): void
@@ -274,18 +165,6 @@ function vendi_render_component_data_name_and_index_attributes(string $component
             array_keys($attributes),
         ),
     );
-}
-
-
-function vendi_render_component_specific_css_block(string $componentName, int $componentIndex, ComponentStyles $styles): void
-{
-    ?>
-    <style media="screen">
-        [data-component-name="<?php esc_attr_e($componentName); ?>"][data-component-index="<?php esc_attr_e($componentIndex); ?>"] {
-        <?php echo $styles->__toString(); ?>
-        }
-    </style>
-    <?php
 }
 
 function _vendi_get_background_settings_handle_layout_background_color(bool $renderErrorMessagesForMissingValues, ComponentStyles $style, ?WP_Post $post_id = null): void
@@ -471,7 +350,6 @@ function vendi_get_background_blend_mode_from_settings($default_value = 'normal'
     return $ret;
 }
 
-
 function vendi_get_background_repeat_from_settings($default_value = 'repeat', $post_id = false)
 {
     $ret = $default_value;
@@ -515,55 +393,4 @@ function vendi_maybe_render_background_video(): void
         </div>
     <?php
     endif;
-}
-
-function vendi_get_common_component_content_settings_classes()
-{
-    ['classes' => $content_classes] = vendi_get_common_component_settings();
-
-    return $content_classes;
-}
-
-function vendi_get_common_component_settings(): array
-{
-    $ret = ['classes' => []];
-
-    $settingsGroup = get_sub_field('content_area_settings');
-
-    if ( ! $settingsGroup) {
-        return $ret;
-    }
-
-    // NOTE: XX-Large is not included in the UI currently but was left here for consistency
-    $settings = ['content_max_width', 'content_placement', 'content_vertical_padding', 'content_horizontal_padding'];
-
-    $classes = [];
-
-    foreach ($settings as $setting) {
-        if ( ! $value = $settingsGroup[$setting] ?? null) {
-            continue;
-        }
-        switch ($setting) {
-            case 'content_max_width':
-                $ret[$setting] = vendi_constrain_item_to_list($value, ['full', 'narrow', 'slim'], 'narrow');
-                $classes[]     = 'content-max-width-' . $ret[$setting];
-                break;
-            case 'content_placement':
-                $ret[$setting] = vendi_constrain_item_to_list($value, ['left', 'middle'], 'left');
-                $classes[]     = 'content-placement-' . $ret[$setting];
-                break;
-            case 'content_vertical_padding':
-                $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-                $classes[]     = 'content-vertical-padding-' . $ret[$setting];
-                break;
-            case 'content_horizontal_padding':
-                $ret[$setting] = vendi_constrain_item_to_list($value, ['xx-large', 'x-large', 'large', 'medium', 'small', 'x-small', 'xx-small', 'none'], 'medium');
-                $classes[]     = 'content-horizontal-padding-' . $ret[$setting];
-                break;
-        }
-    }
-
-    $ret['classes'] = $classes;
-
-    return $ret;
 }

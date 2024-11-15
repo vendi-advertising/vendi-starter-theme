@@ -1,23 +1,15 @@
 <?php
 
-use Vendi\Theme\GenericComponent;
+use Vendi\Theme\Component\Testimonial;
+use Vendi\Theme\ComponentUtility;
 
-$component   = new GenericComponent( 'component-testimonial' );
-$testimonial = $component->getSubField( 'testimonial' )[0] ?? null;
-$copy        = get_field( 'copy', $testimonial?->ID );
-$component->setAbortRenderFunction(
-    static function () use ( $testimonial, $copy ) {
-        return ( ! $testimonial instanceof WP_Post ) || ( ! $copy );
-    }
-);
+/** @var Testimonial $component */
+$component = ComponentUtility::get_new_component_instance(Testimonial::class);
 
-$component->componentStyles->addStyle( '--local-text-color', $component->getSubField( 'text_color' ) );
-
-if ( ! $component->renderComponentWrapperStart() ) {
+if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 ?>
-
 
     <blockquote class="blockquote">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129.657 103.134">
@@ -34,20 +26,18 @@ if ( ! $component->renderComponentWrapperStart() ) {
                 <path fill="url(#testimonial_linear_gradient_a)" d="M51.768 0v8.2q-17.593 9.192-25.185 19.184a35.235 35.235 0 0 0-7.594 21.786q0 7 2 9.595 1.8 2.8 4.4 2.8a23.185 23.185 0 0 0 6.994-1.5 25.014 25.014 0 0 1 8-1.5 19.581 19.581 0 0 1 14.291 6.1 20.266 20.266 0 0 1 6.1 14.89 21.782 21.782 0 0 1-7.407 16.485q-7.4 6.9-18.388 6.9-13.393 0-24.185-11.591T0 62.762q0-19.984 13.291-37.277T51.768 0m68.3.6v7.6Q99.874 19.789 93.481 28.984a36.839 36.839 0 0 0-6.4 21.586q0 5.6 2.2 8.393t4.6 2.8a21.554 21.554 0 0 0 6.6-1.6 25.588 25.588 0 0 1 8.794-1.6 19.909 19.909 0 0 1 14.291 5.9 19.38 19.38 0 0 1 6.1 14.49q0 9.795-7.695 16.988a26.622 26.622 0 0 1-18.887 7.2q-13.192 0-23.786-11.393T68.7 63.361q0-20.988 13.391-38.276T120.064.6"/>
             </g>
         </svg>
-        <?php if ( $header = $component->getSubField( 'header' ) ): ?>
-            <h2 class="header-with-dots"><?php esc_html_e( $header ); ?></h2>
-        <?php endif; ?>
-        <h3 class="title"><?php esc_html_e( get_the_title( $testimonial ) ); ?></h3>
+        <?php vendi_render_heading($component); ?>
+        <h3 class="title"><?php esc_html_e(get_the_title($component->getTestimonialObject())); ?></h3>
         <div class="copy">
-            <?php echo wp_kses_post( $copy ); ?>
+            <?php echo wp_kses_post($component->getCopy()); ?>
         </div>
-        <?php if ( $attribution = get_field( 'attribution', $testimonial->ID ) ): ?>
+        <?php if ($attribution = $component->getAttribution()): ?>
             <footer class="attribution h2">
-                <cite><?php echo $attribution; ?></cite>
+                <cite><?php esc_html_e($attribution); ?></cite>
             </footer>
         <?php endif; ?>
     </blockquote>
-<?php if ( $thumbnail = get_the_post_thumbnail( $testimonial->ID, 'medium' ) ): ?>
+<?php if ($thumbnail = $component->getThumbnail()): ?>
     <div class="thumbnail">
         <?php echo $thumbnail; ?>
     </div>

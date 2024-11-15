@@ -1,4 +1,4 @@
-.component-columns :where( .component-wrapper > .region > .content-wrap) {
+:root :where(.component-columns > .component-wrapper > .region > .content-wrap) {
     display: grid;
     justify-items: var(--local-justify-items);
     align-items: var(--local-align-items);
@@ -8,12 +8,8 @@
     gap: var(--local-column-gap);
 }
 
-:root :where(.component-columns.columns-count-1 > .component-wrapper > .region > .content-wrap) {
-    grid-template-columns: 1fr;
-}
-
 :root :where(.component-columns.columns-count-2 > .component-wrapper > .region > .content-wrap) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: var(--local-column-size);
 }
 
 :root :where(.component-columns.columns-count-3 > .component-wrapper > .region > .content-wrap) {

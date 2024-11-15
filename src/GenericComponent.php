@@ -4,8 +4,10 @@ namespace Vendi\Theme;
 
 class GenericComponent extends BaseComponent
 {
+    /**
+     * @var callable|null
+     */
     private $abortRenderFunction = null;
-    private array $additionalRootClasses = [];
     private array $additionalRootAttributes = [];
     private ?string $keyForBackgrounds = null;
 

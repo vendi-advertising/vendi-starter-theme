@@ -5,7 +5,7 @@ use Vendi\Theme\ComponentUtility;
 
 $component = ComponentUtility::get_new_component_instance(Blockquote::class);
 
-if (!$component->renderComponentWrapperStart()) {
+if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 

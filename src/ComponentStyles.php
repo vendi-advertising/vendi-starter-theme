@@ -12,6 +12,7 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
     private array $container;
     private array $keys;
     private int $position;
+
     private array $errors = [];
 
     public function __construct()
@@ -50,16 +51,6 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
         $newValue = $oldValue;
 
         $this->offsetSet($key, $newValue);
-    }
-
-    public function addBackgroundColor(string $value): void
-    {
-        $this->addStyle('background-color', $value);
-    }
-
-    public function addBackground(string $value): void
-    {
-        $this->addStyle('background', $value);
     }
 
     public function addBackgroundImage(string $value): void

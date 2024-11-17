@@ -1,7 +1,6 @@
 <?php
 
 use Symfony\Component\Filesystem\Path;
-use Vendi\VendiAssetLoader\Loader;
 
 add_action(
     "acfe/flexible/render/before_template",
@@ -59,8 +58,7 @@ add_action(
         $backup_wp_styles = $wp_styles;
         $wp_styles        = new WP_Styles();
 
-        // Enqueue global theme styles
-        Loader::enqueue_default();
+        vendi_load_component_v3('core');
 
         /*
          * In order to not have the component be aware that it is rendering in preview mode, load it normally but buffer it.

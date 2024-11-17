@@ -1,0 +1,26 @@
+{
+  "scripts": [
+    "js/250-mobile-nav.js",
+    "js/999-starter-theme-disable-links.js"
+  ],
+  "styles": [
+    "css/000-reset.css",
+    "css/005-fonts.css",
+    "css/010-vars.css",
+    "css/020-layer-buttons.css",
+    "css/020-layer-content-horizontal-padding.css",
+    "css/020-layer-content-max-width.css",
+    "css/020-layer-content-placement.css",
+    "css/020-layer-content-vertical-padding.css",
+    "css/020-layer-gaps.css",
+    "css/020-layer-margins.css",
+    "css/020-layer-padding.css",
+    "css/100-elements.css",
+    "css/105-headers.css",
+    "css/110-simple-utility-classes.css",
+    "css/115-regions.css",
+    "css/120-wordpress-core-styles.css",
+    "css/250-mobile-nav.css",
+    "css/350-shared-component-background-video.css"
+  ]
+}

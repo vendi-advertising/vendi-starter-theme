@@ -13,7 +13,6 @@ require_once VENDI_CUSTOM_THEME_PATH.'/includes/autoload.php';
 
 // Generally shared across all themes
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/vendi-base.php';
-require_once VENDI_CUSTOM_THEME_PATH.'/includes/vendi-auto-asset-loader.php';
 
 // Global functions
 require_once VENDI_CUSTOM_THEME_PATH.'/includes/global-functions.php';

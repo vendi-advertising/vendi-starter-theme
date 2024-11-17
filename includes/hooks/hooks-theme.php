@@ -17,6 +17,8 @@ add_action(
     static function () {
         ob_start();
 
+        vendi_load_component_v3('core');
+
         vendi_load_component_v3('header');
 
         vendi_load_component_v3('main');

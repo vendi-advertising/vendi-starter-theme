@@ -9,23 +9,7 @@ The figure component is used to display an image with an optional caption and/or
 
 ## Fields
 
-### Image
-
-- **Type**: Image
-- **Description**: The image to display.
-- **Required**: Yes
-
-### Caption
-
-- **Type**: Text
-- **Description**: The caption to display.
-- **Required**: No
-
-### Photo Credit
-
-- **Type**: Text
-- **Description**: The photo credit to display.
-- **Required**: No
+{%interface%}
 
 ## Examples
 

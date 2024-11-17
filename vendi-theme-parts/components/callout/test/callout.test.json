@@ -9,13 +9,13 @@
       "__test_id": 2,
       "__test_description": "Copy w/ heading",
       "copy": "@lorem(500, 3)",
-      "header": "Lorem ipsum dolor sit amet"
+      "heading": "Lorem ipsum dolor sit amet"
     },
     {
       "__test_id": 3,
       "__test_description": "Copy w/ heading and buttons",
       "copy": "@lorem(500, 3)",
-      "header": "Lorem ipsum dolor sit amet",
+      "heading": "Lorem ipsum dolor sit amet",
       "buttons": [
         {
           "call_to_action": {

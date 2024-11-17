@@ -2,6 +2,8 @@
 
 ## Fields
 
+{%interface%}
+
 ## Examples
 
 {%examples%}

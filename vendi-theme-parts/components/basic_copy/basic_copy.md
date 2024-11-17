@@ -8,10 +8,7 @@ however it is recommended to use more specific components such as _Figure_ which
 
 ## Fields
 
-| Field name | Field type | Required       | Default value | Description           |
-|------------|------------|----------------|---------------|-----------------------|
-| Copy       | WYSIWYG    | No<sup>1</sup> |               | The copy to display   |
-| Text Color | Color      | Yes            | Black         | The color of the text |
+{%interface%}
 
 ## Component notes
 

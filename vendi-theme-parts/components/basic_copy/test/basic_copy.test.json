@@ -9,7 +9,9 @@
       "__test_id": 2,
       "__test_description": "Copy w/ heading",
       "copy": "@lorem(500, 3)",
-      "heading": "Lorem ipsum dolor sit amet"
+      "heading": "Lorem ipsum dolor sit amet",
+      "heading_render": "render",
+      "heading_tag": "h2"
     },
     {
       "__test_id": 999,
@@ -18,6 +20,8 @@
         "test_content": {
           "copy": "@lorem(500, 3)",
           "heading": "Lorem ipsum dolor sit amet",
+          "heading_render": "render",
+          "heading_tag": "h2",
           "content_area_settings": {
             "content_max_width": "@matrix",
             "content_alignment": "@matrix"

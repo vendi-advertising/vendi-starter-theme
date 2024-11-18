@@ -184,7 +184,7 @@ add_action('wp_enqueue_scripts', function () {
         </ul>
     </nav>
     <style>
-        .acf-input .acf-flexible-content .acfe-flexible-stylised-button {
+        .acf-fields.acf-form-fields.-top > * > .acf-input > .acf-flexible-content > .acfe-flexible-stylised-button {
             display: none;
         }
     </style>
@@ -197,7 +197,6 @@ add_action('wp_enqueue_scripts', function () {
                     return [
                         [
                             'acf_fc_layout' => $vendi_selected_theme_page,
-                            'copy' => 'the content here',
                         ],
                     ];
                 }

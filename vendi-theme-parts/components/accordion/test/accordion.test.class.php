@@ -13,5 +13,6 @@ class TestAccordion extends Accordion {
 
     protected function initComponent(): void {
         $this->loadAutoloadTestData();
+        $this->loadCommonSettings();
     }
 }

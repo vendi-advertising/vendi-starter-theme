@@ -17,8 +17,6 @@ class TestBasicCopy extends BasicCopy
     protected function initComponent(): void
     {
         $this->fieldCache['copy'] = $this->getTestData('copy');
-        $this->fieldCache['content_area_settings']['content_max_width'] = $this->testData['content_area_settings']['content_max_width'] ?? null;
-        $this->fieldCache['content_area_settings']['content_placement'] = $this->testData['content_area_settings']['content_alignment'] ?? null;
-        $this->loadTestHeadingSettings();
+        $this->loadCommonSettings();
     }
 }

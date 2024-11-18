@@ -22,7 +22,7 @@ class TestCallout extends Callout
     protected function initComponent(): void
     {
         $this->loadTestDataByExactKeys('copy', 'heading', 'buttons');
-        $this->loadCommonContentAreaSettings();
+        $this->loadCommonSettings();
     }
 
     public function getSubField(string $fieldName): mixed

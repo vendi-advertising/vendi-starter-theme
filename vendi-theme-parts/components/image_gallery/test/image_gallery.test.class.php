@@ -31,5 +31,6 @@ class TestImageGallery extends ImageGallery {
 
     protected function initComponent(): void {
         $this->loadAutoloadTestData();
+        $this->loadCommonSettings();
     }
 }

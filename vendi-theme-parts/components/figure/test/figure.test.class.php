@@ -2,7 +2,11 @@
 
 namespace Vendi\Theme\Component;
 
+use Vendi\Theme\TestComponentUtilsTrait;
+
 class TestFigure extends Figure {
+
+    use TestComponentUtilsTrait;
 
     public function __construct(
         private readonly array $testData,
@@ -33,8 +37,6 @@ class TestFigure extends Figure {
         $this->fieldCache['caption']                                    = $this->testData['caption'] ?? null;
         $this->fieldCache['photo_credit']                               = $this->testData['photo_credit'] ?? null;
         $this->fieldCache['image']                                      = $this->testData['image'] ?? null;
-        $this->fieldCache['content_area_settings']['content_max_width'] = $this->testData['content_area_settings']['content_max_width'] ?? null;
-        $this->fieldCache['content_area_settings']['content_placement'] = $this->testData['content_area_settings']['content_alignment'] ?? null;
 
         if ( $image = ( $this->testData['image'] ?? null ) ) {
             $this->fieldCache['image'] = [
@@ -45,6 +47,8 @@ class TestFigure extends Figure {
                 'height' => $image['height'] ?? null,
             ];
         }
+
+        $this->loadCommonSettings();
     }
 
     protected function abortRender(): bool {

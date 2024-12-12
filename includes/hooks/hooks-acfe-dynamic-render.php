@@ -1,16 +1,16 @@
 <?php
 
-use Symfony\Component\Filesystem\Path;
-
 add_action(
     "acfe/flexible/render/before_template",
     static function ($field, $layout, $is_preview) {
-        if (!$is_preview) {
+
+        if ( ! $is_preview) {
+            echo '<h1>Not in preview mode</h1>';
             return;
         }
 
         static $supportedLayouts = [
-            'hero' => [
+            'hero'               => [
                 'hero-single',
             ],
             'content_components' => [
@@ -30,14 +30,14 @@ add_action(
             ],
         ];
 
-        $thisFieldName = $field['name'];
+        $thisFieldName  = $field['name'];
         $thisLayoutName = $layout['name'];
 
-        if (!array_key_exists($thisFieldName, $supportedLayouts)) {
+        if ( ! array_key_exists($thisFieldName, $supportedLayouts)) {
             return;
         }
 
-        if (!in_array($thisLayoutName, $supportedLayouts[$thisFieldName], true)) {
+        if ( ! in_array($thisLayoutName, $supportedLayouts[$thisFieldName], true)) {
             return;
         }
 

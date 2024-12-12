@@ -54,7 +54,7 @@ final class ComponentUtility
         return sprintf('%1$s-%2$d', $componentName, $id);
     }
 
-    public static function get_new_component_instance(string $className): BaseComponent
+    public static function get_new_component_instance(string $className): VendiComponent
     {
         global $vendi_theme_test_mode;
         global $vendi_theme_test_data;

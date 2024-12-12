@@ -6,7 +6,7 @@ use Vendi\Theme\ComponentUtility;
 /** @var Stats $component */
 $component = ComponentUtility::get_new_component_instance(Stats::class);
 
-if ( ! $component->renderComponentWrapperStart()) {
+if (!$component->renderComponentWrapperStart()) {
     return;
 }
 
@@ -14,10 +14,7 @@ $component->maybeRenderComponentHeader();
 ?>
 <?php if (have_rows('stats')): ?>
     <?php while (have_rows('stats')) : the_row(); ?>
-        <div class="single-stat">
-            <div class="stat"><?php echo $component->getSubField('stat'); ?></div>
-            <div class="details"><?php echo $component->getSubField('details'); ?></div>
-        </div>
+        <?php vendi_load_component_v3(['stats', 'single-stat']); ?>
         <hr/>
     <?php endwhile; ?>
 <?php endif; ?>

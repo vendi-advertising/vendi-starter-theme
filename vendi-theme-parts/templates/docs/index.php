@@ -7,13 +7,18 @@ use League\CommonMark\MarkdownConverter;
 use Symfony\Component\Filesystem\Path;
 use Symfony\Component\Finder\Finder;
 
+use Vendi\Theme\Documentation\ComponentMeta;
+use Vendi\Theme\Documentation\DocumentationUtility;
+
+use Vendi\Theme\Documentation\MarkdownUtility;
+
 use function Symfony\Component\String\u;
 
 global $vendi_selected_theme_page;
 
 function getExampleHtml(string $description, int $idx, string $url, int $subIdx = 0): string
 {
-    $fullIdx = $idx.'-'.$subIdx;
+    $fullIdx = $idx . '-' . $subIdx;
 
     return <<<EOF
         <details>
@@ -31,13 +36,13 @@ function getCombinations($arrays, $current = [])
         return [$current];
     }
 
-    $key = array_shift($keys);
+    $key    = array_shift($keys);
     $result = [];
 
     foreach ($arrays[$key] as $value) {
         $newCurrent = array_merge($current, [$key => $value]);
-        $subArrays = array_intersect_key($arrays, array_flip($keys));
-        $result = array_merge($result, getCombinations($subArrays, $newCurrent));
+        $subArrays  = array_intersect_key($arrays, array_flip($keys));
+        $result     = array_merge($result, getCombinations($subArrays, $newCurrent));
     }
 
     return $result;
@@ -165,23 +170,29 @@ add_action('wp_enqueue_scripts', function () {
 </head>
 <main>
     <nav class="sidebar">
-        <ul class="nav-items">
-            <?php
-            $componentRoot = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components');
-            $finder = new Finder();
 
-            foreach ($finder->files()->in($componentRoot)->directories()->sortByName()->depth(0) as $directory) {
-                $directoryName = $directory->getRelativePathname();
-                $possibleMarkdownFile = Path::join($componentRoot, $directoryName, $directoryName.'.md');
-                $directoryNamePretty = u($directoryName)->replace('_', ' ')->replace(' with ', ' w/ ')->title()->toString();
-                if (is_readable($possibleMarkdownFile)) {
-                    echo '<li><a href="/'.Path::join(VENDI_PATH_ROOT_THEME_DOCUMENTATION, $directoryName).'">'.$directoryNamePretty.'</a></li>';
-                } else {
-                    echo '<li>'.$directoryNamePretty.'</li>';
-                }
-            }
+        <?php
+        $componentGroups = DocumentationUtility::getInstance()->getComponentGroups();
+        foreach ($componentGroups as $groupName => $components) {
             ?>
-        </ul>
+            <h2><?php esc_html_e($groupName); ?></h2>
+            <ul class="nav-items">
+                <?php
+                foreach ($components as $component) {
+                    $componentUrl    = $component->getComponentUrl();
+                    $componentFolder = $component->getComponentFolder();
+                    $componentName   = $component->getComponentFriendlyName();
+                    if ($componentUrl) {
+                        echo '<li><a href="/' . $componentUrl . '">' . $componentName . '</a></li>';
+                    } else {
+                        echo '<li>' . $componentName . '</li>';
+                    }
+                }
+                ?>
+            </ul>
+            <?php
+        }
+        ?>
     </nav>
     <style>
         .acf-fields.acf-form-fields.-top > * > .acf-input > .acf-flexible-content > .acfe-flexible-stylised-button {
@@ -208,14 +219,14 @@ add_action('wp_enqueue_scripts', function () {
         );
 
         $unsupportComponents = ['accordion'];
-        $componentFormHtml = null;
-        if (!in_array($vendi_selected_theme_page, $unsupportComponents)) {
+        $componentFormHtml   = null;
+        if ( ! in_array($vendi_selected_theme_page, $unsupportComponents)) {
             ob_start();
             acf_form([
-                'post_id' => 'new_post', // Or specific post ID to edit
+                'post_id'      => 'new_post', // Or specific post ID to edit
                 'field_groups' => ['group_673a0a40538ea'], // Field group ID(s)
                 'submit_value' => null,
-                'form' => false,
+                'form'         => false,
             ]);
             $componentFormHtml = ob_get_clean();
         }
@@ -227,20 +238,17 @@ add_action('wp_enqueue_scripts', function () {
         <?php
         else: ?>
             <?php
-            $markdownFile = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $vendi_selected_theme_page, $vendi_selected_theme_page.'.md');
-            if (!is_readable($markdownFile)) {
-                echo 'File not found: '.$markdownFile;
+            $markdownFile = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $vendi_selected_theme_page, $vendi_selected_theme_page . '.md');
+            if ( ! is_readable($markdownFile)) {
+                echo 'File not found: ' . $markdownFile;
 
                 return;
             }
-            $config = [];
-            $environment = new Environment($config);
-            $environment->addExtension(new CommonMarkCoreExtension());
-            $environment->addExtension(new FrontMatterExtension());
-            $converter = new MarkdownConverter($environment);
 
-            $result = $converter->convert(file_get_contents($markdownFile));
-            $testJsonFile = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $vendi_selected_theme_page, 'test', $vendi_selected_theme_page.'.test.json');
+            $converter = MarkdownUtility::getInstance()->getConverter();
+
+            $result       = $converter->convert(file_get_contents($markdownFile));
+            $testJsonFile = Path::join(VENDI_CUSTOM_THEME_PATH, 'vendi-theme-parts', 'components', $vendi_selected_theme_page, 'test', $vendi_selected_theme_page . '.test.json');
 
             $examples = '';
             if (is_readable($testJsonFile)) {
@@ -248,12 +256,12 @@ add_action('wp_enqueue_scripts', function () {
                 $vendi_theme_test_mode = true;
 
                 $testJson = json_decode(file_get_contents($testJsonFile), true);
-                $tests = $testJson['tests'];
+                $tests    = $testJson['tests'];
 
                 foreach ($tests as $idx => $test) {
                     if (isset($test['__test_template'])) {
                         $test_content = $test['__test_template']['test_content'];
-                        $test_matrix = $test['__test_template']['matrix'];
+                        $test_matrix  = $test['__test_template']['matrix'];
 
                         $matrixTests = getCombinations($test_matrix);
 
@@ -262,12 +270,12 @@ add_action('wp_enqueue_scripts', function () {
 
                             $qs = '?';
                             foreach ($queryStrings as $key => $value) {
-                                $qs .= $key.'='.$value.'&';
+                                $qs .= $key . '=' . $value . '&';
 
-                                $desc = str_replace('@matrix('.$key.')', $value, $desc);
+                                $desc = str_replace('@matrix(' . $key . ')', $value, $desc);
                             }
 
-                            $url = '/'.Path::join(VENDI_PATH_ROOT_THEME_DOCUMENTATION, $vendi_selected_theme_page, 'test', $idx).$qs;
+                            $url = '/' . Path::join(VENDI_PATH_ROOT_THEME_DOCUMENTATION, $vendi_selected_theme_page, 'test', $idx) . $qs;
 
                             $examples .= getExampleHtml(
                                 description: $desc,
@@ -278,8 +286,8 @@ add_action('wp_enqueue_scripts', function () {
                         }
 
                         $template = $test['__test_template'];
-                        $matrix = $template['matrix'];
-                        $tests = [];
+                        $matrix   = $template['matrix'];
+                        $tests    = [];
                         foreach ($matrix as $matrixItem) {
                             $test = $template['test_content'];
                             foreach ($matrixItem as $key => $value) {
@@ -295,7 +303,7 @@ add_action('wp_enqueue_scripts', function () {
                         $examples .= getExampleHtml(
                             description: $desc,
                             idx: $idx,
-                            url: '/'.Path::join(VENDI_PATH_ROOT_THEME_DOCUMENTATION, $vendi_selected_theme_page, 'test', $idx),
+                            url: '/' . Path::join(VENDI_PATH_ROOT_THEME_DOCUMENTATION, $vendi_selected_theme_page, 'test', $idx),
                         );
                     }
                 }

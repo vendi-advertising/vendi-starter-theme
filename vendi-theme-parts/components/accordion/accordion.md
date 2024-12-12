@@ -1,3 +1,7 @@
+---
+title: Accordions
+---
+
 # Accordion
 
 An accordion is a list of headers that hide or reveal additional content when selected.

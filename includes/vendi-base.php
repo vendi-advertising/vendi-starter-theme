@@ -5,17 +5,17 @@ add_filter(
     'wp_headers',
     static function ($headers, $context) {
         unset($headers['X-Pingback']);
+
         return $headers;
     },
     9999,
-    2
+    2,
 );
 
 //This code is called at theme boot up
 add_action(
     'after_setup_theme',
     static function () {
-
         //Remove a bunch of things from the HTML head tags
         remove_action('wp_head', 'rsd_link');
         remove_action('wp_head', 'wlwmanifest_link');
@@ -47,14 +47,13 @@ add_action(
         remove_action('wp_head', 'rest_output_link_wp_head');
         remove_action('wp_head', 'wp_resource_hints', 2);
 
-        remove_action( 'wp_footer', 'the_block_template_skip_link' );
-
-    }
+        remove_action('wp_footer', 'the_block_template_skip_link');
+    },
 );
 
 add_action(
     'wp_footer',
     static function () {
         wp_deregister_script('wp-embed');
-    }
+    },
 );

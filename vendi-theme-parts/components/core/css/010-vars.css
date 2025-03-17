@@ -89,7 +89,8 @@
 }
 
 :root {
-    --size-xx-small: 0.50rem;
+    --size-xxx-small: 0.25rem;
+    --size-xx-small: calc(var(--size-xxx-small) * 2);
     --size-x-small: calc(var(--size-xx-small) * 2);
     --size-small: calc(var(--size-xx-small) * 4);
     --size-medium: calc(var(--size-xx-small) * 8);

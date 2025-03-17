@@ -57,3 +57,13 @@ add_action(
         remove_submenu_page('themes.php', 'site-editor.php?path=/patterns');
     },
 );
+
+add_action(
+    'wp_print_styles',
+    static function () {
+        if ( ! is_admin() && ! is_admin_bar_showing()) {
+            wp_deregister_style('dashicons');
+        }
+    },
+    100,
+);

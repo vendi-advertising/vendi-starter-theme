@@ -1,7 +1,51 @@
 <?php
 
 use Symfony\Component\Filesystem\Path;
-use Vendi\Theme\ComponentStyles;
+
+function vendi_register_image_preload($url, $fetchPriority = 'high'): void
+{
+    global $vendi_preloads;
+    if ( ! is_array($vendi_preloads)) {
+        $vendi_preloads = [];
+    }
+
+    $vendi_preloads[$url] = [
+        'priority' => $fetchPriority,
+    ];
+}
+
+function vendi_create_excerpt_from_content_components($postToUse, int $wordCount = 55): string
+{
+    $postToUse = get_post($postToUse);
+
+    // This is needed for things like "the_title" and such
+    global $post;
+    $post = $postToUse;
+
+    setup_postdata($post);
+
+    // The component system uses get_queried_object(). We could override it on that side,
+    // but historically that has lead to problems, so we're just going to do it here.
+    global $wp_query;
+    $old_wp_query                = $wp_query;
+    $wp_query                    = new WP_Query();
+    $wp_query->queried_object    = $post;
+    $wp_query->queried_object_id = $post->ID;
+
+    ob_start();
+
+    vendi_load_component_v3('components');
+
+    $ret = ob_get_clean();
+    $ret = wp_strip_all_tags($ret);
+    $ret = wp_trim_words($ret, $wordCount);
+    wp_reset_postdata();
+
+    // Restore the global query
+    $wp_query = $old_wp_query;
+
+    return $ret;
+}
 
 function vendi_unparse_url($parsed_url): string
 {
@@ -18,7 +62,18 @@ function vendi_unparse_url($parsed_url): string
     return "$scheme$user$pass$host$port$path$query$fragment";
 }
 
-function vendi_get_svg(string $pathRelativeToThemeFolder, bool $echo = true, bool $cache = true, ?bool $includeSourcePath = null): ?string
+function vendi_get_image_url(string $pathRelativeToThemeFolder, bool $echo = true): ?string
+{
+    $path = Path::join(VENDI_CUSTOM_THEME_URL, $pathRelativeToThemeFolder);
+
+    if ($echo) {
+        echo esc_url($path);
+    }
+
+    return $path;
+}
+
+function vendi_get_svg(string $pathRelativeToThemeFolder, bool $echo = true, bool $cache = true, ?bool $includeSourcePath = null, bool $pathIsAbsolute = false): ?string
 {
     if ($echo) {
         $includeSourcePath = is_null($includeSourcePath) ? defined('WP_DEBUG') && WP_DEBUG : $includeSourcePath;
@@ -27,7 +82,10 @@ function vendi_get_svg(string $pathRelativeToThemeFolder, bool $echo = true, boo
         }
     }
 
-    $path = Path::join(VENDI_CUSTOM_THEME_PATH, $pathRelativeToThemeFolder);
+    $path = $pathIsAbsolute ? $pathRelativeToThemeFolder : Path::join(VENDI_CUSTOM_THEME_PATH, $pathRelativeToThemeFolder);
+    if ( ! str_ends_with($path, '.svg')) {
+        $path .= '.svg';
+    }
 
     static $svgCache = [];
 

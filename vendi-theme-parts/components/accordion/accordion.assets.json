@@ -1,8 +1,4 @@
 {
-  "global-styles": [
-    "010-vars.css"
-  ],
-  "global-scripts": [],
   "scripts": [
     "poly-accordion-animation.js",
     "accordion-always-open.js",

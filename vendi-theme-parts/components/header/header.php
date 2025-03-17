@@ -1,3 +1,10 @@
+<?php
+
+if ('none' === get_field('site_header')) {
+    return;
+}
+
+?>
 <header class="site-header">
 
     <?php vendi_load_component_v3('header/logo'); ?>

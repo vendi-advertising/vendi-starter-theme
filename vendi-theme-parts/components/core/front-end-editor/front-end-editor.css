@@ -1,0 +1,105 @@
+.front-end-editable-area {
+    transition: all 0.5s;
+    position: relative;
+
+    &.front-end-edit-loading::after {
+        content: "Refreshing...";
+        position: absolute;
+        font-size: 50pt;
+        display: grid;
+        inset: 0;
+        place-content: center;
+        background: #fffd;
+    }
+
+    .content-components:has(&) {
+        /* This might have additional ramifications */
+        overflow: clip;
+    }
+
+    &:hover {
+        /*overflow: clip;*/
+        /*transform: scale(1.1);*/
+        /*box-shadow: 0 0 10px #0003;*/
+    }
+
+    & > .front-end-edit-button {
+        position: absolute;
+        right: 90px;
+        top: 30px;
+        border: 1px solid #000;
+        background-color: #fff;
+        color: #333;
+        display: none;
+        transition: all 0.5s ease;
+    }
+
+    &:hover > .front-end-edit-button {
+        display: block;
+
+        &:hover {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            /* This is just Chris having fun. */
+            box-shadow: 3px 3px 0 0 #fff, 6px 6px 0 0 #000;
+            transform: translate(-3px, -3px);
+        }
+    }
+
+    [data-modal-for-edit][open] {
+        display: grid;
+        grid-template-rows: 5rem auto 5rem;
+        height: 100dvh;
+        max-height: 80dvh;
+        width: 100dvw;
+        max-width: 80dvw;
+        padding: 0;
+
+        & > header {
+            background-color: #333;
+            color: #fff;
+            /*text-align: center  ;*/
+            display: grid;
+            place-items: center;
+            align-content: center;
+
+            .front-end-edit-close-button {
+                background-color: #fff;
+                color: #333;
+                border: none;
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+            }
+
+            .front-end-edit-close-button::before {
+                content: "X";
+            }
+
+            .front-end-edit-close-button:hover {
+                background-color: #333;
+                color: #fff;
+                cursor: pointer;
+                border: 1px solid #fff;
+            }
+        }
+
+        & > main > .front-end-edit-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        & > footer {
+            padding-inline: 1rem;
+            background-color: #333;
+            display: grid;
+            justify-content: end;
+            align-items: center;
+            grid-auto-flow: column;
+            gap: 1rem;
+        }
+    }
+}

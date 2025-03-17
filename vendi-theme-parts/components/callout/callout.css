@@ -1,9 +1,156 @@
-.component-callout :where(.component-wrapper) {
-    color: var(--local-text-color, var(--color-primary-black));
+.component-callout {
+    --local-pattern-translate-y: 0;
+    --local-pattern-translate-generic: var(--size-medium);
+    --local-gap-for-image-overlap: var(--size-large);
+    --local-content-inline-padding: var(--size-large);
+    /*These are to make PhpStorm happy*/
+    --local-object-fit: var(--local-object-fit, cover);
+    --local-object-position: var(--local-object-position, center);
+    --local-image-grid-width: minmax(35rem, 1fr);
+
+    &:where(.content-max-width-narrow) {
+        --local-image-grid-width: minmax(30rem, 1fr);
+        --local-gap-for-image-overlap: var(--size-medium);
+        --local-content-inline-padding: var(--size-medium);
+    }
+
+    &:where(.content-max-width-slim) {
+        --local-image-grid-width: minmax(25rem, 1fr);
+        --local-gap-for-image-overlap: var(--size-medium);
+        --local-content-inline-padding: var(--size-medium);
+    }
+
+    &:where(.image-placement-left) {
+        --local-pattern-translate-x: calc(var(--local-pattern-translate-generic) * -1);
+    }
+
+    &:where(.image-placement-right) {
+        --local-pattern-translate-x: var(--local-pattern-translate-generic)
+    }
+
+    & > :where(.component-wrapper) {
+        color: var(--local-text-color, var(--color-primary-black));
+
+        :where(.header) {
+            color: inherit;
+            font-size: 2.4rem;
+        }
+    }
+
+    :where(.call-to-action-wrap) {
+        margin-top: var(--size-medium);
+    }
+
+    &:where(.display-mode-image) {
+        :where(.component-wrapper > .region > .content-wrap) {
+            display: grid !important;
+            align-items: center;
+
+            & > :where(*) {
+                /* Put everything onto the same row */
+                grid-row: 1;
+            }
+
+            & > :where(.image) {
+                z-index: 2;
+                grid-column: image;
+                display: grid;
+                grid-template-areas: "same";
+                --local-pattern-translate-y: 4rem;
+
+                & :where(*) {
+                    grid-area: same;
+                }
+            }
+
+            & > :where( .content) {
+                grid-column: content;
+                min-height: 34rem;
+                display: grid;
+                align-content: center;
+                padding-block: var(--size-medium);
+                padding-inline: var(--local-content-inline-padding);
+                border-radius: var(--size-small);
+
+                & > :where(.header)::after {
+                    content: "";
+                    display: block;
+                    width: var(--size-medium);
+                    height: 0.1rem;
+                    background-color: var(--local-text-color);
+                    position: relative;
+                    top: 0.5rem;
+                    margin-block: 0.5rem 0.7em;
+                }
+            }
+        }
+
+        &:where(.image-placement-left) {
+            :where(.component-wrapper > .region > .content-wrap) {
+                grid-template-columns: [image-start] var(--local-image-grid-width) [gap-start content-start] var(--local-gap-for-image-overlap) [gap-end image-end] 2fr [content-end];
+            }
+
+            :where(.component-wrapper > .region > .content-wrap > .content) {
+                padding-inline-start: calc(var(--local-gap-for-image-overlap) + var(--local-content-inline-padding));
+            }
+        }
+
+        &:where(.image-placement-right) {
+            :where(.component-wrapper > .region > .content-wrap) {
+                grid-template-columns: [content-start] 2fr [gap-start image-start] var(--local-gap-for-image-overlap) [gap-end content-end] var(--local-image-grid-width) [image-end];
+            }
+
+            :where(.component-wrapper > .region > .content-wrap > .content) {
+                padding-inline-end: calc(var(--local-gap-for-image-overlap) + var(--local-content-inline-padding));
+            }
+        }
+
+        :where(img, picture) {
+            object-fit: var(--local-object-fit);
+            object-position: var(--local-object-position);
+            height: 30rem;
+            width: 100%;
+            border-radius: 2rem;
+            max-height: fit-content;
+        }
+    }
 }
 
-.component-callout :where(.call-to-action-wrap) {
-    margin-top: var(--size-medium);
+/*Shared pattern*/
+.component-callout {
+    &:where(.has-pattern) {
+        :where(.pattern) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 15 15%22%3E%3Crect x%3D%223%22 y%3D%220%22 width%3D%221%22 height%3D%227%22 fill%3D%22black%22 /%3E%3Crect x%3D%220%22 y%3D%223%22 width%3D%227%22 height%3D%221%22 fill%3D%22black%22 /%3E%3C/svg%3E");
+            width: 14rem;
+            aspect-ratio: 1;
+            background-size: 2.5rem;
+            translate: var(--local-pattern-translate-x, 0) var(--local-pattern-translate-y, 0);
+            z-index: -1;
+        }
+    }
+}
+
+.component-callout {
+    &:where(.has-pattern) {
+        :where(.content-wrap > .pattern) {
+            grid-column: image;
+            display: none;
+        }
+    }
+
+    &:where(.image-placement-left.has-pattern) {
+        :where( .pattern) {
+            justify-self: self-start;
+            align-self: self-end;
+        }
+    }
+
+    &:where(.image-placement-right.has-pattern) {
+        :where( .pattern) {
+            justify-self: self-end;
+            align-self: self-end;
+        }
+    }
 }
 
 .component-callout :where(.component-wrapper > .region p:last-of-type) {
@@ -13,5 +160,79 @@
 @media screen and (width <= 80em) {
     .component-callout :where(.component-wrapper > .region) {
         padding-inline: var(--size-medium);
+    }
+}
+
+@media screen and (width <= 60em) {
+    .component-callout {
+        &:where(.display-mode-image) {
+            :where(.region) {
+                max-width: 60rem;
+                margin-inline: auto;
+
+                :where( .content-wrap) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: [image-start] auto [image-end content-start] auto [content-end];
+                    row-gap: 0;
+
+                    & > :where(.image) {
+                        z-index: 2;
+                        grid-row: image;
+
+                        & > :where(.pattern) {
+                            display: none;
+                        }
+                    }
+
+                    & > :where( .content) {
+                        grid-row: content;
+                        padding-inline: var(--size-large);
+                        border-top-left-radius: 0;
+                        border-top-right-radius: 0;
+                    }
+
+                    & > :where( .pattern) {
+                        grid-row: content;
+                        z-index: -1;
+                        display: block;
+                        --local-pattern-translate-y: calc(var(--local-pattern-translate-generic));
+                    }
+
+                    :where(img, picture) {
+                        border-bottom-right-radius: 0;
+                        border-bottom-left-radius: 0;
+                        margin-inline: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (width <= 35em) {
+    .component-callout:where(.display-mode-image) {
+        /*background: yellow;*/
+    }
+
+    .component-callout:where(.display-mode-image) {
+        :where(.region .content-wrap > .content) {
+            grid-row: content;
+            padding-inline: var(--size-medium);
+        }
+    }
+
+    .component-callout {
+        &:where(.display-mode-image) {
+            :where(.region) {
+                max-width: 100%;
+                padding-inline: 0;
+            }
+        }
+    }
+}
+
+@media screen and (width <= 25em) {
+    .component-callout:where(.display-mode-image) {
+        /*background: purple;*/
     }
 }

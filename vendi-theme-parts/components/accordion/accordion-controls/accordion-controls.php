@@ -1,14 +1,18 @@
 <?php
 
-global $vendi_component_object_state;
-
 use Vendi\Theme\Component\Accordion;
+
+global $vendi_component_object_state;
 
 if ( ! $component = $vendi_component_object_state['component'] ?? null) {
     return;
 }
 
 if ( ! $component instanceof Accordion) {
+    return;
+}
+
+if ('show' !== get_sub_field('expand_collapse_all')) {
     return;
 }
 

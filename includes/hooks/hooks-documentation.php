@@ -1,8 +1,8 @@
 <?php
 
 // The specific query string value is not important, just that it is present
-const VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION = 'vendor-theme-documentation';
-const VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION_TEST_INDEX = 'vendor-theme-documentation-test-index';
+const VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION = 'vendi-theme-documentation';
+const VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION_TEST_INDEX = 'vendi-theme-documentation-test-index';
 const VENDI_PATH_ROOT_THEME_DOCUMENTATION = '__theme_docs';
 
 add_action(

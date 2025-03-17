@@ -1,8 +1,17 @@
-.single-news .skip-link {
-    display: none;
-}
+.skip-link {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    word-wrap: normal;
+    color: var(--color-primary-black);
 
-:root :where(.single-news  .breadcrumbs-wrapper) {
-    display: none;
+    &:focus-visible {
+        overflow: visible;
+        position: unset !important;
+        height: unset;
+        width: unset;
+        clip: unset;
+    }
 }
-

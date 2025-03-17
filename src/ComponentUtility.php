@@ -27,7 +27,7 @@ final class ComponentUtility
 
     public static function get_instance(): self
     {
-        if (!self::$instance instanceof self) {
+        if ( ! self::$instance instanceof self) {
             self::$instance = new self();
         }
 
@@ -36,7 +36,7 @@ final class ComponentUtility
 
     public function get_next_id_for_component(string $componentName): int
     {
-        if (!array_key_exists($componentName, self::$registry)) {
+        if ( ! array_key_exists($componentName, self::$registry)) {
             self::$registry[$componentName] = [];
         }
 
@@ -59,22 +59,31 @@ final class ComponentUtility
         global $vendi_theme_test_mode;
         global $vendi_theme_test_data;
 
-        if (!class_exists($className)) {
+        if ( ! class_exists($className)) {
             throw new UnknownComponentClassException($className);
         }
 
         if (true === $vendi_theme_test_mode) {
-            $reflect = new ReflectionClass($className);
-            $testClassName = $reflect->getNamespaceName().'\\Test'.$reflect->getShortName();
+            $reflect       = new ReflectionClass($className);
+            $testClassName = $reflect->getNamespaceName() . '\\Test' . $reflect->getShortName();
 
-            if (!class_exists($testClassName)) {
+            if ( ! class_exists($testClassName)) {
                 throw new UnknownComponentClassException($testClassName);
             }
 
-            return new $testClassName($vendi_theme_test_data);
+            $ret = new $testClassName($vendi_theme_test_data);
+        } else {
+            $ret = new $className();
         }
 
-        return new $className();
+        if ($ret instanceof ComponentAwareOfGlobalStateInterface) {
+            global $vendi_component_object_state;
+            if (is_array($vendi_component_object_state)) {
+                $ret->setGlobalState($vendi_component_object_state);
+            }
+        }
+
+        return $ret;
     }
 
     public function loadTemplate(array|string $name, ?array $objectState = null, ?string &$errorMessage = null, ?ComponentInterface $component = null): bool
@@ -117,7 +126,7 @@ final class ComponentUtility
         ];
         $fullUrlParts = array_filter($fullUrlParts);
 
-        $componentDirectory = Path::join(...$fullPathParts);
+        $componentDirectory    = Path::join(...$fullPathParts);
         $componentDirectoryUrl = Path::join(...$fullUrlParts);
 
         // The terminal component name which is used for the folder/subfolder, as well as all
@@ -129,9 +138,9 @@ final class ComponentUtility
 
         // We no longer automatically generate component directories or files because this
         // ended up with weird edge-case things created on PROD servers
-        if (!is_dir($componentDirectory)) {
+        if ( ! is_dir($componentDirectory)) {
             $componentStackMessage = implode(' -> ', $this->componentStack);
-            $errorMessage = 'Could not locate component directory: '.$componentStackMessage;
+            $errorMessage          = 'Could not locate component directory: ' . $componentStackMessage;
 
             if (defined('WP_DEBUG') && WP_DEBUG) {
                 trigger_error($errorMessage, E_USER_WARNING);
@@ -142,11 +151,11 @@ final class ComponentUtility
 
         // For basic-copy, we're ultimately looking for something like:
         // vendi-theme-parts/components/basic-copy/basic-copy.php
-        $componentFile = Path::join($componentDirectory, $trueComponentName.'.php');
+        $componentFile = Path::join($componentDirectory, $trueComponentName . '.php');
 
-        if (!is_readable($componentFile)) {
+        if ( ! is_readable($componentFile)) {
             $componentStackMessage = implode(' -> ', $this->componentStack);
-            $errorMessage = 'Could not locate component file: '.$componentStackMessage;
+            $errorMessage          = 'Could not locate component file: ' . $componentStackMessage;
 
             if (defined('WP_DEBUG') && WP_DEBUG) {
                 trigger_error($errorMessage, E_USER_WARNING);
@@ -157,21 +166,21 @@ final class ComponentUtility
 
         $optionalFiles = [
             // Autoload and hooks
-            'autoload' => $trueComponentName.'.autoload.php',
-            'hooks' => $trueComponentName.'.hooks.php',
+            'autoload'   => $trueComponentName . '.autoload.php',
+            'hooks'      => $trueComponentName . '.hooks.php',
 
             // Helper class and base class
-            'class-base' => $trueComponentName.'.base.php',
-            'class' => $trueComponentName.'.class.php',
+            'class-base' => $trueComponentName . '.base.php',
+            'class'      => $trueComponentName . '.class.php',
 
             // Test class
-            'test' => 'test/'.$trueComponentName.'.test.class.php',
+            'test'       => 'test/' . $trueComponentName . '.test.class.php',
         ];
 
         foreach ($optionalFiles as $key => $file) {
             $optionalFile = Path::join($componentDirectory, $file);
 
-            if (!is_readable($optionalFile)) {
+            if ( ! is_readable($optionalFile)) {
                 continue;
             }
 
@@ -186,7 +195,6 @@ final class ComponentUtility
                         $trueComponentName,
                         $e->getMessage(),
                     ),
-                    E_USER_ERROR,
                 );
             }
         }
@@ -231,7 +239,6 @@ final class ComponentUtility
                     $componentStackMessage,
                     $e->getMessage(),
                 ),
-                E_USER_ERROR,
             );
         } finally {
             array_pop($this->componentStack);
@@ -250,7 +257,7 @@ final class ComponentUtility
             $componentDirectory,
             $componentDirectoryUrl,
             static function ($componentName, $assetUrl, $assetPath) use ($enqueueKey) {
-                wp_enqueue_style('component-'.$enqueueKey, $assetUrl, [], filemtime($assetPath));
+                wp_enqueue_style('component-' . $enqueueKey, $assetUrl, [], filemtime($assetPath));
             },
         );
     }
@@ -263,7 +270,7 @@ final class ComponentUtility
             $componentDirectory,
             $componentDirectoryUrl,
             static function ($componentName, $assetUrl, $assetPath) use ($enqueueKey) {
-                wp_enqueue_script('component-'.$enqueueKey, $assetUrl, [], filemtime($assetPath), true);
+                wp_enqueue_script('component-' . $enqueueKey, $assetUrl, [], filemtime($assetPath), true);
             },
         );
     }
@@ -280,7 +287,7 @@ final class ComponentUtility
             static function ($componentName, $assetUrl, $assetPath) use ($assetKey, $callback) {
                 $items = json_decode(file_get_contents($assetPath), true, 512, JSON_THROW_ON_ERROR);
 
-                if (!$items = $items[$assetKey] ?? null) {
+                if ( ! $items = $items[$assetKey] ?? null) {
                     return;
                 }
 
@@ -314,9 +321,9 @@ final class ComponentUtility
                         continue;
                     }
                     $assetPath = Path::join(VENDI_CUSTOM_THEME_PATH, 'css', $style);
-                    $url = Path::join(VENDI_CUSTOM_THEME_URL, 'css', $style);
+                    $url       = Path::join(VENDI_CUSTOM_THEME_URL, 'css', $style);
                     $assetName = basename($style, '.css');
-                    wp_enqueue_style('component-'.$assetName, $url, [], filemtime($assetPath));
+                    wp_enqueue_style('component-' . $assetName, $url, [], filemtime($assetPath));
                 }
             },
         );
@@ -338,7 +345,7 @@ final class ComponentUtility
                     $url = Path::join($assetUrlBase, $item);
 
                     // Replace anything that isn't a letter or number with a dash
-                    $id = 'component-'.$componentName.'-'.$item;
+                    $id = 'component-' . $componentName . '-' . $item;
                     $id = preg_replace('/[^a-zA-Z0-9]/', '-', $id);
 
                     // The filemtime is wrong, it is calculating based on the JSON file, not the actual script files
@@ -376,7 +383,7 @@ final class ComponentUtility
                     $url = Path::join($assetUrlBase, $script);
 
                     // The filemtime is wrong, it is calculating based on the JSON file, not the actual script files
-                    wp_enqueue_script('component-'.$componentName.'-'.$script, $url, [], filemtime($assetPath), true);
+                    wp_enqueue_script('component-' . $componentName . '-' . $script, $url, [], filemtime($assetPath), true);
                 }
             },
         );
@@ -384,8 +391,8 @@ final class ComponentUtility
 
     private function maybeInvokeCallbackIfComponentFileExists(string $componentName, string $extension, string $componentDirectory, string $componentDirectoryUrl, callable $callback): void
     {
-        $assetPath = Path::join($componentDirectory, $componentName.'.'.ltrim($extension, '.'));
-        $assetUrl = Path::join($componentDirectoryUrl, $componentName.'.'.ltrim($extension, '.'));
+        $assetPath = Path::join($componentDirectory, $componentName . '.' . ltrim($extension, '.'));
+        $assetUrl  = Path::join($componentDirectoryUrl, $componentName . '.' . ltrim($extension, '.'));
 
         if (is_readable($assetPath)) {
             $callback($componentName, $assetUrl, $assetPath);

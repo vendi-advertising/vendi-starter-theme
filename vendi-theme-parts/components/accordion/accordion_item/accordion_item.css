@@ -1,0 +1,64 @@
+.single-accordion-item {
+    --accordion-icon-width: 1.8rem;
+
+    :where(.expand-collapse-single-item ) {
+        max-height: fit-content;
+        display: grid;
+
+        :where( svg) {
+            width: var(--accordion-icon-width);
+
+            :where(path) {
+                stroke: var(--color-brand-primary-dark);
+                transition: all 0.25s ease;
+            }
+        }
+    }
+
+    & :where(details[open] .expand-collapse-single-item) {
+        :where( svg) {
+            transition: all 0.25s ease;
+            rotate: 90deg;
+            transform-origin: center;
+
+            :where(svg path) {
+                stroke: var(--color-brand-primary-dark);
+            }
+
+            :where(svg .h-line) {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.single-accordion-item :where(summary, .copy, .header) {
+    color: var(--local-primary-color);
+}
+
+.single-accordion-item :where(summary) {
+    list-style: none;
+    font-weight: var(--font-weight-h1);
+    user-select: none;
+    cursor: pointer;
+    align-items: center;
+}
+
+.single-accordion-item :where(summary::-webkit-details-marker) {
+    display: none;
+}
+
+.single-accordion-item :where(summary) {
+    display: grid;
+    grid-template-columns: 1fr var(--accordion-icon-width);
+    column-gap: 1rem;
+}
+
+.single-accordion-item :where(.copy) {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.single-accordion-item :where(:not(summary) > *) {
+    grid-column: 1;
+}

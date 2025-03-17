@@ -1,3 +1,9 @@
+<?php
+
+if ('none' === get_field('site_footer')) {
+    return;
+}
+?>
 <footer class="site-footer">
     <div class="footer-wrap region">
         <div class="logo-and-address-and-social">

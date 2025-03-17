@@ -1,0 +1,28 @@
+@layer basic-copy {
+    .component-basic-copy .content-wrap > :where(h1,h2,h3,h4,h5,h6,p,ul,ol,li),
+    .sub-component-basic-copy :where(h1,h2,h3,h4,h5,h6,p,ul,ol,li) {
+        margin-block-end: 0;
+        margin-block-start: 0;
+        clear: both;
+    }
+
+    .component-basic-copy .content-wrap > :where(*) + :where(*),
+    .sub-component-basic-copy :where(*) + :where(*) {
+        margin-block-start: 1em;
+    }
+
+    .component-basic-copy .content-wrap > * + :where(h2,h3,h4,h5,h6),
+    .sub-component-basic-copy * + :where(h2,h3,h4,h5,h6) {
+        margin-block-start: 1.5em;
+    }
+
+    .component-basic-copy .content-wrap > :where(ol, ul) li,
+    .sub-component-basic-copy :where(ol, ul) li {
+        margin-bottom: .25em;
+    }
+
+    .component-basic-copy .content-wrap > :where(ol, ul) :where(ol, ul),
+    .sub-component-basic-copy :where(ol, ul) :where(ol, ul) {
+        margin-top: .25em;
+    }
+}

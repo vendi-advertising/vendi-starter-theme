@@ -19,14 +19,16 @@
             "default_value": "",
             "enable_opacity": 1,
             "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
+            "display": "palette",
             "color_picker": 1,
             "absolute": 0,
             "input": 1,
             "allow_null": 0,
-            "theme_colors": 0,
-            "colors": []
+            "theme_colors": 1,
+            "colors": [],
+            "required_message": "",
+            "allow_in_bindings": 1,
+            "button_label": "Select Color"
         }
     ],
     "location": [
@@ -54,5 +56,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1731682337
+    "modified": 1736390210
 }

@@ -5,6 +5,7 @@ namespace Vendi\Theme;
 enum VendiComponentsAcfMagicFolderEnum: string
 {
     case COMPONENTS     = 'components';
+    case SUBCOMPONENTS  = 'subcomponents';
     case ENTITIES       = 'entities';
     case ENTITY_FIELDS  = 'entity-fields';
     case BACKGROUNDS    = 'backgrounds';

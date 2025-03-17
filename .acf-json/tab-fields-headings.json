@@ -264,6 +264,144 @@
             "allow_in_bindings": 0,
             "columns": "6\/12",
             "border": ""
+        },
+        {
+            "key": "field_67be345d94273",
+            "label": "(Column 3\/12)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
+        },
+        {
+            "key": "field_67be233b33256",
+            "label": "Heading Font Size",
+            "name": "heading_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "---Additional information---\r\n\r\n<code>1rem<\/code> equals <code>10px<\/code>, so if you'd like, for instance, a 32px font size enter <code>3.2rem<\/code>. Leave this field blank to use the theme's default.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_673775fc0e890",
+                        "operator": "==",
+                        "value": "render"
+                    },
+                    {
+                        "field": "field_6737761f0e891",
+                        "operator": "==",
+                        "value": "h1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "rem"
+        },
+        {
+            "key": "field_67be346f94275",
+            "label": "(Column 3\/12)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "columns": "3\/12",
+            "endpoint": 0,
+            "border": "",
+            "allow_in_bindings": 0,
+            "border_endpoint": [
+                "endpoint"
+            ]
+        },
+        {
+            "key": "field_67be347594276",
+            "label": "Heading Line Height",
+            "name": "heading_line_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "---Additional information---\r\n\r\nLine heights are \"unitless\", meaning that they are multiplied by the font size. If you have a font size of <code>4rem<\/code> and want a line height of <code>6rem<\/code>, you'd set the line height to <code>1.5<\/code>, since <code>6 ÷ 4 = 1.5<\/code>\r\n\r\nLeave this field blank to use the theme's default.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_673775fc0e890",
+                        "operator": "==",
+                        "value": "render"
+                    },
+                    {
+                        "field": "field_6737761f0e891",
+                        "operator": "==",
+                        "value": "h1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67be346794274",
+            "label": "(Column Endpoint)",
+            "name": "",
+            "aria-label": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "endpoint": 1,
+            "border_endpoint": [
+                "endpoint"
+            ],
+            "allow_in_bindings": 0,
+            "columns": "6\/12",
+            "border": ""
         }
     ],
     "location": [
@@ -291,5 +429,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1731688282
+    "modified": 1740518714
 }

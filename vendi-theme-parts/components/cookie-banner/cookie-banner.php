@@ -1,5 +1,27 @@
 <?php
-$header = get_field('cookie_banner_header', 'options')
+
+$header = get_field('cookie_banner_heading', 'options');
+$copy   = get_field('cookie_banner_copy', 'options');
+
+if ( ! $header && ! $copy) {
+    return;
+}
+
+if ( ! function_exists('vendi_get_button_component_classes')) {
+    /*
+                    <?php  ?>
+     */
+    function vendi_get_button_component_classes(string $buttonKind, string $buttonStyle, string $buttonColor = 'dark'): array
+    {
+        return [
+            'call-to-action',
+            'call-to-action-button',
+            $buttonKind,
+            $buttonStyle,
+            $buttonColor,
+        ];
+    }
+}
 ?>
 <div class="cookie-banner-container hidden" data-role="cookieBanner" role="region"
      <?php if($header): ?>
@@ -14,7 +36,7 @@ $header = get_field('cookie_banner_header', 'options')
                 <h2 id="cookie-banner-header"><?php esc_html_e($header); ?></h2>
             <?php endif; ?>
 
-            <?php if($copy = get_field('cookie_banner_copy', 'options')): ?>
+            <?php if ($copy): ?>
                 <?php echo wp_kses_post($copy); ?>
             <?php endif; ?>
         </div>

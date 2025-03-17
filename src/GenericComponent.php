@@ -52,8 +52,8 @@ class GenericComponent extends BaseComponent
         $this->keyForBackgrounds = $key;
     }
 
-    protected function getKeyForBackgrounds(): string
+    protected function getFieldKeyForBackgrounds(): string
     {
-        return $this->keyForBackgrounds ?? parent::getKeyForBackgrounds();
+        return $this->keyForBackgrounds ?? parent::getFieldKeyForBackgrounds();
     }
 }

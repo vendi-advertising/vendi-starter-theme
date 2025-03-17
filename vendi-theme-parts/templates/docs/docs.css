@@ -1,0 +1,69 @@
+html {
+    &.preview {
+        float: none;
+    }
+
+    body {
+        & > :where(header, main) {
+            display: grid;
+            grid-template-columns: 200px auto;
+        }
+
+        & > :where(header) {
+            .logo {
+                display: grid;
+                place-content: center;
+                padding-block: 2rem;
+
+                & > a {
+                    display: contents;
+                }
+            }
+
+            .theme-doc-hero {
+                /*font-size: 3rem;*/
+                align-content: center;
+                padding-left: 2rem;
+            }
+        }
+
+        & > :where(main) {
+            & > :where(*) {
+                min-height: 100dvh;
+            }
+
+            & > :where(.sidebar, .component-basic-copy) {
+                padding-block-start: 2rem;
+            }
+
+            & > :where(.sidebar) {
+                background-color: #f0f0f0;
+                padding: 1rem;
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                nav + nav {
+                    margin-block-start: 4rem;
+                }
+
+                & :where(.nav-items) {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+
+            & > :where(.component-basic-copy) {
+                padding-inline: 1rem;
+
+                :where(.content-wrap) {
+                    & > :where(h1,h2,h3,h4,h5,h6,p,ul) {
+                        max-width: var(--content-width-normal);
+                    }
+                }
+            }
+        }
+    }
+}

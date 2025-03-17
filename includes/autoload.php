@@ -1,6 +1,6 @@
 <?php
 
-if (!is_readable(VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php')) {
+if ( ! is_readable(VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php')) {
     throw new RuntimeException('Please make sure that `composer install` has been run');
 }
 
@@ -33,6 +33,5 @@ spl_autoload_register(
                 require_once $file;
             }
         }
-
-    }
+    },
 );

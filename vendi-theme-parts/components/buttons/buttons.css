@@ -1,0 +1,11 @@
+:root :where(.call-to-action-wrap) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 1em;
+
+    & > * {
+        max-width: fit-content;
+    }
+}

@@ -12,7 +12,7 @@ class SimpleLink implements LinkInterface
         public readonly array $additionalCssClasses = [],
     ) {}
 
-    public static function tryCreate(mixed $field, array $additionalCssClasses = []): null|self|array
+    public static function tryCreate(mixed $field, array $additionalCssClasses = []): ?self
     {
         // Nothing we can do here
         if ( ! is_array($field)) {
@@ -22,7 +22,7 @@ class SimpleLink implements LinkInterface
         return self::createFromSimpleArray($field, $additionalCssClasses);
     }
 
-    private static function createFromSimpleArray(array $array, array $additionalCssClasses = []): self
+    public static function createFromSimpleArray(array $array, array $additionalCssClasses = []): self
     {
         return new self(
             url: $array['url'] ?? null,

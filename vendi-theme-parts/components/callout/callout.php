@@ -11,11 +11,19 @@ $component->renderComponentWrapperStart();
 
 ?>
 
-<?php vendi_render_heading($component); ?>
-<?php echo $component->getCopy(); ?>
+    <div class="image">
+        <?php echo $component->getCalloutImageHtml() ?>
+        <div class="pattern"></div>
+    </div>
 
-<?php vendi_load_component_v3(['buttons']); ?>
+    <div class="content">
+        <?php vendi_render_heading($component); ?>
+        <?php echo $component->getCopy(); ?>
 
+        <?php vendi_load_component_v3(['buttons']); ?>
+    </div>
+
+    <div class="pattern"></div>
 <?php
 
 $component->renderComponentWrapperEnd();

@@ -5,6 +5,10 @@
     color: var(--local-text-color, var(--color-primary-black));
 }
 
+.component-blockquote :where(.content-wrap a) {
+    color: var(--local-link-color, LinkText);
+}
+
 .component-blockquote .copy > :first-child::before {
     content: open-quote;
 }

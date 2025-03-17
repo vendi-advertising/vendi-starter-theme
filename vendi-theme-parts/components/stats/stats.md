@@ -1,5 +1,0 @@
-# Stats
-
-## Fields
-
-{%interface%}

@@ -13,4 +13,8 @@ interface PrimaryHeadingInterface
     public function getHeadingStyle(): ?string;
 
     public function getHeadingTextWrapStyle(): ?string;
+
+    public function getHeadingFontSize(): ?float;
+
+    public function getHeadingLineHeight(): ?float;
 }

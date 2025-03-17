@@ -1,0 +1,5 @@
+---
+role: feature
+---
+
+## Cookie Banner

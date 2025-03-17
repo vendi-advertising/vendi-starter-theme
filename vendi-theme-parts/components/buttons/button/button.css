@@ -1,0 +1,87 @@
+@layer vendi-buttons {
+    .call-to-action {
+        padding: 1.5rem 4rem;
+        text-decoration: none;
+        transition: all 0.25s ease-in;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .call-to-action-link {
+        display: inline-block;
+    }
+
+    .call-to-action-button {
+        color: var(--local-color, var(--color-primary-white)) !important;
+        background-color: var(--local-background-color, var(--color-primary-black));
+        border: 1px solid var(--local-border-color, var(--local-background-color));
+        border-radius: 10rem;
+    }
+
+    .call-to-action-button:hover {
+        text-decoration: none !important;
+    }
+
+    .call-to-action:hover,
+    .call-to-action:focus-visible {
+        text-decoration: none;
+    }
+
+    .call-to-action.primary {
+        &.dark.normal,
+        &.dark.reversed:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-brand-primary-dark);
+            --local-color: var(--color-primary-white);
+            --local-border-color: var(--color-brand-primary-dark);
+        }
+
+        &.dark.reversed,
+        &.dark.normal:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-primary-white);
+            --local-color: var(--color-brand-primary-dark);
+            --local-border-color: var(--color-brand-primary-dark);
+        }
+
+        &.dark.outline {
+            --local-background-color: transparent;
+            --local-color: var(--color-primary-white);
+            --local-border-color: var(--color-primary-white);
+        }
+
+        &.dark.outline:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-primary-white);
+            --local-color: var(--color-brand-primary-dark);
+            --local-border-color: var(--color-primary-white);
+        }
+    }
+
+    .call-to-action.secondary {
+        &.dark.normal,
+        &.dark.reversed:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-brand-secondary-dark);
+            --local-color: var(--color-primary-white);
+            --local-border-color: var(--color-primary-white);
+        }
+
+        &.dark.reversed,
+        &.dark.normal:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-primary-white);
+            --local-color: var(--color-brand-secondary-dark);
+            --local-border-color: var(--color-brand-secondary-dark);
+        }
+
+        &.dark.outline {
+            --local-background-color: transparent;
+            --local-color: var(--color-primary-white);
+            --local-border-color: var(--color-primary-white);
+        }
+
+        &.dark.outline:is(:hover, :focus-visible) {
+            --local-background-color: var(--color-primary-white);
+            --local-color: var(--color-brand-secondary-dark);
+            --local-border-color: var(--color-primary-white);
+        }
+    }
+}

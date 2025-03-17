@@ -18,6 +18,7 @@ if (!$shared_content_post instanceof WP_Post) {
 // begin content components flexible content
 // check if the flexible content field has rows of data
 
+
 if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
 
     // This wrapper is a maybe, depending on if we use grid for the outer container.
@@ -30,11 +31,12 @@ if (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
         while (have_rows(VENDI_CUSTOM_THEME_COMPONENT_FIELD_NAME, $shared_content_post)) {
 
             the_row();
+            vendi_load_component_v3(get_row_layout());
 
-            vendi_load_component_component(get_row_layout());
         }
 
         ?>
     </div>
     <?php
+    
 }

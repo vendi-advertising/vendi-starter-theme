@@ -1,0 +1,69 @@
+.component-carousel {
+    --local-arrow-width: 4rem;
+    --local-arrow-gap: var(--size-medium);
+
+    :where(.carousel-slides, .carousel-slide) {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    :where(.carousel-slides) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: var(--size-small);
+        position: relative;
+        height: 60rem;
+    }
+
+    .slick-arrow {
+        aspect-ratio: 1 / 1;
+        width: var(--local-arrow-width);
+        height: unset;
+        background-color: var(--color-brand-dark-blue);
+        border-radius: 100%;
+        transition: all 0.25s ease;
+
+        &:hover {
+            background-color: var(--color-brand-primary-light);
+        }
+
+        &.slick-next {
+            right: calc((var(--local-arrow-width) + var(--local-arrow-gap)) * -1);
+        }
+
+        &.slick-prev {
+            left: calc((var(--local-arrow-width) + var(--local-arrow-gap)) * -1);
+        }
+
+        & > * {
+            display: block;
+
+            &::before {
+                content: unset !important;
+            }
+
+            svg {
+                aspect-ratio: 1;
+                color: white;
+                padding: 1rem;
+            }
+        }
+    }
+
+    & .slick-dots .slick-dot-icon::before {
+        font-size: 1rem;
+    }
+}
+
+:root.preview {
+    :where(.component-carousel .carousel-slides > *:not(:first-child)) {
+        display: none;
+    }
+}
+
+@media screen and (width <= 1400px) {
+    .component-carousel > .component-wrapper > .region {
+        max-width: calc(100vw - ((var(--local-arrow-width) + var(--local-arrow-gap) + 2rem) * 2));
+    }
+}

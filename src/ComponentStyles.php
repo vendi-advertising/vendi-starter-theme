@@ -2,26 +2,14 @@
 
 namespace Vendi\Theme;
 
-use ArrayAccess;
-use Countable;
-use Iterator;
 use Stringable;
 
-class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
+class ComponentStyles
 {
-    private array $container;
-    private array $keys;
-    private int $position;
+    private array $container = [];
+    private array $visibleOnlyContainer = [];
 
     private array $errors = [];
-
-    public function __construct()
-    {
-        $position = 0;
-
-        $this->container = [];
-        $this->keys      = array_keys($this->container);
-    }
 
     public function addCssProperty(string $key, string $value): void
     {
@@ -30,15 +18,15 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
 
             return;
         }
-        $this->offsetSet($key, $value);
+        $this->offsetSet($key, $value, ComponentStyleContainerEnum::DEFAULT_CONTAINER);
     }
 
-    public function addStyle(string $key, string $value): void
+    public function addStyle(string $key, string $value, ComponentStyleContainerEnum $containerType = ComponentStyleContainerEnum::DEFAULT_CONTAINER): void
     {
         $newValue = rtrim(trim($value), '; ');
 
-        if ( ! $oldValue = $this->offsetGet($key)) {
-            $this->offsetSet($key, $newValue);
+        if ( ! $oldValue = $this->offsetGet($key, $containerType)) {
+            $this->offsetSet($key, $newValue, $containerType);
 
             return;
         }
@@ -50,78 +38,72 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
 
         $newValue = $oldValue;
 
-        $this->offsetSet($key, $newValue);
+        $this->offsetSet($key, $newValue, $containerType);
     }
 
-    public function addBackgroundImage(string $value): void
+    public function addBackgroundImageUrl(string $trueImage, ?string $placeholderImage = null): void
     {
-        $this->addStyle('background-image', $value);
+        $trueImage = "url('{$trueImage}')";
+        if ($placeholderImage) {
+            $placeholderImage = "url('{$placeholderImage}')";
+        }
+        $this->addBackgroundImage($trueImage, $placeholderImage);
     }
 
-    public function count(): int
+    public function addBackgroundImage(string $trueImage, ?string $placeholderImage = null): void
     {
-        return count($this->keys);
-    }
-
-    public function rewind(): void
-    {
-        $this->position = 0;
-    }
-
-    public function current(): mixed
-    {
-        return $this->container[$this->keys[$this->position]];
-    }
-
-    public function key(): mixed
-    {
-        return $this->keys[$this->position];
-    }
-
-    public function next(): void
-    {
-        $this->position++;
-    }
-
-    public function valid(): bool
-    {
-        return isset($this->keys[$this->position]);
-    }
-
-    public function offsetSet($offset, $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-            $this->keys[]      = array_key_last($this->container);
+        if ($placeholderImage) {
+            $this->addStyle('background-image', $placeholderImage, ComponentStyleContainerEnum::DEFAULT_CONTAINER);
         } else {
-            $this->container[$offset] = $value;
-            if ( ! in_array($offset, $this->keys, true)) {
-                $this->keys[] = $offset;
-            }
+            $this->addStyle('background-image', $trueImage, ComponentStyleContainerEnum::DEFAULT_CONTAINER);
+        }
+
+        $this->addStyle('background-image', $trueImage, ComponentStyleContainerEnum::VISIBLE_ONLY_CONTAINER);
+
+    }
+
+    private function offsetSet($offset, $value, ComponentStyleContainerEnum $containerType): void
+    {
+        $container = $this->getContainerVariableName($containerType);
+
+        if (is_null($offset)) {
+            $this->$container[] = $value;
+        } else {
+            $this->$container[$offset] = $value;
         }
     }
 
-    public function offsetExists($offset): bool
+    private function offsetGet($offset, ComponentStyleContainerEnum $containerType): mixed
     {
-        return isset($this->container[$offset]);
+        $container = $this->getContainerVariableName($containerType);
+
+        return $this->$container[$offset] ?? null;
     }
 
-    public function offsetUnset($offset): void
+    public function getDefaultStyleInformation(): string
     {
-        unset($this->container[$offset]);
-        unset($this->keys[array_search($offset, $this->keys, true)]);
-        $this->keys = array_values($this->keys);
+        return $this->renderStyleInformation(ComponentStyleContainerEnum::DEFAULT_CONTAINER);
     }
 
-    public function offsetGet($offset): mixed
+    public function getVisibleOnlyStyleInformation(): string
     {
-        return $this->container[$offset] ?? null;
+        return $this->renderStyleInformation(ComponentStyleContainerEnum::VISIBLE_ONLY_CONTAINER);
     }
 
-    public function __toString(): string
+    private function getContainerVariableName(ComponentStyleContainerEnum $containerType): string
     {
+        return match ($containerType) {
+            ComponentStyleContainerEnum::VISIBLE_ONLY_CONTAINER => 'visibleOnlyContainer',
+            ComponentStyleContainerEnum::DEFAULT_CONTAINER => 'container',
+        };
+    }
+
+    private function renderStyleInformation(ComponentStyleContainerEnum $containerType): string
+    {
+        $container = $this->getContainerVariableName($containerType);
+
         $ret = '';
-        foreach ($this->container as $key => $value) {
+        foreach ($this->$container as $key => $value) {
             if (is_array($value)) {
                 $value = implode(', ', $value);
             }
@@ -134,4 +116,5 @@ class ComponentStyles implements ArrayAccess, Iterator, Countable, Stringable
 
         return $ret;
     }
+
 }

@@ -2,6 +2,10 @@
     color: var(--local-text-color, var(--color-primary-black));
 }
 
+.component-form :where(.content-wrap a) {
+    color: var(--local-link-color, LinkText);
+}
+
 .content-components .newsletter-signup-form .call-to-action {
     --gf-local-bg-color: var(--local-background-color) !important;
 }

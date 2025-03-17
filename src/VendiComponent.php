@@ -40,6 +40,11 @@ abstract class VendiComponent implements ComponentInterface
         $this->rootAttributes[$key] = $value;
     }
 
+    public function getRootAttribute(string $key): ?string
+    {
+        return $this->rootAttributes[$key] ?? null;
+    }
+
     public function getComponentName(): string
     {
         return $this->componentName;
@@ -51,7 +56,7 @@ abstract class VendiComponent implements ComponentInterface
             return false;
         }
 
-        echo '<'.$this->getRootTag().' ';
+        echo '<' . $this->getRootTag() . ' ';
 
         $this->vendi_render_class_attribute($this->getRootClasses());
         foreach ($this->getAdditionalRootAttributes() as $key => $value) {
@@ -69,7 +74,7 @@ abstract class VendiComponent implements ComponentInterface
 
     public function renderComponentWrapperEnd(): void
     {
-        echo '</'.$this->getRootTag().'>';
+        echo '</' . $this->getRootTag() . '>';
     }
 
 
@@ -93,7 +98,7 @@ abstract class VendiComponent implements ComponentInterface
         /// this is the function that is doing that. You must subclass VendiComponent
         /// for the subcomponents of your component, even if it just a repeater.
         /// See Stats and SingleStat for an example.
-        if (!isset($this->fieldCache[$fieldName])) {
+        if ( ! isset($this->fieldCache[$fieldName])) {
             $this->fieldCache[$fieldName] = get_sub_field($fieldName);
         }
 
@@ -121,10 +126,10 @@ abstract class VendiComponent implements ComponentInterface
             $classes = explode(' ', $classes);
         }
 
-        if (!$classes = array_filter($classes)) {
+        if ( ! $classes = array_filter($classes)) {
             return;
         }
-        echo 'class="'.esc_attr(implode(' ', $classes)).'"';
+        echo 'class="' . esc_attr(implode(' ', $classes)) . '"';
     }
 
     protected function getAdditionalRootAttributes(): array

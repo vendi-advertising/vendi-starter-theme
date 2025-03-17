@@ -9,7 +9,7 @@
             width: var(--accordion-icon-width);
 
             :where(path) {
-                stroke: var(--color-brand-primary-dark);
+                stroke: var(--color-primary-black);
                 transition: all 0.25s ease;
             }
         }
@@ -22,7 +22,7 @@
             transform-origin: center;
 
             :where(svg path) {
-                stroke: var(--color-brand-primary-dark);
+                stroke: var(--color-primary-black);
             }
 
             :where(svg .h-line) {

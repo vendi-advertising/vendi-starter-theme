@@ -85,39 +85,115 @@ function vendi_theme_docs_render_examples($vendi_selected_theme_page): void
             continue;
         }
 
-        while (have_rows('examples', $post->ID)) {
-            the_row();
-            vendi_theme_docs_render_example();
+        if ( ! $documentation_type = get_field('documentation_type', $post->ID)) {
+            $documentation_type = 'component';
         }
+
+        switch ($documentation_type) {
+            case 'component':
+                while (have_rows('examples', $post->ID)) {
+                    the_row();
+                    vendi_theme_docs_render_example();
+                }
+                break;
+            case 'hero':
+                while (have_rows('heroes', $post->ID)) {
+                    the_row();
+                    vendi_theme_docs_render_example_hero();
+                }
+                break;
+        }
+
 
         return;
     }
 }
 
-function vendi_theme_docs_render_example(): void
+function vendi_theme_docs_render_example_hero(): void
 {
     ?>
-    <div class="component-basic-copy content-max-width-full content-placement-left documentation-example">
+    <div class="component-accordion content-max-width-full content-placement-middle documentation-example always-full-width">
         <div class="component-wrapper">
             <div class="region">
                 <div class="content-wrap">
-                    <?php
+                    <div class="accordion-items" data-columns-count="1">
+                        <div class="accordion-column">
+                            <details class="single-accordion-item">
+                                <summary>
+                                    <h4><?php esc_html_e(get_sub_field('title')) ?></h4>
+                                    <span class="expand-collapse-single-item"><?php vendi_get_svg('images/starter-content/plus-minus.svg'); ?></span>
+                                    <?php if ($description = get_sub_field('description')) : ?>
+                                        <p><?php esc_html_e($description) ?></p>
+                                    <?php endif; ?>
+                                </summary>
+                                <?php
+                                $backing_page = get_sub_field('backing_page');
+                                if ($backing_page && is_array($backing_page)) {
+                                    $backing_page = array_shift($backing_page);
+                                }
 
-                    echo '<h4>' . esc_html(get_sub_field('title')) . '</h4>';
-                    if ($description = get_sub_field('description')) {
-                        echo '<p>' . esc_html($description) . '</p>';
-                    }
-                    ?>
+                                $old_post = null;
+
+                                if ($backing_page instanceof WP_Post) {
+                                    global $post;
+                                    $old_post = $post;
+                                    $post     = $backing_page;
+                                    setup_postdata($post);
+                                }
+                                ?>
+                                <div class="documentation-hero-wrap">
+                                    <?php
+                                    vendi_load_component_v3('header');
+                                    vendi_load_component_v3('hero');
+                                    ?>
+                                </div>
+                                <?php
+
+                                if ($old_post instanceof WP_Post) {
+                                    wp_reset_postdata();
+                                    $post = $old_post;
+                                }
+                                ?>
+                            </details>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <?php
+}
 
 
-    while (have_rows('content_components')) {
-        the_row();
-        vendi_load_component_v3(get_row_layout());
-    }
+function vendi_theme_docs_render_example(): void
+{
+    ?>
+    <div class="component-accordion content-max-width-full content-placement-middle documentation-example always-full-width">
+        <div class="component-wrapper">
+            <div class="region">
+                <div class="content-wrap">
+                    <div class="accordion-items" data-columns-count="1">
+                        <div class="accordion-column">
+                            <details class="single-accordion-item">
+                                <summary>
+                                    <h4><?php esc_html_e(get_sub_field('title')) ?></h4>
+                                    <span class="expand-collapse-single-item"><?php vendi_get_svg('images/starter-content/plus-minus.svg'); ?></span>
+                                    <?php if ($description = get_sub_field('description')) : ?>
+                                        <p><?php esc_html_e($description) ?></p>
+                                    <?php endif; ?>
+                                </summary>
+                                <?php
+                                while (have_rows('content_components')) {
+                                    the_row();
+                                    vendi_load_component_v3(get_row_layout());
+                                }
+                                ?>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
 }

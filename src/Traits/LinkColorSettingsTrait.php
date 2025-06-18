@@ -2,6 +2,7 @@
 
 namespace Vendi\Theme\Traits;
 
+use Deprecated;
 use Vendi\Theme\ComponentInterface;
 use Vendi\Theme\ComponentStyles;
 
@@ -16,6 +17,7 @@ trait LinkColorSettingsTrait
     private const string ACF_FIELD_FOR_GROUP_CONTAINING_LINK_COLOR = 'primary_text_link_color_group';
     private const string ACF_FIELD_FOR_LINK_COLOR                  = 'primary_text_link_color';
 
+    #[Deprecated('Use ColorSchemeTrait')]
     public function getPrimaryTextLinkColor(?string $textColor = null, string $default = '#000000'): ?string
     {
         if ( ! $this instanceof ComponentInterface) {
@@ -28,6 +30,7 @@ trait LinkColorSettingsTrait
         };
     }
 
+    #[Deprecated('Use ColorSchemeTrait')]
     private function getLinkColorBasedOnTextColor(?string $textColor = null, string $default = '#000000'): ?string
     {
         static $WHITE = '#ffffff';
@@ -41,15 +44,15 @@ trait LinkColorSettingsTrait
         static $GRAY_1 = '#f2f3f4';
 
         static $textColorToLinkColorMap = [
-            $WHITE      => $DARK_BLUE,
-            $DARK_BLUE  => $GOLD,
-            $LIGHT_BLUE => $GOLD,
-            $GOLD       => $DARK_BLUE,
-            $GRAY_4     => $GOLD,
-            $GRAY_3     => $DARK_BLUE,
-            $GRAY_2     => $DARK_BLUE,
-            $GRAY_1     => $DARK_BLUE,
-            $BLACK      => $LIGHT_BLUE,
+            $WHITE                         => $DARK_BLUE,
+            $DARK_BLUE                     => $GOLD,
+            $LIGHT_BLUE                    => $GOLD,
+            $GOLD                          => $DARK_BLUE,
+            $GRAY_4                        => $GOLD,
+            $GRAY_3                        => $DARK_BLUE,
+            $GRAY_2                        => $DARK_BLUE,
+            $GRAY_1                        => $DARK_BLUE,
+            $BLACK                         => $LIGHT_BLUE,
             'var(--color-brand-dark-gray)' => $LIGHT_BLUE,
         ];
 
@@ -62,6 +65,7 @@ trait LinkColorSettingsTrait
         return $textColorToLinkColorMap[$textColor] ?? $default;
     }
 
+    #[Deprecated('Use ColorSchemeTrait')]
     public function setComponentCssPropertiesForLinkColorSettings(
         ComponentStyles $componentStyles,
         string $variableForLocalTextColor = '--local-text-color',

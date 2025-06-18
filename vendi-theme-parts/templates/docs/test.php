@@ -2,6 +2,8 @@
 
 use Symfony\Component\Filesystem\Path;
 
+die('test.php');;
+
 global $vendi_selected_theme_page;
 global $vendi_selected_theme_test_index;
 

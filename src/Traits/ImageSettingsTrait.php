@@ -53,4 +53,12 @@ trait ImageSettingsTrait
 
         $componentStyles->addCssProperty($variableForLocalObjectFit, $this->getSubField('object_fit'));
     }
+
+    public function getImageHtml(int $imageId, array|string $size, $crop = null, $attr = []): string
+    {
+        $attr['loading']       = $this->getImageLoading();
+        $attr['fetchpriority'] = $this->getImageFetchPriority();
+
+        return parent::getImageHtml($imageId, $size, $crop, $attr);
+    }
 }

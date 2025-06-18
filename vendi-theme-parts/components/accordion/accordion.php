@@ -11,7 +11,7 @@ if ( ! $component->renderComponentWrapperStart()) {
 
 ?>
 
-<?php $component->maybeRenderComponentHeader(); ?>
+<?php $component->maybeRenderComponentHeading(); ?>
 <?php if ($additional_copy = $component->getAdditionalCopy()): ?>
     <div class="copy">
         <?php esc_html_e($additional_copy); ?>

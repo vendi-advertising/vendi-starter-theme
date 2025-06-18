@@ -28,25 +28,22 @@ add_filter(
     'template_include',
     static function ( $template ) {
         if ( $page = get_query_var( VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION ) ) {
-
             global $vendi_selected_theme_page;
             $vendi_selected_theme_page = $page;
-
             global $vendi_selected_theme_test_index;
+
             $vendi_selected_theme_test_index = null;
 
             $testIndex = get_query_var( VENDI_QUERY_STRING_KEY_THEME_DOCUMENTATION_TEST_INDEX, null );
-
             if ( is_string( $testIndex ) && is_numeric( $testIndex ) ) {
                 global $vendi_theme_test_mode;
                 $vendi_theme_test_mode = true;
 
                 $vendi_selected_theme_test_index = $testIndex;
 
-                return vendi_maybe_get_template_name( 'docs', filename: 'test.php' );
+                return _vendi_maybe_get_template_name( 'docs', filename: 'test.php' );
             }
-
-            return vendi_maybe_get_template_name( 'docs', filename: 'index.php' );
+            return _vendi_maybe_get_template_name( 'docs', filename: 'index.php' );
         }
 
         return $template;

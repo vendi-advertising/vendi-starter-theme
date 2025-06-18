@@ -9,7 +9,7 @@ if (!$component->renderComponentWrapperStart()) {
     return;
 }
 
-$component->maybeRenderComponentHeader(); ?>
+$component->maybeRenderComponentHeading(); ?>
 
     <ul class="action-cards">
 

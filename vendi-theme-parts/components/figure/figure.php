@@ -15,7 +15,7 @@ $photo_credit = $component->getPhotoCredit();
 
 ?>
 
-<?php $component->maybeRenderComponentHeader(); ?>
+<?php $component->maybeRenderComponentHeading(); ?>
 
     <figure>
         <?php if ($image = $component->getImage()): ?>

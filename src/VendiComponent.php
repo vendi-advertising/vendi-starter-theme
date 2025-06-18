@@ -2,11 +2,14 @@
 
 namespace Vendi\Theme;
 
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+
 abstract class VendiComponent implements ComponentInterface
 {
     private array $rootClasses = [];
     protected array $fieldCache = [];
-    private array $rootAttributes = [];
+    protected array $rootAttributes = [];
+    protected array $componentCache = [];
 
     public function __construct(
         public readonly string $componentName,
@@ -18,7 +21,37 @@ abstract class VendiComponent implements ComponentInterface
         $this->addRootClass($this->componentName);
     }
 
-    protected function initComponent(): void {}
+    protected function getFromComponentCache(string $key, mixed $default = null): mixed
+    {
+        return $this->componentCache[$key] ?? $default;
+    }
+
+    protected function setInComponentCache(string $key, mixed $value): void
+    {
+        $this->componentCache[$key] = $value;
+    }
+
+    protected function doesComponentCacheContain(string $key): bool
+    {
+        return isset($this->componentCache[$key]);
+    }
+
+    /**
+     * This is used by traits to better help understand where they are being used.
+     * It is weird, I know, but the overhead is negligible and it makes PHPStorm
+     * happier.
+     */
+    final public function getComponent(): VendiComponent
+    {
+        return $this;
+    }
+
+    protected function initComponent(): void
+    {
+        if ($this instanceof ColorSchemeAwareInterface) {
+            $this->setColorScheme();
+        }
+    }
 
     public function getRootClasses(): array
     {
@@ -33,6 +66,13 @@ abstract class VendiComponent implements ComponentInterface
     public function addRootClass(string $class): void
     {
         $this->rootClasses[] = $class;
+    }
+
+    protected function removeRootClass(string $class): void
+    {
+        $this->rootClasses = array_filter($this->rootClasses, static function ($existingClass) use ($class) {
+            return $existingClass !== $class;
+        });
     }
 
     public function addRootAttribute(string $key, string $value = null): void
@@ -92,8 +132,11 @@ abstract class VendiComponent implements ComponentInterface
      *
      * @return mixed
      */
-    public function getSubField(string $fieldName): mixed
+    public function getSubField(?string $fieldName): mixed
     {
+        if (null === $fieldName) {
+            return null;
+        }
         // If you notice a component that keeps repeating the same values for fields,
         /// this is the function that is doing that. You must subclass VendiComponent
         /// for the subcomponents of your component, even if it just a repeater.
@@ -129,7 +172,7 @@ abstract class VendiComponent implements ComponentInterface
         if ( ! $classes = array_filter($classes)) {
             return;
         }
-        echo 'class="' . esc_attr(implode(' ', $classes)) . '"';
+        echo 'class="' . esc_attr(implode(' ', $classes)) . '" ';
     }
 
     protected function getAdditionalRootAttributes(): array

@@ -23,7 +23,7 @@ $arrowLeft  = vendi_get_svg('images/icons/arrow-left', echo: false);
     </script>
 <?php
 
-$component->maybeRenderComponentHeader();
+$component->maybeRenderComponentHeading();
 ?>
 
     <ul class="carousel-slides" data-role="vendi-carousel-slides">

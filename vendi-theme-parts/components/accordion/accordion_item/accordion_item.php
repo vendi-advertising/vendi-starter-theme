@@ -16,7 +16,7 @@ global $vendi_accordion_item_preview;
     <?php if (true === $vendi_accordion_item_preview): ?>open<?php endif; ?>
 >
 
-    <summary class="padding-small">
+    <summary>
 
         <h3>
             <?php esc_html_e(get_sub_field('title')); ?>
@@ -25,11 +25,15 @@ global $vendi_accordion_item_preview;
         <span class="expand-collapse-single-item"><?php vendi_get_svg('images/starter-content/plus-minus.svg'); ?></span>
 
     </summary>
-    <div class="copy padding-inline-small">
+    <div class="copy">
         <?php
         while (have_rows('content')) {
             the_row();
-            vendi_load_component_v3(get_row_layout());
+            if (get_row_layout() === 'figure') {
+                vendi_load_component_v3('figure');
+                continue;
+            }
+            vendi_load_component_v3(['accordion', 'accordion_item', get_row_layout()]);
         }
         ?>
     </div>

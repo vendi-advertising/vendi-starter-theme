@@ -1,4 +1,16 @@
 html {
+    --theme-docs-logo-background-color: var(--color-starter-theme-primary);
+    --theme-docs-sidebar-background-color: var(--color-starter-theme-light-black);
+    --theme-docs-sidebar-text-color: var(--color-primary-white);
+    --theme-docs-sidebar-link-color: var(--color-primary-white);
+    --theme-docs-sidebar-link-color-selected: var(--color-starter-theme-secondary);
+    --theme-docs-sidebar-link-color-hover: var(--color-starter-theme-secondary);
+    --theme-docs-examples-accordion-summary-background-color: var(--color-starter-theme-primary);
+    --theme-docs-examples-accordion-summary-text-color: var(--color-primary-white);
+    --theme-docs-logo-color: var(--color-primary-white);
+    --theme-docs-line-between-h1-and-text-color: var(--color-starter-theme-primary);
+    --theme-docs-sidebar-width: 25rem;
+
     &.preview {
         float: none;
     }
@@ -6,24 +18,31 @@ html {
     body {
         & > :where(header, main) {
             display: grid;
-            grid-template-columns: 200px auto;
+            grid-template-columns: var(--theme-docs-sidebar-width) auto;
         }
 
         & > :where(header) {
             .logo {
+                background-color: var(--theme-docs-logo-background-color);
                 display: grid;
                 place-content: center;
-                padding-block: 2rem;
-
-                & > a {
-                    display: contents;
+                padding: var(--size-medium);
+                & svg {
+                    color: var(--theme-docs-logo-color);
+                    width: 100%;
+                    height: 100%;
                 }
             }
 
-            .theme-doc-hero {
-                /*font-size: 3rem;*/
-                align-content: center;
-                padding-left: 2rem;
+            .documentation-hero {
+                align-content: end;
+                padding-block-end: var(--size-medium);
+
+                h1 {
+                    font-size: 2.1rem;
+                    border-bottom: 0.1rem solid var(--theme-docs-line-between-h1-and-text-color);
+                    padding-block-end: var(--size-small);
+                }
             }
         }
 
@@ -37,11 +56,22 @@ html {
             }
 
             & > :where(.sidebar) {
-                background-color: #f0f0f0;
-                padding: 1rem;
+                background-color: var(--theme-docs-sidebar-background-color);
+                padding-block: 0;
+                padding-inline: var(--size-medium);
+                z-index: 100;
 
                 h2 {
                     font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--theme-docs-sidebar-text-color);
+                    text-box-trim: trim-both;
+                    text-box-edge: cap alphabetic;
+                    margin-block-start: 0;
+
+                    & + ul {
+                        margin-block-start: var(--size-x-small);;
+                    }
                 }
 
                 nav + nav {
@@ -52,16 +82,177 @@ html {
                     list-style-type: none;
                     padding: 0;
                     margin: 0;
+
+                    a {
+                        color: var(--theme-docs-sidebar-link-color);
+
+                        &:hover {
+                            color: var(--theme-docs-sidebar-link-color-hover);
+                        }
+
+                        &.selected {
+                            color: var(--theme-docs-sidebar-link-color-selected);
+                        }
+                    }
+                }
+
+                & :where(.side-bar-toggle) {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+
+
+                    :where(.message-to-show-when-open) {
+                        display: block;
+                    }
+
+                    :where(.message-to-show-when-closed) {
+                        display: none;
+                    }
                 }
             }
 
-            & > :where(.component-basic-copy) {
+            & :where(.documentation-intro) {
                 padding-inline: 1rem;
+                /* BEGIN import from layer basic copy */
+
+                .content-wrap > :where(h1,h2,h3,h4,h5,h6,p,ul,ol,li) {
+                    margin-block-end: 0;
+                    margin-block-start: 0;
+                    clear: both;
+                }
+
+                .content-wrap > :where(*) + :where(*) {
+                    margin-block-start: 1em;
+                }
+
+                .content-wrap > * + :where(h2,h3,h4,h5,h6) {
+                    margin-block-start: 1.5em;
+                }
+
+                .content-wrap > :where(ol, ul) li {
+                    margin-bottom: .25em;
+                }
+
+                .content-wrap > :where(ol, ul) :where(ol, ul) {
+                    margin-top: .25em;
+                }
+
+                /* END import from layer basic copy */
 
                 :where(.content-wrap) {
                     & > :where(h1,h2,h3,h4,h5,h6,p,ul) {
                         max-width: var(--content-width-normal);
                     }
+
+                    & > h2:first-child {
+                        text-box-trim: trim-both;
+                        text-box-edge: cap alphabetic;
+                    }
+                }
+
+                & + :where(.documentation-example) {
+                    margin-block-start: 1.5em;
+                }
+            }
+        }
+    }
+
+    .documentation-example > .component-wrapper > .region,
+    .documentation-example > .component-wrapper > .region > .content-wrap {
+        max-width: 100%
+    }
+
+    .documentation-example > .component-wrapper > .region > .content-wrap > .accordion-items {
+        margin-block-start: 0;
+        max-width: 100%;
+    }
+
+    :where(.documentation-example > .component-wrapper > .region > .content-wrap > .accordion-items > .accordion-column > details ) {
+        border-bottom: none !important;
+        position: relative;
+
+        & > :where( summary) {
+            background-color: var(--theme-docs-examples-accordion-summary-background-color);
+            padding-inline: var(--size-small);
+            padding-block: var(--size-small);
+            max-width: var(--content-width-normal);
+            margin-inline: auto;
+            margin-block: var(--size-small);
+
+            & > p {
+                display: none;
+                color: var(--theme-docs-examples-accordion-summary-text-color);
+                margin-block: 0;
+                font-style: italic;
+            }
+
+            & > h4 {
+                color: var(--theme-docs-examples-accordion-summary-text-color);
+                margin-block: 0;
+                line-height: calc(28 / 16);
+            }
+
+            & .expand-collapse-single-item svg path {
+                stroke: var(--theme-docs-examples-accordion-summary-text-color);
+            }
+        }
+
+        &[open] > summary > p {
+            display: block;
+        }
+
+        :where(.documentation-hero-wrap) {
+            position: relative;
+        }
+    }
+}
+
+html.sidebar-closed {
+    body {
+        & > :where(header, main) {
+            grid-template-columns: 0 auto;
+        }
+    }
+
+    :where(header) {
+        .logo {
+            padding: 0
+        }
+    }
+
+    .sidebar {
+        transition: all 0.3s ease-in-out;
+        position: fixed;
+        width: var(--theme-docs-sidebar-width);
+        left: calc(var(--theme-docs-sidebar-width) * -1);
+    }
+
+    .main-documentation-content {
+        grid-column: 2 / 3;
+    }
+
+    :where(.side-bar-toggle) {
+        :where(.message-to-show-when-open) {
+            display: none;
+        }
+
+        :where(.message-to-show-when-closed) {
+            display: block;
+
+            .text {
+                display: none;
+            }
+
+            .arrow {
+                display: inline-block;
+            }
+        }
+
+        &:hover {
+            :where(.message-to-show-when-closed) {
+                .text {
+                    display: inline-block;
                 }
             }
         }

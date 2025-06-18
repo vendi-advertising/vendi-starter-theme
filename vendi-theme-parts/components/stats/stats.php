@@ -10,7 +10,7 @@ if (!$component->renderComponentWrapperStart()) {
     return;
 }
 
-$component->maybeRenderComponentHeader();
+$component->maybeRenderComponentHeading();
 ?>
 <?php if (have_rows('stats')): ?>
     <?php while (have_rows('stats')) : the_row(); ?>

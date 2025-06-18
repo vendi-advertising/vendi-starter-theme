@@ -9,7 +9,7 @@ if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 
-$component->maybeRenderComponentHeader();
+$component->maybeRenderComponentHeading();
 ?>
 
 <?php if ($image = $component->getImage()): ?>

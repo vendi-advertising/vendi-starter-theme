@@ -1,13 +1,14 @@
 <?php
 
+use Symfony\Component\Filesystem\Path;
 use Vendi\Theme\VendiComponentsAcfMagicFolderEnum;
 
 add_filter(
     'acf/json/save_file_name',
-    static function ($filename, $post, $load_path) {
+    static function ($filename) {
         static $b = [
             VendiComponentsAcfMagicFolderEnum::COMPONENTS->value     => [
-                'group_6599ece5e2264.json' => 'accordion.json',
+                //'group_6599ece5e2264.json' => 'accordion.json',
                 'group_6757af2f78488.json' => 'action-cards.json',
                 'group_659c0a262f75a.json' => 'basic-copy.json',
                 'group_659c754d6a1d2.json' => 'blockquote.json',
@@ -135,5 +136,156 @@ add_filter(
 
         return $filename;
     },
-    accepted_args: 3,
 );
+
+/*
+ * The sanitize_file_name messes with files that have multiple file extensions.
+ * Any "internal" extension that is not a registered MIME type gets an underscore
+ * add to it, so "example.acf.json" becomes "example.acf_.json". We could address
+ * this by registering a MIME type for ".acf" but that would be a bit of a hack,
+ * and would technically allow someone to upload a file with the ".acf" extension
+ * which is nonsensical. Instead, we'll blinding assume that anyone that is being
+ * tripped up by this would like to have it corrected.
+ */
+add_filter(
+    'sanitize_file_name',
+    static function ($filename) {
+        if (str_ends_with($filename, '.acf_.json')) {
+            $filename = str_replace('.acf_.json', '.acf.json', $filename);
+        }
+
+        return $filename;
+    },
+);
+
+/*
+ * Register our individual component folders.
+ */
+add_filter(
+    'acf/json/load_paths',
+    static function ($paths) {
+        return array_merge($paths, vendi_get_component_acf_paths(true));
+    },
+);
+
+/* There is no filter in ACF that I've found so far that supplies the key
+ * when trying to determine the save file name. There's a hook, but you have
+ * to know the key in advance, and the only way to safely do that is to load
+ * in a WordPress early hook.
+ */
+add_action(
+    'init',
+    static function () {
+        /** @var MappingInfo[] $componentPaths */
+        $componentPaths = vendi_get_component_acf_paths();
+
+        foreach ($componentPaths as $vendiKey => $vendiPathObject) {
+            add_filter(
+                "acf/settings/save_json/key={$vendiKey}",
+                static function () use ($vendiKey, $vendiPathObject) {
+                    // If this is set up correctly, there's one and only one correct path for saving.
+                    return $vendiPathObject->dir;
+                },
+            );
+        }
+
+        add_filter(
+            'acf/json/save_file_name',
+            static function ($filename) use ($componentPaths) {
+                // If the legacy system is already handling it, keep it that way
+                if (str_contains($filename, VENDI_COMPONENTS_ACF_MAGIC_FOLDER_PATH_IDENTIFIER)) {
+                    return $filename;
+                }
+
+                foreach ($componentPaths as $vendiKey => $vendiPathObject) {
+                    // Force the file name
+                    if ($vendiKey . '.json' === $filename) {
+                        return $vendiPathObject->filename;
+                    }
+                }
+
+                return $filename;
+            },
+        );
+    },
+);
+
+
+function vendi_get_component_acf_paths(bool $dirsOnly = false): array
+{
+    static $key_to_directory_mapping = null;
+    if (null === $key_to_directory_mapping) {
+        $key_to_directory_mapping = [];
+
+        class MappingInfo
+        {
+            public readonly string $dir;
+            public readonly string $filename;
+
+            public function __construct(
+                public readonly string $absolutePathToJsonFile,
+                public readonly string $key,
+            ) {
+                $this->dir      = dirname($absolutePathToJsonFile);
+                $this->filename = basename($absolutePathToJsonFile);
+            }
+        }
+
+        $componentsPath = Path::join(VENDI_CUSTOM_THEME_PATH . VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME);
+        if ($files = glob($componentsPath . '/*/*.acf.json')) {
+            foreach ($files as $file) {
+                try {
+                    $json = json_decode(file_get_contents($file), true, 512, JSON_THROW_ON_ERROR);
+                } catch (JsonException $e) {
+                    if (defined('WP_DEBUG') && WP_DEBUG) {
+                        /** @noinspection PhpUnhandledExceptionInspection */
+                        throw $e;
+                    }
+
+                    // Swallow the error in non-debug mode
+                    continue;
+                }
+
+                if ($key = ($json['key'] ?? null)) {
+                    $key_to_directory_mapping[$key] = new MappingInfo($file, $key);
+                }
+            }
+        }
+
+        // Subcomponents
+        if ($files = glob($componentsPath . '/*/*.assets.json')) {
+            foreach ($files as $file) {
+                $dir = dirname($file);
+                try {
+                    $json = json_decode(file_get_contents($file), true, 512, JSON_THROW_ON_ERROR);
+                } catch (JsonException $e) {
+                    if (defined('WP_DEBUG') && WP_DEBUG) {
+                        /** @noinspection PhpUnhandledExceptionInspection */
+                        throw $e;
+                    }
+
+                    // Swallow the error in non-debug mode
+                    continue;
+                }
+
+                if ($subcomponents = ($json['subcomponents'] ?? null)) {
+                    foreach ($subcomponents as $subcomponent) {
+                        $key  = ($subcomponent['key'] ?? null);
+                        $file = ($subcomponent['file'] ?? null);
+                        if ( ! $key || ! $file) {
+                            continue;
+                        }
+
+                        $key_to_directory_mapping[$key] = new MappingInfo(Path::join($dir, $file), $key);
+                    }
+                }
+            }
+        }
+    }
+
+    if ($dirsOnly) {
+        return array_column($key_to_directory_mapping, 'dir');
+    }
+
+    return $key_to_directory_mapping;
+}

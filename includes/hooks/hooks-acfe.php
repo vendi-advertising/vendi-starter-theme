@@ -27,6 +27,7 @@ add_filter(
 
         $relativeSharedThumbnailPaths = [
             VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME . '/%1$s/%1$s.thumbnail.png',
+            VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME . '/%1$s/%1$s.png',
             'images/acf/component-thumbnails/%1$s.png',
         ];
         foreach ( $relativeSharedThumbnailPaths as $relativeSharedThumbnailPath ) {

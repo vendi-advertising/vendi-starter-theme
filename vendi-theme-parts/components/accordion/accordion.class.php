@@ -3,12 +3,21 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class Accordion extends BaseComponentWithPrimaryHeading{
+class Accordion extends BaseComponentWithPrimaryHeading
+{
+    use ColorSchemeTrait;
 
     public function __construct()
     {
         parent::__construct('component-accordion');
+    }
+
+    protected function initComponent(): void
+    {
+        parent::initComponent();
+        $this->setColorScheme();
     }
 
     public function getNumberOfColumns(): int
@@ -38,9 +47,8 @@ class Accordion extends BaseComponentWithPrimaryHeading{
 
     public function getAdditionalRootAttributes(): array
     {
-        $ret = [
-            'data-role' => 'accordion',
-        ];
+        $ret              = parent::getAdditionalRootAttributes();
+        $ret['data-role'] = 'accordion';
 
         if ('show' === $this->getSubField('expand_collapse_all')) {
             $ret['data-expand-collapse-available'] = null;

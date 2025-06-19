@@ -2,8 +2,6 @@
 
 namespace Vendi\Theme;
 
-use Stringable;
-
 class ComponentStyles
 {
     private array $container = [];
@@ -11,8 +9,17 @@ class ComponentStyles
 
     private array $errors = [];
 
+    public function addCssPropertyUrl(string $key, string $value): void
+    {
+        $this->addCssProperty($key, "url('{$value}')");
+    }
+
     public function addCssProperty(string $key, string $value): void
     {
+        if ( ! str_starts_with($key, '--')) {
+            $key = '--' . $key;
+        }
+
         if ( ! $value) {
             $this->errors[] = 'Value for ' . $key . ' is empty';
 
@@ -59,7 +66,6 @@ class ComponentStyles
         }
 
         $this->addStyle('background-image', $trueImage, ComponentStyleContainerEnum::VISIBLE_ONLY_CONTAINER);
-
     }
 
     private function offsetSet($offset, $value, ComponentStyleContainerEnum $containerType): void

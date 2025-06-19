@@ -1,9 +1,9 @@
 {
   "scripts": [
-    "poly-accordion-animation.js",
-    "accordion-always-open.js",
-    "accordion-expand-collapse.js",
-    "accordion-hash-open.js"
+    "js/poly-accordion-animation.js",
+    "js/accordion-always-open.js",
+    "js/accordion-expand-collapse.js",
+    "js/accordion-hash-open.js"
   ],
   "styles": []
 }

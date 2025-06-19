@@ -10,7 +10,7 @@ add_filter(
             VendiComponentsAcfMagicFolderEnum::COMPONENTS->value     => [
                 //'group_6599ece5e2264.json' => 'accordion.json',
                 'group_6757af2f78488.json' => 'action-cards.json',
-                'group_659c0a262f75a.json' => 'basic-copy.json',
+                //'group_659c0a262f75a.json' => 'basic-copy.json',
                 'group_659c754d6a1d2.json' => 'blockquote.json',
                 'group_677ed68366ed5.json' => 'call-to-action.json',
                 'group_659c272fb8f1f.json' => 'callout.json',

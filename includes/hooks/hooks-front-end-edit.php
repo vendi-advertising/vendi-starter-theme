@@ -52,9 +52,10 @@ if ( ! function_exists('get_query_var_int')) {
 //        if (get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::FRONT_END_EDIT_MODE->value)) {
 //            switch(get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::ACTION->value)) {
 //                case 'edit':
-//                    return vendi_maybe_get_template_name( 'front-end-edit', filename: 'edit-component.php' );
+//                    return _vendi_maybe_get_template_name('front-end-edit', filename: 'edit-component.php');
 //                case 'render':
-//                    return vendi_maybe_get_template_name( 'front-end-edit', filename: 'render-component.php' );
+//                    die('render');
+//                    return _vendi_maybe_get_template_name('front-end-edit', filename: 'render-component.php');
 //            }
 //        }
 //

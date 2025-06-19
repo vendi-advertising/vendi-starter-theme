@@ -3,28 +3,21 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
-use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 
 class BasicCopy extends BaseComponentWithPrimaryHeading
 {
-    use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
+    use ColorSchemeTrait;
 
     public function __construct()
     {
         parent::__construct('component-basic-copy');
     }
 
-    public function setComponentCssProperties(): void
+    protected function initComponent(): void
     {
-        if ($primary_text_color = $this->getPrimaryTextColor()) {
-            $this->componentStyles->addCssProperty('--local-text-color', $primary_text_color);
-        }
-
-        if ($linkColor = $this->getPrimaryTextLinkColor($this->getPrimaryTextColor())) {
-            $this->componentStyles->addCssProperty('--local-link-color', $linkColor);
-        }
+        parent::initComponent();
+        $this->setColorScheme();
     }
 
     public function getCopy(): ?string

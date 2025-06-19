@@ -17,6 +17,8 @@ function vendi_render_heading(PrimaryHeadingInterface $component, array|string $
         $additional_css_classes = explode(' ', $additional_css_classes);
     }
 
+    $additional_css_classes = array_merge($additional_css_classes, $component->getAdditionalHeadingClasses());
+
     $additional_css_classes = apply_filters('vendi/heading/classes', $additional_css_classes, $component);
     if ($component instanceof ComponentInterface) {
         $additional_css_classes = apply_filters('vendi/heading/classes/' . $component->getComponentName(), $additional_css_classes, $component);

@@ -7,9 +7,7 @@ example-prefix: accordion
 
 ### Overview
 
-The accordion component lets you display a list of headers that hide or reveal additional content when selected. This
-makes content skimmable by headline or topic, enhancing the user experience with faster access to information and less
-scrolling.
+The accordion component lets you display a list of headers that hide or reveal additional content when selected.  This makes content skimmable by headline or topic, enhancing the user experience with faster access to information and less scrolling. 
 
 Use the accordion component when you want to:
 

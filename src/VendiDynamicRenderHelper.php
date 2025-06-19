@@ -3,7 +3,6 @@
 namespace Vendi\Theme;
 
 use RuntimeException;
-use Symfony\Component\Filesystem\Path;
 use WP_Styles;
 
 class VendiDynamicRenderHelper
@@ -23,11 +22,13 @@ class VendiDynamicRenderHelper
         $vendiDynamicRenderHelper->loadCoreComponentForStyles();
 
         $html    = $vendiDynamicRenderHelper->renderComponentToBuffer();
-        $cssText = $vendiDynamicRenderHelper->getBufferedCss();
+        $cssText = $vendiDynamicRenderHelper->getHeaderStyles();
 
         $vendiDynamicRenderHelper->restoreGlobalWordPressStyles($backup);
 
-        return "<html class=\"preview\" lang=\"en-us\"><style>$cssText</style>$html</html>";
+        // We're actually getting wrapped in another HTML tag, so don't trust the following output
+        // to reflect what the actual DOM looks like
+        return "<html class=\"preview\" lang=\"en-us\"><head>$cssText</head><body>$html</body></html>";
     }
 
     /**
@@ -59,15 +60,12 @@ class VendiDynamicRenderHelper
         $wp_styles = $backup_wp_styles;
     }
 
-    /**
-     * Inspect all enqueue CSS files and try to map to disk to get the raw CSS
-     */
-    private function getBufferedCss(): string
+    private function getHeaderStyles(): string
     {
         global $wp_styles;
 
-        // Grab the individual CSS files
-        $cssText = [];
+        $html = '';
+
         foreach ($wp_styles->queue as $handle) {
             if ( ! array_key_exists($handle, $wp_styles->registered)) {
                 continue;
@@ -81,19 +79,26 @@ class VendiDynamicRenderHelper
                 continue;
             }
 
-            if ( ! $path = parse_url($url, PHP_URL_PATH)) {
-                continue;
-            }
-
-            $absolutePath = Path::join(ABSPATH, $path);
-            if ( ! is_readable($absolutePath)) {
-                continue;
-            }
-
-            $cssText[] = file_get_contents($absolutePath);
+            ob_start();
+            $wp_styles->do_item($handle);
+            $html .= ob_get_clean();
         }
 
-        return implode("\n", $cssText);
+        $html .= vendi_get_color_schemes();
+        $html .= vendi_get_button_styles();
+
+        global $vendi_inline_style_buffer;
+        if (is_array($vendi_inline_style_buffer)) {
+            foreach ($vendi_inline_style_buffer as $id => $inlineStyle) {
+                if ( ! is_string($inlineStyle)) {
+                    continue;
+                }
+
+                $html .= "<style id=\"vendi-inline-style-$id\">$inlineStyle</style>";
+            }
+        }
+
+        return $html;
     }
 
     private function loadCoreComponentForStyles(): void
@@ -124,9 +129,10 @@ class VendiDynamicRenderHelper
                 vendi_load_component_v3('hero');
                 break;
             case 'cards':
-                if ($layout['name'] === 'simple_cards') {
-                    vendi_load_component_v3('action_cards/simple_cards');
-                }
+                vendi_load_component_v3(['cards', $layout['name']]);
+                break;
+            case 'link_rows':
+                vendi_load_component_v3(['link_ladder', $layout['name']]);
                 break;
             case 'accordion_items':
                 // When previewing this subcomponent we want to open it on render, since we can't interact

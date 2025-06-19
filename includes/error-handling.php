@@ -26,7 +26,6 @@ if (is_user_logged_in() && current_user_can('administrator')) {
                         E_USER_ERROR => 'error',
                         E_WARNING, E_USER_WARNING => 'warning',
                         E_NOTICE, E_USER_NOTICE => 'notice',
-                        E_STRICT => 'strict',
                         E_RECOVERABLE_ERROR => 'recoverable',
                         E_DEPRECATED, E_USER_DEPRECATED => 'deprecated',
                         default => 'unknown',

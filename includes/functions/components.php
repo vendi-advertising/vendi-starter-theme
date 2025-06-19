@@ -35,3 +35,61 @@ function _vendi_maybe_get_template_name( string $name, string $filename ): ?stri
 
     return null;
 }
+
+function vendi_base_component_setting_color_set_default_value(&$field, string $defaultColor, ?string $instructions = null): void
+{
+    if ( ! is_array($field['sub_fields'] ?? null)) {
+        return;
+    }
+
+    foreach ($field['sub_fields'] as &$sub_field) {
+        if (($sub_field['__name'] ?? null) === 'color') {
+            $sub_field['default_value'] = $defaultColor;
+            if ($instructions) {
+                $sub_field['instructions'] = $instructions;
+            }
+        }
+    }
+}
+
+function vendi_base_component_setting_content_width_disable_values(&$field, array $widthsToDisable): void
+{
+    if ( ! is_array($field['sub_fields'] ?? null)) {
+        return;
+    }
+
+    foreach ($field['sub_fields'] as &$sub_field) {
+        if (($sub_field['__name'] ?? null) !== 'base_component_-_tab_-_content_settings') {
+            continue;
+        }
+
+        foreach ($sub_field['sub_fields'] as &$sub_sub_field) {
+            if (($sub_sub_field['__name'] ?? null) === 'content_width') {
+                foreach ($widthsToDisable as $width) {
+                    unset($sub_sub_field['choices'][$width]);
+                }
+            }
+        }
+    }
+}
+
+function vendi_base_component_setting_content_placement_disable_values(&$field, array $placementsToDisable): void
+{
+    if ( ! is_array($field['sub_fields'] ?? null)) {
+        return;
+    }
+
+    foreach ($field['sub_fields'] as &$sub_field) {
+        if (($sub_field['__name'] ?? null) !== 'base_component_-_tab_-_content_settings') {
+            continue;
+        }
+
+        foreach ($sub_field['sub_fields'] as &$sub_sub_field) {
+            if (($sub_sub_field['__name'] ?? null) === 'content_placement') {
+                foreach ($placementsToDisable as $placement) {
+                    unset($sub_sub_field['choices'][$placement]);
+                }
+            }
+        }
+    }
+}

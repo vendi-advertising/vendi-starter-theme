@@ -43,7 +43,7 @@
     height: 100%;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (width <= 700px) {
     .cookie-banner-container :where( .cookie-banner-wrapper) {
         grid-template-columns: 1fr;
         row-gap: 2rem;

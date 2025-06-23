@@ -1,0 +1,98 @@
+:where(.component-callout-blocks) {
+    :where(& > .component-wrapper > .region .content-wrap  > .image-wrap) {
+        position: relative;
+        overflow: hidden;
+    }
+
+    :where(& > .component-wrapper > .region .content-wrap  > .image-wrap > .image) {
+        position: relative;
+    }
+
+    :where(& > .component-wrapper > .region .content-wrap  > .image-wrap > .overlay) {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        grid-column-start: image;
+        grid-column-end: image;
+        color: rgb(from var(--image-overlay-color, red) r g b / 80%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & svg {
+            height: 102%;
+            position: absolute;
+        }
+    }
+
+    :where(& > .component-wrapper > .region .content-wrap  > .image-wrap > .overlay-edge) {
+        height: 100%;
+        background-color: rgb(from var(--image-overlay-color, red) r g b / 80%);
+        width: 100%;
+        position: absolute;
+
+        :where(&.left) {
+            display: none;
+        }
+    }
+
+    :where(&.component-layout-image-copy > .component-wrapper > .region .content-wrap  > .image-wrap > .overlay-edge) {
+        grid-column-start: left-gap;
+        grid-column-end: left-gap;
+    }
+
+    :where(&.component-layout-copy-image > .component-wrapper > .region .content-wrap  > .image-wrap > .overlay-edge) {
+        grid-column-start: right-gap;
+        grid-column-end: right-gap;
+    }
+}
+
+@container callout-block-container (inline-size < 100rem) {
+    :where(.component-callout-blocks) {
+        :where(& > .component-wrapper ) {
+            :where(& > .region ) {
+                :where(& > .content-wrap) {
+                    :where(& > .image-wrap) {
+                        grid-template-columns: 1fr 35rem 1fr;
+
+                        :where(& > *) {
+                            grid-column: unset;
+                            grid-template-columns: unset;
+                        }
+
+                        :where(& > .overlay-edge) {
+                            position: static;
+                            grid-column-start: unset;
+                            grid-column-end: unset;
+                            grid-row: unset;
+                            display: block;
+
+                            :where(&.left) {
+                                display: block;
+                            }
+                        }
+
+                        :where(& > .overlay) {
+                            grid-column: unset;
+                            grid-row: unset;
+                            display: block;
+                            align-content: start;
+                            text-align: center;
+                            overflow: clip;
+                            position: relative;
+
+                            :where(& > svg) {
+                                position: absolute;
+                                left: 50%;
+                                transform: translateX(-50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

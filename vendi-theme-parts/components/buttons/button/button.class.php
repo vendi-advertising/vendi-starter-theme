@@ -2,18 +2,58 @@
 
 namespace Vendi\Theme\Component;
 
+use Vendi\Theme\BaseComponent;
 use Vendi\Theme\ComponentAwareOfGlobalStateInterface;
 use Vendi\Theme\DTO\SimpleLink;
-use Vendi\Theme\VendiComponent;
+use Vendi\Theme\ThemeSettings\ButtonStyle;
 
-class Button extends VendiComponent implements ComponentAwareOfGlobalStateInterface
+class Button extends BaseComponent implements ComponentAwareOfGlobalStateInterface
 {
     private ?array $globalState = null;
 
+    private ?SimpleLink $link = null;
+
+    private const string LINK_ARRAY_MODE_GLOBAL_STATE = 'global_state';
+    private const string LINK_ARRAY_MODE_SUB_FIELD    = 'sub_field';
+
     public function __construct()
     {
-        parent::__construct('component-button');
+        parent::__construct(
+            'component-button',
+            _supportsBackgroundVideo: false,
+            includeRegionWrap: false,
+            includeContentWrap: false,
+        );
     }
+
+    protected function getAdditionalRootAttributes(): array
+    {
+        if ($button_style = ($this->globalState['button_style'] ?? null)) {
+            $this->addRootAttribute(ButtonStyle::getHtmlAttributeKey(), $button_style);
+        }
+
+        return parent::getAdditionalRootAttributes();
+    }
+
+
+    public function getLink(): ?SimpleLink
+    {
+        if ( ! $this->link) {
+            $this->link = $this->tryCreateSimpleLink();
+        }
+
+        return $this->link;
+    }
+
+    protected function abortRender(): bool
+    {
+        if ( ! $this->getLink()) {
+            return true;
+        }
+
+        return parent::abortRender();
+    }
+
 
     public function setGlobalState(array $state): void
     {
@@ -22,6 +62,10 @@ class Button extends VendiComponent implements ComponentAwareOfGlobalStateInterf
 
     public function getDisplayMode(): string
     {
+        if ($this->getLinkArrayMode() === self::LINK_ARRAY_MODE_GLOBAL_STATE) {
+            return $this->globalState['display_mode'] ?? 'button';
+        }
+
         return $this->getSubField('display_mode_new');
     }
 
@@ -63,21 +107,6 @@ class Button extends VendiComponent implements ComponentAwareOfGlobalStateInterf
             unset($classes[array_search('none', $classes, true)]);
         }
 
-        if (in_array('white-on-transparent', $classes, true)) {
-            $classes[] = 'call-to-action-button';
-            $classes[] = 'primary';
-            $classes[] = 'outline';
-            $classes[] = 'normal';
-            $classes[] = 'dark';
-            unset($classes[array_search('white-on-transparent', $classes, true)]);
-        } elseif (in_array('white-on-blue', $classes, true)) {
-            $classes[] = 'call-to-action-button';
-            $classes[] = 'primary';
-            $classes[] = 'reversed';
-            $classes[] = 'dark';
-            unset($classes[array_search('white-on-blue', $classes, true)]);
-        }
-
         return array_filter($classes);
     }
 
@@ -88,12 +117,41 @@ class Button extends VendiComponent implements ComponentAwareOfGlobalStateInterf
         return $this->getSubField($class);
     }
 
-    public function tryCreateSimpleLink(): ?SimpleLink
+    private function getLinkArrayMode(): string
     {
-        if ($simple_link_array = $this->globalState['simple_link_array'] ?? null) {
-            return SimpleLink::createFromSimpleArray($simple_link_array, $this->globalState['simple_link_array_additional_classes'] ?? []);
+        if (isset($this->globalState['link'])) {
+            return self::LINK_ARRAY_MODE_GLOBAL_STATE;
         }
 
-        return SimpleLink::tryCreate($this->getSubField('call_to_action'));
+        return self::LINK_ARRAY_MODE_SUB_FIELD;
+    }
+
+    private function getGlobalStateValue(string $key, mixed $default = null)
+    {
+        return $this->globalState['link'] ?? $default;
+    }
+
+    private function getLinkArray()
+    {
+        return $this->getGlobalStateValue('link') ?? $this->getSubField($this->getGlobalStateValue('call_to_action_subfield_key')) ?? $this->getSubField('call_to_action');
+    }
+
+    public function tryCreateSimpleLink(): ?SimpleLink
+    {
+        $additionalAttributes = $this->globalState['additional_attributes'] ?? [];
+
+        if ($aria_labelledby = ($this->globalState['aria_labelledby'] ?? null)) {
+            $additionalAttributes['aria-labelledby'] = $aria_labelledby;
+        }
+        if ($simple_link_array = $this->globalState['simple_link_array'] ?? null) {
+            return SimpleLink::createFromSimpleArray($simple_link_array, $this->globalState['simple_link_array_additional_classes'] ?? [], $additionalAttributes);
+        }
+
+        $htmlTagForLink = 'a';
+        if ($this->getLinkArrayMode() === self::LINK_ARRAY_MODE_GLOBAL_STATE) {
+            $htmlTagForLink = $this->globalState['html_tag_for_link'] ?? 'a';
+        }
+
+        return SimpleLink::tryCreate($this->getLinkArray(), additionalAttributes: $additionalAttributes, htmlTagForLink: $htmlTagForLink);
     }
 }

@@ -1,0 +1,19 @@
+:where(.hero-simple) {
+    max-width: var(--content-width-normal);
+    margin-inline: auto;
+    --local-mantle-color: var(--color-brand-primary-sky-blue);
+    position: absolute;
+    top: 16.8rem;
+    width: 100rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    :where(.heading) {
+        background: var(--color-brand-primary-sky-blue);
+        color: var(--color-primary-white);
+        padding-block: var(--size-medium);
+        text-align: center;
+        margin-inline: calc(var(--size-x-small) + var(--mantle-corner-width));
+        margin-block: var(--size-x-small) 0;
+    }
+}

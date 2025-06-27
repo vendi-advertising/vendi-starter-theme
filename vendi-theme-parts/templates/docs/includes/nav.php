@@ -9,16 +9,11 @@ use function Symfony\Component\String\u;
 
 $navItems     = [
     'component'     => [],
-    'feature-map'   => [],
-    'entity-office' => [],
     'shell'         => [],
 ];
 $navItemNames = [
     'component'     => 'Components',
-    'feature-map'   => 'Map Features',
-    'entity-office' => 'Office',
     'shell'         => 'Shell',
-    //    'feature'   => 'Features',
 ];
 
 global $vendi_selected_theme_page;

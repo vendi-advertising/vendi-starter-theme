@@ -1,46 +1,9 @@
 {
-    "key": "group_6757af2f78488",
-    "title": "Component - Action Cards",
+    "key": "group_682251477ff06",
+    "title": "Component - Cards",
     "fields": [
         {
-            "key": "field_6757af30fc6bf",
-            "label": "Primary Settings",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6757d3476fe4d",
-            "label": "Message",
-            "name": "",
-            "aria-label": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Additional fields TBD",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
-            "key": "field_6757af48fc6c0",
+            "key": "field_68225b4f99c0d",
             "label": "Cards",
             "name": "",
             "aria-label": "",
@@ -59,7 +22,7 @@
             "selected": 0
         },
         {
-            "key": "field_6757afa4fc6c1",
+            "key": "field_68225cc3c4d09",
             "label": "Cards",
             "name": "cards",
             "aria-label": "",
@@ -77,17 +40,14 @@
             "acfe_flexible_layouts_templates": 1,
             "acfe_flexible_layouts_previews": 1,
             "acfe_flexible_layouts_previews_iframe": 1,
-            "acfe_flexible_layouts_previews_responsive": 0,
+            "acfe_flexible_layouts_previews_responsive": 1,
             "acfe_flexible_layouts_thumbnails": 0,
             "acfe_flexible_layouts_settings": 0,
             "acfe_flexible_layouts_locations": 0,
             "acfe_flexible_async": [],
-            "acfe_flexible_add_actions": [
-                "toggle",
-                "copy"
-            ],
+            "acfe_flexible_add_actions": [],
             "acfe_flexible_remove_button": [],
-            "acfe_flexible_layouts_state": "collapse",
+            "acfe_flexible_layouts_state": "user",
             "acfe_flexible_modal_edit": {
                 "acfe_flexible_modal_edit_enabled": "0",
                 "acfe_flexible_modal_edit_size": "large"
@@ -106,16 +66,16 @@
                 "acfe_flexible_grid_wrap": false
             },
             "layouts": {
-                "layout_6757afa9b2799": {
-                    "key": "layout_6757afa9b2799",
-                    "name": "simple_cards",
-                    "label": "Simple Cards",
+                "layout_68225cc71bd87": {
+                    "key": "layout_68225cc71bd87",
+                    "name": "simple_link",
+                    "label": "Simple Link",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6757b0cdfc6c2",
-                            "label": "Simple Cards",
-                            "name": "simple_cards",
+                            "key": "field_68225d4ec4d0a",
+                            "label": "Subcomponent - Cards - Simple Link",
+                            "name": "subcomponent_-_cards_-_simple_link",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -127,7 +87,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_6757afba28703"
+                                "group_68225cdc95c01"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -156,7 +116,7 @@
                 }
             },
             "required_message": "",
-            "min": 1,
+            "min": 2,
             "max": 5,
             "button_label": "Add Card",
             "acfe_flexible_hide_empty_message": false,
@@ -165,7 +125,34 @@
             "acfe_flexible_grid_container": false
         },
         {
-            "key": "field_6757b718917fb",
+            "key": "field_68226f3378d21",
+            "label": "Calls to Action",
+            "name": "calls_to_action",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_6818bb102d279"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
+        },
+        {
+            "key": "field_68225148182bf",
             "label": "Base Component",
             "name": "base_component",
             "aria-label": "",
@@ -179,7 +166,7 @@
                 "id": ""
             },
             "clone": [
-                "group_66aced8597513"
+                "group_681bb7c05c18d"
             ],
             "display": "seamless",
             "layout": "block",
@@ -217,5 +204,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1737409827
+    "modified": 1747087171
 }

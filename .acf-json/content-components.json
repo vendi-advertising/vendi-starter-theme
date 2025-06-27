@@ -302,6 +302,58 @@
                     "acfe_layout_col": "auto",
                     "acfe_layout_allowed_col": false
                 },
+                "layout_685ea85d0e05b": {
+                    "key": "layout_685ea85d0e05b",
+                    "name": "callout_blocks",
+                    "label": "Callout Blocks",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_685ea8850e05e",
+                            "label": "Callout Blocks",
+                            "name": "callout_blocks",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_681a1cf1c1f1e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Entity"
+                    ],
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_settings": [
+                        "group_6599af50880a8"
+                    ],
+                    "acfe_flexible_settings_size": "large",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
                 "layout_67b89205eb918": {
                     "key": "layout_67b89205eb918",
                     "name": "carousel",
@@ -402,16 +454,16 @@
                     "acfe_layout_col": "auto",
                     "acfe_layout_allowed_col": false
                 },
-                "layout_677f51bac4b3d": {
-                    "key": "layout_677f51bac4b3d",
-                    "name": "events",
-                    "label": "Events",
+                "layout_659c6f4d039f8": {
+                    "key": "layout_659c6f4d039f8",
+                    "name": "figure",
+                    "label": "Figure",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_677f51c0c4b40",
-                            "label": "Events",
-                            "name": "events",
+                            "key": "field_659c6f54039fb",
+                            "label": "Figure",
+                            "name": "figure",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -423,7 +475,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_677f517d19283"
+                                "group_659c6e7fc386c"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -452,16 +504,16 @@
                     "acfe_layout_col": "auto",
                     "acfe_layout_allowed_col": false
                 },
-                "layout_659c6f4d039f8": {
-                    "key": "layout_659c6f4d039f8",
-                    "name": "figure",
-                    "label": "Figure",
+                "layout_685ecb7a61338": {
+                    "key": "layout_685ecb7a61338",
+                    "name": "floating_callout",
+                    "label": "Floating Callout",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_659c6f54039fb",
-                            "label": "Figure",
-                            "name": "figure",
+                            "key": "field_685ecba1aa5e9",
+                            "label": "Floating Callout",
+                            "name": "floating_callout",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -473,7 +525,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_659c6e7fc386c"
+                                "group_67d89f8c08456"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -985,20 +1037,6 @@
                 "operator": "==",
                 "value": "reusable-content"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "training-hub-item"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "event"
-            }
         ]
     ],
     "menu_order": 0,
@@ -1019,5 +1057,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1740149271
+    "modified": 1751044940
 }

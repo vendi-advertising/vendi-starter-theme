@@ -165,7 +165,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66f447302fd85",
@@ -225,7 +227,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67621e4d456dd",
@@ -282,7 +286,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67621e49456dc",
@@ -340,7 +346,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66f447452fd88",
@@ -558,5 +566,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1750348041
+    "modified": 1751042798
 }

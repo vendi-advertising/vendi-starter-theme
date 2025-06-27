@@ -277,7 +277,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66ad2d0c0267a",
@@ -332,7 +334,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66b148ce7c50c",
@@ -385,7 +389,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66ad02748a275",
@@ -461,5 +467,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1731704899
+    "modified": 1751046462
 }

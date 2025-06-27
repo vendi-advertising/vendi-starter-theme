@@ -7,27 +7,12 @@ add_filter(
     'acf/json/save_file_name',
     static function ($filename) {
         static $b = [
-            VendiComponentsAcfMagicFolderEnum::COMPONENTS->value     => [
-                //'group_6599ece5e2264.json' => 'accordion.json',
-                //'group_6757af2f78488.json' => 'action-cards.json',
-                //'group_659c0a262f75a.json' => 'basic-copy.json',
-                //'group_659c754d6a1d2.json' => 'blockquote.json',
-                //'group_659c272fb8f1f.json' => 'callout.json',
-                //'group_67b891ce2ddbf.json' => 'carousel.json',
-                //'group_6695804de3410.json' => 'columns.json',
-                //'group_659c6e7fc386c.json' => 'figure.json',
-                //'group_66aa473bce3b3.json' => 'form.json',
-                //'group_67327a78b71a5.json' => 'group.json',
-                //'group_66aa7a9bdb070.json' => 'hero.json',
-                'group_66acef245de12.json' => 'image-gallery.json',
-                'group_661d782329c85.json' => 'image-grid.json',
-                'group_675772dd4896f.json' => 'people.json',
-                //'group_659c445704039.json' => 'reusable-content.json',
-                //'group_67b62a9037341.json' => 'spacer.json',
-                //'group_66a9355627020.json' => 'stats.json',
-                'group_661989c1d0e74.json' => 'stepwise.json',
-                'group_6599ae10d9002.json' => 'testimonial.json',
-            ],
+
+            // DO NOT use VendiComponentsAcfMagicFolderEnum::COMPONENTS
+            // or VendiComponentsAcfMagicFolderEnum::SUBCOMPONENTS
+            // anymore, use the modern filesystem-based approach which stores
+            // the ACF in the component folder itself.
+            VendiComponentsAcfMagicFolderEnum::COMPONENTS->value     => [],
             VendiComponentsAcfMagicFolderEnum::ENTITIES->value       => [
                 'post_type_66ba8537bd649.json' => 'training-hub.json',
                 'post_type_6599ab6f6b61a.json' => 'testimonial.json',
@@ -101,6 +86,8 @@ add_filter(
         ];
 
         foreach ($b as $folder => $mapping) {
+            // Intentionally skipped over for now, will be removed when it is determined
+            // it is no longer being used anywhere else.
             if (array_key_exists($filename, $mapping)) {
                 return $folder . VENDI_COMPONENTS_ACF_MAGIC_FOLDER_PATH_IDENTIFIER . $mapping[$filename];
             }

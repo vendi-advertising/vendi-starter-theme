@@ -40,10 +40,10 @@ add_filter(
 
                 'group_62348a640fc68.json' => 'theme-settings-tab-global-javascript.json',
 
-                'group_661435d8a956b.json' => 'theme-settings-sso.json',
-                'group_6615bc1d65360.json' => 'theme-settings-sso-provider-github.json',
-                'group_66143631ddd8b.json' => 'theme-settings-sso-provider-azure.json',
-                'group_6619abc83577b.json' => 'theme-settings-sso-provider-google.json',
+//                'group_661435d8a956b.json' => 'theme-settings-sso.json',
+//                'group_6615bc1d65360.json' => 'theme-settings-sso-provider-github.json',
+//                'group_66143631ddd8b.json' => 'theme-settings-sso-provider-azure.json',
+//                'group_6619abc83577b.json' => 'theme-settings-sso-provider-google.json',
 
                 'group_67c0985f6b99a.json' => 'theme-settings-login.json',
             ],
@@ -68,7 +68,7 @@ add_filter(
             ],
             VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value   => [
                 'ui_options_page_66143503e5c73.json' => 'option-page-theme-settings.json',
-                'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
+//                'ui_options_page_661435b551158.json' => 'option-page-theme-settings-sso.json',
                 'ui_options_page_67c0983f69e94.json' => 'option-page-theme-settings-login.json',
             ],
 

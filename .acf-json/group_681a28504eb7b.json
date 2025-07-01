@@ -1,0 +1,123 @@
+{
+    "key": "group_681a28504eb7b",
+    "title": "Background - Pattern",
+    "fields": [
+        {
+            "key": "field_681a28505d17f",
+            "label": "Background Pattern",
+            "name": "background_pattern",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "shields": "Shields"
+            },
+            "default_value": "shields",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "allow_custom": 0,
+            "placeholder": "",
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "min": ""
+        },
+        {
+            "key": "field_681a2a4ed616d",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 1,
+            "return_format": "string",
+            "display": "palette",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 0,
+            "theme_colors": 1,
+            "colors": [],
+            "required_message": "",
+            "allow_in_bindings": 0,
+            "button_label": "Select Color"
+        },
+        {
+            "key": "field_681a2a84d616e",
+            "label": "Pattern Color",
+            "name": "pattern_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#cccccc",
+            "enable_opacity": 1,
+            "return_format": "string",
+            "display": "palette",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 0,
+            "theme_colors": 0,
+            "colors": {
+                "#324b6b": "Blue-grey",
+                "#cccccc": "Grey"
+            },
+            "required_message": "",
+            "allow_in_bindings": 0,
+            "button_label": "Select Color"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1746545470
+}

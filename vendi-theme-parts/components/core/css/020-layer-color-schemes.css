@@ -1,0 +1,43 @@
+:where([vendi-color-scheme]) {
+    color: var(--color-scheme-color-p, var(--color-primary-black));
+
+    :where(h1) {
+        color: var(--color-scheme-color-h1, var(--color-primary-black));
+    }
+
+    :where(h2) {
+        color: var(--color-scheme-color-h2, var(--color-primary-black));
+    }
+
+    :where(h3) {
+        color: var(--color-scheme-color-h3, var(--color-primary-black));
+    }
+
+    :where(h4) {
+        color: var(--color-scheme-color-h4, var(--color-primary-black));
+    }
+
+    :where(h5) {
+        color: var(--color-scheme-color-h5, var(--color-primary-black));
+    }
+
+    :where(h6) {
+        color: var(--color-scheme-color-h6, var(--color-primary-black));
+    }
+
+    :where(a:not(.call-to-action)) {
+        color: var(--color-scheme-color-a, var(--color-primary-black));
+
+        &:hover {
+            color: var(--color-scheme-color-a-hover, var(--color-primary-black));
+        }
+
+        &:visited {
+            color: var(--color-scheme-color-a-visited, var(--color-primary-black));
+        }
+
+        &:active {
+            color: var(--color-scheme-color-a-active, var(--color-primary-black));
+        }
+    }
+}

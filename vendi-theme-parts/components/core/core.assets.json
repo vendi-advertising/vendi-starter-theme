@@ -8,6 +8,7 @@
     "css/000-reset.css",
     "css/005-fonts.css",
     "css/010-vars.css",
+    "css/020-layer-color-schemes.css",
     "css/020-layer-content-horizontal-padding.css",
     "css/020-layer-content-max-width.css",
     "css/020-layer-content-placement.css",

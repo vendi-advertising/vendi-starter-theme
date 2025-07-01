@@ -4,7 +4,6 @@ namespace Vendi\Theme\Traits;
 
 use Deprecated;
 use Vendi\Theme\ComponentInterface;
-
 trait PrimaryTextColorSettingsTrait
 {
     private const string ACF_FIELD_FOR_PRIMARY_TEXT_COLOR = 'primary_text_color';

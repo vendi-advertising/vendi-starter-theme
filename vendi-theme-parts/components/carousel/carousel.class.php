@@ -3,13 +3,15 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 use Vendi\Theme\Traits\LinkColorSettingsTrait;
 use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
 
 class Carousel extends BaseComponentWithPrimaryHeading
 {
-    use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
+//    use PrimaryTextColorSettingsTrait;
+//    use LinkColorSettingsTrait;
+    use ColorSchemeTrait;
 
     public function __construct()
     {

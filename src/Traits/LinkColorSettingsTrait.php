@@ -2,10 +2,11 @@
 
 namespace Vendi\Theme\Traits;
 
-use Deprecated;
+use JetBrains\PhpStorm\Deprecated;
 use Vendi\Theme\ComponentInterface;
 use Vendi\Theme\ComponentStyles;
 
+#[Deprecated("Use ColorSchemeTrait instead. This was to specific to the primary text color, which has been moved to ColorSchemeTrait. ")]
 trait LinkColorSettingsTrait
 {
     /*

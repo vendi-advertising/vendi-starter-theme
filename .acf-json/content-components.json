@@ -758,6 +758,58 @@
                     "acfe_layout_col": "auto",
                     "acfe_layout_allowed_col": false
                 },
+                "layout_6862e22e6d97d": {
+                    "key": "layout_6862e22e6d97d",
+                    "name": "link_ladder",
+                    "label": "Link Ladder",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6862e24e75517",
+                            "label": "Link Ladder",
+                            "name": "link_ladder",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67dd5c1bc4e76"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Entity"
+                    ],
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_settings": [
+                        "group_6599af50880a8"
+                    ],
+                    "acfe_flexible_settings_size": "large",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                },
                 "layout_675773e490c86": {
                     "key": "layout_675773e490c86",
                     "name": "people",
@@ -1107,5 +1159,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1751046088
+    "modified": 1751311005
 }

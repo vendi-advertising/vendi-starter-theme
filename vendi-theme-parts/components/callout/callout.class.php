@@ -4,25 +4,30 @@ namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
 use Vendi\Theme\ComponentStyles;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 use Vendi\Theme\Traits\ImageSettingsTrait;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
 use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
 
 class Callout extends BaseComponentWithPrimaryHeading
 {
     use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
     use ImageSettingsTrait;
+    use ColorSchemeTrait;
 
     public function __construct()
     {
         parent::__construct('component-callout');
     }
 
+    protected function initComponent(): void
+    {
+        parent::initComponent();
+        $this->setColorScheme();
+    }
+
     public function setComponentCssProperties(): void
     {
         $this->setComponentCssPropertiesForImageSettings($this->componentStyles);
-        $this->setComponentCssPropertiesForLinkColorSettings($this->componentStyles);
 
         if (($image = $this->getSubField('image')) && 'image' === $this->getDisplayMode()) {
             if ($focal_point = sanitize_focal_point(get_post_meta($image['ID'], 'focal_point', true))) {

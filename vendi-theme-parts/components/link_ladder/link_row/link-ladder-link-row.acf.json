@@ -140,11 +140,10 @@
                 "id": ""
             },
             "choices": {
-                "pillar": "Pillar",
-                "torch": "Torch",
-                "scales": "Scales"
+                "bird-logo": "Bird Logo",
+                "search-icon": "Search Icon"
             },
-            "default_value": "pillar",
+            "default_value": "bird-logo",
             "return_format": "value",
             "multiple": 0,
             "max": "",
@@ -156,11 +155,11 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": "",
-            "create_options": 0,
-            "save_options": 0
+            "min": ""
         },
         {
             "key": "field_67dddbe2b3a79",
@@ -281,5 +280,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747772199
+    "modified": 1751312765
 }

@@ -16,12 +16,6 @@ class Stats extends BaseComponentWithPrimaryHeading implements IntroCopyInterfac
     use CommonCallsToActionTrait;
     use ColorSchemeTrait;
 
-    public function __construct()
-    {
-        parent::__construct('component-stats');
-        $this->setColorScheme();
-    }
-
 //    public function setComponentCssProperties(): void
 //    {
 //        $this->componentStyles->addStyle('--local-text-color', $this->getSubField('text_color'));

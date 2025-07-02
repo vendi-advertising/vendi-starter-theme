@@ -43,8 +43,6 @@ class ImageGallery extends BaseComponentWithPrimaryHeading
 
     public function setComponentCssProperties(): void
     {
-        $this->componentStyles->addStyle('--local-text-color', $this->getSubField('text_color'));
-
         if ($gap = $this->getSubField('image_gap')) {
             $this->componentStyles->addStyle('--local-gap', $gap . 'rem');
         }

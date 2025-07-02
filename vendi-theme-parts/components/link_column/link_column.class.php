@@ -13,6 +13,17 @@ class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeA
 
     private ?array $links = null;
 
+    public function __construct()
+    {
+        parent::__construct('component-link-column');
+    }
+
+    protected function initComponent(): void
+    {
+        parent::initComponent();
+        $this->componentStyles->addCssProperty('local-content-background-color', $this->getContentBackgroundColorWithAlpha());
+    }
+
     public function getContentBackgroundColorWithAlpha(float $alpha = 0.85)
     {
         if ( ! $color = get_sub_field('content_box_background_color')) {
@@ -23,14 +34,6 @@ class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeA
 
         return sprintf('rgba(from %1$s r g b / %2$s)', $color, $alpha);
     }
-
-    protected function initComponent(): void
-    {
-        parent::initComponent();
-        $this->componentStyles->addCssProperty('local-content-background-color', $this->getContentBackgroundColorWithAlpha());
-        $this->setColorScheme();
-    }
-
 
     protected function performAdditionalActionsOnBackgroundImage(array $background_image): array
     {
@@ -54,11 +57,6 @@ class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeA
         }
 
         return $background_image;
-    }
-
-    public function __construct()
-    {
-        parent::__construct('component-link-column');
     }
 
     protected function abortRender(): bool

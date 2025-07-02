@@ -15,12 +15,6 @@ class Blockquote extends BaseComponentWithPrimaryHeading implements ColorSchemeA
         parent::__construct('component-blockquote');
     }
 
-    protected function initComponent(): void
-    {
-        parent::initComponent();
-        $this->setColorScheme();
-    }
-
     public function getCopy(): string
     {
         return $this->getSubField('copy');

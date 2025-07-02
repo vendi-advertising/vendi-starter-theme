@@ -1,6 +1,3 @@
-.component-image-gallery :where(.component-wrapper) {
-    color: var(--local-text-color, var(--color-primary-black));
-}
 
 .component-image-gallery :where(ul, li) {
     margin: 0;

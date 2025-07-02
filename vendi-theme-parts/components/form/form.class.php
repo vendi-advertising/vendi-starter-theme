@@ -17,10 +17,4 @@ class Form extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareIn
         parent::__construct('component-form');
     }
 
-    protected function initComponent(): void
-    {
-        parent::initComponent();
-        $this->setColorScheme();
-    }
-
 }

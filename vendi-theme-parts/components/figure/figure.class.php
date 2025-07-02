@@ -18,12 +18,6 @@ class Figure extends BaseComponentWithPrimaryHeading implements ColorSchemeAware
         parent::__construct('component-figure');
     }
 
-    protected function initComponent(): void
-    {
-        parent::initComponent();
-        $this->setColorScheme();
-    }
-
     public function getImage()
     {
         return $this->getSubField('image');

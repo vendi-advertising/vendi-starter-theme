@@ -21,7 +21,6 @@ class LinkLadder extends BaseComponentWithPrimaryHeading implements IntroCopyInt
     protected function initComponent(): void
     {
         parent::initComponent();
-        $this->setColorScheme();
         if ($separator_color = $this->getSubField('separator_color')) {
             $this->componentStyles->addStyle('--local-separator-color', $separator_color);
         }

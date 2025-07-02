@@ -4,7 +4,7 @@
 
     :where(.content) {
         padding: var(--size-medium);
-        background-color: var(--color-starter-theme-primary);
+        /*background-color: var(--color-starter-theme-primary);*/
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 4rem;

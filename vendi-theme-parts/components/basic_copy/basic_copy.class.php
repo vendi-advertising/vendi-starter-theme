@@ -3,9 +3,10 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class BasicCopy extends BaseComponentWithPrimaryHeading
+class BasicCopy extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
     use ColorSchemeTrait;
 
@@ -14,24 +15,9 @@ class BasicCopy extends BaseComponentWithPrimaryHeading
         parent::__construct('component-basic-copy');
     }
 
-    protected function initComponent(): void
-    {
-        parent::initComponent();
-        $this->setColorScheme();
-    }
-
     public function getCopy(): ?string
     {
         return $this->getSubField('copy');
-    }
-
-    public function jsonSerialize(): array
-    {
-        $ret = parent::jsonSerialize();
-
-        $ret['copy'] = $this->getCopy();
-
-        return $ret;
     }
 
 }

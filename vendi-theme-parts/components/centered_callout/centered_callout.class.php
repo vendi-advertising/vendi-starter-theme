@@ -16,5 +16,6 @@ class CenteredCallout extends BaseComponentWithPrimaryHeading implements ColorSc
     public function __construct()
     {
         parent::__construct('component-centered-callout');
+        $this->setColorScheme();
     }
 }

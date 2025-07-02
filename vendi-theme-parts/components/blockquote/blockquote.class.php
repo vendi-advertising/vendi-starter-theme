@@ -3,9 +3,10 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class Blockquote extends BaseComponentWithPrimaryHeading
+class Blockquote extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
     use ColorSchemeTrait;
 

@@ -3,11 +3,12 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\ComponentInterfaces\IntroCopyInterface;
 use Vendi\Theme\Traits\ColorSchemeTrait;
 use Vendi\Theme\Traits\IntroCopyTrait;
 
-class LinkLadder extends BaseComponentWithPrimaryHeading implements IntroCopyInterface
+class LinkLadder extends BaseComponentWithPrimaryHeading implements IntroCopyInterface, ColorSchemeAwareInterface
 {
     use ColorSchemeTrait;
     use IntroCopyTrait;

@@ -199,41 +199,6 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_68192279ffcbd",
-            "label": "Image Effect",
-            "name": "image_settings",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "none": "No additional settings",
-                "background-shield": "Background shield"
-            },
-            "default_value": "none",
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0,
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "min": ""
-        },
-        {
             "key": "field_6819261c466bd",
             "label": "(Column Endpoint)",
             "name": "",
@@ -416,5 +381,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1751042862
+    "modified": 1751392796
 }

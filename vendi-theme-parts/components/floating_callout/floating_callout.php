@@ -43,7 +43,7 @@ if ( ! $component->renderComponentWrapperStart()) {
     <div class="content-and-cta-wrap">
         <div class="content">
 
-            <?php $component->maybeRenderComponentHeader(); ?>
+            <?php $component->maybeRenderComponentHeading(); ?>
 
             <?php echo wp_kses_post($component->getSubField('copy')); ?>
 

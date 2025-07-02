@@ -3,9 +3,10 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class Accordion extends BaseComponentWithPrimaryHeading
+class Accordion extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
     use ColorSchemeTrait;
 
@@ -17,7 +18,7 @@ class Accordion extends BaseComponentWithPrimaryHeading
     protected function initComponent(): void
     {
         parent::initComponent();
-        $this->setColorScheme();
+//        $this->setColorScheme();
     }
 
     public function getNumberOfColumns(): int
@@ -35,10 +36,7 @@ class Accordion extends BaseComponentWithPrimaryHeading
         return $ret;
     }
 
-    public function setComponentCssProperties(): void
-    {
-        $this->componentStyles->addCssProperty('--local-text-color', $this->getSubField('text_color'));
-    }
+
 
     protected function abortRender(): bool
     {
@@ -62,14 +60,4 @@ class Accordion extends BaseComponentWithPrimaryHeading
         return $this->getSubField('additional_copy');
     }
 
-    public function jsonSerialize(): array
-    {
-        $ret = parent::jsonSerialize();
-
-        $ret['intro_additional_copy'] = $this->getAdditionalCopy();
-        $ret['expand_collapse_all']   = $this->getSubField('expand_collapse_all');
-        $ret['accordion_items']       = $this->getAccordionItems();
-
-        return $ret;
-    }
 }

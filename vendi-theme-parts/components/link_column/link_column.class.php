@@ -5,8 +5,7 @@ namespace Vendi\Theme\Component;
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
 use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\Traits\ColorSchemeTrait;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
-use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
+
 
 class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
@@ -29,6 +28,7 @@ class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeA
     {
         parent::initComponent();
         $this->componentStyles->addCssProperty('local-content-background-color', $this->getContentBackgroundColorWithAlpha());
+        $this->setColorScheme();
     }
 
 

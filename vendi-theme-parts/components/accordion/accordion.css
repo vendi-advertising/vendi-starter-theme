@@ -23,7 +23,6 @@
 .component-accordion {
     :where(& > .component-wrapper) {
         --accordion-icon-width: 1.8rem;
-        --local-primary-color: var(--local-text-color, var(--color-primary-black));
 
         :where(& > .region) {
             :where(& > .content-wrap) {
@@ -49,11 +48,7 @@
                     }
 
                     :where(& > .line) {
-                        background: var(--local-primary-color);
                         height: 100%;
-                    }
-
-                    :where(& > .accordion-column) {
                     }
 
                     :where(& > .accordion-column > .single-accordion-item:not(:last-of-type)) {

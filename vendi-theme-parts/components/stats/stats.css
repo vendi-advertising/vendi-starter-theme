@@ -14,7 +14,7 @@
 }
 
 :where(.component-stats.stat-count-2 .content-wrap) {
-    grid-template-columns: 1fr var(--local-line-width) 1fr;
+    grid-template-columns: 1fr var(--local-line-width)  1fr;
 }
 
 :where(.component-stats.stat-count-3 .content-wrap) {
@@ -41,7 +41,7 @@
 .component-stats :where(hr) {
     width: var(--local-line-width);
     height: 100%;
-    background-color: var(--local-line-color, var(--color-brand-grey-2));
+    background-color: var(--local-line-color, var(--color-primary-black));
     border: none;
     margin: 0;
 }

@@ -18,6 +18,12 @@ class Figure extends BaseComponentWithPrimaryHeading implements ColorSchemeAware
         parent::__construct('component-figure');
     }
 
+    protected function initComponent(): void
+    {
+        parent::initComponent();
+        $this->setColorScheme();
+    }
+
     public function getImage()
     {
         return $this->getSubField('image');
@@ -40,14 +46,4 @@ class Figure extends BaseComponentWithPrimaryHeading implements ColorSchemeAware
         return ! $image || ! is_array($image);
     }
 
-    public function jsonSerialize(): array
-    {
-        $ret = parent::jsonSerialize();
-
-        $ret['image']        = $this->getImage();
-        $ret['caption']      = $this->getCaption();
-        $ret['photo_credit'] = $this->getPhotoCredit();
-
-        return $ret;
-    }
 }

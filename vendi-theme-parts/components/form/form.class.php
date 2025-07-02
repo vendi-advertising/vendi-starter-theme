@@ -3,27 +3,24 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
-use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class Form extends BaseComponentWithPrimaryHeading
+
+class Form extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
-    use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
+    use ColorSchemeTrait;
+
 
     public function __construct()
     {
         parent::__construct('component-form');
     }
 
-    public function setComponentCssProperties(): void
+    protected function initComponent(): void
     {
-        if ($primary_text_color = $this->getPrimaryTextColor()) {
-            $this->componentStyles->addCssProperty('--local-text-color', $primary_text_color);
-        }
-
-        if ($linkColor = $this->getPrimaryTextLinkColor()) {
-            $this->componentStyles->addCssProperty('--local-link-color', $linkColor);
-        }
+        parent::initComponent();
+        $this->setColorScheme();
     }
+
 }

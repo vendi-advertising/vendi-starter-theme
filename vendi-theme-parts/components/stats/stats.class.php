@@ -4,25 +4,29 @@ namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
 use Vendi\Theme\ComponentInterfaces\CallsToActionAwareInterface;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
 use Vendi\Theme\ComponentInterfaces\IntroCopyInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 use Vendi\Theme\Traits\CommonCallsToActionTrait;
 use Vendi\Theme\Traits\IntroCopyTrait;
 
-class Stats extends BaseComponentWithPrimaryHeading implements IntroCopyInterface, CallsToActionAwareInterface
+class Stats extends BaseComponentWithPrimaryHeading implements IntroCopyInterface, CallsToActionAwareInterface, ColorSchemeAwareInterface
 {
     use IntroCopyTrait;
     use CommonCallsToActionTrait;
+    use ColorSchemeTrait;
 
     public function __construct()
     {
         parent::__construct('component-stats');
+        $this->setColorScheme();
     }
 
-    public function setComponentCssProperties(): void
-    {
-        $this->componentStyles->addStyle('--local-text-color', $this->getSubField('text_color'));
-        $this->componentStyles->addStyle('--local-line-color', $this->getSubField('line_color'));
-    }
+//    public function setComponentCssProperties(): void
+//    {
+//        $this->componentStyles->addStyle('--local-text-color', $this->getSubField('text_color'));
+//        $this->componentStyles->addStyle('--local-line-color', $this->getSubField('line_color'));
+//    }
 
     public function getStats()
     {

@@ -24,15 +24,14 @@ class LinkColumn extends BaseComponentWithPrimaryHeading implements ColorSchemeA
         $this->componentStyles->addCssProperty('local-content-background-color', $this->getContentBackgroundColorWithAlpha());
     }
 
-    public function getContentBackgroundColorWithAlpha(float $alpha = 0.85)
-    {
+    public function getContentBackgroundColorWithAlpha(float $alpha = 0.85): string {
         if ( ! $color = get_sub_field('content_box_background_color')) {
             $color = 'var(--color-brand-primary-spd-blue)';
         }
 
         $alpha = ((int)100 * $alpha) / 100;
 
-        return sprintf('rgba(from %1$s r g b / %2$s)', $color, $alpha);
+        return sprintf('rgb(from %1$s r g b / %2$s)', $color, $alpha);
     }
 
     protected function performAdditionalActionsOnBackgroundImage(array $background_image): array

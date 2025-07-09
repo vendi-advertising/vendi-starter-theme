@@ -30,7 +30,7 @@
         }
 
         :where(& > *:not(:last-child)) {
-            border-bottom: 1px solid rgba(from var(--color-primary-white) r g b / 40%);
+            border-bottom: 1px solid rgb(from var(--color-primary-white) r g b / 40%);
         }
 
         a {

@@ -62,7 +62,7 @@ add_action(
             body.login {
                 display: grid;
                 grid-template-columns: 1fr max-content;
-                background-color: rgba(10, 75, 120, 0.13);
+                background-color: rgb(10 75 120 / 0.13);
 
                 .vendi-login-background {
                     grid-column: 1;

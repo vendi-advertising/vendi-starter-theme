@@ -3,16 +3,19 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
-use Vendi\Theme\ComponentStyles;
+use Vendi\Theme\ComponentInterfaces\CallsToActionAwareInterface;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
+use Vendi\Theme\Traits\CommonCallsToActionTrait;
 use Vendi\Theme\Traits\ImageSettingsTrait;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
 use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
 
-class Callout extends BaseComponentWithPrimaryHeading
+class Callout extends BaseComponentWithPrimaryHeading implements CallsToActionAwareInterface, ColorSchemeAwareInterface
 {
     use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
     use ImageSettingsTrait;
+    use ColorSchemeTrait;
+    use CommonCallsToActionTrait;
 
     public function __construct()
     {
@@ -22,7 +25,6 @@ class Callout extends BaseComponentWithPrimaryHeading
     public function setComponentCssProperties(): void
     {
         $this->setComponentCssPropertiesForImageSettings($this->componentStyles);
-        $this->setComponentCssPropertiesForLinkColorSettings($this->componentStyles);
 
         if (($image = $this->getSubField('image')) && 'image' === $this->getDisplayMode()) {
             if ($focal_point = sanitize_focal_point(get_post_meta($image['ID'], 'focal_point', true))) {
@@ -80,60 +82,9 @@ class Callout extends BaseComponentWithPrimaryHeading
         return 'image' === $this->getDisplayMode() ? $this->getSubField('image_placement') : null;
     }
 
-    private function getContentWrapperBackgrounds(): ?ComponentStyles
-    {
-        $style = new ComponentStyles();
-
-        $key = 'content_backgrounds';
-        $postId = null;
-        $count = 0;
-        if (have_rows($key, $postId)) {
-            while (have_rows($key, $postId)) {
-                the_row();
-
-                $count++;
-
-                $this->_vendi_get_background_settings_handle_layouts(false, $style);
-            }
-        }
-
-        return $count >= 1 ? $style : null;
-    }
-
     public function getCopy(): ?string
     {
         return $this->getSubField('copy');
     }
 
-    public function jsonSerialize(): array
-    {
-        $ret = parent::jsonSerialize();
-
-        $ret['copy'] = $this->getCopy();
-        if (have_rows('buttons')) {
-            $ret['buttons'] = [];
-            while (have_rows('buttons')) {
-                the_row();
-                $ret['buttons'][] = [
-                    'call_to_action' => $this->getSubField('call_to_action'),
-                    'icon' => $this->getSubField('icon'),
-                    'call_to_action_display_mode' => $this->getSubField('call_to_action_display_mode'),
-                ];
-            }
-        }
-
-        return $ret;
-    }
-
-    protected function renderAdditionalDefaultComponentStyles(): void
-    {
-        if (!$style = $this->getContentWrapperBackgrounds()) {
-            return;
-        }
-        ?>
-        [data-component-name="<?php esc_attr_e($this->componentName); ?>"][data-component-index="<?php esc_attr_e($this->getComponentIndex()); ?>"] .content-wrap :where(.content) {
-        <?php echo $style->getDefaultStyleInformation(); ?>
-        }
-        <?php
-    }
 }

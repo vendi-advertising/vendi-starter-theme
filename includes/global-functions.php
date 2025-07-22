@@ -9,3 +9,5 @@ require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/features.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/libraries.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/components.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/heading.php';
+require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/color-schemes.php';
+require_once VENDI_CUSTOM_THEME_PATH . '/includes/functions/button-styles.php';

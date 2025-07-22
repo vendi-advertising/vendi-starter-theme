@@ -3,13 +3,12 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
-use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 
-class Blockquote extends BaseComponentWithPrimaryHeading
+class Blockquote extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
-    use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
+    use ColorSchemeTrait;
 
     public function __construct()
     {
@@ -26,14 +25,4 @@ class Blockquote extends BaseComponentWithPrimaryHeading
         return ! $this->getCopy();
     }
 
-    public function setComponentCssProperties(): void
-    {
-        if ($primary_text_color = $this->getPrimaryTextColor()) {
-            $this->componentStyles->addCssProperty('--local-text-color', $primary_text_color);
-        }
-
-        if ($linkColor = $this->getPrimaryTextLinkColor()) {
-            $this->componentStyles->addCssProperty('--local-link-color', $linkColor);
-        }
-    }
 }

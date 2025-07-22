@@ -46,19 +46,20 @@ if ( ! function_exists('get_query_var_int')) {
 }
 
 
-add_filter(
-    'template_include',
-    static function ($template) {
-        if (get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::FRONT_END_EDIT_MODE->value)) {
-            switch(get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::ACTION->value)) {
-                case 'edit':
-                    return vendi_maybe_get_template_name('front-end-edit', filename: 'edit-component.php');
-                case 'render':
-                    return vendi_maybe_get_template_name('front-end-edit', filename: 'render-component.php');
-            }
-        }
-
-        return $template;
-    },
-);
+//add_filter(
+//    'template_include',
+//    static function ($template) {
+//        if (get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::FRONT_END_EDIT_MODE->value)) {
+//            switch(get_query_var(VENDI_QUERY_STRING_FRONT_END_EDIT_KEYS::ACTION->value)) {
+//                case 'edit':
+//                    return _vendi_maybe_get_template_name('front-end-edit', filename: 'edit-component.php');
+//                case 'render':
+//                    die('render');
+//                    return _vendi_maybe_get_template_name('front-end-edit', filename: 'render-component.php');
+//            }
+//        }
+//
+//        return $template;
+//    },
+//);
 

@@ -1,49 +1,89 @@
-.component-accordion :where(.component-wrapper) {
-    --accordion-icon-width: 1.8rem;
-    --local-primary-color: var(--local-text-color, var(--color-primary-black));
+.component-accordion {
+    container-type: inline-size;
+    container-name: accordion-container;
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    :where(& > .component-wrapper) {
+        :where(& > .region) {
+            :where(& > .content-wrap) {
+                :where(.accordion-items) {
+                    :where(& > .accordion-column) {
+                        container-type: inline-size;
+                        container-name: accordion-column-container;
+                    }
+                }
+            }
+        }
+    }
 }
 
-/* All accordion items should have a bottom border except he last one */
-.component-accordion :where(.single-accordion-item:not(:last-of-type)) {
-    border-bottom: 1px solid var(--local-primary-color);
+.component-accordion {
+    :where(& > .component-wrapper) {
+        --accordion-icon-width: 1.8rem;
+
+        :where(& > .region) {
+            :where(& > .content-wrap) {
+                :where(.above-mantle) {
+                    :where(.header) {
+                        font-size: 2.8rem;
+                    }
+                }
+
+                :where(.accordion-items) {
+                    display: grid;
+                    column-gap: 10rem;
+                    margin-block-start: var(--size-small);
+                    max-width: 100%;
+                    margin-inline: auto;
+
+                    :where(&[data-columns-count="1"]) {
+                        grid-template-columns: 1fr;
+                    }
+
+                    :where(&[data-columns-count="2"]) {
+                        grid-template-columns: 1fr 1px 1fr;
+                    }
+
+                    :where(& > .line) {
+                        height: 100%;
+                    }
+
+                    :where(& > .accordion-column > .single-accordion-item:not(:last-of-type)) {
+                        border-bottom: 1px solid var(--local-primary-color);
+                    }
+                }
+            }
+        }
+    }
 }
 
-.component-accordion :where(.accordion-items) {
-    display: grid;
-    column-gap: 10rem;
-    margin-top: var(--size-small);
-}
-
-/* More than 2 columns is not supported, but the door was left open */
-.component-accordion :where(.accordion-items[data-columns-count="1"]) {
-    grid-template-columns: 1fr;
-}
-
-.component-accordion :where(.accordion-items[data-columns-count="2"]) {
-    grid-template-columns: 1fr 1px 1fr;
-}
-
-.component-accordion :where(.accordion-items .line) {
-    background: var(--local-primary-color);
-    height: 100%;
-}
-
-@media screen and (width <= 1000px) {
+@container accordion-container (  inline-size < 100rem) {
     .component-accordion :where(.accordion-items) {
         column-gap: 5rem;
     }
 }
 
-@media screen and (width <= 700px) {
-    .component-accordion :where(.accordion-items[data-columns-count="2"]) {
-        grid-template-columns: 1fr;
+@container accordion-container (  inline-size < 80rem) {
+    .component-accordion :where(.accordion-items) {
+        column-gap: var(--size-small);
     }
+}
 
-    .component-accordion :where(.accordion-column:first-of-type .single-accordion-item:last-of-type) {
-        border-bottom: 1px solid var(--local-primary-color);
-    }
+@container accordion-container (  inline-size < 70rem) {
+    .component-accordion :where(.accordion-items) {
+        :where(.accordion-items[data-columns-count="2"]) {
+            grid-template-columns: 1fr;
+        }
 
-    .component-accordion :where(.accordion-items .line) {
-        display: none;
+        :where(.accordion-column:first-of-type .single-accordion-item:last-of-type) {
+            border-bottom: 1px solid var(--local-primary-color);
+        }
+
+        :where(.accordion-items .line) {
+            display: none;
+        }
     }
 }

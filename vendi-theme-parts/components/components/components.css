@@ -1,3 +1,11 @@
-.content-components > :where([class^='component-'], [class*=' component-']):last-child {
-    margin-block-end: var(--size-large);
+:where(.content-components) {
+    --padding-block-start-extra: 0rem;
+
+    :where(& > section:first-of-type) {
+        --padding-block-start-extra: var(--size-large);
+    }
 }
+
+/*.content-components > :where([class^="component-"], [class*=" component-"]):last-child {*/
+/*    margin-block-end: var(--size-large);*/
+/*}*/

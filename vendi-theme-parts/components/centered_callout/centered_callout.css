@@ -1,0 +1,7 @@
+:where(.component-centered-callout) {
+    text-align: center;
+
+    :where(.content h2) {
+        font-size: 2.8rem;
+    }
+}

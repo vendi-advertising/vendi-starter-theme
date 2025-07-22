@@ -1,10 +1,25 @@
 <?php
 
-// Currently <component>.hooks.php is not automatically called in the admin, however we want to keep
-// hooks as near to the component as possible. Eventually we might scan the file system for this,
-// but until then, we'll just require it here.
-require VENDI_CUSTOM_THEME_PATH . VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME . '/callout/callout.hooks.php';
-require VENDI_CUSTOM_THEME_PATH . VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME . '/spacer/spacer.hooks.php';
+use Symfony\Component\Finder\Finder;
+
+/*
+ * This is not the 100% best way to do this, but it is less error-prone than
+ * requiring component authors to manually add hooks.
+ */
+add_action(
+    'acf/init',
+    static function () {
+        // Use Symfony finder to find all files in the components folder
+        $finder = new Finder();
+        $finder
+            ->files()
+            ->in(VENDI_CUSTOM_THEME_PATH . VENDI_CUSTOM_THEME_COMPONENT_FOLDER_NAME)
+            ->name('*.hooks.php');
+        foreach ($finder as $file) {
+            require $file->getRealPath();
+        }
+    },
+);
 
 /*
  * Component: Callout

@@ -3,15 +3,14 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
-use Vendi\Theme\Enums\FigureImageConstraintEnum;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+use Vendi\Theme\ComponentInterfaces\ImageSettingsAwareInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 use Vendi\Theme\Traits\ImageSettingsTrait;
-use Vendi\Theme\Traits\LinkColorSettingsTrait;
-use Vendi\Theme\Traits\PrimaryTextColorSettingsTrait;
 
-class Figure extends BaseComponentWithPrimaryHeading
+class Figure extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface, ImageSettingsAwareInterface
 {
-    use PrimaryTextColorSettingsTrait;
-    use LinkColorSettingsTrait;
+    use ColorSchemeTrait;
     use ImageSettingsTrait;
 
     public function __construct()
@@ -41,42 +40,4 @@ class Figure extends BaseComponentWithPrimaryHeading
         return ! $image || ! is_array($image);
     }
 
-    public function getImageHtml(int $imageId, array|string $size, $crop = null, $attr = []): string
-    {
-        $attr['loading']       = $this->getImageLoading();
-        $attr['fetchpriority'] = $this->getImageFetchPriority();
-
-        return parent::getImageHtml($imageId, $size, $crop, $attr);
-    }
-
-    public function setComponentCssProperties(): void
-    {
-        $this->setComponentCssPropertiesForImageSettings($this->componentStyles);
-
-        if ($primary_text_color = $this->getPrimaryTextColor()) {
-            $this->componentStyles->addCssProperty('--local-text-color', $primary_text_color);
-        }
-
-        if ($linkColor = $this->getPrimaryTextLinkColor()) {
-            $this->componentStyles->addCssProperty('--local-link-color', $linkColor);
-        }
-    }
-
-    protected function initComponent(): void
-    {
-        if ($image_constraint = $this->getImageConstraintMode()) {
-            $this->addRootClass('constrain-image-' . $image_constraint);
-        }
-    }
-
-    public function jsonSerialize(): array
-    {
-        $ret = parent::jsonSerialize();
-
-        $ret['image']        = $this->getImage();
-        $ret['caption']      = $this->getCaption();
-        $ret['photo_credit'] = $this->getPhotoCredit();
-
-        return $ret;
-    }
 }

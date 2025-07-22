@@ -3,6 +3,20 @@
 add_action(
     'login_enqueue_scripts',
     static function () {
+        if ($backgroundImage = get_field('login_background_image', 'option')) {
+            [$loginBackgroundPositionX, $loginBackgroundPositionY] = sanitize_focal_point(get_post_meta($backgroundImage['ID'], 'focal_point', true));
+            $loginBackgroundPositionX *= 100;
+            $loginBackgroundPositionY *= 100;
+        } else {
+            $backgroundImage          = null;
+            $loginBackgroundPositionX = 50;
+            $loginBackgroundPositionY = 50;
+        }
+
+        if ( ! ($loginLogo = get_field('login_logo', 'option'))) {
+            $loginLogo = null;
+        }
+
         ?>
         <script>
             /*global window */
@@ -48,24 +62,41 @@ add_action(
             body.login {
                 display: grid;
                 grid-template-columns: 1fr max-content;
-                background-color: rgba(10, 75, 120, 0.13);
+                background-color: rgb(10 75 120 / 0.13);
 
                 .vendi-login-background {
                     grid-column: 1;
                     grid-row: 1;
-                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH; ?>/images/starter-content/bodie.webp');
                     background-size: cover;
-                    background-position: center;
+                    background-repeat: no-repeat;
                 }
 
+            <?php if($backgroundImage): ?>
+
+                .vendi-login-background {
+                    grid-column: 1;
+                    grid-row: 1;
+                    background-image: url('<?php echo esc_url($backgroundImage['url']) ?>');
+                    background-position: <?php echo $loginBackgroundPositionX; ?>% <?php echo $loginBackgroundPositionY; ?>%;
+                }
+
+            <?php endif; ?>
+
                 h1 a {
-                    background-image: url('<?php echo VENDI_CUSTOM_THEME_URL_WITH_NO_TRAILING_SLASH; ?>/images/starter-content/bird-logo.svg');
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
                     width: 100%;
                     height: 100px;
                 }
+
+            <?php if($loginLogo): ?>
+
+                h1 a {
+                    background-image: url('<?php echo esc_url($loginLogo['url']) ?>');
+                }
+
+            <?php endif; ?>
 
                 #login {
                     width: unset;
@@ -87,5 +118,5 @@ add_action(
                 }
             }
         </style>
-    <?php }
+    <?php },
 );

@@ -1,0 +1,141 @@
+/* Variable setup only */
+:where(.component-hero-image) {
+    :where(& > .component-wrapper) {
+        --local-hero-height: 80dvh;
+        --local-gap-between-things: var(--size-large);
+
+        .hero-height-medium > & {
+            --local-hero-height: 70dvh;
+        }
+    }
+}
+
+:where(.component-hero-image) {
+    container-name: hero-image;
+    container-type: inline-size;
+}
+
+:where(.component-hero-image) {
+    position: relative;
+    --line-height: 1.5rem;
+    display: grid;
+    margin-inline: auto;
+    color: white;
+    margin-top: -20rem;
+
+    :where(& > .component-wrapper) {
+        --local-mantle-color: var(--local-hero-background-color);
+        min-height: max(40rem, var(--local-hero-height));
+        isolation: auto;
+
+        :where(& > .region) {
+            height: 0;
+
+            :where(& > .content-wrap) {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(6rem);
+                width: 100%;
+                max-width: var(--content-width-normal);
+
+                :where(& > .hero-image) {
+                    :where(& > .box) {
+                        display: grid;
+                        grid-template-columns: 1fr 2fr;
+                        background-color: var(--local-hero-background-color);
+                        margin-top: var(--size-x-small);
+                        padding-block: var(--size-medium);
+                        margin-inline: calc(var(--mantle-corner-width) + var(--size-x-small));
+
+                        :where(.image) {
+                            display: grid;
+
+                            :where(svg) {
+                                max-width: 6rem;
+                                margin-inline: auto;
+                                color: #fff;
+                            }
+                        }
+
+                        :where(.content) {
+                            border-inline-start: 1px solid var(--local-hero-line-color);
+                            padding-inline: var(--local-gap-between-things);
+                            font-size: 2rem;
+                            padding-block: var(--size-x-small);
+                            display: grid;
+                            align-items: center;
+                            gap: var(--size-small);
+
+                            :where(& > *) {
+                                margin-block-start: 0;
+                            }
+
+                            .heading {
+                                font-weight: 500;
+                                line-height: 1.3;
+                            }
+
+                            .button {
+                                max-width: fit-content;
+                                display: block;
+                                background-color: #5484a3;
+                                padding: 0.75em 2em;
+                                font-size: 1.4rem;
+                                font-weight: 600;
+                                border-radius: 3px;
+                                transition: all 0.25s ease-in;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: white;
+                                    color: #5484a3;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@container hero-image (max-width: 80rem) {
+    :where(.component-hero-image) {
+        :where(& > .component-wrapper) {
+            :where(& > .region) {
+                container-type: unset;
+
+                :where(& > .content-wrap) {
+                    padding-inline: var(--size-x-small);
+                }
+            }
+        }
+
+        .box {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            justify-items: center;
+            text-align: center;
+
+            :where(.image) {
+                display: none;
+            }
+
+            :where(.content) {
+                border: none;
+                padding-inline: var(--size-medium);
+            }
+        }
+    }
+}
+
+@container hero-image (max-width: 60rem) {
+    :where(.component-hero-image) {
+        .box {
+            :where(.content) {
+                padding-inline: var(--size-x-small);
+            }
+        }
+    }
+}

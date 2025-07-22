@@ -6,11 +6,18 @@ use Vendi\Theme\ComponentUtility;
 /** @var Stats $component */
 $component = ComponentUtility::get_new_component_instance(Stats::class);
 
-if (!$component->renderComponentWrapperStart()) {
+if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
+?>
+    <div class="heading-and-intro-copy sub-component-basic-copy">
+        <?php
+        $component->maybeRenderComponentHeading();
+        $component->maybeRenderIntroCopy();
+        ?>
+    </div>
+<?php
 
-$component->maybeRenderComponentHeader();
 ?>
 <?php if (have_rows('stats')): ?>
     <?php while (have_rows('stats')) : the_row(); ?>
@@ -18,7 +25,8 @@ $component->maybeRenderComponentHeader();
         <hr/>
     <?php endwhile; ?>
 <?php endif; ?>
-<?php echo $component->getSubField('copy'); ?>
+
+<?php $component->maybeRenderCallsToAction(); ?>
 
 <?php
 $component->renderComponentWrapperEnd();

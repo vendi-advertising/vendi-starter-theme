@@ -14,26 +14,26 @@ if (PHP_VERSION_ID < VENDI_MINIMUM_PHP_VERSION_ID) {
     return;
 }
 
-if ( ! is_readable(VENDI_CUSTOM_THEME_PATH . '/vendor/autoload.php')) {
+if (!is_readable(VENDI_CUSTOM_THEME_PATH.'/vendor/autoload.php')) {
     vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_AUTOLOAD);
 
     return;
 }
 
-if ( ! function_exists('get_field')) {
+if (!function_exists('get_field')) {
     vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_ACF_PRO);
 
     return;
 }
 
-if ( ! function_exists('bis_get_attachment_image_src')) {
+if (!function_exists('bis_get_attachment_image_src')) {
     vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_BETTER_IMAGE_SIZES);
 
     return;
 }
 
-require_once ABSPATH . 'wp-admin/includes/plugin.php';
-if (function_exists('is_plugin_active') && ! is_plugin_active('classic-editor/classic-editor.php')) {
+require_once ABSPATH.'wp-admin/includes/plugin.php';
+if (function_exists('is_plugin_active') && !is_plugin_active('classic-editor/classic-editor.php')) {
     vendi_do_early_exit(VENDI_EARLY_EXIT_ERROR_CODE_MISSING_PLUGIN_CLASSIC_EDITOR);
 
     return;
@@ -42,8 +42,8 @@ if (function_exists('is_plugin_active') && ! is_plugin_active('classic-editor/cl
 function vendi_do_early_exit(int $code): void
 {
     define('VENDI_EARLY_EXIT_ERROR_CODE', $code);
-    require_once VENDI_CUSTOM_THEME_PATH . '/vendi-theme-parts/early-exit/early-exit.php';
-    if ( ! defined('WP_CLI')) {
+    require_once VENDI_CUSTOM_THEME_PATH.'/vendi-theme-parts/early-exit/early-exit.php';
+    if (!defined('WP_CLI')) {
         exit;
     }
 }

@@ -1,0 +1,62 @@
+:where(.component-link-column) {
+    container-type: inline-size;
+    container-name: link-column-container;
+
+    :where(.content) {
+        padding: var(--size-medium);
+        /*background-color: var(--color-starter-theme-primary);*/
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        max-width: 100%;
+        margin-inline: auto;
+        margin-top: var(--size-small);
+    }
+
+    :where(.links) {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr var(--size-medium);
+        align-items: center;
+
+        :where(& > *) {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / -1;
+            padding-bottom: var(--size-x-small);
+            margin-bottom: var(--size-x-small);
+        }
+
+        :where(& > *:not(:last-child)) {
+            border-bottom: 1px solid rgb(from var(--color-primary-white) r g b / 40%);
+        }
+
+        a {
+            text-decoration: none;
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / -1;
+            align-items: center;
+
+            svg {
+                transition: 0.25s ease-in-out;
+                max-height: 1em;
+                width: 100%;
+            }
+
+            &:hover svg {
+                transform: translateX(5px);
+            }
+        }
+    }
+}
+
+@container link-column-container (max-width: 70rem) {
+    :where(.component-link-column) {
+        :where(.content) {
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -33,7 +33,7 @@ add_filter(
     static function ($paths) {
         return [
             VENDI_CUSTOM_THEME_PATH . '/.acf-json',
-            VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::COMPONENTS->value,
+            //            VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::COMPONENTS->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::ENTITIES->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::BACKGROUNDS->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::FIELDSETS->value,
@@ -43,7 +43,7 @@ add_filter(
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::ENTITY_FIELDS->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::OPTION_PAGES->value,
             VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::SETTINGS_MODAL->value,
-            VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::SUBCOMPONENTS->value,
+            //            VENDI_CUSTOM_THEME_PATH . '/.acf-json/' . VendiComponentsAcfMagicFolderEnum::SUBCOMPONENTS->value,
         ];
     },
 );

@@ -1,3 +1,8 @@
+---
+role: component
+example-prefix: image_gallery
+---
+
 # Image Gallery
 
 ## Overview

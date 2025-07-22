@@ -1,87 +1,59 @@
-@layer vendi-buttons {
-    .call-to-action {
-        padding: 1.5rem 4rem;
-        text-decoration: none;
-        transition: all 0.25s ease-in;
-        font-weight: 400;
-        text-align: center;
-        display: inline-block;
-        cursor: pointer;
-    }
+:where(.call-to-action) {
+    --local-border-radius: 0.5rem;
+    --local-padding-block: 1.5rem;
+    --local-padding-inline: 4rem;
+    --local-font-weight: 400;
+    padding-block: var(--local-padding-block);
+    padding-inline: var(--local-padding-inline);
+    text-decoration: none;
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in;
+    font-weight: var(--local-font-weight);
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
 
-    .call-to-action-link {
-        display: inline-block;
-    }
+:where(.call-to-action-link) {
+    display: inline-block;
+}
 
+:where(.call-to-action-button) {
+    color: var(--button-style-color, var(--color-primary-white));
+    background-color: var(--button-style-background-color, var(--color-primary-black));
+    border: 1px solid var(--button-style-border-color, var(--color-primary-white));
+    border-radius: var(--local-border-radius);
+    text-decoration: none !important;
+
+    :where(&:hover) {
+        color: var(--button-style-hover-color, var(--color-primary-black));
+        background-color: var(--button-style-hover-background-color, var(--color-primary-white));
+        border: 1px solid var(--button-style-hover-border-color, var(--color-primary-black));
+    }
+}
+
+/* This is required in order to make the admin area work correctly */
+.wp-admin {
     .call-to-action-button {
-        color: var(--local-color, var(--color-primary-white)) !important;
-        background-color: var(--local-background-color, var(--color-primary-black));
-        border: 1px solid var(--local-border-color, var(--local-background-color));
-        border-radius: 10rem;
-    }
-
-    .call-to-action-button:hover {
+        color: var(--button-style-color, var(--color-primary-white));
+        background-color: var(--button-style-background-color, var(--color-primary-black));
+        border: 1px solid var(--button-style-border-color, var(--color-primary-white));
+        border-radius: var(--local-border-radius);
         text-decoration: none !important;
-    }
 
-    .call-to-action:hover,
-    .call-to-action:focus-visible {
-        text-decoration: none;
-    }
-
-    .call-to-action.primary {
-        &.dark.normal,
-        &.dark.reversed:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-brand-primary-dark);
-            --local-color: var(--color-primary-white);
-            --local-border-color: var(--color-brand-primary-dark);
-        }
-
-        &.dark.reversed,
-        &.dark.normal:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-primary-white);
-            --local-color: var(--color-brand-primary-dark);
-            --local-border-color: var(--color-brand-primary-dark);
-        }
-
-        &.dark.outline {
-            --local-background-color: transparent;
-            --local-color: var(--color-primary-white);
-            --local-border-color: var(--color-primary-white);
-        }
-
-        &.dark.outline:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-primary-white);
-            --local-color: var(--color-brand-primary-dark);
-            --local-border-color: var(--color-primary-white);
+        &:hover {
+            color: var(--button-style-hover-color, var(--color-primary-black));
+            background-color: var(--button-style-hover-background-color, var(--color-primary-white));
+            border: 1px solid var(--button-style-hover-border-color, var(--color-primary-black));
         }
     }
+}
 
-    .call-to-action.secondary {
-        &.dark.normal,
-        &.dark.reversed:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-brand-secondary-dark);
-            --local-color: var(--color-primary-white);
-            --local-border-color: var(--color-primary-white);
-        }
+:where(.call-to-action:hover,.call-to-action:focus-visible ) {
+    text-decoration: none;
+}
 
-        &.dark.reversed,
-        &.dark.normal:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-primary-white);
-            --local-color: var(--color-brand-secondary-dark);
-            --local-border-color: var(--color-brand-secondary-dark);
-        }
-
-        &.dark.outline {
-            --local-background-color: transparent;
-            --local-color: var(--color-primary-white);
-            --local-border-color: var(--color-primary-white);
-        }
-
-        &.dark.outline:is(:hover, :focus-visible) {
-            --local-background-color: var(--color-primary-white);
-            --local-color: var(--color-brand-secondary-dark);
-            --local-border-color: var(--color-primary-white);
-        }
-    }
+:where(.call-to-action:focus-visible ) {
+    outline-offset: 1rem;
 }

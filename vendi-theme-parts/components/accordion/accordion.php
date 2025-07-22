@@ -9,15 +9,26 @@ if ( ! $component->renderComponentWrapperStart()) {
     return;
 }
 
+vendi_load_component_v3(
+    'buttons/button',
+);
+
+$expandCollapseAllButtonStyle = $component->getSubField('expand_collapse_global-button-style');
 ?>
 
-<?php $component->maybeRenderComponentHeader(); ?>
-<?php if ($additional_copy = $component->getAdditionalCopy()): ?>
-    <div class="copy">
-        <?php esc_html_e($additional_copy); ?>
-    </div>
-<?php endif; ?>
-<?php vendi_load_component_v3('accordion/accordion-controls', object_state: ['component' => $component]); ?>
+    
+
+        <div class="heading-and-copy sub-component-basic-copy">
+            <?php $component->maybeRenderComponentHeading(); ?>
+            <?php if ($additional_copy = $component->getAdditionalCopy()): ?>
+                <div class="copy">
+                    <?php esc_html_e($additional_copy); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <?php vendi_load_component_v3('accordion/accordion-controls', object_state: ['component' => $component, 'expandCollapseAllButtonStyle' => $expandCollapseAllButtonStyle]); ?>
+
     <div
         class="accordion-items"
         data-columns-count="<?php echo esc_attr($component->getNumberOfColumns()); ?>"

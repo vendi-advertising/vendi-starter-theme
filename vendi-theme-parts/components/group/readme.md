@@ -7,31 +7,25 @@ example-prefix: group
 
 ### Overview
 
-**This description should be updated. The group component is used to group one or more components together in order
-to share a common background.**
+The group component allows you to combine two or more components (ideally components with related content) on a single background, such as a basic copy component and a cards component.
 
-With the group component, you can display a collection/group of buttons that allow users to perform related actions.
-Buttons should contain brief copy (a heading and, if needed for clarity, a supporting phrase or sentence).
+Use the group component to:
 
-Use the group component to present:
-
-* Information that inspires related actions (such as with a form that allows users to choose a primary or
-  secondary/alternative action)
-* Direction through linear content, such as “Back, Next, Continue, Skip, Cancel”
+* Enhance the flow, presentation, and readability of a page with a common, consistent background
 
 Choose a component other than group when you want to:
 
-* Present users the opportunity to perform actions that are not related or contradictory (to prevent input mistakes)
-* Link to content (use text links instead)
+* Present stand-alone information
+* Break up your page presentation with varied backgrounds
 
 Component options include:
 
-* Add optional introductory copy to button group
-* Add a heading to the button group
-* Set various text colors
-* Set various backgrounds
+* Choose your components
+* Add a heading and set its style and text wrapping
+* Choose to set various text colors
+* Choose to set various background color and/or image or design
 * Set content width to full (default), narrow, or slim
 * Set content placement to left (default) or middle
-* Set vertical padding from None-XLarge (Medium is default)
+* Set content vertical padding from XXSmall-XLarge (Medium is default)
 
 ### Examples

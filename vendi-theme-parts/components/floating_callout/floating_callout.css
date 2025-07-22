@@ -1,0 +1,114 @@
+:where(.component-floating-callout) {
+    :where(.content-wrap) {
+        display: grid;
+        grid-template-columns: var(--callout-column-width);
+        grid-template-areas: "image content-and-cta";
+        column-gap: var(--size-medium);
+
+        :where(.image) {
+            grid-area: image;
+            background-repeat: no-repeat;
+            justify-self: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        :where(.content-and-cta-wrap) {
+            grid-area: content-and-cta;
+
+            :where(.ctas) {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: start;
+                gap: var(--size-small);
+
+                & > .component-button {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    &:not(.image-settings-background-shield) {
+        :where(.content-wrap) {
+            align-items: center;
+        }
+
+        :where(.image) {
+            margin-left: auto;
+
+            :is(img, picture) {
+                max-height: var(--local-max-height, 100%);
+                max-width: var(--local-max-width, 100%);
+                object-fit: var(--local-object-fit);
+            }
+        }
+    }
+
+    :where(&.image-settings-background-shield) {
+        :where(.content-and-cta-wrap) {
+            padding-top: var(--size-medium);
+        }
+
+        :where(.image) {
+            --local-top: var(--size-small);
+            --local-right: var(--size-small);
+            --local-border-width: 4px;
+            background-image: var(--callout-image-background-src);
+            background-size: var(--callout-image-background-size);
+            background-position: var(--callout-image-background-position);
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            position: relative;
+            min-height: 35rem;
+            max-width: 30rem;
+            border-right: var(--size-xx-small) solid var(--color-primary-white);
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                border-bottom-right-radius: 50%;
+                z-index: var(--z-index-negative);
+                border-bottom-left-radius: 50%;
+                border: var(--local-border-width) solid rgb(0 0 0 / 10%);
+                transform: translateY(var(--local-top)) translateX(var(--local-right));
+                height: calc(100% - var(--local-top));
+            }
+        }
+    }
+}
+
+@container region (max-width: 70rem) {
+    :where(.component-floating-callout) {
+        :where(.content-wrap) {
+            --callout-column-width: 1fr;
+            grid-template-areas: "image" "content-and-cta";
+        }
+    }
+}
+
+@container region (max-width: 50rem) {
+    :where(.component-floating-callout) {
+        :where(&.image-settings-background-shield) {
+            :where(.image) {
+                aspect-ratio: 30 / 35;
+                min-height: unset;
+                max-width: calc(100% - (var(--size-small) + var(--local-border-width)));
+            }
+        }
+
+        :where(.ctas) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &:not(.image-settings-background-shield) {
+            :where(.image) {
+                :is(img, picture) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

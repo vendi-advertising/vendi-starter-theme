@@ -29,7 +29,7 @@
     }
 
     & > :where(.component-wrapper) {
-        color: var(--local-text-color, var(--color-primary-black));
+        /*color: var(--local-text-color, var(--color-primary-black));*/
 
         :where(.header) {
             color: inherit;
@@ -77,7 +77,7 @@
                     display: block;
                     width: var(--size-medium);
                     height: 0.1rem;
-                    background-color: var(--local-text-color);
+                    /*background-color: var(--local-text-color);*/
                     position: relative;
                     top: 0.5rem;
                     margin-block: 0.5rem 0.7em;

@@ -1,0 +1,9 @@
+:where(.component-group) {
+    :where(& > .component-wrapper > .region) {
+        max-width: 100%;
+
+        :where(& > .content-wrap) {
+            max-width: 100%;
+        }
+    }
+}

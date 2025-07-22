@@ -26,4 +26,6 @@ $component->renderComponentWrapperStart();
     <div class="pattern"></div>
 <?php
 
+$component->maybeRenderCallsToAction();
+
 $component->renderComponentWrapperEnd();

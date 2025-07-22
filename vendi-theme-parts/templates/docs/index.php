@@ -8,28 +8,32 @@ global $vendi_selected_theme_page;
 add_filter('show_admin_bar', '__return_false');
 
 acf_form_head();
-//get_header();
-
-// Enqueue WordPress admin styles
-
-add_action(
-    'wp_enqueue_scripts',
-    static function () {
-//        wp_deregister_style('common');
-    },
-    priority: 100,
-);
-
 
 wp_enqueue_script('acf-input');
 wp_enqueue_style('wp-admin');
+
+//add_action(
+//    'wp_enqueue_scripts',
+//    static function () {
+//        wp_dequeue_style('global-styles');
+//        wp_deregister_style('global-styles');
+//    },
+//    PHP_INT_MAX,
+//);
+
+
+ob_start();
+vendi_load_component_v3('accordion');
+vendi_load_component_v3('accordion/accordion_item');
+ob_end_clean();
 
 ?>
 <!DOCTYPE html>
 <html lang="en"">
 <head>
     <?php
-    wp_head(); ?>
+    wp_head();
+    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Theme Documentation</title>
@@ -41,17 +45,25 @@ wp_enqueue_style('wp-admin');
 </head>
 <body>
 <header>
-    <?php vendi_load_component_v3('header/logo'); ?>
-    <div class="theme-doc-hero">
-        <h1>Theme documentation</h1>
+    <div class="logo">
+        <a href="/__theme_docs/" rel="nofollow"><?php vendi_get_svg('images/starter-content/bird-logo.svg'); ?></a>
+    </div>
+    <div class="component-basic-copy content-max-width-full content-placement-left documentation-hero">
+        <div class="component-wrapper">
+            <div class="region documentation">
+                <div class="content-wrap">
+                    <h1>Theme documentation</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 <main>
     <?php include __DIR__ . '/includes/nav.php'; ?>
-    <div>
-        <div class="component-basic-copy content-max-width-full content-placement-left">
+    <div class="main-documentation-content">
+        <div class="component-basic-copy content-max-width-full content-placement-left documentation-intro">
             <div class="component-wrapper">
-                <div class="region">
+                <div class="region documentation">
                     <div class="content-wrap">
                         <?php if ('index' === $vendi_selected_theme_page): ?>
                             <h1>Please select a component</h1>
@@ -78,6 +90,21 @@ wp_enqueue_style('wp-admin');
     <script>
         <?php echo file_get_contents(__DIR__ . '/docs.js'); ?>
     </script>
+    <?php
+    global $vendi_inline_style_buffer;
+
+    if (is_array($vendi_inline_style_buffer)) {
+        $html = '';
+        foreach ($vendi_inline_style_buffer as $id => $inlineStyle) {
+            if ( ! is_string($inlineStyle)) {
+                continue;
+            }
+
+            $html .= "<style id=\"vendi-inline-style-$id\">$inlineStyle</style>";
+        }
+        echo $html;
+    }
+    ?>
 </footer>
 <?php wp_footer(); ?>
 </body>

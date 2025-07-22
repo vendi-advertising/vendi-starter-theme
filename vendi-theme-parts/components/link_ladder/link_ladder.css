@@ -1,0 +1,30 @@
+.component-link-ladder {
+    /* Weird, but this handle the case if no rows are rendered */
+
+    :where(&:not(:has(.component-link-row))) {
+        display: none;
+    }
+
+    & :where(.heading-and-intro-copy) {
+        text-align: center;
+        margin-block-end: var(--size-small);
+    }
+
+    :where(.separator) {
+        width: 100%;
+        grid-column: 1 / -1;
+        border: none;
+        border-top: 2px solid var(--color-alert-icon-critical, #000);
+        /* There's an edge case where a link row's render is aborted, however the subsequent
+        separator is still rendered. This hides that separator.
+         */
+
+        :where(& + &) {
+            display: none;
+        }
+
+        &:last-of-type {
+            display: none;
+        }
+    }
+}

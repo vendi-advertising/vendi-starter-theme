@@ -3,18 +3,16 @@
 namespace Vendi\Theme\Component;
 
 use Vendi\Theme\BaseComponentWithPrimaryHeading;
+use Vendi\Theme\ComponentInterfaces\ColorSchemeAwareInterface;
+use Vendi\Theme\Traits\ColorSchemeTrait;
 use WP_Post;
 
-class Testimonial extends BaseComponentWithPrimaryHeading
+class Testimonial extends BaseComponentWithPrimaryHeading implements ColorSchemeAwareInterface
 {
+    use ColorSchemeTrait;
     public function __construct()
     {
         parent::__construct('component-testimonial');
-    }
-
-    public function setComponentCssProperties(): void
-    {
-        $this->componentStyles->addCssProperty('--local-text-color', $this->getSubField('text_color'));
     }
 
     public function getTestimonialObject(): ?WP_Post

@@ -3,3 +3,4 @@
 /composer.lock
 *.sql
 /.env.local
+/node_modules/

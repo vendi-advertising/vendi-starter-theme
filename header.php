@@ -9,7 +9,7 @@ use Vendi\Theme\Feature\Alert\Enum\AlertAppearanceEnum;
 
 //Redirects to theme docs for VBT site. Remove when templating a new site.
 <?php
-header('Location: ' . get_site_url() . '/__theme_docs');
+//header('Location: ' . get_site_url() . '/__theme_docs');
 ?>
 
 <head>

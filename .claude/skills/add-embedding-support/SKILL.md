@@ -1,7 +1,6 @@
 ---
 name: add-embedding-support
-description: Add Qdrant embedding support to v3 WordPress components for RAG chatbot. Implements component-level content
-chunking for searchable, structured embeddings. Use when adding embedding to new or existing v3 components.
+description: Add Qdrant embedding support to v3 WordPress components for RAG chatbot. Implements component-level content chunking for searchable, structured embeddings. Use when adding embedding to new or existing v3 components.
 ---
 
 # Add Embedding Support Skill

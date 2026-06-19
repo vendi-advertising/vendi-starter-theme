@@ -18,3 +18,4 @@ require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-theme.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-wordpress.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-admin-menu-order.php';
 require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-libraries.php';
+require_once VENDI_CUSTOM_THEME_PATH . '/includes/hooks/hooks-scaffold-component.php';

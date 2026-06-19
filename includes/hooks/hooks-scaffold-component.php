@@ -9,6 +9,15 @@ add_action(
     'acf/update_field_group',
     static function (array $field_group): void {
 
+        // This should only happen on development environments
+        if (!WP_DEBUG) {
+            return;
+        }
+
+        if (!is_user_logged_in()) {
+            return;
+        }
+
         // Only act on the Content Components field group
         if ('group_61dc8e97982a7' !== ($field_group['key'] ?? '')) {
             return;

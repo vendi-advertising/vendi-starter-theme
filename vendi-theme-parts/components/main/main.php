@@ -19,9 +19,11 @@
             vendi_load_component_v3('main/search');
         } elseif (is_singular('_background')) {
             vendi_load_component_v3('main/preview-only/background');
+        } elseif (is_singular('component_examples')) {
+            vendi_load_component_v3('component_example');
         }
 
-        if ( ! is_search() && ! is_404()) {
+        if ( ! is_search() && ! is_404() && ! is_singular('component_examples')) {
             vendi_load_component_v3('components');
         }
     }

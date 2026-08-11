@@ -1191,6 +1191,13 @@
                 "operator": "==",
                 "value": "reusable-content"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "component_examples"
+            }
         ]
     ],
     "menu_order": 0,
